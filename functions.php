@@ -58,3 +58,57 @@ collect(['setup', 'filters'])
             );
         }
     });
+
+/**
+ * Vite assets.
+ */
+if (!function_exists('sage_vite_assets')) {
+    function sage_vite_assets() {
+        // Comprueba si está en modo desarrollo
+        if (wp_get_environment_type() !== 'production' && file_exists(get_theme_file_path('public/hot'))) {
+            // Modo desarrollo - HMR activo
+            $url = rtrim(file_get_contents(get_theme_file_path('public/hot')));
+            
+            // Ajustar URL si es necesario
+            if (strpos($url, '127.0.0.1') !== false || strpos($url, 'localhost') !== false) {
+                wp_enqueue_script('vite-client', $url . '/@vite/client', [], null, true);
+                wp_enqueue_script('vite-app', $url . '/resources/js/app.js', [], null, true);
+                
+                // Si ves errores CORS, podrías necesitar más ajustes aquí
+            }
+        } else {
+            // Modo producción - usar manifest
+            if (file_exists($manifest = get_theme_file_path('public/build/manifest.json'))) {
+                $manifest = json_decode(file_get_contents($manifest), true);
+                
+                // Enqueue CSS files
+                if (isset($manifest['resources/css/app.css'])) {
+                    if (isset($manifest['resources/css/app.css']['css'])) {
+                        foreach ($manifest['resources/css/app.css']['css'] as $css) {
+                            wp_enqueue_style('sage/css-' . md5($css), get_theme_file_uri('public/build/' . $css), false, null);
+                        }
+                    } else if (isset($manifest['resources/css/app.css']['file'])) {
+                        wp_enqueue_style('sage/css', get_theme_file_uri('public/build/' . $manifest['resources/css/app.css']['file']), false, null);
+                    }
+                }
+                
+                // Enqueue JS files
+                if (isset($manifest['resources/js/app.js'])) {
+                    wp_enqueue_script('sage/js', get_theme_file_uri('public/build/' . $manifest['resources/js/app.js']['file']), [], null, true);
+                }
+            }
+        }
+    }
+}
+
+// Enganchar la función a WordPress
+add_action('wp_enqueue_scripts', 'sage_vite_assets');
+
+// Registrar la directiva @vite para Blade
+add_filter('blade.compiler', function ($compiler) {
+    $compiler->directive('vite', function ($expression) {
+        return '<?php /* Vite is handled by sage_vite_assets() in functions.php */ ?>';
+    });
+    
+    return $compiler;
+});

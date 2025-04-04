@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="md:w-1/2">
-          <img src="{{ asset('images/kintsugi-hero.jpg') }}" alt="Kintsugi Art" class="rounded-lg shadow-xl">
+          <img src="{{ asset('images/kintsugi-hero.png') }}" alt="Kintsugi Art" class="rounded-lg shadow-xl">
         </div>
       </div>
     </div>
