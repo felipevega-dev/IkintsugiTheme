@@ -1,7 +1,10 @@
 export default {
       content: [
-        './resources/views/**/*.blade.php',
-        './resources/scripts/**/*.js',
+            './app/**/*.php',
+            './resources/**/*.{php,vue,js}',
+            './resources/views/**/*.blade.php',
+            './resources/views/sections/**/*.blade.php',
+            './resources/scripts/**/*.js',
       ],
       theme: {
         extend: {

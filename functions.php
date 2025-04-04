@@ -64,8 +64,8 @@ collect(['setup', 'filters'])
  */
 if (!function_exists('sage_vite_assets')) {
     function sage_vite_assets() {
-        // Forzar el modo de producción por ahora, ignorando el archivo hot
-        if (false && wp_get_environment_type() !== 'production' && file_exists(get_theme_file_path('public/hot'))) {
+        // Comprueba si está en modo desarrollo
+        if (wp_get_environment_type() !== 'production' && file_exists(get_theme_file_path('public/hot'))) {
             // Modo desarrollo - HMR activo
             $url = rtrim(file_get_contents(get_theme_file_path('public/hot')));
             
