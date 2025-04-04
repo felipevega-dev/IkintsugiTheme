@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+/* Importar fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Hugamour font (si está disponible públicamente, o puede ser cargada localmente) */
+@font-face {
+  font-family: 'Hugamour';
+  src: url('../fonts/Hugamour.woff2') format('woff2'),
+       url('../fonts/Hugamour.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Estilos globales */
+body {
+  font-family: 'Roboto', sans-serif;
+}
