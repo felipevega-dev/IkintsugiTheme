@@ -7,5 +7,4 @@
   @include('sections.home.online-therapy')
   @include('sections.home.testimonials')
   @include('sections.home.faqs')
-  @include('sections.home.cta')
 @endsection
