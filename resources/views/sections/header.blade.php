@@ -2,7 +2,7 @@
 <header class="bg-[#362766] py-4">
   <div class="container mx-auto px-4">
     <!-- Iconos de redes sociales (arriba del contenedor) -->
-    <div class="flex justify-end mb-4">
+    <div class="hidden md:flex justify-end mb-4">
       <div class="flex items-center space-x-4">
         <a href="#" class="text-white hover:text-[#FBD5E8] transition-all duration-300 transform hover:scale-110">
           <!-- Instagram -->
@@ -31,8 +31,8 @@
         $current_url = home_url($_SERVER['REQUEST_URI']);
       @endphp
 
-      <!-- Layout de 3 columnas: Logo / Menú / Botón Reservar -->
-      <div class="grid grid-cols-3 items-center">
+      <!-- Versión desktop: 3 columnas -->
+      <div class="hidden lg:grid grid-cols-3 items-center">
         <!-- Logo (columna izquierda) -->
         <div class="pl-8">
           <a class="flex items-center" href="{{ home_url('/') }}">
@@ -130,13 +130,61 @@
           </a>
         </div>
       </div>
+
+      <!-- Versión móvil y tablet: Logo centrado -->
+      <div class="flex flex-col lg:hidden">
+        <div class="flex items-center justify-between px-4">
+          <!-- Logo centrado en móvil -->
+          <div class="flex-1 flex justify-center">
+            <a href="{{ home_url('/') }}">
+              <img 
+                src="{{ get_theme_file_uri('resources/images/kintsugi-hero.png') }}" 
+                alt="Kintsugi Logo" 
+                class="h-10 w-auto"
+              >
+            </a>
+          </div>
+          
+          <!-- Redes sociales en fila para tablets (visibles solo en md) -->
+          <div class="hidden md:block md:flex-1 md:flex md:justify-end">
+            <div class="flex items-center space-x-3">
+              <a href="#" class="text-[#362766] hover:text-[#D93280] transition-all duration-300">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/>
+                </svg>
+              </a>
+              <a href="#" class="text-[#362766] hover:text-[#D93280] transition-all duration-300">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/>
+                </svg>
+              </a>
+              <a href="#" class="text-[#362766] hover:text-[#D93280] transition-all duration-300">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418Z" clip-rule="evenodd"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Botón de reservar cita en tablet (escondido en móvil pequeño) -->
+        <div class="hidden sm:flex justify-center my-4">
+          <a href="{{ home_url('/reservar-cita') }}" 
+             class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 
+                    text-white px-6 py-2 rounded-full font-medium transition-all 
+                    duration-300 transform hover:scale-105 shadow-md hover:shadow-lg 
+                    font-roboto">
+            Reservar Cita
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </header>
 
 <!-- Botón de menú móvil (sólo en pantallas pequeñas) -->
 <div class="fixed bottom-4 right-4 lg:hidden z-50">
-  <button class="bg-gradient-to-r from-[#D93280] to-[#F472B6] text-white p-3 rounded-full shadow-lg 
+  <button class="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-3 rounded-full shadow-lg 
                  transition-all duration-300 transform hover:scale-110" 
           id="mobile-menu-button">
     <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -149,9 +197,9 @@
 <!-- Menú móvil (overlay oculto por defecto) -->
 <div class="fixed inset-0 bg-black bg-opacity-75 z-40 hidden" id="mobile-menu">
   <div class="h-full w-full flex items-center justify-center">
-    <div class="bg-white rounded-lg p-8 max-w-sm w-full">
+    <div class="bg-white rounded-lg p-8 max-w-sm w-full mx-4">
       <div class="flex justify-between items-center mb-6">
-        <h2 class="text-xl font-bold text-[#002060] font-roboto">Menú</h2>
+        <h2 class="text-xl font-bold text-[#362766] font-roboto">Menú</h2>
         <button class="text-gray-700 hover:text-[#D93280] transition-all duration-300 transform hover:scale-110" 
                 id="mobile-menu-close">
           <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -166,7 +214,7 @@
         <a href="{{ home_url('/') }}" 
            class="text-gray-900 font-roboto py-2 border-b border-gray-200 
                   {{ ($current_url == home_url('/')) 
-                     ? 'text-[#D93280] font-medium' 
+                     ? 'text-[#D93280] font-bold' 
                      : 'hover:text-[#D93280]' }} 
                   transition-colors duration-300">
           Inicio
@@ -174,15 +222,15 @@
         <a href="{{ home_url('/quienes-somos') }}" 
            class="text-gray-900 font-roboto py-2 border-b border-gray-200 
                   {{ (strpos($current_url, 'quienes-somos') !== false) 
-                     ? 'text-[#D93280] font-medium' 
+                     ? 'text-[#D93280] font-bold' 
                      : 'hover:text-[#D93280]' }} 
                   transition-colors duration-300">
-          ¿Quienes somos?
+          ¿Quiénes somos?
         </a>
         <a href="{{ home_url('/psicoterapia-emdr') }}" 
            class="text-gray-900 font-roboto py-2 border-b border-gray-200 
                   {{ (strpos($current_url, 'psicoterapia-emdr') !== false) 
-                     ? 'text-[#D93280] font-medium' 
+                     ? 'text-[#D93280] font-bold' 
                      : 'hover:text-[#D93280]' }} 
                   transition-colors duration-300">
           Psicoterapia EMDR
@@ -190,15 +238,15 @@
         <a href="{{ home_url('/a-quienes-atendemos') }}" 
            class="text-gray-900 font-roboto py-2 border-b border-gray-200 
                   {{ (strpos($current_url, 'a-quienes-atendemos') !== false) 
-                     ? 'text-[#D93280] font-medium' 
+                     ? 'text-[#D93280] font-bold' 
                      : 'hover:text-[#D93280]' }} 
                   transition-colors duration-300">
-          ¿A quienes atendemos?
+          ¿A quiénes atendemos?
         </a>
         <a href="{{ home_url('/charlas-y-talleres') }}" 
            class="text-gray-900 font-roboto py-2 border-b border-gray-200 
                   {{ (strpos($current_url, 'charlas-y-talleres') !== false) 
-                     ? 'text-[#D93280] font-medium' 
+                     ? 'text-[#D93280] font-bold' 
                      : 'hover:text-[#D93280]' }} 
                   transition-colors duration-300">
           Charlas y talleres
@@ -206,7 +254,7 @@
         <a href="{{ home_url('/faqs') }}" 
            class="text-gray-900 font-roboto py-2 border-b border-gray-200 
                   {{ (strpos($current_url, 'faqs') !== false) 
-                     ? 'text-[#D93280] font-medium' 
+                     ? 'text-[#D93280] font-bold' 
                      : 'hover:text-[#D93280]' }} 
                   transition-colors duration-300">
           FAQ'S
@@ -214,7 +262,7 @@
         <a href="{{ home_url('/prensa-y-social') }}" 
            class="text-gray-900 font-roboto py-2 border-b border-gray-200 
                   {{ (strpos($current_url, 'prensa-y-social') !== false) 
-                     ? 'text-[#D93280] font-medium' 
+                     ? 'text-[#D93280] font-bold' 
                      : 'hover:text-[#D93280]' }} 
                   transition-colors duration-300">
           Prensa y social media
@@ -222,7 +270,7 @@
         <a href="{{ home_url('/contacto') }}" 
            class="text-gray-900 font-roboto py-2 
                   {{ (strpos($current_url, 'contacto') !== false) 
-                     ? 'text-[#D93280] font-medium' 
+                     ? 'text-[#D93280] font-bold' 
                      : 'hover:text-[#D93280]' }} 
                   transition-colors duration-300">
           Contacto
@@ -230,11 +278,30 @@
       </nav>
       <div class="mt-6">
         <a href="{{ home_url('/reservar-cita') }}" 
-           class="bg-gradient-to-r from-[#362766] to-[#D93280] hover:from-[#4C3A91] hover:to-[#EC4899] 
+           class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 
                   text-white px-4 py-2 rounded-full font-medium transition-all 
                   duration-300 transform hover:scale-105 shadow-md hover:shadow-lg 
                   font-roboto block text-center">
           Reservar Cita
+        </a>
+      </div>
+      
+      <!-- Redes sociales en el menú móvil -->
+      <div class="mt-6 flex justify-center space-x-4">
+        <a href="#" class="text-[#362766] hover:text-[#D93280] transition-all duration-300">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/>
+          </svg>
+        </a>
+        <a href="#" class="text-[#362766] hover:text-[#D93280] transition-all duration-300">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/>
+          </svg>
+        </a>
+        <a href="#" class="text-[#362766] hover:text-[#D93280] transition-all duration-300">
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418Z" clip-rule="evenodd"/>
+          </svg>
         </a>
       </div>
     </div>
