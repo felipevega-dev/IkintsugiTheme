@@ -1,5 +1,5 @@
 <!-- Online Therapy Section -->
-<section class="pt-0 pb-16 bg-white relative mt-[-50px] z-20">
+<section class="pt-0 pb-6 bg-white relative mt-[-50px] z-20">
   <div class="container mx-auto px-4 relative z-20">
     <div class="flex flex-col md:flex-row items-center gap-12 mt-16">
       <!-- Imagen con forma curva personalizada -->

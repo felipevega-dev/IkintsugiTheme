@@ -55,14 +55,13 @@
     </div>
   </div>
   
-  <!-- Curvatura inferior - más sutil y con borde azul -->
+  <!-- Curvatura inferior - más sutil sin línea azul -->
   <div class="absolute bottom-0 left-0 right-0 w-full" style="height: 120px;">
-    <!-- Línea azul superior -->
-    <div class="absolute top-0 left-0 right-0 w-full" style="height: 2px; background-color: #1E90FF;"></div>
-    
-    <!-- SVG para la curva sutil -->
+    <!-- SVG para la curva sutil con más curvatura a la izquierda -->
     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1513 100" fill="none" preserveAspectRatio="none">
-      <path d="M0,40 C300,30 600,80 900,50 C1200,20 1400,40 1513,30 L1513,100 L0,100 Z" fill="#ffffff"></path>
+    
+    <path d="M0,30 C250,60 600,80 900,50 C1200,30 1400,40 1513,30 L1513,100 L0,100 Z"
+          fill="#ffffff" />
     </svg>
   </div>
 </section>
