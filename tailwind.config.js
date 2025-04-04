@@ -64,6 +64,13 @@ export default {
             'sans': ['Roboto', 'system-ui', 'sans-serif'],
             'display': ['Hugamour', 'cursive'],
           },
+          fontWeight: {
+            normal: 400,
+            medium: 500,
+            semibold: 600,
+            bold: 700,
+            extrabold: 800,
+          }
         },
       },
       plugins: [],

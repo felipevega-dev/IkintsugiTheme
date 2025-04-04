@@ -1,63 +1,54 @@
 <!-- Testimonials Section -->
-<section class="py-16 bg-gray-50">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center text-[#362766] mb-12">Lo que dicen nuestros pacientes</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<section class="py-16 bg-white relative">
+  <!-- Curvatura superior -->
+  <div class="absolute top-0 left-0 right-0 w-full">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 60" fill="none" class="w-full">
+      <path d="M0 0C0 0 240 60 720 60C1200 60 1440 0 1440 0V60H0V0Z" fill="white"/>
+    </svg>
+  </div>
+
+  <div class="container mx-auto px-4 pt-10">
+    <!-- Section title -->
+    <h2 class="text-[#030D55] font-extrabold text-5xl md:text-[48px] leading-tight mb-16 text-center" style="font-family: 'Playfair Display', serif;">
+      Nuestros testimonios
+    </h2>
+    
+    <!-- Testimonials Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 max-w-5xl mx-auto">
       <!-- Testimonio 1 -->
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <div class="mb-4 text-[#E93D82]">
-          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
-            <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.896 3.456-8.352 9.12-8.352 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-          </svg>
-        </div>
-        <p class="text-gray-700 mb-4">La terapia EMDR me ayudó a superar un trauma que había estado arrastrando durante años. Estoy muy agradecida por el apoyo y profesionalismo recibido.</p>
-        <div class="flex items-center">
-          <div class="flex-shrink-0">
-            <div class="w-10 h-10 rounded-full bg-[#362766] flex items-center justify-center text-white font-bold">M</div>
-          </div>
-          <div class="ml-3">
-            <p class="text-base font-medium text-gray-900">María López</p>
-            <p class="text-sm text-gray-500">Paciente</p>
+      <div class="bg-[#F8F6FE] rounded-lg p-8 relative">
+        <!-- Profile image -->
+        <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
+          <div class="w-20 h-20 rounded-full overflow-hidden border-4 border-white">
+            <img src="{{ get_theme_file_uri('resources/images/persona2.png') }}" alt="Lorena López" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/80?text=L'">
           </div>
         </div>
+        
+        <!-- Name -->
+        <h3 class="text-[#AB277A] font-semibold text-xl text-center mt-8 mb-4">Lorena López</h3>
+        
+        <!-- Testimonial text -->
+        <p class="text-gray-700 text-center text-sm">
+          "Después de años en terapias largas y sin resultados, la terapia con Julia Cielo fue un antes y un después para mí. Su genio asistente a desenredar mis patrones aprendidos y atender a lo que requería de mí crecer y sanar por lo tanto una alternativa al sufrimiento. La recomiendo totalmente."
+        </p>
       </div>
       
       <!-- Testimonio 2 -->
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <div class="mb-4 text-[#E93D82]">
-          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
-            <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.896 3.456-8.352 9.12-8.352 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-          </svg>
-        </div>
-        <p class="text-gray-700 mb-4">El enfoque de la terapia fue fundamental para mi recuperación. Recomendaría este servicio a cualquiera que esté lidiando con traumas o ansiedad.</p>
-        <div class="flex items-center">
-          <div class="flex-shrink-0">
-            <div class="w-10 h-10 rounded-full bg-[#362766] flex items-center justify-center text-white font-bold">C</div>
-          </div>
-          <div class="ml-3">
-            <p class="text-base font-medium text-gray-900">Carlos Rodríguez</p>
-            <p class="text-sm text-gray-500">Paciente</p>
+      <div class="bg-[#F8F6FE] rounded-lg p-8 relative">
+        <!-- Profile image -->
+        <div class="absolute -top-10 left-1/2 transform -translate-x-1/2">
+          <div class="w-20 h-20 rounded-full overflow-hidden border-4 border-white">
+            <img src="{{ get_theme_file_uri('resources/images/persona1.png') }}" alt="Fernando Torres" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/80?text=F'">
           </div>
         </div>
-      </div>
-      
-      <!-- Testimonio 3 -->
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <div class="mb-4 text-[#E93D82]">
-          <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
-            <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.896 3.456-8.352 9.12-8.352 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-          </svg>
-        </div>
-        <p class="text-gray-700 mb-4">La atención personalizada y el ambiente de confianza me permitieron avanzar en mi proceso de curación. Excelentes profesionales.</p>
-        <div class="flex items-center">
-          <div class="flex-shrink-0">
-            <div class="w-10 h-10 rounded-full bg-[#362766] flex items-center justify-center text-white font-bold">L</div>
-          </div>
-          <div class="ml-3">
-            <p class="text-base font-medium text-gray-900">Laura Sánchez</p>
-            <p class="text-sm text-gray-500">Paciente</p>
-          </div>
-        </div>
+        
+        <!-- Name -->
+        <h3 class="text-[#AB277A] font-semibold text-xl text-center mt-8 mb-4">Fernando Torres</h3>
+        
+        <!-- Testimonial text -->
+        <p class="text-gray-700 text-center text-sm">
+          "Mi proceso de terapia con Sherifem fue transformador. Desde el primer momento, me hizo acompañado con mucha calidez, apertura y profesionalismo. He podido resolver situaciones de los días que me trascendían en las más difíciles. Gracias a su enfoque y al EMDR, pude sanar heridas profundas sin necesidad de revivir la experiencia."
+        </p>
       </div>
     </div>
   </div>
