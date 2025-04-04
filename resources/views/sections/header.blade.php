@@ -26,7 +26,7 @@
     </div>
 
     <!-- Contenedor con el menú blanco que contiene todo -->
-    <div class="bg-white rounded-lg shadow-md pt-4 pb-3">
+    <div class="bg-white rounded-lg shadow-md pt-3 pb-3">
       @php
         $current_url = home_url($_SERVER['REQUEST_URI']);
       @endphp
@@ -47,71 +47,71 @@
         <!-- Menú de navegación en dos filas centradas (columna central) -->
         <div class="flex flex-col items-center justify-center">
           <!-- Primera fila de navegación -->
-          <nav class="flex justify-center items-center space-x-6 mb-2">
+          <nav class="flex justify-center items-center space-x-8 mb-2">
             <a href="{{ home_url('/') }}" 
-               class="text-gray-900 font-roboto text-sm px-2 py-1 border-b-2 
+               class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
                       {{ ($current_url == home_url('/')) 
-                         ? 'border-[#D93280] font-medium' 
+                         ? 'border-[#D93280] font-bold' 
                          : 'border-transparent hover:border-[#D93280]' }} 
                       transition-all duration-300">
               Inicio
             </a>
             <a href="{{ home_url('/quienes-somos') }}" 
-               class="text-gray-900 font-roboto text-sm px-2 py-1 border-b-2 
+               class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
                       {{ (strpos($current_url, 'quienes-somos') !== false) 
-                         ? 'border-[#D93280] font-medium' 
+                         ? 'border-[#D93280] font-bold' 
                          : 'border-transparent hover:border-[#D93280]' }} 
                       transition-all duration-300">
-              ¿Quienes somos?
+              ¿Quiénes somos?
             </a>
             <a href="{{ home_url('/psicoterapia-emdr') }}" 
-               class="text-gray-900 font-roboto text-sm px-2 py-1 border-b-2 
+               class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
                       {{ (strpos($current_url, 'psicoterapia-emdr') !== false) 
-                         ? 'border-[#D93280] font-medium' 
+                         ? 'border-[#D93280] font-bold' 
                          : 'border-transparent hover:border-[#D93280]' }} 
                       transition-all duration-300">
               Psicoterapia EMDR
             </a>
             <a href="{{ home_url('/a-quienes-atendemos') }}" 
-               class="text-gray-900 font-roboto text-sm px-2 py-1 border-b-2 
+               class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
                       {{ (strpos($current_url, 'a-quienes-atendemos') !== false) 
-                         ? 'border-[#D93280] font-medium' 
+                         ? 'border-[#D93280] font-bold' 
                          : 'border-transparent hover:border-[#D93280]' }} 
                       transition-all duration-300">
-              ¿A quienes atendemos?
+              ¿A quiénes atendemos?
             </a>
           </nav>
           
           <!-- Segunda fila de navegación -->
-          <nav class="flex justify-center items-center space-x-6">
+          <nav class="flex justify-center items-center space-x-8">
             <a href="{{ home_url('/charlas-y-talleres') }}" 
-               class="text-gray-900 font-roboto text-sm px-2 py-1 border-b-2 
+               class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
                       {{ (strpos($current_url, 'charlas-y-talleres') !== false) 
-                         ? 'border-[#D93280] font-medium' 
+                         ? 'border-[#D93280] font-bold' 
                          : 'border-transparent hover:border-[#D93280]' }} 
                       transition-all duration-300">
               Charlas y talleres
             </a>
             <a href="{{ home_url('/faqs') }}" 
-               class="text-gray-900 font-roboto text-sm px-2 py-1 border-b-2 
+               class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
                       {{ (strpos($current_url, 'faqs') !== false) 
-                         ? 'border-[#D93280] font-medium' 
+                         ? 'border-[#D93280] font-bold' 
                          : 'border-transparent hover:border-[#D93280]' }} 
                       transition-all duration-300">
               FAQ'S
             </a>
             <a href="{{ home_url('/prensa-y-social') }}" 
-               class="text-gray-900 font-roboto text-sm px-2 py-1 border-b-2 
+               class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
                       {{ (strpos($current_url, 'prensa-y-social') !== false) 
-                         ? 'border-[#D93280] font-medium' 
+                         ? 'border-[#D93280] font-bold' 
                          : 'border-transparent hover:border-[#D93280]' }} 
                       transition-all duration-300">
               Prensa y social media
             </a>
             <a href="{{ home_url('/contacto') }}" 
-               class="text-gray-900 font-roboto text-sm px-2 py-1 border-b-2 
+               class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
                       {{ (strpos($current_url, 'contacto') !== false) 
-                         ? 'border-[#D93280] font-medium' 
+                         ? 'border-[#D93280] font-bold' 
                          : 'border-transparent hover:border-[#D93280]' }} 
                       transition-all duration-300">
               Contacto
@@ -122,8 +122,8 @@
         <!-- Botón "Reservar Cita" (columna derecha) -->
         <div class="flex justify-end pr-8">
           <a href="{{ home_url('/reservar-cita') }}" 
-             class="bg-gradient-to-r from-[#D93280] to-[#F472B6] hover:from-[#EC4899] hover:to-[#F9A8D4] 
-                    text-white px-5 py-2 rounded-full font-medium transition-all 
+             class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 
+                    text-white px-6 py-2 rounded-full font-medium transition-all 
                     duration-300 transform hover:scale-105 shadow-md hover:shadow-lg 
                     font-roboto">
             Reservar Cita
@@ -230,7 +230,7 @@
       </nav>
       <div class="mt-6">
         <a href="{{ home_url('/reservar-cita') }}" 
-           class="bg-gradient-to-r from-[#D93280] to-[#F472B6] hover:from-[#EC4899] hover:to-[#F9A8D4] 
+           class="bg-gradient-to-r from-[#362766] to-[#D93280] hover:from-[#4C3A91] hover:to-[#EC4899] 
                   text-white px-4 py-2 rounded-full font-medium transition-all 
                   duration-300 transform hover:scale-105 shadow-md hover:shadow-lg 
                   font-roboto block text-center">
