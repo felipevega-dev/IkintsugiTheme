@@ -1,8 +1,8 @@
 <!-- Header -->
-<header class="bg-[#362766] py-4">
+<header class="absolute top-0 left-0 right-0 z-50 bg-transparent">
   <div class="container mx-auto px-4">
     <!-- Iconos de redes sociales (arriba del contenedor) -->
-    <div class="hidden md:flex justify-end mb-4">
+    <div class="hidden md:flex justify-end mb-4 pt-4">
       <div class="flex items-center space-x-4">
         <a href="#" class="text-white hover:text-[#FBD5E8] transition-all duration-300 transform hover:scale-110">
           <!-- Instagram -->
@@ -26,7 +26,7 @@
     </div>
 
     <!-- Contenedor con el menú blanco que contiene todo -->
-    <div class="bg-white rounded-lg shadow-md pt-3 pb-3">
+    <div class="bg-white rounded-lg shadow-md pt-3 pb-3 mt-4">
       @php
         $current_url = home_url($_SERVER['REQUEST_URI']);
       @endphp

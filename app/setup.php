@@ -58,6 +58,71 @@ add_filter('theme_file_path', function ($path, $file) {
 }, 10, 2);
 
 /**
+ * Register ACF Blocks
+ * 
+ * @return void
+ */
+add_action('acf/init', function () {
+    // Solo registrar bloques si ACF y la función acf_register_block_type están disponibles
+    if (function_exists('acf_register_block_type')) {
+        
+        acf_register_block_type([
+            'name'              => 'hero-section',
+            'title'             => __('Hero Section', 'sage'),
+            'description'       => __('Sección hero con título y subtítulo', 'sage'),
+            'render_template'   => 'resources/views/blocks/hero-section.blade.php',
+            'category'          => 'design',
+            'icon'              => 'admin-comments',
+            'keywords'          => ['hero', 'banner'],
+            'example'           => [
+                'attributes' => [
+                    'mode' => 'preview',
+                    'data' => [
+                        'is_preview' => true
+                    ]
+                ]
+            ],
+        ]);
+        
+        // Features Section Block
+        acf_register_block_type([
+            'name'              => 'features-section',
+            'title'             => __('Features Section', 'sage'),
+            'description'       => __('Sección para mostrar características o servicios.', 'sage'),
+            'render_template'   => 'resources/views/blocks/features-section.blade.php',
+            'category'          => 'formatting',
+            'icon'              => 'layout',
+            'keywords'          => ['features', 'servicios', 'características'],
+            'mode'              => 'edit',
+        ]);
+        
+        // Testimonials Block
+        acf_register_block_type([
+            'name'              => 'testimonials',
+            'title'             => __('Testimonials', 'sage'),
+            'description'       => __('Sección para mostrar testimonios de clientes.', 'sage'),
+            'render_template'   => 'resources/views/blocks/testimonials.blade.php',
+            'category'          => 'formatting',
+            'icon'              => 'format-quote',
+            'keywords'          => ['testimonios', 'clientes', 'opiniones'],
+            'mode'              => 'edit',
+        ]);
+        
+        // CTA Section Block
+        acf_register_block_type([
+            'name'              => 'cta-section',
+            'title'             => __('CTA Section', 'sage'),
+            'description'       => __('Sección de llamada a la acción.', 'sage'),
+            'render_template'   => 'resources/views/blocks/cta-section.blade.php',
+            'category'          => 'formatting',
+            'icon'              => 'megaphone',
+            'keywords'          => ['cta', 'llamada', 'acción'],
+            'mode'              => 'edit',
+        ]);
+    }
+});
+
+/**
  * Register the initial theme setup.
  *
  * @return void
