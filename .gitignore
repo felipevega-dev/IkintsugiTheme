@@ -43,18 +43,12 @@ Thumbs.db
 .phpunit.result.cache
 /storage/*.key
 
-# Otros archivos de WordPress
-/wp-admin/
-/wp-includes/
-/wp-*.php
-/index.php
-/license.txt
-/readme.html
-/xmlrpc.php
-/wp-content/*
-!/wp-content/themes
-/wp-content/themes/*
-!/wp-content/themes/ikintsugi-theme
+# Archivos específicos de Sage y WordPress
+*.pot
+*.po
+*.mo
+style.css
+/resources/assets/config-local.json
 
 # Archivos específicos de Laragon
 /.docker
