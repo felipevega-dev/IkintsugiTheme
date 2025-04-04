@@ -1,12 +1,6 @@
-<footer class="relative bg-gradient-to-r from-[rgba(223,152,163,0.6)] to-[rgba(204,160,224,0.6)] overflow-hidden" style="height: 420px; margin-top: 136px; transform: rotateX(180deg);">
-  <div class="container mx-auto relative px-4" style="max-width: 1512px; transform: rotateX(180deg); height: 100%;">
-    <!-- Onda superior -->
-    <div class="absolute -top-1 left-0 w-full overflow-hidden" style="height: 136px; transform: translateY(-98%);">
-      <svg viewBox="0 0 1512 136" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" class="w-full h-full">
-        <path d="M0,40 C350,100 650,120 1000,80 C1200,60 1400,70 1512,90 L1512,136 L0,136 Z" fill="white"></path>
-      </svg>
-    </div>
-
+<!-- Footer Superior -->
+<footer class="relative bg-gradient-to-r from-[rgba(223,152,163,0.6)] to-[rgba(204,160,224,0.6)] overflow-hidden" style="height: 420px;">
+  <div class="container mx-auto relative px-4" style="max-width: 1512px; height: 100%;">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-14 relative py-12">
       <!-- Columna 1: Logo y redes sociales -->
       <div class="flex flex-col items-center md:items-start">
@@ -110,11 +104,24 @@
         </div>
       </div>
     </div>
-    
+  </div>
+</footer>
+
+<!-- Espacio en blanco -->
+<div class="h-24 bg-white"></div>
+
+<!-- Footer Inferior -->
+<footer class="relative bg-[#8961C480]" style="height: 79px;">
+  <div class="w-full h-full relative">
+    <!-- Onda superior -->
+    <svg viewBox="0 0 1512 30" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" class="w-full absolute -top-[30px] left-0" style="height: 30px;">
+      <path d="M0,30 L1512,30 L1512,10 C1200,0 800,5 500,15 C250,20 100,15 0,5 L0,30 Z" fill="#8961C480"></path>
+    </svg>
+
     <!-- Copyright -->
-    <div class="text-center mt-0 md:mt-4 pb-4">
-      <p class="text-[#181818] text-sm">
-        <a href="{{ home_url('/') }}" class="hover:text-[#AB277A]">ikintsugi</a> © {{ date('Y') }}. Todos los derechos reservados.
+    <div class="flex items-center justify-center h-full">
+      <p class="text-center font-medium text-base" style="font-family: 'Roboto', sans-serif; line-height: 100%;">
+        <a href="{{ home_url('/') }}" class="text-[#181818] hover:text-[#AB277A]">Ikintsugi</a> © {{ date('Y') }}. Todos los derechos reservados.
       </p>
     </div>
   </div>
