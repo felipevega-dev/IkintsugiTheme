@@ -60,6 +60,7 @@ export default {
           fontFamily: {
             'roboto': ['Roboto', 'sans-serif'],
             'hugamour': ['Hugamour', 'cursive'],
+            'playfair': ['"Playfair Display"', 'serif'],
             'sans': ['Roboto', 'system-ui', 'sans-serif'],
             'display': ['Hugamour', 'cursive'],
           },

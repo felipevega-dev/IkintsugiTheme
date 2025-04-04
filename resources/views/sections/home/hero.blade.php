@@ -10,19 +10,21 @@
       loop 
       playsinline
     >
-      <source src="{{ get_theme_file_uri('resources/videos/hero-background.mp4') }}" type="video/mp4">
+      <source src="{{ get_theme_file_uri('resources/videos/background.mp4') }}" type="video/mp4">
       <!-- Fallback para navegadores que no soportan video -->
       <img src="{{ get_theme_file_uri('resources/images/hero-fallback.jpg') }}" alt="Background" class="w-full h-full object-cover">
     </video>
   </div>
 
   <!-- Contenido del hero -->
-  <div class="container mx-auto px-4 relative z-10 pb-32 pt-14">
-    <div class="max-w-3xl mx-auto text-center text-white">
-      <h2 class="text-xl md:text-2xl font-medium mb-3">Psicología Clínica EMDR</h2>
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">El Trauma se puede superar!</h1>
-      <p class="text-lg md:text-xl mb-8">Terapia especializada en trauma y EMDR en Madrid</p>
-      <a href="/reservar-cita" class="inline-block bg-gradient-to-r from-[#E93D82] to-[#F26EB6] hover:from-[#E93D82] hover:to-[#F58EC7] text-white px-6 py-3 rounded-full font-medium transition-all duration-300">
+  <div class="container mx-auto px-4 relative z-10 min-h-[80vh] flex flex-col justify-center items-center">
+    <div class="max-w-3xl mx-auto text-center text-white py-20 md:py-24 lg:py-26">
+      <h2 class="text-xl md:text-2xl font-medium mb-5">Psicología Clínica EMDR</h2>
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 font-playfair">El Trauma se puede superar!</h1>
+      <a href="/reservar-cita" class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 
+                    text-white px-6 py-3 rounded-full font-medium transition-all 
+                    duration-300 transform hover:scale-105 shadow-md hover:shadow-lg 
+                    font-roboto">
         Reservar Cita
       </a>
     </div>
