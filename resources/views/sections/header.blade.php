@@ -1,6 +1,30 @@
 <!-- Header -->
 <header class="bg-[#362766] py-4">
   <div class="container mx-auto px-4">
+    <!-- Iconos de redes sociales (arriba del contenedor) -->
+    <div class="flex justify-end mb-4">
+      <div class="flex items-center space-x-4">
+        <a href="#" class="text-white hover:text-[#FBD5E8] transition-all duration-300 transform hover:scale-110">
+          <!-- Instagram -->
+          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+          </svg>
+        </a>
+        <a href="#" class="text-white hover:text-[#FBD5E8] transition-all duration-300 transform hover:scale-110">
+          <!-- Facebook -->
+          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+          </svg>
+        </a>
+        <a href="#" class="text-white hover:text-[#FBD5E8] transition-all duration-300 transform hover:scale-110">
+          <!-- YouTube -->
+          <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
     <!-- Contenedor con el menú blanco que contiene todo -->
     <div class="bg-white rounded-lg shadow-md">
       @php
@@ -8,7 +32,7 @@
       @endphp
 
       <!-- Fila superior: Logo y Reservar Cita -->
-      <div class="flex items-center justify-between px-8 pt-4">
+      <div class="flex items-center justify-between px-8 py-3">
         <!-- Logo -->
         <a class="flex items-center" href="{{ home_url('/') }}">
           <img 
@@ -18,42 +42,20 @@
           >
         </a>
 
-        <!-- Redes sociales y Botón Reservar -->
-        <div class="flex items-center space-x-4">
-          <!-- Íconos de redes -->
-          <a href="#" class="text-[#362766] hover:text-[#D93280] transition-all duration-300 transform hover:scale-110">
-            <!-- Instagram -->
-            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-            </svg>
-          </a>
-          <a href="#" class="text-[#362766] hover:text-[#D93280] transition-all duration-300 transform hover:scale-110">
-            <!-- Facebook -->
-            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
-            </svg>
-          </a>
-          <a href="#" class="text-[#362766] hover:text-[#D93280] transition-all duration-300 transform hover:scale-110">
-            <!-- YouTube -->
-            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd" />
-            </svg>
-          </a>
-
-          <!-- Botón "Reservar Cita" -->
-          <a href="{{ home_url('/reservar-cita') }}" 
-             class="bg-gradient-to-r from-[#D93280] to-[#F472B6] hover:from-[#EC4899] hover:to-[#F9A8D4] 
-                    text-white px-5 py-2 rounded-full font-medium transition-all 
-                    duration-300 transform hover:scale-105 shadow-md hover:shadow-lg 
-                    font-roboto">
-            Reservar Cita
-          </a>
-        </div>
+        <!-- Botón "Reservar Cita" -->
+        <a href="{{ home_url('/reservar-cita') }}" 
+           class="bg-gradient-to-r from-[#D93280] to-[#F472B6] hover:from-[#EC4899] hover:to-[#F9A8D4] 
+                  text-white px-5 py-2 rounded-full font-medium transition-all 
+                  duration-300 transform hover:scale-105 shadow-md hover:shadow-lg 
+                  font-roboto">
+          Reservar Cita
+        </a>
       </div>
 
-      <!-- Línea de navegación (una sola) -->
-      <div class="flex justify-center py-3 px-8">
-        <nav class="flex flex-wrap justify-center items-center space-x-6">
+      <!-- Menú de navegación en dos filas centradas -->
+      <div class="flex flex-col items-center justify-center pb-3">
+        <!-- Primera fila de navegación -->
+        <nav class="flex justify-center items-center space-x-6 mb-2">
           <a href="{{ home_url('/') }}" 
              class="text-gray-900 font-roboto text-sm px-2 py-1 border-b-2 
                     {{ ($current_url == home_url('/')) 
@@ -86,6 +88,10 @@
                     transition-all duration-300">
             ¿A quienes atendemos?
           </a>
+        </nav>
+        
+        <!-- Segunda fila de navegación -->
+        <nav class="flex justify-center items-center space-x-6">
           <a href="{{ home_url('/charlas-y-talleres') }}" 
              class="text-gray-900 font-roboto text-sm px-2 py-1 border-b-2 
                     {{ (strpos($current_url, 'charlas-y-talleres') !== false) 
