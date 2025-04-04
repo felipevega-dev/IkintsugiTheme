@@ -1,0 +1,61 @@
+# WordPress con Sage - Ikintsugi
+# --------------------------------------
+
+# Dependencias
+/node_modules
+/vendor
+composer.lock
+yarn.lock
+package-lock.json
+
+# Archivos compilados
+/public/*
+!/public/.gitkeep
+/dist
+/build
+
+# Datos locales y entorno
+.env
+.env.*
+!.env.example
+*.log
+npm-debug.log
+yarn-error.log
+
+# Sistema y respaldos
+.DS_Store
+Thumbs.db
+*.bak
+*.sql
+*.zip
+*.gz
+
+# Archivos de IDEs y editores
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# Cache & Temporales
+.cache
+.tmp
+.phpunit.result.cache
+/storage/*.key
+
+# Otros archivos de WordPress
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/index.php
+/license.txt
+/readme.html
+/xmlrpc.php
+/wp-content/*
+!/wp-content/themes
+/wp-content/themes/*
+!/wp-content/themes/ikintsugi-theme
+
+# Archivos específicos de Laragon
+/.docker
+/laragon 
