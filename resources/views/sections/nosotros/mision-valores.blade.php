@@ -1,4 +1,4 @@
-<section class="py-32 relative overflow-hidden">
+<section class="py-50 relative overflow-hidden">
   <!-- Curva superior tipo montaña -->
   <div class="absolute top-0 left-0 w-full z-10 overflow-hidden">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150" preserveAspectRatio="none" class="w-full h-36">
@@ -16,10 +16,10 @@
   </div>
   
   <!-- Contenido -->
-  <div class="container mx-auto px-4 relative z-20 mt-16">
+  <div class="container mx-auto px-4 relative z-20 mt-24">
     <div class="flex flex-col md:flex-row items-center justify-center gap-8 relative">
       <!-- Misión -->
-      <div class="bg-white rounded-[16px] p-[24px] shadow-lg relative z-10" style="width: 395px; min-height: 376px;">
+      <div class="bg-white/80 rounded-[16px] p-[24px] shadow-lg relative z-10" style="width: 395px; min-height: 376px;">
         <h3 class="text-[24px] font-bold mb-4 text-[#030D55] text-center" style="font-family: 'Playfair Display', serif; line-height: 100%; letter-spacing: 0%;">
           Nuestra misión
         </h3>
@@ -40,7 +40,7 @@
       </div>
       
       <!-- Valores -->
-      <div class="bg-white rounded-[16px] p-[24px] shadow-lg relative z-10" style="width: 395px; min-height: 376px;">
+      <div class="bg-white/80 rounded-[16px] p-[24px] shadow-lg relative z-10" style="width: 395px; min-height: 376px;">
         <!-- Línea conectora hacia el logo -->
         <div class="hidden md:block absolute left-[-60px] top-1/2 w-[60px] h-[3px]" style="background-color: #F5B3F3; z-index: 30;"></div>
         
