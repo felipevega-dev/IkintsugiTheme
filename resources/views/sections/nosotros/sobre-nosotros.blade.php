@@ -1,6 +1,6 @@
 <section class="py-20 bg-white relative overflow-hidden">
   <div class="container mx-auto px-4">
-    <div class="text-center mb-16">
+    <div class="text-center mb-18">
       <h2 class="text-5xl font-extrabold mb-8 text-[#030D55]" style="font-family: 'Playfair Display', serif; font-size: 48px; line-height: 100%; letter-spacing: 0%;">
         Sobre nosotros
       </h2>
@@ -17,10 +17,10 @@
     </div>
     
     <!-- Equipo -->
-    <div class="flex flex-col md:flex-row gap-20 justify-center max-w-6xl mx-auto mt-24">
+    <div class="flex flex-col md:flex-row gap-16 justify-center max-w-6xl mx-auto mt-4">
       <!-- Terapeuta 1 -->
       <div class="md:w-1/2">
-        <div class="flex flex-col items-center mb-8">
+        <div class="flex flex-col items-center mb-2">
           <!-- Foto circular sin relleno -->
           <div class="relative mx-auto mb-4" style="width: 280px; height: 280px;">
             <div class="rounded-full overflow-hidden">
@@ -86,14 +86,14 @@
       <div class="md:w-1/2">
         <div class="flex flex-col items-center mb-8">
           <!-- Foto circular sin relleno -->
-          <div class="relative mx-auto mb-4" style="width: 280px; height: 280px;">
+          <div class="relative mx-auto mb-2" style="width: 280px; height: 280px;">
             <div class="rounded-full overflow-hidden">
               <img src="{{ get_theme_file_uri('resources/images/shenhui.png') }}" alt="Shenhui" class="w-full h-full object-cover">
             </div>
           </div>
           
           <!-- Botón Ver perfil -->
-          <div class="mb-6">
+          <div class="mb-2">
             <a href="#" class="inline-block text-[14px] font-medium py-1 px-8 rounded-full bg-white text-[#030D55]" 
                style="border: 1px solid #030D55; border-radius: 50px;">
               Ver perfil
