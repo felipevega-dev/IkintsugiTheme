@@ -282,17 +282,17 @@
     </div>
     
     <div class="container mx-auto px-4 py-12">
-      <h3 class="text-4xl font-bold text-[#030D55] mb-10 text-center" style="font-family: 'Playfair Display', serif;">Un testimonio de quien transformó<br>su vida con Julio César</h3>
+      <h3 class="text-4xl font-bold text-[#030D55] mb-15 text-center" style="font-family: 'Playfair Display', serif;">Un testimonio de quien transformó<br>su vida con Julio César</h3>
       
-      <div class="flex flex-col md:flex-row gap-8 items-center max-w-5xl mx-auto">
+      <div class="flex flex-col md:flex-row gap-16 items-center max-w-6xl mx-auto">
         <!-- Texto del testimonio a la izquierda -->
-        <div class="md:w-2/5">
-          <h4 class="text-lg font-bold text-[#AB277A] mb-4">Lorena López</h4>
-          <p class="text-sm leading-relaxed">"Después de años en terapias largas y sin resultados, la terapia con Julio César fue un antes y un después para mí. En pocas sesiones vi cambios concretos, sin revivir traumas. Sentí que forjé mucho de mi interior y que, por fin, tenía una alternativa real al sufrimiento."</p>
+        <div class="md:w-4/8">
+          <h4 class="text-center text-2xl font-extrabold text-[#AB277A] mb-4" style="font-family: 'Playfair Display', serif; line-height: 100%;">Lorena López</h4>
+          <p class="text-base leading-7" style="font-family: 'Roboto', sans-serif;">"Después de años en terapias largas y sin resultados, la terapia con Julio César fue un antes y un después para mí. En pocas sesiones vi cambios concretos, sin revivir traumas. Sentí que forjé mucho de mi interior y que, por fin, tenía una alternativa real al sufrimiento."</p>
         </div>
         
         <!-- Video a la derecha -->
-        <div class="md:w-3/5">
+        <div class="md:w-5/9">
           <div style="border-radius: 16px; overflow: hidden; box-shadow: 0px 4px 16px 0px #AB277A; border: 4px solid white;">
             <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/Ft3oIUaRA5g" title="Testimonio de {{ $testimonio_autor }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>

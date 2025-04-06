@@ -56,14 +56,35 @@
                       transition-all duration-300">
               Inicio
             </a>
-            <a href="{{ home_url('/quienes-somos') }}" 
-               class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
-                      {{ (strpos($current_url, 'quienes-somos') !== false) 
-                         ? 'border-[#D93280] font-bold' 
-                         : 'border-transparent hover:border-[#D93280]' }} 
-                      transition-all duration-300">
-              ¿Quiénes somos?
-            </a>
+            <!-- Menú desplegable para "Quiénes somos" -->
+            <div class="relative group">
+              <a href="{{ home_url('/quienes-somos') }}" 
+                 class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap flex items-center
+                        {{ (strpos($current_url, 'quienes-somos') !== false || strpos($current_url, 'que-significa-kintsugi') !== false || strpos($current_url, 'que-nos-inspira') !== false) 
+                           ? 'border-[#D93280] font-bold' 
+                           : 'border-transparent hover:border-[#D93280]' }} 
+                        transition-all duration-300">
+                ¿Quiénes somos?
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </a>
+              <!-- Submenú -->
+              <div class="absolute hidden group-hover:block mt-1 min-w-[260px] rounded-xl shadow-lg z-50 overflow-hidden transition-all duration-300 ease-in-out" style="background: white; box-shadow: 0 4px 15px rgba(217, 50, 128, 0.15); border: 2px solid transparent; background-image: linear-gradient(white, white), linear-gradient(to right, #D93280, #AB277A); background-origin: border-box; background-clip: content-box, border-box;">
+                <div class="py-3 px-2">
+                  <a href="{{ home_url('/que-significa-kintsugi') }}" 
+                     class="block px-4 py-3 text-[#030D55] hover:bg-[#FBD5E8] rounded-lg transition-all duration-200 mx-1 font-medium text-base
+                            {{ (strpos($current_url, 'que-significa-kintsugi') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-bold' : '' }}">
+                    Qué significa Kintsugi
+                  </a>
+                  <a href="{{ home_url('/que-nos-inspira') }}" 
+                     class="block px-4 py-3 text-[#030D55] hover:bg-[#FBD5E8] rounded-lg transition-all duration-200 mx-1 mt-1 font-medium text-base
+                            {{ (strpos($current_url, 'que-nos-inspira') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-bold' : '' }}">
+                    Qué nos inspira
+                  </a>
+                </div>
+              </div>
+            </div>
             <a href="{{ home_url('/psicoterapia-emdr') }}" 
                class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
                       {{ (strpos($current_url, 'psicoterapia-emdr') !== false) 
@@ -219,14 +240,37 @@
                   transition-colors duration-300">
           Inicio
         </a>
-        <a href="{{ home_url('/quienes-somos') }}" 
-           class="text-gray-900 font-roboto py-2 border-b border-gray-200 
-                  {{ (strpos($current_url, 'quienes-somos') !== false) 
-                     ? 'text-[#D93280] font-bold' 
-                     : 'hover:text-[#D93280]' }} 
-                  transition-colors duration-300">
-          ¿Quiénes somos?
-        </a>
+        <!-- Menú desplegable móvil para Quiénes somos -->
+        <div class="py-2 border-b border-gray-200">
+          <a href="{{ home_url('/quienes-somos') }}" 
+             class="text-gray-900 font-roboto flex justify-between items-center w-full
+                    {{ (strpos($current_url, 'quienes-somos') !== false) 
+                       ? 'text-[#D93280] font-bold' 
+                       : 'hover:text-[#D93280]' }} 
+                    transition-colors duration-300 mb-2">
+            <span>¿Quiénes somos?</span>
+            <span class="transform rotate-0 transition-transform duration-300 p-1 rounded-full bg-[#FBD5E8] bg-opacity-50 ml-2" id="quienes-somos-icon">
+              <svg class="h-4 w-4 text-[#D93280]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </span>
+          </a>
+          <!-- Submenú móvil (inicialmente oculto) -->
+          <div class="pl-4 hidden overflow-hidden transition-all duration-300 max-h-0 group-hover:max-h-[200px]" id="quienes-somos-submenu" style="background-color: rgba(251, 213, 232, 0.2);">
+            <div class="py-2 rounded-lg">
+              <a href="{{ home_url('/que-significa-kintsugi') }}" 
+                 class="block py-2 px-3 my-1 rounded-lg text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                        {{ (strpos($current_url, 'que-significa-kintsugi') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-bold' : '' }}">
+                Qué significa Kintsugi
+              </a>
+              <a href="{{ home_url('/que-nos-inspira') }}" 
+                 class="block py-2 px-3 my-1 rounded-lg text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                        {{ (strpos($current_url, 'que-nos-inspira') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-bold' : '' }}">
+                Qué nos inspira
+              </a>
+            </div>
+          </div>
+        </div>
         <a href="{{ home_url('/psicoterapia-emdr') }}" 
            class="text-gray-900 font-roboto py-2 border-b border-gray-200 
                   {{ (strpos($current_url, 'psicoterapia-emdr') !== false) 

@@ -108,7 +108,7 @@
 </footer>
 
 <!-- Espacio en blanco -->
-<div class="h-24 bg-white"></div>
+<div class="h-20 bg-[#030D550D]"></div>
 
 <!-- Footer Inferior -->
 <footer class="relative bg-[#8961C480]" style="height: 79px;">
