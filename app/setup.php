@@ -65,6 +65,18 @@ add_filter('theme_file_path', function ($path, $file) {
 add_action('acf/init', function () {
     // Solo registrar bloques si ACF y la función acf_register_block_type están disponibles
     if (function_exists('acf_register_block_type')) {
+
+        // Featured Blog Block
+        acf_register_block_type([
+            'name'              => 'featured-blog',
+            'title'             => __('Blog Destacado', 'sage'),
+            'description'       => __('Muestra 3 posts destacados del blog con diseño personalizado.', 'sage'),
+            'render_template'   => 'resources/views/blocks/featured-blog.blade.php',
+            'category'          => 'formatting',
+            'icon'              => 'admin-post',
+            'keywords'          => ['blog', 'posts', 'destacado'],
+            'mode'              => 'edit',
+        ]);
         
         acf_register_block_type([
             'name'              => 'hero-section',
