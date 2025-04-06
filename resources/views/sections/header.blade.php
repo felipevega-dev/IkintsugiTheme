@@ -82,6 +82,11 @@
                             {{ (strpos($current_url, 'que-nos-inspira') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-bold' : '' }}">
                     Qué nos inspira
                   </a>
+                  <a href="{{ home_url('/divulgacion-cientifica') }}" 
+                     class="block px-4 py-3 text-[#030D55] hover:bg-[#FBD5E8] rounded-lg transition-all duration-200 mx-1 mt-1 font-medium text-base
+                            {{ (strpos($current_url, 'divulgacion-cientifica') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-bold' : '' }}">
+                    Divulgación Científica
+                  </a>
                 </div>
               </div>
             </div>
@@ -267,6 +272,11 @@
                  class="block py-2 px-3 my-1 rounded-lg text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
                         {{ (strpos($current_url, 'que-nos-inspira') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-bold' : '' }}">
                 Qué nos inspira
+              </a>
+              <a href="{{ home_url('/divulgacion-cientifica') }}" 
+                 class="block py-2 px-3 my-1 rounded-lg text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                        {{ (strpos($current_url, 'divulgacion-cientifica') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-bold' : '' }}">
+                Divulgación Científica
               </a>
             </div>
           </div>
