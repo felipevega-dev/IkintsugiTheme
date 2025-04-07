@@ -1,4 +1,4 @@
-<section class="py-20 bg-[#030D550D]">
+<section class="py-20 bg-[#030D550D] relative">
   <div class="container mx-auto px-4">
     <div class="flex flex-col md:flex-row items-center gap-12">
       <!-- Imagen con borde personalizado -->
@@ -40,5 +40,12 @@
         </div>
       </div>
     </div>
+  </div>
+  
+  <!-- Curva sutil inferior -->
+  <div class="absolute bottom-0 left-0 right-0 w-full overflow-hidden" style="height: 70px; z-index: 1;">
+    <svg width="100%" height="100%" viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 C240,70 480,70 720,35 C960,0 1200,0 1440,35 L1440,70 L0,70 Z" fill="#FFFFFF"></path>
+    </svg>
   </div>
 </section> 

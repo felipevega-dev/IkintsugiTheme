@@ -28,8 +28,13 @@
     @endphp
 
     <!-- Iconos de redes sociales (arriba del contenedor) -->
-    <div class="hidden md:flex justify-end mb-4 pt-4">
+    <div class="hidden md:flex justify-end items-center mb-4 pt-4">
       <div class="flex items-center space-x-4">
+        @if($has_white_hero)
+        <a href="mailto:hola@ikintsugi.cl" class="text-[#030D55] mr-4 border-b border-[#030D55] hover:text-[#D93280] hover:border-[#D93280] transition-all duration-300">
+          hola@ikintsugi.cl
+        </a>
+        @endif
         <a href="#" class="{{ $social_icon_color }} {{ $social_icon_hover }} transition-all duration-300 transform hover:scale-110">
           <!-- Instagram -->
           <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
