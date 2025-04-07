@@ -2,12 +2,12 @@
   <div class="container mx-auto px-4 relative z-10">
     <div class="flex flex-col md:flex-row items-center justify-center gap-16">
       <!-- Texto del lado izquierdo con más margen a la derecha -->
-      <div class="md:w-2/5 mb-10 md:mb-0 md:ml-auto">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#030D55]" style="font-family: 'Playfair Display', serif; line-height: 1.1;">
+      <div class="md:w-2/5 mb-10 md:mb-0 md:ml-auto mt-10">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-[#030D55]" style="font-family: 'Playfair Display', serif; line-height: 1.1;">
           Donde tus<br>cicatrices se<br>vuelven fortaleza
         </h1>
         
-        <p class="text-3xl mt-6 text-[#AB277A]" style="font-family: 'Hugamour', sans-serif;">
+        <p class="text-4xl mt-14 text-[#AB277A]" style="font-family: 'Hugamour', sans-serif;">
           #El trauma se puede superar
         </p>
       </div>

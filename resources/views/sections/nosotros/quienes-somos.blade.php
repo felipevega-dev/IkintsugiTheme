@@ -20,7 +20,7 @@
             ¿Quiénes somos?
           </h2>
           
-          <div class="space-y-6 text-[#181818]" style="font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 16px; line-height: 28px; letter-spacing: 0;">
+          <div class="space-y-6 text-[#181818]" style="font-family: 'Roboto', sans-serif; font-weight: 500; font-size: 16px; line-height: 28px; letter-spacing: 0;">
             <p>
               En Instituto Kintsugi, promovemos la salud mental a través de la psicoeducación y el tratamiento del trauma emocional. Inspirados en el arte japonés de reparar con oro, creemos en la resiliencia y transformación.
             </p>
@@ -33,7 +33,7 @@
               Ofrecemos un espacio seguro y empático con terapias respaldadas científicamente, adaptadas a cada persona.
             </p>
             
-            <p>
+            <p style="font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 16px; line-height: 28px; letter-spacing: 0;">
               Juntos recuperaremos el control de tus emociones y avanzaremos hacia una vida renovada.
             </p>
           </div>
