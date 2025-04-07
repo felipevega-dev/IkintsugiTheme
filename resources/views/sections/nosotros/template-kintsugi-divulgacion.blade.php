@@ -6,7 +6,7 @@
 
 @section('content')
   <!-- Hero Section con fondo blanco y figura morada alrededor de la foto -->
-  <div class="relative bg-white overflow-hidden">
+  <section class="relative bg-white overflow-hidden">
     <!-- Contenido del hero -->
     <div class="container mx-auto px-4 py-20 lg:py-28 relative z-10 mt-15">
       <div class="flex flex-col lg:flex-row items-center">
@@ -53,10 +53,10 @@
         <path fill="#CCA0E00D" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,224C672,213,768,171,864,149.3C960,128,1056,128,1152,149.3C1248,171,1344,213,1392,234.7L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
       </svg>
     </div>
-  </div>
+  </section>
   
   <!-- Segunda sección con fondo lavanda claro -->
-  <div class="bg-[#CCA0E00D] py-10 lg:py-16">
+  <section class="bg-[#CCA0E00D] py-10 lg:py-16">
     <div class="container mx-auto px-4">
       <!-- Contenido centrado -->
       <div class="max-w-4xl mx-auto text-center">
@@ -109,5 +109,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 @endsection 

@@ -209,7 +209,7 @@
         <!-- Video a la izquierda -->
         <div class="md:w-5/9">
           <div style="border-radius: 16px; overflow: hidden; box-shadow: 0px 4px 16px 0px #AB277A; border: 4px solid white;">
-            <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/{{ $testimonio_id }}" title="Testimonio de {{ $testimonio_autor }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/8NmFpjcz-QU" title="Testimonio de {{ $testimonio_autor }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
         

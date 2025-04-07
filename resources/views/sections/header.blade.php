@@ -95,7 +95,7 @@
         'a-quienes-atendemos',
         'contacto',
         'psicoterapia-emdr',
-        'testimonios-emdr',
+        'testimonios',
         'beneficios-emdr',
         'tratamiento-emdr',
         // Añadir aquí otras páginas con hero de fondo blanco según sea necesario
@@ -184,7 +184,7 @@
                         transition-all duration-300">
                 ¿Quiénes somos?
                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
                 </svg>
               </a>
               <!-- Submenú -->
@@ -210,20 +210,20 @@
             <div class="relative hover:cursor-pointer group">
               <a href="{{ home_url('/psicoterapia-emdr') }}" 
                  class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap flex items-center
-                        {{ (strpos($current_url, 'psicoterapia-emdr') !== false || strpos($current_url, 'testimonios-emdr') !== false || strpos($current_url, 'beneficios-emdr') !== false || strpos($current_url, 'tratamiento-emdr') !== false) 
+                        {{ (strpos($current_url, 'psicoterapia-emdr') !== false || strpos($current_url, 'testimonios') !== false || strpos($current_url, 'beneficios-emdr') !== false || strpos($current_url, 'tratamiento-emdr') !== false) 
                            ? 'border-[#D93280] font-bold' 
                            : 'border-transparent hover:border-[#D93280]' }} 
                         transition-all duration-300">
                 Psicoterapia EMDR
                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
                 </svg>
               </a>
               <!-- Submenú EMDR -->
               <div class="bottom-row submenu-container">
                 <div class="horizontal-submenu">
-                  <a href="{{ home_url('/testimonios-emdr') }}" 
-                     class="horizontal-submenu-item {{ (strpos($current_url, 'testimonios-emdr') !== false) ? 'active' : '' }}">
+                  <a href="{{ home_url('/testimonios') }}" 
+                     class="horizontal-submenu-item {{ (strpos($current_url, 'testimonios') !== false) ? 'active' : '' }}">
                     Testimonios
                   </a>
                   <a href="{{ home_url('/beneficios-emdr') }}" 
@@ -396,7 +396,7 @@
             <span>¿Quiénes somos?</span>
             <span class="transform rotate-0 transition-transform duration-300 p-1 rounded-full bg-[#FBD5E8] bg-opacity-50 ml-2" id="quienes-somos-icon">
               <svg class="h-4 w-4 text-[#D93280]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
               </svg>
             </span>
           </a>
@@ -425,23 +425,23 @@
         <div class="py-2 border-b border-gray-200">
           <a href="{{ home_url('/psicoterapia-emdr') }}" 
              class="text-gray-900 font-roboto flex justify-between items-center w-full
-                    {{ (strpos($current_url, 'psicoterapia-emdr') !== false || strpos($current_url, 'testimonios-emdr') !== false || strpos($current_url, 'beneficios-emdr') !== false || strpos($current_url, 'tratamiento-emdr') !== false) 
+                    {{ (strpos($current_url, 'psicoterapia-emdr') !== false || strpos($current_url, 'testimonios') !== false || strpos($current_url, 'beneficios-emdr') !== false || strpos($current_url, 'tratamiento-emdr') !== false) 
                        ? 'text-[#D93280] font-bold' 
                        : 'hover:text-[#D93280]' }} 
                     transition-colors duration-300 mb-2">
             <span>Psicoterapia EMDR</span>
             <span class="transform rotate-0 transition-transform duration-300 p-1 rounded-full bg-[#FBD5E8] bg-opacity-50 ml-2" id="emdr-icon">
               <svg class="h-4 w-4 text-[#D93280]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
               </svg>
             </span>
           </a>
           <!-- Submenú móvil EMDR (inicialmente oculto) -->
           <div class="pl-4 hidden overflow-hidden transition-all duration-300 max-h-0 group-hover:max-h-[200px]" id="emdr-submenu" style="background-color: rgba(251, 213, 232, 0.2);">
             <div class="py-2 rounded-lg">
-              <a href="{{ home_url('/testimonios-emdr') }}" 
+              <a href="{{ home_url('/testimonios') }}" 
                  class="block py-2 px-3 my-1 rounded-lg text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
-                        {{ (strpos($current_url, 'testimonios-emdr') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-bold' : '' }}">
+                        {{ (strpos($current_url, 'testimonios') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-bold' : '' }}">
                 Testimonios
               </a>
               <a href="{{ home_url('/beneficios-emdr') }}" 
