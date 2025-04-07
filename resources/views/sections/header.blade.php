@@ -98,6 +98,7 @@
         'testimonios',
         'beneficios-emdr',
         'tratamiento-emdr',
+        'que-esperar',
         // Añadir aquí otras páginas con hero de fondo blanco según sea necesario
       ];
       
@@ -233,6 +234,10 @@
                   <a href="{{ home_url('/tratamiento-emdr') }}" 
                      class="horizontal-submenu-item {{ (strpos($current_url, 'tratamiento-emdr') !== false) ? 'active' : '' }}">
                     ¿Qué ocurre durante el tratamiento EMDR?
+                  </a>
+                  <a href="{{ home_url('/que-esperar') }}" 
+                     class="horizontal-submenu-item {{ (strpos($current_url, 'que-esperar') !== false) ? 'active' : '' }}">
+                    ¿Que esperar de la Psicoterapia?
                   </a>
                 </div>
               </div>

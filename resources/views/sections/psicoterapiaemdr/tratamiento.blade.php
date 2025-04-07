@@ -10,9 +10,9 @@
     <div class="container mx-auto px-4 relative z-10 mb-10">
       <div class="flex flex-col md:flex-row items-center justify-center gap-16 mt-15">
         <!-- Texto del lado izquierdo con más margen a la derecha -->
-        <div class="md:w-2/5 mb-10 md:mb-0 md:ml-auto mt-10">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-[#030D55] transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 1.1;">
-           EMDR: Sana<br>traumas y libera tu<br>bienestar emocional
+        <div class="md:w-2/5 mb-10 md:mb-0 md:ml-auto mt-10 lg:w-1/2">
+          <h1 class="text-5xl md:text-5xl lg:text-7xl font-bold mb-4 text-[#030D55] transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 1.1;">
+          Reprocesando el <br>trauma: La <br>metodología EMDR <br>en acción
           </h1>
           
           <p class="text-4xl mt-14 text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
