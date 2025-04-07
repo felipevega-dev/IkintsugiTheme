@@ -11,11 +11,11 @@
       <div class="flex flex-col md:flex-row items-center justify-center gap-16">
         <!-- Texto del lado izquierdo con más margen a la derecha -->
         <div class="md:w-2/5 mb-10 md:mb-0 md:ml-auto mt-10">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-[#030D55]" style="font-family: 'Playfair Display', serif; line-height: 1.1;">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-[#030D55] transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 1.1;">
             Donde tus<br>cicatrices se<br>vuelven fortaleza
           </h1>
           
-          <p class="text-4xl mt-14 text-[#AB277A]" style="font-family: 'Hugamour', sans-serif;">
+          <p class="text-4xl mt-14 text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
             #El trauma se puede superar
           </p>
         </div>
@@ -24,10 +24,10 @@
         <div class="md:w-2/5 md:ml-0">
           <div class="relative mt-15">
             <!-- Imagen con marco personalizado -->
-            <div class="relative" style="width: 500px; height: 500px;">
+            <div class="relative transition-all duration-700 hover:scale-105" style="width: 500px; height: 500px;">
               
               <!-- Línea curva violeta exterior -->
-              <svg viewBox="0 0 450 450" class="absolute top-0 left-0 w-full h-full" style="transform: scale(1.08); transform-origin: center;">
+              <svg viewBox="0 0 450 450" class="absolute top-0 left-0 w-full h-full animate-pulse" style="transform: scale(1.08); transform-origin: center; animation-duration: 8s;">
                 <path d="M225,10 
                         C290,10 345,35 380,70
                         C415,105 440,160 440,225
@@ -41,7 +41,7 @@
               </svg>
               
               <!-- Línea curva rosa -->
-              <svg viewBox="0 0 450 450" class="absolute top-0 left-0 w-full h-full" style="transform: scale(1.05); transform-origin: center;">
+              <svg viewBox="0 0 450 450" class="absolute top-0 left-0 w-full h-full animate-pulse" style="transform: scale(1.05); transform-origin: center; animation-duration: 7s;">
                 <path d="M225,30 
                         C280,30 325,50 355,80
                         C385,110 420,155 420,225
@@ -55,7 +55,7 @@
               </svg>
               
               <!-- Línea curva azul marino -->
-              <svg viewBox="0 0 450 450" class="absolute top-0 left-0 w-full h-full" style="transform: scale(1.02); transform-origin: center;">
+              <svg viewBox="0 0 450 450" class="absolute top-0 left-0 w-full h-full animate-pulse" style="transform: scale(1.02); transform-origin: center; animation-duration: 6s;">
                 <path d="M225,50 
                         C270,50 310,65 335,90
                         C360,115 400,155 400,225
@@ -69,8 +69,8 @@
               </svg>
               
               <!-- Imagen circular -->
-              <div class="absolute inset-12 overflow-hidden rounded-full border-2 border-white">
-                <img src="{{ get_theme_file_uri('resources/images/nosotros.png') }}" alt="Mujer en terapia" class="w-full h-full object-cover">
+              <div class="absolute inset-12 overflow-hidden rounded-full border-2 border-white transition-all duration-500 hover:shadow-lg">
+                <img src="{{ get_theme_file_uri('resources/images/nosotros.png') }}" alt="Mujer en terapia" class="w-full h-full object-cover transition-all duration-700 hover:scale-110">
               </div>
             </div>
           </div>
@@ -87,9 +87,9 @@
         <div class="md:w-1/2 mb-8 md:mb-0">
           <div class="relative overflow-hidden">
             <!-- Borde estilizado similar al hero -->
-            <div class="relative inline-block">
-              <div class="p-2 rounded-[24px] overflow-hidden">
-                <img src="{{ get_theme_file_uri('resources/images/quienesomos.png') }}" alt="Equipo Ikintsugi" class="w-full h-auto rounded-[20px]">
+            <div class="relative inline-block transition-all duration-500 hover:scale-105">
+              <div class="p-2 rounded-[24px] overflow-hidden transition-all duration-300">
+                <img src="{{ get_theme_file_uri('resources/images/quienesomos.png') }}" alt="Equipo Ikintsugi" class="w-full h-auto rounded-[20px] transition-all duration-700 hover:brightness-110">
               </div>
             </div>
           </div>
@@ -98,24 +98,24 @@
         <!-- Texto en contenedor específico -->
         <div class="md:w-1/2">
           <div class="w-full md:max-w-[618px] md:h-[532px] flex flex-col gap-6">
-            <h2 class="text-4xl md:text-5xl font-bold mb-2 text-[#030D55]" style="font-family: 'Playfair Display', serif;">
+            <h2 class="text-4xl md:text-5xl font-bold mb-2 text-[#030D55] transition-all duration-300 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif;">
               ¿Quiénes somos?
             </h2>
             
             <div class="space-y-6 text-[#181818]" style="font-family: 'Roboto', sans-serif; font-weight: 500; font-size: 16px; line-height: 28px; letter-spacing: 0;">
-              <p>
+              <p class="transition-all duration-300 hover:text-[#AB277A]">
                 En Instituto Kintsugi, promovemos la salud mental a través de la psicoeducación y el tratamiento del trauma emocional. Inspirados en el arte japonés de reparar con oro, creemos en la resiliencia y transformación.
               </p>
               
-              <p>
+              <p class="transition-all duration-300 hover:text-[#AB277A]">
                 Somos especialistas en terapia EMDR, un enfoque basado en neurociencia para procesar recuerdos dolorosos y reducir su impacto. Acompañamos a adolescentes, adultos y parejas que enfrentan dificultades emocionales derivadas de experiencias traumáticas.
               </p>
               
-              <p>
+              <p class="transition-all duration-300 hover:text-[#AB277A]">
                 Ofrecemos un espacio seguro y empático con terapias respaldadas científicamente, adaptadas a cada persona.
               </p>
               
-              <p style="font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 16px; line-height: 28px; letter-spacing: 0;">
+              <p class="transition-all duration-300 hover:translate-x-2" style="font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 16px; line-height: 28px; letter-spacing: 0;">
                 Juntos recuperaremos el control de tus emociones y avanzaremos hacia una vida renovada.
               </p>
             </div>
@@ -157,12 +157,12 @@
         <div class="w-auto">
           <!-- Foto circular con botón -->
           <div class="flex flex-col items-center relative">
-            <div class="w-[250px] h-[250px] rounded-full overflow-hidden">
-              <img src="{{ get_theme_file_uri('resources/images/julio.png') }}" alt="Julio César" class="w-full h-full object-cover">
+            <div class="w-[250px] h-[250px] rounded-full overflow-hidden transition-transform duration-500 hover:scale-105">
+              <img src="{{ get_theme_file_uri('resources/images/julio.png') }}" alt="Julio César" class="w-full h-full object-cover transition-all duration-700 hover:saturate-150">
             </div>
             <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
               <div class="p-[2px] rounded-2xl bg-gradient-to-b from-[rgba(171,39,122,0.48)] to-[rgba(3,13,85,0.48)]">
-                <a href="#" class="inline-block text-center text-[14px] font-medium py-1 px-8 bg-white text-[#030D55] rounded-2xl">
+                <a href="{{ site_url('/julio-cesar') }}" class="inline-block text-center text-[14px] font-medium py-1 px-8 bg-white text-[#030D55] rounded-2xl transition-all duration-300 hover:bg-gradient-to-b from-[rgba(171,39,122,0.48)] to-[rgba(3,13,85,0.48)] hover:text-white">
                   Ver perfil
                 </a>
               </div>
@@ -171,20 +171,20 @@
           
           <!-- Nombre y credenciales -->
           <div class="text-left mt-8">
-            <h3 class="font-medium text-[#FF3382] text-xl mb-3">
+            <h3 class="font-medium text-[#FF3382] text-xl mb-3 transition-transform duration-300 hover:translate-x-1">
               @Psicologo_JulioCesar
             </h3>
             
             <!-- Información sin puntos -->
             <ul class="list-none text-left text-sm space-y-0.5 max-w-[300px]">
-              <li>Psicólogo Clínico</li>
-              <li>Máster en Psicoterapia EMDR</li>
-              <li>Hipnosis Clínica</li>
-              <li>Diplomado en Gerontología</li>
-              <li>Con experiencia en el trabajo con adolescentes, adultos, adultos mayores y parejas.</li>
-              <li>Cofundador del Instituto Kintsugi</li>
-              <li>Co-conductor y coordinador del podcast @EmisorKintsugi, donde participa en entrevistas y debates sobre temas de salud mental.</li>
-              <li>Miembro Asociación de EMDR Chile y España</li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium">Psicólogo Clínico</li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium">Máster en Psicoterapia EMDR</li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium">Hipnosis Clínica</li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium">Diplomado en Gerontología</li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium">Con experiencia en el trabajo con adolescentes, adultos, adultos mayores y parejas.</li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium">Cofundador del Instituto Kintsugi</li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium">Co-conductor y coordinador del podcast @EmisorKintsugi, donde participa en entrevistas y debates sobre temas de salud mental.</li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium">Miembro Asociación de EMDR Chile y España</li>
             </ul>
           </div>
         </div>
@@ -193,12 +193,12 @@
         <div class="w-auto">
           <!-- Foto circular con botón -->
           <div class="flex flex-col items-center relative">
-            <div class="w-[250px] h-[275px] rounded-full overflow-hidden">
-              <img src="{{ get_theme_file_uri('resources/images/shenhui.png') }}" alt="Shenhui" class="w-full h-full object-cover">
+            <div class="w-[250px] h-[275px] rounded-full overflow-hidden transition-transform duration-500 hover:scale-105">
+              <img src="{{ get_theme_file_uri('resources/images/shenhui.png') }}" alt="Shenhui" class="w-full h-full object-cover transition-all duration-700 hover:saturate-150">
             </div>
             <div class="absolute -bottom-[-4px] left-1/2 transform -translate-x-1/2">
               <div class="p-[2px] rounded-2xl bg-gradient-to-b from-[rgba(171,39,122,0.48)] to-[rgba(3,13,85,0.48)]">
-                <a href="#" class="inline-block text-center text-[14px] font-medium py-1 px-8 bg-white text-[#030D55] rounded-2xl">
+                <a href="{{ site_url('/shenhui') }}" class="inline-block text-center text-[14px] font-medium py-1 px-8 bg-white text-[#030D55] rounded-2xl transition-all duration-300 hover:bg-gradient-to-b from-[rgba(171,39,122,0.48)] to-[rgba(3,13,85,0.48)] hover:text-white">
                   Ver perfil
                 </a>
               </div>
@@ -207,23 +207,23 @@
           
           <!-- Nombre y credenciales -->
           <div class="text-left mt-3">
-            <h3 class="font-medium text-[#FF3382] text-xl mb-3">
+            <h3 class="font-medium text-[#FF3382] text-xl mb-3 transition-transform duration-300 hover:translate-x-1">
               @Psicologa_Shenhui
             </h3>
             
             <!-- Información sin puntos -->
             <ul class="list-none text-left text-sm space-y-0.5 max-w-[300px]">
-              <li>Psicóloga Clínica EMDR</li>
-              <li>Máster en Psicoterapia EMDR</li>
-              <li>Happiness Trainer</li>
-              <li>Hipnosis Clínica</li>
-              <li>Emotional Freedom Techniques (EFT)</li>
-              <li>PAR/IJVE para trauma, apego y disociación</li>
-              <li>Instructora de QIGONG</li>
-              <li>Co-fundadora del Instituto Kintsugi</li>
-              <li>Co-conductora de @EmisorKintsugi, podcast de divulgación científica de salud mental.</li>
-              <li>Psicoterapia para adultos, adulto mayor y parejas</li>
-              <li>Miembro Asociación de EMDR Chile y España</li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium">Psicóloga Clínica EMDR</li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium">Máster en Psicoterapia EMDR</li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium">Happiness Trainer</li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium">Hipnosis Clínica</li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium">Emotional Freedom Techniques (EFT)</li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium">PAR/IJVE para trauma, apego y disociación</li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium">Instructora de QIGONG</li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium">Co-fundadora del Instituto Kintsugi</li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium">Co-conductora de @EmisorKintsugi, podcast de divulgación científica de salud mental.</li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium">Psicoterapia para adultos, adulto mayor y parejas</li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium">Miembro Asociación de EMDR Chile y España</li>
             </ul>
           </div>
         </div>
@@ -258,8 +258,8 @@
     <div class="container mx-auto px-4 relative z-20 mt-24">
       <div class="flex flex-col md:flex-row items-center justify-center gap-8 relative">
         <!-- Misión -->
-        <div class="bg-white/80 rounded-[16px] p-[24px] shadow-lg relative z-10" style="width: 395px; min-height: 376px;">
-          <h3 class="text-[24px] font-bold mb-4 text-[#030D55] text-center" style="font-family: 'Playfair Display', serif; line-height: 100%; letter-spacing: 0%;">
+        <div class="bg-white/80 rounded-[16px] p-[24px] shadow-lg relative z-10 transition-all duration-500 hover:bg-white hover:shadow-xl hover:-translate-y-2" style="width: 395px; min-height: 376px;">
+          <h3 class="text-[24px] font-bold mb-4 text-[#030D55] text-center transition-all duration-300 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 100%; letter-spacing: 0%;">
             Nuestra misión
           </h3>
           <p class="text-[#181818]" style="font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 16px; line-height: 28px; letter-spacing: 0%;">
@@ -268,9 +268,9 @@
           
           <!-- Línea conectora hacia el logo con puntitos -->
           <div class="hidden md:flex absolute right-[-60px] top-1/2 items-center space-x-1" style="z-index: 30;">
-            <div class="w-2 h-2 rounded-full bg-[#F5B3F3]"></div>
-            <div class="w-2 h-2 rounded-full bg-[#F5B3F3]"></div>
-            <div class="w-2 h-2 rounded-full bg-[#F5B3F3]"></div>
+            <div class="w-2 h-2 rounded-full bg-[#F5B3F3] animate-ping" style="animation-duration: 2s;"></div>
+            <div class="w-2 h-2 rounded-full bg-[#F5B3F3] animate-ping" style="animation-duration: 2.5s;"></div>
+            <div class="w-2 h-2 rounded-full bg-[#F5B3F3] animate-ping" style="animation-duration: 3s;"></div>
             <div class="h-[3px] flex-grow bg-[#F5B3F3]" style="width: 45px;"></div>
           </div>
         </div>
@@ -278,34 +278,34 @@
         <!-- Logo central -->
         <div class="relative flex items-center justify-center mx-6 z-20">
           <!-- Logo blanco -->
-          <div class="relative z-10">
+          <div class="relative z-10 transition-all duration-500 hover:scale-110">
             <img src="{{ get_theme_file_uri('resources/images/logoblanco.png') }}" alt="Ikintsugi Logo" style="width: 226px; height: 56px;">
           </div>
         </div>
         
         <!-- Valores -->
-        <div class="bg-white/80 rounded-[16px] p-[24px] shadow-lg relative z-10" style="width: 395px; min-height: 376px;">
+        <div class="bg-white/80 rounded-[16px] p-[24px] shadow-lg relative z-10 transition-all duration-500 hover:bg-white hover:shadow-xl hover:-translate-y-2" style="width: 395px; min-height: 376px;">
           <!-- Línea conectora hacia el logo con puntitos -->
           <div class="hidden md:flex absolute left-[-60px] top-1/2 items-center space-x-1" style="z-index: 30;">
             <div class="h-[3px] flex-grow bg-[#F5B3F3]" style="width: 45px;"></div>
-            <div class="w-2 h-2 rounded-full bg-[#F5B3F3]"></div>
-            <div class="w-2 h-2 rounded-full bg-[#F5B3F3]"></div>
-            <div class="w-2 h-2 rounded-full bg-[#F5B3F3]"></div>
+            <div class="w-2 h-2 rounded-full bg-[#F5B3F3] animate-ping" style="animation-duration: 3s;"></div>
+            <div class="w-2 h-2 rounded-full bg-[#F5B3F3] animate-ping" style="animation-duration: 2.5s;"></div>
+            <div class="w-2 h-2 rounded-full bg-[#F5B3F3] animate-ping" style="animation-duration: 2s;"></div>
           </div>
           
-          <h3 class="text-[24px] font-bold mb-4 text-[#030D55] text-center" style="font-family: 'Playfair Display', serif; line-height: 100%; letter-spacing: 0%;">
+          <h3 class="text-[24px] font-bold mb-4 text-[#030D55] text-center transition-all duration-300 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 100%; letter-spacing: 0%;">
             Nuestros valores
           </h3>
           <p class="mb-4 text-[#181818]" style="font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 16px; line-height: 28px; letter-spacing: 0%;">
             Como miembros de la Iniciativa Kintsugi creemos en la reparación del ser humano inspirada en los siguientes valores:
           </p>
           <ul class="space-y-1 text-[#181818]" style="font-family: 'Roboto', sans-serif; font-weight: 400; font-size: 16px; line-height: 28px; letter-spacing: 0%;">
-            <li><span class="font-bold">Confianza</span></li>
-            <li><span class="font-bold">Respeto</span></li>
-            <li><span class="font-bold">Aceptación incondicional</span></li>
-            <li><span class="font-bold">Conocimiento Científico</span></li>
-            <li><span class="font-bold">Confidencialidad</span></li>
-            <li><span class="font-bold">Ética Profesional</span></li>
+            <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-bold hover:translate-x-1"><span class="font-bold">Confianza</span></li>
+            <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-bold hover:translate-x-1"><span class="font-bold">Respeto</span></li>
+            <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-bold hover:translate-x-1"><span class="font-bold">Aceptación incondicional</span></li>
+            <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-bold hover:translate-x-1"><span class="font-bold">Conocimiento Científico</span></li>
+            <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-bold hover:translate-x-1"><span class="font-bold">Confidencialidad</span></li>
+            <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-bold hover:translate-x-1"><span class="font-bold">Ética Profesional</span></li>
           </ul>
         </div>
       </div>
@@ -322,10 +322,10 @@
       <!-- Artículos del blog -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Artículo 1 -->
-        <div class="rounded-2xl overflow-hidden w-full max-w-[395px] h-[419px] mx-auto" style="padding: 0;">
+        <div class="rounded-2xl overflow-hidden w-full max-w-[395px] h-[419px] mx-auto transition-transform duration-300 hover:transform hover:scale-105 hover:shadow-lg cursor-pointer" style="padding: 0;">
           <div class="relative h-full">
-            <img src="{{ get_theme_file_uri('resources/images/blog1.png') }}" alt="La presión sobre artistas" class="w-full h-full object-cover">
-            <div class="absolute top-3 left-3 text-white py-2.5 px-4 rounded-full text-center w-[201px] h-[40px]" style="background: rgba(3, 13, 85, 0.85);">
+            <img src="{{ get_theme_file_uri('resources/images/blog1.png') }}" alt="La presión sobre artistas" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+            <div class="absolute top-3 left-3 text-white py-2.5 px-4 rounded-full text-center w-[201px] h-[40px]" style="background: #030D55B8;">
               11 de marzo de 2025
             </div>
             <!-- Overlay gradient on the entire image -->
@@ -345,10 +345,10 @@
         </div>
         
         <!-- Artículo 2 -->
-        <div class="rounded-2xl overflow-hidden w-full max-w-[395px] h-[419px] mx-auto" style="padding: 0;">
+        <div class="rounded-2xl overflow-hidden w-full max-w-[395px] h-[419px] mx-auto transition-transform duration-300 hover:transform hover:scale-105 hover:shadow-lg cursor-pointer" style="padding: 0;">
           <div class="relative h-full">
-            <img src="{{ get_theme_file_uri('resources/images/blog2.png') }}" alt="Jorge López" class="w-full h-full object-cover">
-            <div class="absolute top-3 left-3 text-white py-2.5 px-4 rounded-full text-center w-[201px] h-[40px]" style="background: rgba(3, 13, 85, 0.85);">
+            <img src="{{ get_theme_file_uri('resources/images/blog2.png') }}" alt="Jorge López" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+            <div class="absolute top-3 left-3 text-white py-2.5 px-4 rounded-full text-center w-[201px] h-[40px]" style="background: #030D55B8;">
               11 de marzo de 2025
             </div>
             <!-- Overlay gradient on the entire image -->
@@ -368,9 +368,9 @@
         </div>
         
         <!-- Artículo 3 -->
-        <div class="rounded-2xl overflow-hidden w-full max-w-[395px] h-[419px] mx-auto" style="padding: 0;">
+        <div class="rounded-2xl overflow-hidden w-full max-w-[395px] h-[419px] mx-auto transition-transform duration-300 hover:transform hover:scale-105 hover:shadow-lg cursor-pointer" style="padding: 0;">
           <div class="relative h-full">
-            <img src="{{ get_theme_file_uri('resources/images/blog3.png') }}" alt="El síndrome postvacacional" class="w-full h-full object-cover">
+            <img src="{{ get_theme_file_uri('resources/images/blog3.png') }}" alt="El síndrome postvacacional" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
             <div class="absolute top-3 left-3 text-white py-2.5 px-4 rounded-full text-center w-[201px] h-[40px]" style="background: #030D55B8;">
               11 de marzo de 2025
             </div>
@@ -393,7 +393,7 @@
       
       <!-- Botón Ver más blogs -->
       <div class="text-center mt-12">
-        <a href="{{ home_url('/blog') }}" class="inline-block py-2.5 px-8 text-white rounded-full font-medium w-[277px] h-[47px] text-center" style="background: linear-gradient(90deg, #FF3382 0%, rgba(90, 9, 137, 0.8) 100%); border-radius: 40px; padding: 10px;">
+        <a href="{{ home_url('/blog') }}" class="inline-block py-2.5 px-8 text-white rounded-full font-medium w-[277px] h-[47px] text-center transition-all duration-300 hover:shadow-lg hover:scale-105" style="background: linear-gradient(90deg, #FF3382 0%, rgba(90, 9, 137, 0.8) 100%); border-radius: 40px; padding: 10px;">
           Ver más blogs
         </a>
       </div>
