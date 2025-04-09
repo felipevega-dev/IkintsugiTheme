@@ -146,7 +146,7 @@
     </div>
 
     <!-- Contenedor con el menú blanco que contiene todo -->
-    <div class="bg-white rounded-lg shadow-[0_4px_15px_rgba(0,0,0,0.08)] pt-3 pb-3 mt-4">
+    <div class="bg-white rounded-lg shadow-[0_4px_15px_rgba(0,0,0,0.20)] pt-3 pb-3 mt-4">
       @php
         $current_url = home_url($_SERVER['REQUEST_URI']);
       @endphp
