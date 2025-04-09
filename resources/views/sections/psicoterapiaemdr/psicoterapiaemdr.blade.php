@@ -87,8 +87,8 @@
     </div>
   </section>
 
+  
   <!-- Segunda sección con fondo lavanda claro -->
-   <!-- Segunda sección con fondo lavanda claro -->
   <section class="bg-[#CCA0E00D] py-10 lg:py-16">
     <div class="container mx-auto px-4">
       <div class="flex flex-col lg:flex-row items-center gap-8">

@@ -100,6 +100,7 @@
         'beneficios-emdr',
         'tratamiento-emdr',
         'que-esperar',
+        'transtornos-y-malestares',
         // Añadir aquí otras páginas con hero de fondo blanco según sea necesario
       ];
       
@@ -224,7 +225,8 @@
                             strpos($current_url, 'testimonios') !== false || 
                             strpos($current_url, 'beneficios-emdr') !== false || 
                             strpos($current_url, 'tratamiento-emdr') !== false ||
-                            strpos($current_url, 'que-esperar') !== false) 
+                            strpos($current_url, 'que-esperar') !== false ||
+                            strpos($current_url, 'transtornos-y-malestares') !== false) 
                            ? 'border-[#D93280] font-bold' 
                            : 'border-transparent hover:border-[#D93280]' }} 
                         transition-all duration-300">
@@ -251,6 +253,10 @@
                   <a href="{{ home_url('/que-esperar') }}" 
                      class="horizontal-submenu-item {{ (strpos($current_url, 'que-esperar') !== false) ? 'active' : '' }}">
                     ¿Que esperar de la Psicoterapia?
+                  </a>
+                  <a href="{{ home_url('/transtornos-y-malestares') }}" 
+                     class="horizontal-submenu-item {{ (strpos($current_url, 'transtornos-y-malestares') !== false) ? 'active' : '' }}">
+                    Transtornos y malestares
                   </a>
                 </div>
               </div>
