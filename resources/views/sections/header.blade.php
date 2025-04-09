@@ -92,6 +92,7 @@
         'que-significa-kintsugi',
         'que-nos-inspira',
         'divulgacion-cientifica',
+        'evidencia-cientifica',
         'a-quienes-atendemos',
         'contacto',
         'psicoterapia-emdr',
@@ -179,7 +180,11 @@
             <div class="relative hover:cursor-pointer group">
               <a href="{{ home_url('/quienes-somos') }}" 
                  class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap flex items-center
-                        {{ (strpos($current_url, 'quienes-somos') !== false || strpos($current_url, 'que-significa-kintsugi') !== false || strpos($current_url, 'que-nos-inspira') !== false) 
+                        {{ (strpos($current_url, 'quienes-somos') !== false || 
+                            strpos($current_url, 'que-significa-kintsugi') !== false || 
+                            strpos($current_url, 'que-nos-inspira') !== false || 
+                            strpos($current_url, 'divulgacion-cientifica') !== false || 
+                            strpos($current_url, 'evidencia-cientifica') !== false) 
                            ? 'border-[#D93280] font-bold' 
                            : 'border-transparent hover:border-[#D93280]' }} 
                         transition-all duration-300">
@@ -203,6 +208,10 @@
                     class="horizontal-submenu-item {{ (strpos($current_url, 'divulgacion-cientifica') !== false) ? 'active' : '' }}">
                     Divulgación Científica
                   </a>
+                  <a href="{{ home_url('/evidencia-cientifica') }}" 
+                    class="horizontal-submenu-item {{ (strpos($current_url, 'evidencia-cientifica') !== false) ? 'active' : '' }}">
+                    Evidencia Científica
+                  </a>
                 </div>
               </div>
             </div>
@@ -211,7 +220,11 @@
             <div class="relative hover:cursor-pointer group">
               <a href="{{ home_url('/psicoterapia-emdr') }}" 
                  class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap flex items-center
-                        {{ (strpos($current_url, 'psicoterapia-emdr') !== false || strpos($current_url, 'testimonios') !== false || strpos($current_url, 'beneficios-emdr') !== false || strpos($current_url, 'tratamiento-emdr') !== false) 
+                        {{ (strpos($current_url, 'psicoterapia-emdr') !== false || 
+                            strpos($current_url, 'testimonios') !== false || 
+                            strpos($current_url, 'beneficios-emdr') !== false || 
+                            strpos($current_url, 'tratamiento-emdr') !== false ||
+                            strpos($current_url, 'que-esperar') !== false) 
                            ? 'border-[#D93280] font-bold' 
                            : 'border-transparent hover:border-[#D93280]' }} 
                         transition-all duration-300">
@@ -394,7 +407,11 @@
         <div class="py-2 border-b border-gray-200">
           <a href="{{ home_url('/quienes-somos') }}" 
              class="text-gray-900 font-roboto flex justify-between items-center w-full
-                    {{ (strpos($current_url, 'quienes-somos') !== false) 
+                    {{ (strpos($current_url, 'quienes-somos') !== false || 
+                        strpos($current_url, 'que-significa-kintsugi') !== false || 
+                        strpos($current_url, 'que-nos-inspira') !== false || 
+                        strpos($current_url, 'divulgacion-cientifica') !== false || 
+                        strpos($current_url, 'evidencia-cientifica') !== false) 
                        ? 'text-[#D93280] font-bold' 
                        : 'hover:text-[#D93280]' }} 
                     transition-colors duration-300 mb-2">
@@ -423,6 +440,11 @@
                         {{ (strpos($current_url, 'divulgacion-cientifica') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-bold' : '' }}">
                 Divulgación Científica
               </a>
+              <a href="{{ home_url('/evidencia-cientifica') }}" 
+                 class="block py-2 px-3 my-1 rounded-lg text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                        {{ (strpos($current_url, 'evidencia-cientifica') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-bold' : '' }}">
+                Evidencia Científica
+              </a>
             </div>
           </div>
         </div>
@@ -430,7 +452,7 @@
         <div class="py-2 border-b border-gray-200">
           <a href="{{ home_url('/psicoterapia-emdr') }}" 
              class="text-gray-900 font-roboto flex justify-between items-center w-full
-                    {{ (strpos($current_url, 'psicoterapia-emdr') !== false || strpos($current_url, 'testimonios') !== false || strpos($current_url, 'beneficios-emdr') !== false || strpos($current_url, 'tratamiento-emdr') !== false) 
+                    {{ (strpos($current_url, 'psicoterapia-emdr') !== false || strpos($current_url, 'testimonios') !== false || strpos($current_url, 'beneficios-emdr') !== false || strpos($current_url, 'tratamiento-emdr') !== false || strpos($current_url, 'que-esperar') !== false) 
                        ? 'text-[#D93280] font-bold' 
                        : 'hover:text-[#D93280]' }} 
                     transition-colors duration-300 mb-2">
