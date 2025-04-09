@@ -170,13 +170,16 @@
     </section>
   </div>
 
-  <!-- Primer Testimonio - Lorena López -->
+  <!-- Primer Testimonio -->
   <section class="bg-white py-16 relative">
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row gap-16 items-center max-w-6xl mx-auto">
         <!-- Texto del testimonio a la izquierda -->
         <div class="md:w-4/9 order-2 md:order-1">
           <h4 class="text-center text-2xl font-extrabold text-[#AB277A] mb-4" style="font-family: 'Playfair Display', serif; line-height: 100%;">Trabajemos en tu disociación   </h4>
+          <p class="text-center text-base leading-7 text-[#030D55] mb-4">
+            Shénhui te cuenta sobre la disociación y cómo EMDR puede ayudar a superarla.
+          </p>
         </div>
         
         <!-- Video a la derecha -->
@@ -203,6 +206,9 @@
         <!-- Texto del testimonio a la derecha -->
         <div class="md:w-3/9">
           <h4 class="text-center md:text-right text-2xl font-extrabold text-[#AB277A] mb-4" style="font-family: 'Playfair Display', serif; line-height: 100%;">Juntas podemos superar el abuso</h4>
+          <p class="text-center text-base leading-7 text-[#030D55] mb-4">
+            Shénhui te cuenta cómo EMDR ayuda a superar el abuso
+          </p>
         </div>
       </div>
     </div>
@@ -214,6 +220,9 @@
         <!-- Texto del testimonio a la izquierda -->
         <div class="md:w-4/9 order-2 md:order-1">
           <h4 class="text-center text-2xl font-extrabold text-[#AB277A] mb-4" style="font-family: 'Playfair Display', serif; line-height: 100%;">La mala suerte en el amor no existe, es trauma. Trabajemos juntos con EMDR.</h4>
+          <p class="text-center text-base leading-7 text-[#030D55] mb-4">
+            Julio Cesar explica cómo EMDR ayuda a superar el trauma de una ruptura amorosa.
+          </p>
         </div>
         
         <!-- Video a la derecha -->
@@ -240,6 +249,9 @@
         <!-- Texto del testimonio a la derecha -->
         <div class="md:w-3/9">
           <h4 class="text-center md:text-right text-2xl font-extrabold text-[#AB277A] mb-4" style="font-family: 'Playfair Display', serif; line-height: 100%;">Con EMDR, trabajemos juntos en tus miedos y traumas</h4>
+          <p class="text-center text-base leading-7 text-[#030D55] mb-4">
+            Julio Cesar explica cómo EMDR ayuda a superar el trauma de una ruptura amorosa.
+          </p>
         </div>
       </div>
     </div>

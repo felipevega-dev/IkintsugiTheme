@@ -112,8 +112,8 @@
       </div>
     </div>
   </section> 
-  <!-- Segunda sección con fondo lavanda claro -->
-  <section class="bg-[#CCA0E00D] py-10 lg:py-16">
+  <!-- Segunda sección con fondo blanco-->
+  <section class="bg-white py-10 lg:py-16">
     <div class="container mx-auto px-4 max-w-7xl">
       <div class="flex flex-col lg:flex-row items-center gap-4">
         <!-- Imagen a la izquierda -->
@@ -156,5 +156,5 @@
         </div>
       </div>
     </div>
-</section>
+  </section>
 @endsection
