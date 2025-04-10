@@ -1,4 +1,3 @@
-
 {{--
   Template Name: Charlas y Talleres
 --}}
@@ -6,7 +5,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <!-- Hero Section -->
 <section class="relative bg-[#362766] overflow-hidden pt-32">
   <!-- Video de fondo con overlay -->
@@ -24,7 +22,7 @@
       <img src="{{ get_theme_file_uri('resources/images/hero-fallback.jpg') }}" alt="Background" class="w-full h-full object-cover">
     </video>
   </div>
-
+        
   <!-- Contenido del hero -->
   <div class="container mx-auto px-4 relative z-10 min-h-[80vh] flex flex-col justify-center items-center">
     <div class="max-w-3xl mx-auto text-center text-white py-20 md:py-24 lg:py-26">
@@ -40,49 +38,113 @@
     </svg>
   </div>
 </section>
-<!-- Segunda sección con fondo blanco-->
-<section class="bg-white py-10 lg:py-16">
-    <div class="container mx-auto px-4 max-w-7xl">
-      <div class="flex flex-col lg:flex-row items-center gap-4">
-        <!-- Texto explicativo -->
-        <div class="lg:w-1/2 mb-8 lg:mb-0 pr-0 lg:pr-6 order-2 lg:order-2">
-          <h2 class="text-center text-4xl lg:text-5xl font-bold text-[#030D55] mb-8" style="font-family: 'Playfair Display', serif; font-weight: 800;">
-            ¿Qué haremos?
+
+  <!-- Sección 1: Charlas y talleres - Texto izquierda, imagen derecha -->
+  <section class="bg-white py-16 overflow-hidden">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+        <!-- Texto a la izquierda -->
+        <div class="md:w-1/2 pr-8">
+          <h2 class="text-4xl font-bold text-[#030D55] mb-8" style="font-family: 'Playfair Display', serif;">
+            Charlas y talleres
           </h2>
-          
-          <div class="prose prose-lg">
-            <p class="font-normal text-base leading-7">
-              Nuestro trabajo conjunto se basa en tu compromiso, paciencia, constancia y participación hacia una vida mejor. El proceso terapéutico incluye:
-            </p>
-            
-            <ul class="mt-4 space-y-3">
-              <li class="font-normal text-base leading-7">
-                <strong>Identificación:</strong> Analizaremos los síntomas y los disparadores o gatillantes que afectan tu bienestar.
-              </li>
-              <li class="font-normal text-base leading-7">
-                <strong>Exploración de causas:</strong> Investigaremos las raíces de estos problemas, que a menudo se originan en la infancia o juventud.
-              </li>
-              <li class="font-normal text-base leading-7">
-                <strong>Plan de intervención:</strong> Diseñaremos un plan personalizado que aborde tanto recuerdos explícitos como implícitos responsables de tu malestar actual.
-              </li>
-              <li class="font-normal text-base leading-7">
-                <strong>Desarrollo de recursos:</strong> Evaluaremos tus mecanismos de regulación emocional, tus relaciones interpersonales y estrategias de defensa, para implementar herramientas y recursos que te permitan vivir de manera más equilibrada y satisfactoria.
-              </li>
-            </ul>
-          </div>
+          <p class="text-base text-[#030D55] mb-4">
+            En el Instituto Kintsugi creemos que el aprendizaje es un proceso continuo que nos permite crecer y desarrollarnos como personas. Por esto desarrollamos una variedad de talleres para colegios, parejas, agrupaciones, empresas e instituciones, que abordan temas como la felicidad, manejo de conflictos, inteligencia emocional, la comunicación efectiva, el liderazgo, la resiliencia, la autoestima y el manejo del estrés.
+          </p>
+          <p class="text-base text-[#030D55] mb-4">
+            Impartimos talleres que utilizan metodologías participativas, dinámicas y lúdicas. Con nuestros talleres podrás adquirir herramientas prácticas y útiles para mejorar tu calidad de vida, tus relaciones y tu desempeño profesional. Te invitamos a explorar nuestra oferta de talleres y a solicitar el que más te interese.
+          </p>
         </div>
-        <!-- Imagen a la izquierda -->
-        <div class="lg:w-1/2 flex justify-center lg:justify-end relative order-1 lg:order-1">
-          
-          <img 
-            src="{{ get_theme_file_uri('resources/images/beneficios2.png') }}" 
-            alt="Qué nos inspira" 
-            class="max-w-full h-auto rounded-lg relative z-10"
-            style="max-width: 543px;"
-          >
+        
+        <!-- Imagen a la derecha con marco orgánico -->
+        <div class="md:w-1/2 relative">
+          <div class="relative">
+            <div class="relative z-10">
+              <img 
+                src="{{ get_theme_file_uri('resources/images/charlas1.png') }}" 
+                alt="Charlas y talleres" 
+                class="w-full rounded-[100px] h-auto"
+              >
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Sección 2: Explorar talleres con curvatura inferior y fondo gris -->
+  <section class="relative bg-gray-100 py-16">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center gap-8">
+        <!-- Imagen orgánica a la izquierda -->
+        <div class="md:w-1/2">
+          <div class="relative">
+            <div class="relative z-10">
+              <img 
+                src="{{ get_theme_file_uri('resources/images/charlas2.png') }}" 
+                alt="Charlas y talleres" 
+                class="w-full rounded-[100px] h-auto"
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Texto y lista a la derecha -->
+        <div class="md:w-1/2 pl-8">
+          <h2 class="text-3xl font-bold text-[#030D55] mb-6" style="font-family: 'Playfair Display', serif;">
+            Te invitamos a explorar nuestra oferta de talleres y a solicitar el que más te interese.
+          </h2>
+          
+          <ul class="space-y-3 text-[#030D55] list-disc pl-5">
+            <li>Talleres para parejas</li>
+            <li>Taller de felicidad</li>
+            <li>Taller de comunicación para empresas</li>
+            <li>Taller de resiliencia y afrontamiento</li>
+            <li>Taller de autoestima y auto desarrollo</li>
+            <li>Taller de comunicación asertiva</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Curvatura inferior -->
+    <div class="absolute bottom-0 left-0 w-full h-20 overflow-hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="absolute bottom-0 w-full">
+        <path fill="white" fill-opacity="1" d="M0,64L80,80C160,96,320,128,480,122.7C640,117,800,75,960,64C1120,53,1280,75,1360,85.3L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Sección 3: Coaching psicológico con elementos decorativos laterales -->
+  <section class="bg-white py-8 relative">
+    <div class="container mx-auto px-4 relative">
+      <!-- Contenido centrado con decorativos integrados -->
+      <div class="max-w-4xl mx-auto text-center relative">
+        <!-- Elementos decorativos integrados -->
+        <div class="absolute left-0 top-1/2 transform -translate-y-1/2 hidden md:block" style="left: -100px;">
+          <img src="{{ get_theme_file_uri('resources/images/deco1.png') }}" alt="Decoración izquierda" class="w-auto h-56">
+        </div>
+        
+        <div class="absolute right-0 top-1/2 transform -translate-y-1/2 hidden md:block" style="right: -110px;">
+          <img src="{{ get_theme_file_uri('resources/images/deco2.png') }}" alt="Decoración derecha" class="w-auto h-56">
+        </div>
+        
+        <h2 class="text-4xl font-bold text-[#030D55] mb-8" style="font-family: 'Playfair Display', serif;">
+          Coaching psicológico
+        </h2>
+        
+        <p class="text-base text-[#030D55] mb-4">
+          En el Instituto Kintsugi, creemos que cada persona tiene un potencial único que puede desarrollar y expresar en su vida personal y profesional. De esta manera, podemos ayudarte desde el coaching psicológico, impartido por psicólogos que te ayudarán a conocerte y potenciar tus recursos, superar las dificultades y alcanzar tus objetivos.
+        </p>
+        
+        <p class="text-base text-[#030D55] mb-6">
+          Con el coaching psicológico podrás mejorar tus capacidades individuales, tu bienestar emocional y tu rendimiento laboral. Te invitamos a vivir esta experiencia de aprendizaje y cambio con nosotros.
+        </p>
+        
+        <p class="text-base text-[#030D55] font-semibold">
+          Coaching of life, de pareja, laboral, felicidad.
+        </p>
+      </div>
+    </div>
+  </section>
 @endsection
