@@ -1,5 +1,5 @@
 <!-- Header -->
-<header class="absolute top-0 left-0 right-0 z-50 bg-transparent">
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="main-header">
   <style>
     /* Comportamiento básico de submenu */
     .submenu-container {
@@ -83,20 +83,28 @@
       font-weight: bold;
     }
     
+    /* Estilos del header al hacer scroll */
+    .header-scrolled {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
     /* Estilo para el menú móvil */
     .mobile-menu {
       position: absolute;
       top: 100%;
       left: 0;
       right: 0;
+      width: 100%;
       background: white;
       transform: translateY(-100%);
-      transition: transform 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
       z-index: 50;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       border-radius: 0 0 16px 16px;
       opacity: 0;
       visibility: hidden;
+      overflow: hidden;
     }
     
     .mobile-menu.active {
@@ -198,7 +206,7 @@
     </div>
 
     <!-- Contenedor con el menú blanco que contiene todo -->
-    <div class="bg-white rounded-lg shadow-[0_4px_15px_rgba(0,0,0,0.20)] pt-3 pb-3 mt-4">
+    <div class="bg-white rounded-lg shadow-[0_4px_15px_rgba(0,0,0,0.20)] pt-3 pb-3 mt-4 relative">
       @php
         $current_url = home_url($_SERVER['REQUEST_URI']);
       @endphp
@@ -387,7 +395,7 @@
           </div>
           
           <!-- Botón de menú móvil integrado en el header -->
-          <button class="text-[#D93280] p-2 rounded-full transition-all duration-300" 
+          <button class="text-[#D93280] p-2 rounded-full hover:bg-[#FBD5E8] hover:bg-opacity-50 transition-all duration-300" 
                   id="mobile-menu-button">
             <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
@@ -397,8 +405,8 @@
         </div>
         
         <!-- Menú móvil (se desliza desde el header) -->
-        <div class="mobile-menu" id="mobile-menu">
-          <div class="bg-white shadow-md overflow-hidden">
+        <div class="mobile-menu w-full" id="mobile-menu">
+          <div class="bg-white shadow-md rounded-b-xl overflow-hidden">
             <div class="p-4">
               <div class="flex justify-between items-center border-b border-gray-100 pb-3">
                 <a href="{{ home_url('/reservar-cita') }}" 
@@ -600,6 +608,7 @@
 <!-- Script para controlar el menú móvil -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    const header = document.getElementById('main-header');
     const menuButton = document.getElementById('mobile-menu-button');
     const menuClose = document.getElementById('mobile-menu-close');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -614,13 +623,54 @@
     const emdrIcon = document.getElementById('emdr-icon');
     const emdrSubmenu = document.getElementById('emdr-submenu');
     
+    // Función para manejar el scroll y añadir efectos al header
+    function handleScroll() {
+      if (window.scrollY > 50) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
+    }
+    
+    // Aplicar padding al body para compensar el header fijo
+    function adjustBodyPadding() {
+      // Esperar a que todos los estilos se hayan aplicado
+      setTimeout(() => {
+        const headerHeight = header.offsetHeight;
+        document.body.style.paddingTop = `${headerHeight}px`;
+      }, 100);
+    }
+    
+    // Ajustar el padding inicial
+    adjustBodyPadding();
+    
+    // Reajustar el padding cuando cambia el tamaño de la ventana
+    window.addEventListener('resize', adjustBodyPadding);
+    
+    // Escuchar eventos de scroll
+    window.addEventListener('scroll', handleScroll);
+    
+    // Verificar la posición inicial del scroll
+    handleScroll();
+    
     // Función para abrir el menú móvil
     function openMobileMenu() {
+      // Resetear primero para asegurar que la animación funcione siempre
+      mobileMenu.style.transition = 'none';
+      mobileMenu.classList.remove('active');
+      
+      // Forzar un reflow para que el navegador procese los cambios
+      void mobileMenu.offsetWidth;
+      
+      // Restaurar la transición y activar el menú
+      mobileMenu.style.transition = 'all 0.3s ease-in-out';
       mobileMenu.classList.add('active');
     }
     
     // Función para cerrar el menú móvil
     function closeMobileMenu() {
+      // Asegurar que la transición esté activada
+      mobileMenu.style.transition = 'all 0.3s ease-in-out';
       mobileMenu.classList.remove('active');
     }
     
