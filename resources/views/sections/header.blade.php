@@ -296,37 +296,37 @@
           <!-- Primera fila de navegación -->
           <nav class="flex justify-center items-center space-x-8 mb-2 top-row">
             <a href="{{ home_url('/') }}" 
-               class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
+               class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
                       {{ ($current_url == home_url('/')) 
-                         ? 'border-[#D93280] font-bold' 
-                         : 'border-transparent hover:border-[#D93280]' }} 
+                         ? 'border-[#D93280] font-bold text-[#D93280]' 
+                         : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
                       transition-all duration-300">
               Inicio
             </a>
             
             <a href="{{ home_url('/a-quienes-atendemos') }}" 
-               class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
+               class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
                       {{ (strpos($current_url, 'a-quienes-atendemos') !== false) 
-                         ? 'border-[#D93280] font-bold' 
-                         : 'border-transparent hover:border-[#D93280]' }} 
+                         ? 'border-[#D93280] font-bold text-[#D93280]' 
+                         : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
                       transition-all duration-300">
               ¿A quiénes atendemos?
             </a>
             
             <a href="{{ home_url('/charlas-y-talleres') }}" 
-               class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
+               class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
                       {{ (strpos($current_url, 'charlas-y-talleres') !== false) 
-                         ? 'border-[#D93280] font-bold' 
-                         : 'border-transparent hover:border-[#D93280]' }} 
+                         ? 'border-[#D93280] font-bold text-[#D93280]' 
+                         : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
                       transition-all duration-300">
               Charlas y talleres
             </a>
             
             <a href="{{ home_url('/preguntas-frecuentes') }}" 
-               class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
+               class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
                       {{ (strpos($current_url, 'preguntas-frecuentes') !== false) 
-                         ? 'border-[#D93280] font-bold' 
-                         : 'border-transparent hover:border-[#D93280]' }} 
+                         ? 'border-[#D93280] font-bold text-[#D93280]' 
+                         : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
                       transition-all duration-300">
               FAQ'S
             </a>
@@ -334,27 +334,48 @@
           
           <!-- Segunda fila de navegación -->
           <nav class="flex justify-center items-center space-x-8 bottom-row">
-            <a href="{{ home_url('/prensa-y-social') }}" 
-               class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
-                      {{ (strpos($current_url, 'prensa-y-social') !== false) 
-                         ? 'border-[#D93280] font-bold' 
-                         : 'border-transparent hover:border-[#D93280]' }} 
-                      transition-all duration-300">
-              Prensa y social media
-            </a>
+            <!-- Menú desplegable para "Prensa y social media" -->
+            <div class="relative hover:cursor-pointer group">
+              <a href="{{ home_url('/prensa') }}" 
+                 class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap flex items-center
+                        {{ (strpos($current_url, 'prensa') !== false || 
+                            strpos($current_url, 'blog') !== false || 
+                            strpos($current_url, 'canales-oficiales') !== false) 
+                           ? 'border-[#D93280] font-bold text-[#D93280]' 
+                           : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
+                        transition-all duration-300">
+                Prensa y medios
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </a>
+              <!-- Submenú Prensa y social media -->
+              <div class="top-row submenu-container">
+                <div class="horizontal-submenu">
+                  <a href="{{ home_url('/blog') }}" 
+                    class="horizontal-submenu-item {{ (strpos($current_url, 'blog') !== false) ? 'active' : '' }}">
+                    Blog
+                  </a>
+                  <a href="{{ home_url('/canales-oficiales') }}" 
+                    class="horizontal-submenu-item {{ (strpos($current_url, 'canales-oficiales') !== false) ? 'active' : '' }}">
+                    Canales Oficiales
+                  </a>
+                </div>
+              </div>
+            </div>
 
             <!-- Menú desplegable para "Psicoterapia EMDR" -->
             <div class="relative hover:cursor-pointer group">
               <a href="{{ home_url('/psicoterapia-emdr') }}" 
-                 class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap flex items-center
+                 class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap flex items-center
                         {{ (strpos($current_url, 'psicoterapia-emdr') !== false || 
                             strpos($current_url, 'testimonios') !== false || 
                             strpos($current_url, 'beneficios-emdr') !== false || 
                             strpos($current_url, 'tratamiento-emdr') !== false ||
                             strpos($current_url, 'que-esperar') !== false ||
                             strpos($current_url, 'transtornos-y-malestares') !== false) 
-                           ? 'border-[#D93280] font-bold' 
-                           : 'border-transparent hover:border-[#D93280]' }} 
+                           ? 'border-[#D93280] font-bold text-[#D93280]' 
+                           : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
                         transition-all duration-300">
                 Psicoterapia EMDR
                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -386,19 +407,19 @@
                   </a>
                 </div>
               </div>
-            </div> 
+            </div>
             <!-- Menú desplegable para "Quiénes somos" -->
             <div class="relative hover:cursor-pointer group">
               <a href="{{ home_url('/quienes-somos') }}" 
-                 class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap flex items-center
+                 class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap flex items-center
                         {{ (strpos($current_url, 'quienes-somos') !== false || 
                             strpos($current_url, 'que-significa-kintsugi') !== false || 
                             strpos($current_url, 'que-nos-inspira') !== false || 
                             strpos($current_url, 'divulgacion-cientifica') !== false || 
                             strpos($current_url, 'evidencia-cientifica') !== false) 
-                           ? 'border-[#D93280] font-bold' 
-                           : 'border-transparent hover:border-[#D93280]' }} 
-                        transition-all duration-300">
+                           ? 'border-[#D93280] font-bold text-[#D93280]' 
+                           : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
+                      transition-all duration-300">
                 ¿Quiénes somos?
                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -428,10 +449,10 @@
             </div>
             
             <a href="{{ home_url('/contacto') }}" 
-               class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
+               class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
                       {{ (strpos($current_url, 'contacto') !== false) 
-                         ? 'border-[#D93280] font-bold' 
-                         : 'border-transparent hover:border-[#D93280]' }} 
+                         ? 'border-[#D93280] font-bold text-[#D93280]' 
+                         : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
                       transition-all duration-300">
               Contacto
             </a>
@@ -516,8 +537,8 @@
                   transition-colors duration-300">
           Inicio
         </a>
-        <!-- Menú desplegable para Quiénes somos -->
-        <div class="border-b border-gray-100">
+                  <!-- Menú desplegable para Quiénes somos -->
+                  <div class="border-b border-gray-100">
                     <div class="flex justify-between items-center py-3 cursor-pointer" id="quienes-somos-toggle">
           <a href="{{ home_url('/quienes-somos') }}" 
                         class="text-gray-900 font-roboto
@@ -641,14 +662,40 @@
           FAQ'S
         </a>
         
-        <a href="{{ home_url('/prensa-y-social') }}" 
-                    class="block py-3 border-b border-gray-100 text-gray-900 font-roboto
-                  {{ (strpos($current_url, 'prensa-y-social') !== false) 
+        <!-- Menú desplegable para Prensa y social media -->
+        <div class="border-b border-gray-100">
+          <div class="flex justify-between items-center py-3 cursor-pointer" id="prensa-toggle">
+            <a href="{{ home_url('/canales-oficiales') }}" 
+              class="text-gray-900 font-roboto
+                    {{ (strpos($current_url, 'canales-oficiales') !== false || 
+                      strpos($current_url, 'prensa-y-social') !== false || 
+                      strpos($current_url, 'blog') !== false) 
                             ? 'menu-active-highlight' 
-                     : 'hover:text-[#D93280]' }} 
-                  transition-colors duration-300">
+                      : 'hover:text-[#D93280]' }}">
           Prensa y social media
         </a>
+            <button class="text-[#D93280] bg-[#FBD5E8] bg-opacity-50 p-1 rounded-full transition-transform duration-300" id="prensa-icon">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+          </div>
+          
+          <!-- Submenú (inicialmente oculto) -->
+          <div class="mobile-submenu bg-gray-50 rounded-lg" id="prensa-submenu">
+            <a href="{{ home_url('/blog') }}" 
+              class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                    {{ (strpos($current_url, 'blog') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+              Blog
+            </a>
+            <a href="{{ home_url('/prensa-y-social') }}" 
+              class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                    {{ (strpos($current_url, 'prensa-y-social') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+              Prensa
+            </a>
+          </div>
+        </div>
+        
         <a href="{{ home_url('/contacto') }}" 
                     class="block py-3 text-gray-900 font-roboto
                   {{ (strpos($current_url, 'contacto') !== false) 
@@ -714,6 +761,11 @@
     const emdrIcon = document.getElementById('emdr-icon');
     const emdrSubmenu = document.getElementById('emdr-submenu');
     
+    // Elementos para el submenú de Prensa y social media
+    const prensaToggle = document.getElementById('prensa-toggle');
+    const prensaIcon = document.getElementById('prensa-icon');
+    const prensaSubmenu = document.getElementById('prensa-submenu');
+    
     // Función para manejar el scroll y añadir efectos al header
     function handleScroll() {
       if (window.scrollY > 50) {
@@ -747,12 +799,12 @@
       if (document.body.classList.contains('home') || document.location.pathname === '/' || document.location.pathname === '') {
         document.body.style.paddingTop = '0px';
       } else {
-        // Esperar a que todos los estilos se hayan aplicado
-        setTimeout(() => {
-          const headerHeight = header.offsetHeight;
+      // Esperar a que todos los estilos se hayan aplicado
+      setTimeout(() => {
+        const headerHeight = header.offsetHeight;
           // Agregar pequeño margen para el header
           document.body.style.paddingTop = `${headerHeight + 4}px`;
-        }, 100);
+      }, 100);
       }
     }
     
@@ -893,6 +945,10 @@
       
       if (emdrToggle && emdrIcon && emdrSubmenu) {
         toggleSubmenu(emdrToggle, emdrIcon, emdrSubmenu);
+      }
+      
+      if (prensaToggle && prensaIcon && prensaSubmenu) {
+        toggleSubmenu(prensaToggle, prensaIcon, prensaSubmenu);
       }
       
       // Cerrar el menú móvil al hacer clic en un enlace (para mejor experiencia de usuario)

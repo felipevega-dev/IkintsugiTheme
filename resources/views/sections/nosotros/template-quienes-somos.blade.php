@@ -83,7 +83,7 @@
       <div class="flex flex-col md:flex-row items-center gap-6 md:gap-12 lg:gap-16">
         <div class="md:w-1/2 relative">
           <div class="relative z-10 max-w-[450px] mx-auto md:mx-0 mb-3 md:mb-0">
-            <div class="rounded-2xl overflow-hidden shadow-sm">
+            <div class="rounded-2xl overflow-hidden">
               <img
                 src="{{ get_theme_file_uri('resources/images/quienesomos.png') }}"
                 alt="Quiénes Somos"
@@ -117,7 +117,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> 
 
   <!-- SOBRE NOSOTROS SECTION (antes en sobre-nosotros.blade.php) -->
   <section class="py-12 md:py-20 bg-white relative overflow-hidden pt-10 md:pt-14">
@@ -256,9 +256,9 @@
           <!-- Línea conectora hacia el logo con puntitos (visible solo en desktop) -->
           <div class="hidden md:flex absolute right-[-60px] top-1/2 items-center z-30">
             <div class="flex items-center space-x-1">
-              <div class="w-2 h-2 rounded-full bg-[#F5B3F3] animate-ping" style="animation-duration: 2s;"></div>
-              <div class="w-2 h-2 rounded-full bg-[#F5B3F3] animate-ping" style="animation-duration: 2.5s;"></div>
-              <div class="w-2 h-2 rounded-full bg-[#F5B3F3] animate-ping" style="animation-duration: 3s;"></div>
+            <div class="w-2 h-2 rounded-full bg-[#F5B3F3] animate-ping" style="animation-duration: 2s;"></div>
+            <div class="w-2 h-2 rounded-full bg-[#F5B3F3] animate-ping" style="animation-duration: 2.5s;"></div>
+            <div class="w-2 h-2 rounded-full bg-[#F5B3F3] animate-ping" style="animation-duration: 3s;"></div>
             </div>
           </div>
         </div>
@@ -278,7 +278,7 @@
             <div class="flex items-center space-x-1 flex-row-reverse">
               <div class="w-2 h-2 rounded-full bg-[#F5B3F3] animate-ping" style="animation-duration: 2s;"></div>
               <div class="w-2 h-2 rounded-full bg-[#F5B3F3] animate-ping" style="animation-duration: 2.5s;"></div>
-              <div class="w-2 h-2 rounded-full bg-[#F5B3F3] animate-ping" style="animation-duration: 3s;"></div>
+            <div class="w-2 h-2 rounded-full bg-[#F5B3F3] animate-ping" style="animation-duration: 3s;"></div>
             </div>
           </div>
           
@@ -301,7 +301,7 @@
     </div>
   </section> 
 
-  <!-- BLOG SECTION (antes en blog.blade.php) -->
+  <!-- ENTRADAS MÁS RECIENTES -->
   <section class="py-12 md:py-20 bg-white">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl md:text-5xl font-extrabold mb-8 md:mb-12 text-center text-[#030D55]" style="font-family: 'Playfair Display', serif; font-size: 32px; line-height: 100%; letter-spacing: 0%; @media (min-width: 768px) { font-size: 48px; }">
@@ -310,74 +310,45 @@
       
       <!-- Artículos del blog -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-        <!-- Artículo 1 -->
-        <div class="rounded-2xl overflow-hidden w-full h-[350px] md:h-[419px] mx-auto transition-transform duration-300 hover:transform hover:scale-105 hover:shadow-lg cursor-pointer max-w-[350px] md:max-w-[395px]" style="padding: 0;">
-          <div class="relative h-full">
-            <img src="{{ get_theme_file_uri('resources/images/blog1.png') }}" alt="La presión sobre artistas" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-            <div class="absolute top-3 left-3 text-white py-2 md:py-2.5 px-3 md:px-4 rounded-full text-center text-xs md:text-sm max-w-[190px] md:max-w-[201px]" style="background: #030D55B8;">
-              11 de marzo de 2025
-            </div>
-            <!-- Overlay gradient on the entire image -->
-            <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(171, 39, 122, 0.4) 0%, rgba(3, 13, 85, 0.4) 61%);"></div>
-            <!-- Content overlay at bottom -->
-            <div class="absolute bottom-0 left-0 right-0 p-3 md:p-4" style="padding-top: 20px; padding-right: 12px; padding-bottom: 20px; padding-left: 12px; @media (min-width: 768px) { padding-top: 24px; padding-right: 16px; padding-bottom: 24px; padding-left: 16px; }">
-              <div class="w-full flex flex-col gap-2 md:gap-4">
-                <h3 class="text-xl md:text-2xl font-bold text-white" style="font-family: 'Playfair Display', serif; font-weight: 700; line-height: 100%; letter-spacing: 0%;">
-                  La presión sobre artistas surcoreanos
-                </h3>
-                <p class="text-sm md:text-base text-white" style="font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 1.4; @media (min-width: 768px) { line-height: 1.7; }">
-                  La muerte de la actriz surcoreana Kim Sae-ron, de apenas 24 años, encontrada sin vida en su departamento el pasado domingo, volvió a encender...
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+        @php
+        $recent_args = array(
+            'post_type' => 'post',
+            'posts_per_page' => 3
+        );
+        $recent_posts = new WP_Query($recent_args);
+        @endphp
         
-        <!-- Artículo 2 -->
-        <div class="rounded-2xl overflow-hidden w-full h-[350px] md:h-[419px] mx-auto transition-transform duration-300 hover:transform hover:scale-105 hover:shadow-lg cursor-pointer max-w-[350px] md:max-w-[395px]" style="padding: 0;">
+        @if($recent_posts->have_posts())
+          @while($recent_posts->have_posts()) 
+            @php $recent_posts->the_post(); @endphp
+            <a href="{{ get_the_permalink() }}" class="rounded-2xl overflow-hidden w-full h-[350px] md:h-[419px] mx-auto transition-transform duration-300 hover:transform hover:scale-105 hover:shadow-lg cursor-pointer max-w-[350px] md:max-w-[395px]" style="padding: 0;">
           <div class="relative h-full">
-            <img src="{{ get_theme_file_uri('resources/images/blog2.png') }}" alt="Jorge López" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-            <div class="absolute top-3 left-3 text-white py-2 md:py-2.5 px-3 md:px-4 rounded-full text-center text-xs md:text-sm max-w-[190px] md:max-w-[201px]" style="background: #030D55B8;">
-              11 de marzo de 2025
+                @if(has_post_thumbnail())
+                  <img src="{{ get_the_post_thumbnail_url() }}" alt="{{ get_the_title() }}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                @else
+                  <img src="{{ get_theme_file_uri('resources/images/blog-default.jpg') }}" alt="{{ get_the_title() }}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                @endif
+                <div class="absolute top-3 left-3 text-white py-2 md:py-2.5 px-3 md:px-4 rounded-full text-center text-xs md:text-sm max-w-[190px] md:max-w-[201px]" style="background: #030D55B8;">
+                  {{ get_the_date() }}
             </div>
             <!-- Overlay gradient on the entire image -->
             <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(171, 39, 122, 0.4) 0%, rgba(3, 13, 85, 0.4) 61%);"></div>
             <!-- Content overlay at bottom -->
-            <div class="absolute bottom-0 left-0 right-0 p-3 md:p-4" style="padding-top: 20px; padding-right: 12px; padding-bottom: 20px; padding-left: 12px; @media (min-width: 768px) { padding-top: 24px; padding-right: 16px; padding-bottom: 24px; padding-left: 16px; }">
-              <div class="w-full flex flex-col gap-2 md:gap-4">
-                <h3 class="text-xl md:text-2xl font-bold text-white" style="font-family: 'Playfair Display', serif; font-weight: 700; line-height: 100%; letter-spacing: 0%;">
-                  Jorge López rechaza de plano el amor romántico
+                <div class="absolute bottom-0 left-0 right-0 p-3 md:p-4" style="padding-top: 20px; padding-right: 12px; padding-bottom: 20px; padding-left: 12px; @media (min-width: 768px) { padding-top: 24px; padding-right: 16px; padding-bottom: 24px; padding-left: 16px; }">
+                  <div class="w-full flex flex-col gap-2 md:gap-4">
+                    <h3 class="text-xl md:text-2xl font-bold text-white" style="font-family: 'Playfair Display', serif; font-weight: 700; line-height: 100%; letter-spacing: 0%;">
+                      {{ get_the_title() }}
                 </h3>
-                <p class="text-sm md:text-base text-white" style="font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 1.4; @media (min-width: 768px) { line-height: 1.7; }">
-                  Durante este pasado fin de semana, en el marco del cierre de las celebraciones del Festival de Viña 2025, el actor chileno radicado en España y jurado...
+                    <p class="text-sm md:text-base text-white" style="font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 1.4; @media (min-width: 768px) { line-height: 1.7; }">
+                      {{ get_the_excerpt() }}
                 </p>
               </div>
             </div>
-          </div>
-        </div>
-        
-        <!-- Artículo 3 -->
-        <div class="rounded-2xl overflow-hidden w-full h-[350px] md:h-[419px] mx-auto transition-transform duration-300 hover:transform hover:scale-105 hover:shadow-lg cursor-pointer max-w-[350px] md:max-w-[395px]" style="padding: 0;">
-          <div class="relative h-full">
-            <img src="{{ get_theme_file_uri('resources/images/blog3.png') }}" alt="El síndrome postvacacional" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-            <div class="absolute top-3 left-3 text-white py-2 md:py-2.5 px-3 md:px-4 rounded-full text-center text-xs md:text-sm max-w-[190px] md:max-w-[201px]" style="background: #030D55B8;">
-              11 de marzo de 2025
-            </div>
-            <!-- Overlay gradient on the entire image -->
-            <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(171, 39, 122, 0.4) 0%, rgba(3, 13, 85, 0.4) 61%);"></div>
-            <!-- Content overlay at bottom -->
-            <div class="absolute bottom-0 left-0 right-0 p-3 md:p-4" style="padding-top: 20px; padding-right: 12px; padding-bottom: 20px; padding-left: 12px; @media (min-width: 768px) { padding-top: 24px; padding-right: 16px; padding-bottom: 24px; padding-left: 16px; }">
-              <div class="w-full flex flex-col gap-2 md:gap-4">
-                <h3 class="text-xl md:text-2xl font-bold text-white" style="font-family: 'Playfair Display', serif; font-weight: 700; line-height: 100%; letter-spacing: 0%;">
-                  El síndrome postvacacional: cómo volver a la rutina sin estrés
-                </h3>
-                <p class="text-sm md:text-base text-white" style="font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 1.4; @media (min-width: 768px) { line-height: 1.7; }">
-                  Las vacaciones llegaron a su fin, el sol se escapó más temprano, las maletas se guardaron y el despertador vuelve a sonar. Llegó el momento de...
-                </p>
               </div>
-            </div>
-          </div>
-        </div>
+            </a>
+          @endwhile
+          @php wp_reset_postdata(); @endphp
+        @endif
       </div>
       
       <!-- Botón Ver más blogs -->
