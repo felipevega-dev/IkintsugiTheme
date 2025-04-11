@@ -1,5 +1,5 @@
 <!-- Header -->
-<header class="lg:absolute fixed left-4 right-4 z-50 transition-all duration-300" id="main-header">
+<header class="lg:absolute lg:top-0 fixed left-4 right-4 top-8 z-50 transition-all duration-300" id="main-header">
   <style>
     /* Comportamiento básico de submenu */
     .submenu-container {
@@ -98,16 +98,16 @@
     /* Estilo para el menú móvil */
     .mobile-menu {
       position: absolute;
-      top: 100%;
+      top: calc(100% + 5px);
       left: 0;
       right: 0;
       width: 100%;
       background: white;
-      transform: translateY(-100%);
+      transform: translateY(-120%);
       transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out, visibility 0s 0.3s;
       z-index: 50;
       box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
-      border-radius: 0 0 16px 16px;
+      border-radius: 16px;
       opacity: 0;
       visibility: hidden;
       overflow: hidden;
@@ -120,102 +120,12 @@
       transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out, visibility 0s;
     }
     
-    /* Decoración Kintsugi en el menú móvil */
-    .kintsugi-decoration {
-      position: absolute;
-      top: -2px;
-      left: 0;
-      right: 0;
-      height: 25px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 30' preserveAspectRatio='none'%3E%3Cpath d='M0,0 C50,10 100,25 150,15 C200,5 250,15 300,10 C350,5 400,15 450,20 C500,25 550,10 600,5 C650,0 700,10 750,15 C800,20 800,0 800,0 L0,0 Z' fill='%23FBD5E8' /%3E%3Cpath d='M150,0 C175,10 200,15 225,5 C250,0 260,12 275,15 C300,20 350,5 400,10 C450,15 500,5 550,10 C600,15 650,5 700,10 C750,15 775,0 800,0 L720,0 Z' fill='%23D93280' fill-opacity='0.4' /%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: center top;
-      z-index: 10;
-      pointer-events: none;
-    }
-    
-    /* Kintsugi líneas adicionales */
-    .kintsugi-lines {
-      position: absolute;
-      top: 20px;
-      left: 0;
-      right: 0;
-      height: 40px;
-      overflow: hidden;
-      z-index: 11;
-      pointer-events: none;
-    }
-    
-    .kintsugi-line {
-      position: absolute;
-      background: linear-gradient(90deg, rgba(217,50,128,0.2) 0%, rgba(217,50,128,0.6) 50%, rgba(251,213,232,0.4) 100%);
-      height: 2px;
-      border-radius: 1px;
-      box-shadow: 0 0 3px rgba(217,50,128,0.5);
-    }
-    
-    .kintsugi-line:nth-child(1) {
-      top: 5px;
-      left: 20%;
-      width: 180px;
-      transform: rotate(8deg);
-    }
-    
-    .kintsugi-line:nth-child(2) {
-      top: 15px;
-      left: 50%;
-      width: 150px;
-      transform: rotate(-5deg);
-    }
-    
-    .kintsugi-line:nth-child(3) {
-      top: 10px;
-      right: 25%;
-      width: 120px;
-      transform: rotate(12deg);
-    }
-    
-    .kintsugi-dot {
-      position: absolute;
-      background: radial-gradient(circle, rgba(217,50,128,0.8) 0%, rgba(217,50,128,0.1) 70%);
-      border-radius: 50%;
-      box-shadow: 0 0 4px rgba(217,50,128,0.6);
-    }
-    
-    /* Efecto de brillo en las líneas */
-    @keyframes kintsugiGlow {
-      0% {
-        opacity: 0.7;
-        box-shadow: 0 0 3px rgba(217,50,128,0.5);
-      }
-      50% {
-        opacity: 1;
-        box-shadow: 0 0 6px rgba(217,50,128,0.8);
-      }
-      100% {
-        opacity: 0.7;
-        box-shadow: 0 0 3px rgba(217,50,128,0.5);
-      }
-    }
-    
-    .mobile-menu.active .kintsugi-line {
-      animation: kintsugiGlow 3s infinite ease-in-out;
-    }
-    
-    .mobile-menu.active .kintsugi-line:nth-child(1) {
-      animation-delay: 0.3s;
-    }
-    
-    .mobile-menu.active .kintsugi-line:nth-child(2) {
-      animation-delay: 1.2s;
-    }
-    
-    .mobile-menu.active .kintsugi-line:nth-child(3) {
-      animation-delay: 0.8s;
-    }
-    
-    .mobile-menu.active .kintsugi-dot {
-      animation: kintsugiGlow 2.5s infinite ease-in-out;
+    /* Logo en móvil */
+    .mobile-logo {
+      height: 30px;
+      width: auto;
+      display: block;
+      margin: 0 auto;
     }
     
     /* Animación para los submenús móviles */
@@ -287,6 +197,13 @@
       border-radius: 16px;
       transition: all 0.3s ease;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* Modificar el contenedor principal del header móvil */
+    @media (max-width: 1023px) {
+      .header-container {
+        background-color: white !important;
+      }
     }
   </style>
   <div class="container mx-auto px-4">
@@ -545,7 +462,7 @@
               <img 
                 src="{{ get_theme_file_uri('resources/images/kintsugi-hero.png') }}" 
                 alt="Kintsugi Logo" 
-                class="h-10 w-auto"
+                class="h-auto w-auto mobile-logo"
               >
             </a>
           </div>
@@ -575,23 +492,10 @@
         
         <!-- Menú móvil (se desliza desde el header) -->
         <div class="mobile-menu w-full" id="mobile-menu">
-          <div class="bg-white shadow-md rounded-b-xl overflow-hidden">
-            <!-- Decoración estilo Kintsugi -->
-            <div class="kintsugi-decoration"></div>
-            
-            <!-- Líneas de Kintsugi -->
-            <div class="kintsugi-lines">
-              <div class="kintsugi-line"></div>
-              <div class="kintsugi-line"></div>
-              <div class="kintsugi-line"></div>
-              <div class="kintsugi-dot" style="width: 10px; height: 10px; top: 5px; left: 32%;"></div>
-              <div class="kintsugi-dot" style="width: 6px; height: 6px; top: 15px; left: 58%;"></div>
-              <div class="kintsugi-dot" style="width: 8px; height: 8px; top: 8px; right: 30%;"></div>
-            </div>
-            
-            <div class="p-4 pt-8">
+          <div class="bg-white shadow-md rounded-xl overflow-hidden">
+            <div class="p-4 pt-4">
               <!-- Botón Reservar Cita centrado -->
-              <div class="flex justify-center mb-4 mt-3">
+              <div class="flex justify-center mb-4">
                 <a href="{{ home_url('/reservar-cita') }}" 
                   class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 
                         text-white px-6 py-2 rounded-full font-medium transition-all 
@@ -601,7 +505,7 @@
                 </a>
               </div>
               
-              <nav class="mt-4 max-h-[70vh] overflow-y-auto">
+              <nav class="mt-2 max-h-[70vh] overflow-y-auto">
                 <div class="space-y-1">
                   <!-- Enlaces del menú móvil -->
         <a href="{{ home_url('/') }}" 
@@ -612,36 +516,8 @@
                   transition-colors duration-300">
           Inicio
         </a>
-                  
-        <a href="{{ home_url('/a-quienes-atendemos') }}" 
-                    class="block py-3 border-b border-gray-100 text-gray-900 font-roboto
-                  {{ (strpos($current_url, 'a-quienes-atendemos') !== false) 
-                            ? 'menu-active-highlight' 
-                     : 'hover:text-[#D93280]' }} 
-                  transition-colors duration-300">
-          ¿A quiénes atendemos?
-        </a>
-                  
-        <a href="{{ home_url('/charlas-y-talleres') }}" 
-                    class="block py-3 border-b border-gray-100 text-gray-900 font-roboto
-                  {{ (strpos($current_url, 'charlas-y-talleres') !== false) 
-                            ? 'menu-active-highlight' 
-                     : 'hover:text-[#D93280]' }} 
-                  transition-colors duration-300">
-          Charlas y talleres
-        </a>
-                  
-        <a href="{{ home_url('/faqs') }}" 
-                    class="block py-3 border-b border-gray-100 text-gray-900 font-roboto
-                  {{ (strpos($current_url, 'faqs') !== false) 
-                            ? 'menu-active-highlight' 
-                     : 'hover:text-[#D93280]' }} 
-                  transition-colors duration-300">
-          FAQ'S
-        </a>
-
-                  <!-- Menú desplegable para Quiénes somos -->
-                  <div class="border-b border-gray-100">
+        <!-- Menú desplegable para Quiénes somos -->
+        <div class="border-b border-gray-100">
                     <div class="flex justify-between items-center py-3 cursor-pointer" id="quienes-somos-toggle">
           <a href="{{ home_url('/quienes-somos') }}" 
                         class="text-gray-900 font-roboto
@@ -737,6 +613,33 @@
                       </a>
             </div>
           </div>
+                  
+        <a href="{{ home_url('/a-quienes-atendemos') }}" 
+                    class="block py-3 border-b border-gray-100 text-gray-900 font-roboto
+                  {{ (strpos($current_url, 'a-quienes-atendemos') !== false) 
+                            ? 'menu-active-highlight' 
+                     : 'hover:text-[#D93280]' }} 
+                  transition-colors duration-300">
+          ¿A quiénes atendemos?
+        </a>
+                  
+        <a href="{{ home_url('/charlas-y-talleres') }}" 
+                    class="block py-3 border-b border-gray-100 text-gray-900 font-roboto
+                  {{ (strpos($current_url, 'charlas-y-talleres') !== false) 
+                            ? 'menu-active-highlight' 
+                     : 'hover:text-[#D93280]' }} 
+                  transition-colors duration-300">
+          Charlas y talleres
+        </a>
+                  
+        <a href="{{ home_url('/faqs') }}" 
+                    class="block py-3 border-b border-gray-100 text-gray-900 font-roboto
+                  {{ (strpos($current_url, 'faqs') !== false) 
+                            ? 'menu-active-highlight' 
+                     : 'hover:text-[#D93280]' }} 
+                  transition-colors duration-300">
+          FAQ'S
+        </a>
         
         <a href="{{ home_url('/prensa-y-social') }}" 
                     class="block py-3 border-b border-gray-100 text-gray-900 font-roboto
@@ -847,8 +750,8 @@
         // Esperar a que todos los estilos se hayan aplicado
         setTimeout(() => {
           const headerHeight = header.offsetHeight;
-          // Agregar 16px extra para el margen (top-4)
-          document.body.style.paddingTop = `${headerHeight + 16}px`;
+          // Agregar pequeño margen para el header
+          document.body.style.paddingTop = `${headerHeight + 4}px`;
         }, 100);
       }
     }
