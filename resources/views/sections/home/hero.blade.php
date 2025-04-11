@@ -1,5 +1,5 @@
 <!-- Hero Section -->
-<section class="relative bg-[#362766] overflow-hidden pt-32">
+<section class="relative bg-[#362766] overflow-hidden pt-0">
   <!-- Video de fondo con overlay -->
   <div class="absolute inset-0 z-0">
     <div class="absolute inset-0 bg-[#362766] opacity-70 z-10"></div>
@@ -17,8 +17,8 @@
   </div>
 
   <!-- Contenido del hero -->
-  <div class="container mx-auto px-4 relative z-10 min-h-[80vh] flex flex-col justify-center items-center">
-    <div class="max-w-3xl mx-auto text-center text-white py-20 md:py-24 lg:py-26">
+  <div class="container mx-auto px-4 relative z-10 min-h-[100vh] flex flex-col justify-center items-center">
+    <div class="max-w-3xl mx-auto text-center text-white py-40 md:py-48 lg:py-52">
       <h2 class="text-xl md:text-2xl font-500 mb-5">Psicología Clínica EMDR</h2>
       <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 font-playfair" style="font-family: 'Playfair Display', serif;">El Trauma se puede superar!</h1>
       <a href="/reservar-cita" class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 
