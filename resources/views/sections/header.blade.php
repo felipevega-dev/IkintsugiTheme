@@ -196,7 +196,7 @@
       -webkit-backdrop-filter: blur(5px);
       border-radius: 16px;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      box-shadow: 0px 4px 10.8px 0px #5C08874D;
     }
     
     /* Modificar el contenedor principal del header móvil */
@@ -322,9 +322,9 @@
               Charlas y talleres
             </a>
             
-            <a href="{{ home_url('/faqs') }}" 
+            <a href="{{ home_url('/preguntas-frecuentes') }}" 
                class="text-gray-900 font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
-                      {{ (strpos($current_url, 'faqs') !== false) 
+                      {{ (strpos($current_url, 'preguntas-frecuentes') !== false) 
                          ? 'border-[#D93280] font-bold' 
                          : 'border-transparent hover:border-[#D93280]' }} 
                       transition-all duration-300">
@@ -722,7 +722,7 @@
           headerContainer.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
           headerContainer.style.backdropFilter = 'blur(5px)';
           headerContainer.style.webkitBackdropFilter = 'blur(5px)';
-          headerContainer.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.05)';
+          headerContainer.style.boxShadow = '0px 4px 10.8px 0px #5C08874D';
         }
       } else {
         header.classList.remove('header-scrolled');
@@ -730,7 +730,7 @@
           headerContainer.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
           headerContainer.style.backdropFilter = 'blur(5px)';
           headerContainer.style.webkitBackdropFilter = 'blur(5px)';
-          headerContainer.style.boxShadow = 'none';
+          headerContainer.style.boxShadow = '0px 4px 10.8px 0px #5C08874D';
         }
       }
     }
