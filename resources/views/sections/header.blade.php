@@ -98,7 +98,7 @@
       width: 100%;
       background: white;
       transform: translateY(-100%);
-      transition: all 0.3s ease-in-out;
+      transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out, visibility 0s 0.3s;
       z-index: 50;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       border-radius: 0 0 16px 16px;
@@ -111,6 +111,7 @@
       transform: translateY(0);
       opacity: 1;
       visibility: visible;
+      transition: transform 0.3s ease-in-out, opacity 0.2s ease-in-out, visibility 0s;
     }
     
     /* Animación para los submenús móviles */
@@ -134,12 +135,18 @@
       border-radius: 50%;
       background-color: #FBD5E8;
       color: #D93280;
-      transition: all 0.2s ease;
+      transition: all 0.2s ease, opacity 0.2s ease, visibility 0s;
     }
     
     .close-button:hover {
       background-color: #D93280;
       color: white;
+    }
+    
+    /* Posicionamiento del botón X */
+    #mobile-menu-close {
+      z-index: 60;
+      transition: opacity 0.2s ease, visibility 0s;
     }
     
     /* Highlight para página activa en móvil */
@@ -392,6 +399,9 @@
       <!-- Versión móvil y tablet: Logo centrado con botón de menú -->
       <div class="flex lg:hidden">
         <div class="flex items-center justify-between w-full px-4">
+          <!-- Espacio vacío a la izquierda para mantener el logo centrado -->
+          <div class="flex-1"></div>
+          
           <!-- Logo en móvil -->
           <div class="flex-1 flex justify-center">
             <a href="{{ home_url('/') }}">
@@ -403,21 +413,35 @@
             </a>
           </div>
           
-          <!-- Botón de menú móvil integrado en el header -->
-          <button class="text-[#D93280] p-2 rounded-full hover:bg-[#FBD5E8] hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center" 
+          <!-- Contenedor para botones del menú (hamburguesa y X) -->
+          <div class="flex-1 flex justify-end relative">
+            <!-- Botón de hamburguesa -->
+            <button class="text-[#D93280] p-2 rounded-full hover:bg-[#FBD5E8] hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center" 
                   id="mobile-menu-button">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                    d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          </button>
+              <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+            
+            <!-- Botón X (inicialmente oculto) -->
+            <button class="absolute top-0 right-0 close-button opacity-0 invisible" 
+                    id="mobile-menu-close">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" 
+                      stroke-width="2" 
+                      d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </button>
+          </div>
         </div>
         
         <!-- Menú móvil (se desliza desde el header) -->
         <div class="mobile-menu w-full" id="mobile-menu">
           <div class="bg-white shadow-md rounded-b-xl overflow-hidden">
             <div class="p-4">
-              <div class="flex justify-center items-center border-b border-gray-100 pb-3 relative">
+              <!-- Botón Reservar Cita centrado -->
+              <div class="flex justify-center mb-4">
                 <a href="{{ home_url('/reservar-cita') }}" 
                   class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 
                         text-white px-6 py-2 rounded-full font-medium transition-all 
@@ -425,13 +449,6 @@
                         font-roboto text-sm">
                   Reservar Cita
                 </a>
-                <button class="close-button absolute right-0" id="mobile-menu-close">
-                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" 
-                          stroke-width="2" 
-                          d="M6 18L18 6M6 6l12 12"></path>
-                  </svg>
-                </button>
               </div>
               
               <nav class="mt-4 max-h-[70vh] overflow-y-auto">
@@ -663,29 +680,37 @@
     handleScroll();
     
     // Función para abrir el menú móvil
-    function openMobileMenu() {
-      // Mostrar la animación del menú
-      menuButton.style.display = 'none';
+    function openMobileMenu(e) {
+      e.preventDefault();
       
-      // Resetear primero para asegurar que la animación funcione siempre
-      mobileMenu.style.transition = 'all 0.3s ease-in-out';
+      // Asegurar que la transición sea inmediata
+      mobileMenu.style.transition = 'transform 0.3s ease-in-out, opacity 0.2s ease-in-out, visibility 0s';
+      
+      // Cambiar visibilidad de botones (menú a X)
+      menuButton.style.opacity = '0';
+      menuButton.style.visibility = 'hidden';
+      menuClose.style.opacity = '1';
+      menuClose.style.visibility = 'visible';
       
       // Activar el menú
       mobileMenu.classList.add('active');
     }
     
     // Función para cerrar el menú móvil
-    function closeMobileMenu() {
-      // Asegurar que la transición esté activada
-      mobileMenu.style.transition = 'all 0.3s ease-in-out';
+    function closeMobileMenu(e) {
+      e.preventDefault();
+      
+      // Asegurar que la transición sea inmediata
+      mobileMenu.style.transition = 'transform 0.3s ease-in-out, opacity 0.2s ease-in-out, visibility 0s 0.3s';
       
       // Animar el cierre
       mobileMenu.classList.remove('active');
       
-      // Mostrar nuevamente el botón del menú después de la animación
-      setTimeout(() => {
-        menuButton.style.display = 'flex';
-      }, 300);
+      // Cambiar visibilidad de botones (X a menú)
+      menuButton.style.opacity = '1';
+      menuButton.style.visibility = 'visible';
+      menuClose.style.opacity = '0';
+      menuClose.style.visibility = 'hidden';
     }
     
     // Función para alternar los submenús
@@ -706,8 +731,6 @@
     
     // Inicializar los controladores de eventos
     if (menuButton && mobileMenu && menuClose) {
-      menuButton.style.display = 'flex';
-      
       menuButton.addEventListener('click', openMobileMenu);
       menuClose.addEventListener('click', closeMobileMenu);
       
