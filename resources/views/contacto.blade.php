@@ -104,7 +104,7 @@
           <div class="contact-form-container">
             @php
             // Asegúrate de reemplazar '123' con el ID real de tu formulario
-            echo do_shortcode('[contact-form-7 id="123" title="Formulario de contacto"]');
+            echo do_shortcode('[contact-form-7 id="4655e97" title="Formulario de contacto"]');
             @endphp
           </div>
           
