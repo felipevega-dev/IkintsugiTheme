@@ -82,6 +82,57 @@
       color: #D93280;
       font-weight: bold;
     }
+    
+    /* Estilo para el menú móvil */
+    .mobile-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 50;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 0 0 16px 16px;
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .mobile-menu.active {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    /* Animación para los submenús móviles */
+    .mobile-submenu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-in-out;
+    }
+    
+    .mobile-submenu.active {
+      max-height: 500px; /* Valor suficientemente grande para mostrar todos los ítems */
+    }
+    
+    /* Botón de cerrar menú */
+    .close-button {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: #FBD5E8;
+      color: #D93280;
+      transition: all 0.2s ease;
+    }
+    
+    .close-button:hover {
+      background-color: #D93280;
+      color: white;
+    }
   </style>
   <div class="container mx-auto px-4">
     @php
@@ -321,10 +372,10 @@
         </div>
       </div>
 
-      <!-- Versión móvil y tablet: Logo centrado -->
-      <div class="flex flex-col lg:hidden">
-        <div class="flex items-center justify-between px-4">
-          <!-- Logo centrado en móvil -->
+      <!-- Versión móvil y tablet: Logo centrado con botón de menú -->
+      <div class="flex lg:hidden">
+        <div class="flex items-center justify-between w-full px-4">
+          <!-- Logo en móvil -->
           <div class="flex-1 flex justify-center">
             <a href="{{ home_url('/') }}">
               <img 
@@ -335,233 +386,216 @@
             </a>
           </div>
           
-          <!-- Redes sociales en fila para tablets (visibles solo en md) -->
-          <div class="hidden md:block md:flex-1 md:flex md:justify-end">
-            <div class="flex items-center space-x-3">
-              <a href="#" class="text-[#362766] hover:text-[#D93280] transition-all duration-300">
-                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/>
-                </svg>
-              </a>
-              <a href="#" class="text-[#362766] hover:text-[#D93280] transition-all duration-300">
-                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/>
-                </svg>
-              </a>
-              <a href="#" class="text-[#362766] hover:text-[#D93280] transition-all duration-300">
-                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418Z" clip-rule="evenodd"/>
-                </svg>
-              </a>
-            </div>
-          </div>
+          <!-- Botón de menú móvil integrado en el header -->
+          <button class="text-[#D93280] p-2 rounded-full transition-all duration-300" 
+                  id="mobile-menu-button">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
         </div>
         
-        <!-- Botón de reservar cita en tablet (escondido en móvil pequeño) -->
-        <div class="hidden sm:flex justify-center my-4">
-          <a href="{{ home_url('/reservar-cita') }}" 
-             class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 
-                    text-white px-6 py-2 rounded-full font-medium transition-all 
-                    duration-300 transform hover:scale-105 shadow-md hover:shadow-lg 
-                    font-roboto">
-            Reservar Cita
-          </a>
+        <!-- Menú móvil (se desliza desde el header) -->
+        <div class="mobile-menu" id="mobile-menu">
+          <div class="bg-white shadow-md overflow-hidden">
+            <div class="p-4">
+              <div class="flex justify-between items-center border-b border-gray-100 pb-3">
+                <a href="{{ home_url('/reservar-cita') }}" 
+                  class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 
+                        text-white px-4 py-2 rounded-full font-medium transition-all 
+                        duration-300 transform hover:scale-105 shadow-md hover:shadow-lg 
+                        font-roboto text-sm">
+                  Reservar Cita
+                </a>
+                <button class="close-button" id="mobile-menu-close">
+                  <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" 
+                          stroke-width="2" 
+                          d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                </button>
+              </div>
+              
+              <nav class="mt-4 max-h-[70vh] overflow-y-auto">
+                <div class="space-y-1">
+                  <!-- Enlaces del menú móvil -->
+                  <a href="{{ home_url('/') }}" 
+                    class="block py-3 border-b border-gray-100 text-gray-900 font-roboto
+                          {{ ($current_url == home_url('/')) 
+                            ? 'text-[#D93280] font-semibold' 
+                            : 'hover:text-[#D93280]' }} 
+                          transition-colors duration-300">
+                    Inicio
+                  </a>
+                  
+                  <!-- Menú desplegable para Quiénes somos -->
+                  <div class="border-b border-gray-100">
+                    <div class="flex justify-between items-center py-3 cursor-pointer" id="quienes-somos-toggle">
+                      <a href="{{ home_url('/quienes-somos') }}" 
+                        class="text-gray-900 font-roboto
+                              {{ (strpos($current_url, 'quienes-somos') !== false || 
+                                strpos($current_url, 'que-significa-kintsugi') !== false || 
+                                strpos($current_url, 'que-nos-inspira') !== false || 
+                                strpos($current_url, 'divulgacion-cientifica') !== false || 
+                                strpos($current_url, 'evidencia-cientifica') !== false) 
+                                ? 'text-[#D93280] font-semibold' 
+                                : 'hover:text-[#D93280]' }}">
+                        ¿Quiénes somos?
+                      </a>
+                      <button class="text-[#D93280] bg-[#FBD5E8] bg-opacity-50 p-1 rounded-full transition-transform duration-300" id="quienes-somos-icon">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                      </button>
+                    </div>
+                    
+                    <!-- Submenú (inicialmente oculto) -->
+                    <div class="mobile-submenu bg-gray-50 rounded-lg mt-1 mb-2" id="quienes-somos-submenu">
+                      <a href="{{ home_url('/que-significa-kintsugi') }}" 
+                        class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                              {{ (strpos($current_url, 'que-significa-kintsugi') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+                        Qué significa Kintsugi
+                      </a>
+                      <a href="{{ home_url('/que-nos-inspira') }}" 
+                        class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                              {{ (strpos($current_url, 'que-nos-inspira') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+                        Qué nos inspira
+                      </a>
+                      <a href="{{ home_url('/divulgacion-cientifica') }}" 
+                        class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                              {{ (strpos($current_url, 'divulgacion-cientifica') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+                        Divulgación Científica
+                      </a>
+                      <a href="{{ home_url('/evidencia-cientifica') }}" 
+                        class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                              {{ (strpos($current_url, 'evidencia-cientifica') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+                        Evidencia Científica
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <!-- Menú desplegable para EMDR -->
+                  <div class="border-b border-gray-100">
+                    <div class="flex justify-between items-center py-3 cursor-pointer" id="emdr-toggle">
+                      <a href="{{ home_url('/psicoterapia-emdr') }}" 
+                        class="text-gray-900 font-roboto
+                              {{ (strpos($current_url, 'psicoterapia-emdr') !== false || 
+                                strpos($current_url, 'testimonios') !== false || 
+                                strpos($current_url, 'beneficios-emdr') !== false || 
+                                strpos($current_url, 'tratamiento-emdr') !== false ||
+                                strpos($current_url, 'que-esperar') !== false ||
+                                strpos($current_url, 'transtornos-y-malestares') !== false) 
+                                ? 'text-[#D93280] font-semibold' 
+                                : 'hover:text-[#D93280]' }}">
+                        Psicoterapia EMDR
+                      </a>
+                      <button class="text-[#D93280] bg-[#FBD5E8] bg-opacity-50 p-1 rounded-full transition-transform duration-300" id="emdr-icon">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                      </button>
+                    </div>
+                    
+                    <!-- Submenú (inicialmente oculto) -->
+                    <div class="mobile-submenu bg-gray-50 rounded-lg mt-1 mb-2" id="emdr-submenu">
+                      <a href="{{ home_url('/testimonios') }}" 
+                        class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                              {{ (strpos($current_url, 'testimonios') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+                        Testimonios
+                      </a>
+                      <a href="{{ home_url('/beneficios-emdr') }}" 
+                        class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                              {{ (strpos($current_url, 'beneficios-emdr') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+                        Beneficios del EMDR
+                      </a>
+                      <a href="{{ home_url('/tratamiento-emdr') }}" 
+                        class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                              {{ (strpos($current_url, 'tratamiento-emdr') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+                        ¿Qué ocurre durante el tratamiento EMDR?
+                      </a>
+                      <a href="{{ home_url('/que-esperar') }}" 
+                        class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                              {{ (strpos($current_url, 'que-esperar') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+                        ¿Que esperar de la Psicoterapia?
+                      </a>
+                      <a href="{{ home_url('/transtornos-y-malestares') }}" 
+                        class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                              {{ (strpos($current_url, 'transtornos-y-malestares') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+                        Transtornos y malestares
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <!-- Enlaces restantes -->
+                  <a href="{{ home_url('/a-quienes-atendemos') }}" 
+                    class="block py-3 border-b border-gray-100 text-gray-900 font-roboto
+                          {{ (strpos($current_url, 'a-quienes-atendemos') !== false) 
+                            ? 'text-[#D93280] font-semibold' 
+                            : 'hover:text-[#D93280]' }} 
+                          transition-colors duration-300">
+                    ¿A quiénes atendemos?
+                  </a>
+                  <a href="{{ home_url('/charlas-y-talleres') }}" 
+                    class="block py-3 border-b border-gray-100 text-gray-900 font-roboto
+                          {{ (strpos($current_url, 'charlas-y-talleres') !== false) 
+                            ? 'text-[#D93280] font-semibold' 
+                            : 'hover:text-[#D93280]' }} 
+                          transition-colors duration-300">
+                    Charlas y talleres
+                  </a>
+                  <a href="{{ home_url('/faqs') }}" 
+                    class="block py-3 border-b border-gray-100 text-gray-900 font-roboto
+                          {{ (strpos($current_url, 'faqs') !== false) 
+                            ? 'text-[#D93280] font-semibold' 
+                            : 'hover:text-[#D93280]' }} 
+                          transition-colors duration-300">
+                    FAQ'S
+                  </a>
+                  <a href="{{ home_url('/prensa-y-social') }}" 
+                    class="block py-3 border-b border-gray-100 text-gray-900 font-roboto
+                          {{ (strpos($current_url, 'prensa-y-social') !== false) 
+                            ? 'text-[#D93280] font-semibold' 
+                            : 'hover:text-[#D93280]' }} 
+                          transition-colors duration-300">
+                    Prensa y social media
+                  </a>
+                  <a href="{{ home_url('/contacto') }}" 
+                    class="block py-3 text-gray-900 font-roboto
+                          {{ (strpos($current_url, 'contacto') !== false) 
+                            ? 'text-[#D93280] font-semibold' 
+                            : 'hover:text-[#D93280]' }} 
+                          transition-colors duration-300">
+                    Contacto
+                  </a>
+                </div>
+              </nav>
+              
+              <!-- Redes sociales en el menú móvil -->
+              <div class="mt-6 flex justify-center space-x-4 border-t border-gray-100 pt-4">
+                <a href="https://www.instagram.com/instituto_kintsugi/" aria-label="Instagram" class="text-[#362766] hover:text-[#D93280] transition-all duration-300">
+                  <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/>
+                  </svg>
+                </a>
+                <a href="https://www.facebook.com/Ikintsugi/" aria-label="Facebook" class="text-[#362766] hover:text-[#D93280] transition-all duration-300">
+                  <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/>
+                  </svg>
+                </a>
+                <a href="https://www.youtube.com/@emisorkintsugi" aria-label="YouTube" class="text-[#362766] hover:text-[#D93280] transition-all duration-300">
+                  <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </header>
-
-<!-- Botón de menú móvil (sólo en pantallas pequeñas) -->
-<div class="fixed bottom-4 right-4 lg:hidden z-50">
-  <button class="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-3 rounded-full shadow-lg 
-                 transition-all duration-300 transform hover:scale-110" 
-          id="mobile-menu-button">
-    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-            d="M4 6h16M4 12h16M4 18h16"></path>
-    </svg>
-  </button>
-</div>
-
-<!-- Menú móvil (overlay oculto por defecto) -->
-<div class="fixed inset-0 bg-black bg-opacity-75 z-40 hidden" id="mobile-menu">
-  <div class="h-full w-full flex items-center justify-center">
-    <div class="bg-white rounded-lg p-8 max-w-sm w-full mx-4">
-      <div class="flex justify-between items-center mb-6">
-        <h2 class="text-xl font-bold text-[#362766] font-roboto">Menú</h2>
-        <button class="text-gray-700 hover:text-[#D93280] transition-all duration-300 transform hover:scale-110" 
-                id="mobile-menu-close">
-          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" 
-                  stroke-width="2" 
-                  d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-      </div>
-      <nav class="flex flex-col space-y-4">
-        <!-- Enlaces móviles, mismo orden que en desktop -->
-        <a href="{{ home_url('/') }}" 
-           class="text-gray-900 font-roboto py-2 border-b border-gray-200 
-                  {{ ($current_url == home_url('/')) 
-                     ? 'text-[#D93280] font-bold' 
-                     : 'hover:text-[#D93280]' }} 
-                  transition-colors duration-300">
-          Inicio
-        </a>
-        <!-- Menú desplegable móvil para Quiénes somos -->
-        <div class="py-2 border-b border-gray-200">
-          <a href="{{ home_url('/quienes-somos') }}" 
-             class="text-gray-900 font-roboto flex justify-between items-center w-full
-                    {{ (strpos($current_url, 'quienes-somos') !== false || 
-                        strpos($current_url, 'que-significa-kintsugi') !== false || 
-                        strpos($current_url, 'que-nos-inspira') !== false || 
-                        strpos($current_url, 'divulgacion-cientifica') !== false || 
-                        strpos($current_url, 'evidencia-cientifica') !== false) 
-                       ? 'text-[#D93280] font-bold' 
-                       : 'hover:text-[#D93280]' }} 
-                    transition-colors duration-300 mb-2">
-            <span>¿Quiénes somos?</span>
-            <span class="transform rotate-0 transition-transform duration-300 p-1 rounded-full bg-[#FBD5E8] bg-opacity-50 ml-2" id="quienes-somos-icon">
-              <svg class="h-4 w-4 text-[#D93280]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-              </svg>
-            </span>
-          </a>
-          <!-- Submenú móvil (inicialmente oculto) -->
-          <div class="pl-4 hidden overflow-hidden transition-all duration-300 max-h-0 group-hover:max-h-[200px]" id="quienes-somos-submenu" style="background-color: rgba(251, 213, 232, 0.2);">
-            <div class="py-2 rounded-lg">
-              <a href="{{ home_url('/que-significa-kintsugi') }}" 
-                 class="block py-2 px-3 my-1 rounded-lg text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
-                        {{ (strpos($current_url, 'que-significa-kintsugi') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-bold' : '' }}">
-                Qué significa Kintsugi
-              </a>
-              <a href="{{ home_url('/que-nos-inspira') }}" 
-                 class="block py-2 px-3 my-1 rounded-lg text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
-                        {{ (strpos($current_url, 'que-nos-inspira') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-bold' : '' }}">
-                Qué nos inspira
-              </a>
-              <a href="{{ home_url('/divulgacion-cientifica') }}" 
-                 class="block py-2 px-3 my-1 rounded-lg text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
-                        {{ (strpos($current_url, 'divulgacion-cientifica') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-bold' : '' }}">
-                Divulgación Científica
-              </a>
-              <a href="{{ home_url('/evidencia-cientifica') }}" 
-                 class="block py-2 px-3 my-1 rounded-lg text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
-                        {{ (strpos($current_url, 'evidencia-cientifica') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-bold' : '' }}">
-                Evidencia Científica
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- Menú desplegable móvil para EMDR -->
-        <div class="py-2 border-b border-gray-200">
-          <a href="{{ home_url('/psicoterapia-emdr') }}" 
-             class="text-gray-900 font-roboto flex justify-between items-center w-full
-                    {{ (strpos($current_url, 'psicoterapia-emdr') !== false || strpos($current_url, 'testimonios') !== false || strpos($current_url, 'beneficios-emdr') !== false || strpos($current_url, 'tratamiento-emdr') !== false || strpos($current_url, 'que-esperar') !== false) 
-                       ? 'text-[#D93280] font-bold' 
-                       : 'hover:text-[#D93280]' }} 
-                    transition-colors duration-300 mb-2">
-            <span>Psicoterapia EMDR</span>
-            <span class="transform rotate-0 transition-transform duration-300 p-1 rounded-full bg-[#FBD5E8] bg-opacity-50 ml-2" id="emdr-icon">
-              <svg class="h-4 w-4 text-[#D93280]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-              </svg>
-            </span>
-          </a>
-          <!-- Submenú móvil EMDR (inicialmente oculto) -->
-          <div class="pl-4 hidden overflow-hidden transition-all duration-300 max-h-0 group-hover:max-h-[200px]" id="emdr-submenu" style="background-color: rgba(251, 213, 232, 0.2);">
-            <div class="py-2 rounded-lg">
-              <a href="{{ home_url('/testimonios') }}" 
-                 class="block py-2 px-3 my-1 rounded-lg text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
-                        {{ (strpos($current_url, 'testimonios') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-bold' : '' }}">
-                Testimonios
-              </a>
-              <a href="{{ home_url('/beneficios-emdr') }}" 
-                 class="block py-2 px-3 my-1 rounded-lg text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
-                        {{ (strpos($current_url, 'beneficios-emdr') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-bold' : '' }}">
-                Beneficios del EMDR
-              </a>
-              <a href="{{ home_url('/tratamiento-emdr') }}" 
-                 class="block py-2 px-3 my-1 rounded-lg text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
-                        {{ (strpos($current_url, 'tratamiento-emdr') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-bold' : '' }}">
-                ¿Qué ocurre durante el tratamiento EMDR?
-              </a>
-            </div>
-          </div>
-        </div>
-        <a href="{{ home_url('/a-quienes-atendemos') }}" 
-           class="text-gray-900 font-roboto py-2 border-b border-gray-200 
-                  {{ (strpos($current_url, 'a-quienes-atendemos') !== false) 
-                     ? 'text-[#D93280] font-bold' 
-                     : 'hover:text-[#D93280]' }} 
-                  transition-colors duration-300">
-          ¿A quiénes atendemos?
-        </a>
-        <a href="{{ home_url('/charlas-y-talleres') }}" 
-           class="text-gray-900 font-roboto py-2 border-b border-gray-200 
-                  {{ (strpos($current_url, 'charlas-y-talleres') !== false) 
-                     ? 'text-[#D93280] font-bold' 
-                     : 'hover:text-[#D93280]' }} 
-                  transition-colors duration-300">
-          Charlas y talleres
-        </a>
-        <a href="{{ home_url('/faqs') }}" 
-           class="text-gray-900 font-roboto py-2 border-b border-gray-200 
-                  {{ (strpos($current_url, 'faqs') !== false) 
-                     ? 'text-[#D93280] font-bold' 
-                     : 'hover:text-[#D93280]' }} 
-                  transition-colors duration-300">
-          FAQ'S
-        </a>
-        <a href="{{ home_url('/prensa-y-social') }}" 
-           class="text-gray-900 font-roboto py-2 border-b border-gray-200 
-                  {{ (strpos($current_url, 'prensa-y-social') !== false) 
-                     ? 'text-[#D93280] font-bold' 
-                     : 'hover:text-[#D93280]' }} 
-                  transition-colors duration-300">
-          Prensa y social media
-        </a>
-        <a href="{{ home_url('/contacto') }}" 
-           class="text-gray-900 font-roboto py-2 
-                  {{ (strpos($current_url, 'contacto') !== false) 
-                     ? 'text-[#D93280] font-bold' 
-                     : 'hover:text-[#D93280]' }} 
-                  transition-colors duration-300">
-          Contacto
-        </a>
-      </nav>
-      <div class="mt-6">
-        <a href="{{ home_url('/reservar-cita') }}" 
-           class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 
-                  text-white px-4 py-2 rounded-full font-medium transition-all 
-                  duration-300 transform hover:scale-105 shadow-md hover:shadow-lg 
-                  font-roboto block text-center">
-          Reservar Cita
-        </a>
-      </div>
-      
-      <!-- Redes sociales en el menú móvil -->
-      <div class="mt-6 flex justify-center space-x-4">
-        <a href="#" class="text-[#362766] hover:text-[#D93280] transition-all duration-300">
-          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/>
-          </svg>
-        </a>
-        <a href="#" class="text-[#362766] hover:text-[#D93280] transition-all duration-300">
-          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"/>
-          </svg>
-        </a>
-        <a href="#" class="text-[#362766] hover:text-[#D93280] transition-all duration-300">
-          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418Z" clip-rule="evenodd"/>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Script para controlar el menú móvil -->
 <script>
@@ -571,55 +605,54 @@
     const mobileMenu = document.getElementById('mobile-menu');
     
     // Elementos para el submenú de Quiénes Somos
-    const quienesSomosLink = document.querySelector('a[href*="quienes-somos"] + span');
+    const quienesSomosToggle = document.getElementById('quienes-somos-toggle');
     const quienesSomosIcon = document.getElementById('quienes-somos-icon');
     const quienesSomosSubmenu = document.getElementById('quienes-somos-submenu');
     
     // Elementos para el submenú de EMDR
-    const emdrLink = document.querySelector('a[href*="psicoterapia-emdr"] + span');
+    const emdrToggle = document.getElementById('emdr-toggle');
     const emdrIcon = document.getElementById('emdr-icon');
     const emdrSubmenu = document.getElementById('emdr-submenu');
     
-    // Función para manejar el clic en los menús desplegables
-    function setupDropdownMenu(icon, submenu) {
-      if (icon && submenu) {
-        icon.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          
-          // Alternar la rotación del icono
-          icon.classList.toggle('rotate-180');
-          
-          // Alternar la visibilidad del submenú
-          if (submenu.classList.contains('hidden')) {
-            submenu.classList.remove('hidden');
-            submenu.style.maxHeight = submenu.scrollHeight + 'px';
-          } else {
-            submenu.style.maxHeight = '0px';
-            setTimeout(function() {
-              submenu.classList.add('hidden');
-            }, 300);
-          }
-        });
-      }
+    // Función para abrir el menú móvil
+    function openMobileMenu() {
+      mobileMenu.classList.add('active');
     }
     
+    // Función para cerrar el menú móvil
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('active');
+    }
+    
+    // Función para alternar los submenús
+    function toggleSubmenu(toggle, icon, submenu) {
+      toggle.addEventListener('click', function(e) {
+        // Prevenir que el enlace se active si se hace clic en el botón
+        if (e.target.closest('button')) {
+          e.preventDefault();
+        }
+        
+        // Rotar el icono
+        icon.classList.toggle('rotate-180');
+        
+        // Alternar la clase active del submenú
+        submenu.classList.toggle('active');
+      });
+    }
+    
+    // Inicializar los controladores de eventos
     if (menuButton && mobileMenu && menuClose) {
-      // Abrir menú móvil
-      menuButton.addEventListener('click', function() {
-        mobileMenu.classList.remove('hidden');
-        document.body.style.overflow = 'hidden'; // Evitar scroll en el fondo
-      });
+      menuButton.addEventListener('click', openMobileMenu);
+      menuClose.addEventListener('click', closeMobileMenu);
       
-      // Cerrar menú móvil
-      menuClose.addEventListener('click', function() {
-        mobileMenu.classList.add('hidden');
-        document.body.style.overflow = ''; // Restaurar scroll
-      });
+      // Configurar los submenús
+      if (quienesSomosToggle && quienesSomosIcon && quienesSomosSubmenu) {
+        toggleSubmenu(quienesSomosToggle, quienesSomosIcon, quienesSomosSubmenu);
+      }
       
-      // Configurar menús desplegables
-      setupDropdownMenu(quienesSomosIcon, quienesSomosSubmenu);
-      setupDropdownMenu(emdrIcon, emdrSubmenu);
+      if (emdrToggle && emdrIcon && emdrSubmenu) {
+        toggleSubmenu(emdrToggle, emdrIcon, emdrSubmenu);
+      }
     }
   });
 </script>

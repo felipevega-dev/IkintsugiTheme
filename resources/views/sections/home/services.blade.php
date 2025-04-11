@@ -10,9 +10,9 @@
     </h2>
     
     <!-- Service boxes -->
-    <div class="flex flex-wrap justify-center gap-10 mb-24">
+    <div class="flex flex-wrap lg:flex-nowrap justify-center gap-4 md:gap-6 lg:gap-10 mb-24">
       <!-- Service 1 -->
-      <div class="rounded-[16px] overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2" style="width: 395px; height: 419px;">
+      <div class="rounded-[16px] overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2 w-full lg:w-1/3" style="max-width: 395px; height: 419px;">
         <div class="relative h-full">
           <img src="{{ get_theme_file_uri('resources/images/servicio1.jpeg') }}" alt="Terapia Individual" class="w-full h-full object-cover">
           <!-- Gradient overlay for text readability -->
@@ -26,7 +26,7 @@
       </div>
       
       <!-- Service 2 -->
-      <div class="rounded-[16px] overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2" style="width: 395px; height: 419px;">
+      <div class="rounded-[16px] overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2 w-full lg:w-1/3" style="max-width: 395px; height: 419px;">
         <div class="relative h-full">
           <img src="{{ get_theme_file_uri('resources/images/servicio2.png') }}" alt="Terapia de Pareja" class="w-full h-full object-cover">
           <!-- Gradient overlay for text readability -->
@@ -40,7 +40,7 @@
       </div>
       
       <!-- Service 3 -->
-      <div class="rounded-[16px] overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2" style="width: 395px; height: 419px;">
+      <div class="rounded-[16px] overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2 w-full lg:w-1/3" style="max-width: 395px; height: 419px;">
         <div class="relative h-full">
           <img src="{{ get_theme_file_uri('resources/images/servicio3.jpeg') }}" alt="Terapia Familiar" class="w-full h-full object-cover">
           <!-- Gradient overlay for text readability -->
