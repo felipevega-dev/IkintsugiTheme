@@ -1,0 +1,45 @@
+/**
+ * Admin styles for Kintsugi Content Manager.
+ *
+ * @package    Kintsugi_Content_Manager
+ * @subpackage Kintsugi_Content_Manager/admin/css
+ */
+
+/* Admin general styles */
+.kintsugi-admin-header {
+    margin-bottom: 20px;
+}
+
+.kintsugi-admin-header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Meta box styles */
+.noticia-meta-box label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.noticia-meta-box select,
+.noticia-meta-box input {
+    margin-bottom: 15px;
+}
+
+.noticia-meta-box .description {
+    display: block;
+    font-style: italic;
+    margin-top: 3px;
+    color: #666;
+}
+
+/* Admin list styles */
+.post-type-noticia .column-tipo_noticia {
+    width: 15%;
+}
+
+.post-type-noticia .column-date {
+    width: 15%;
+} 
