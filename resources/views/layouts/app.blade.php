@@ -69,10 +69,10 @@
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         AOS.init({
-          offset: 120,
-          duration: 800,
+          offset: 50,          // Reduced from 120 to show animations earlier
+          duration: 500,       // Reduced from 800 for faster animations
           easing: 'ease-out',
-          delay: 100,
+          delay: 50,           // Reduced from 100 for quicker start
           once: true
         });
       });

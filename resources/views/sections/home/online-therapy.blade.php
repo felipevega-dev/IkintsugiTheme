@@ -3,7 +3,7 @@
   <div class="container mx-auto px-4 relative z-20">
     <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 mt-10 md:mt-16">
       <!-- Imagen con forma curva personalizada -->
-      <div class="w-full md:w-1/2 mb-8 md:mb-0" data-aos="fade-right" data-aos-duration="1000">
+      <div class="w-full md:w-1/2 mb-8 md:mb-0" data-aos="fade-right" data-aos-duration="600">
         <div class="relative">
           <!-- Contenedor de imagen con forma personalizada -->
           <div class="relative overflow-hidden mx-auto w-full max-w-[320px] md:max-w-[560px] organic-image-container" style="border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; aspect-ratio: 1/1;">
@@ -15,7 +15,7 @@
       </div>
       
       <!-- Contenido de texto -->
-      <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+      <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="600" data-aos-delay="50">
         <div class="p-3 md:p-6 rounded-lg">
           <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl leading-tight mb-4 md:mb-6 max-w-[600px]" style="font-family: 'Playfair Display', serif;">
             Obtenga terapia experta hoy para el futuro
