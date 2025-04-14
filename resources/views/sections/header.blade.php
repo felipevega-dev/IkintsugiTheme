@@ -204,6 +204,13 @@
       .header-container {
         background-color: white !important;
       }
+      
+      /* Fix para evitar overflow en móvil */
+      #main-header {
+        max-width: 100%;
+        width: calc(100% - 2rem); /* Compensar los márgenes */
+        margin: 0 auto;
+      }
     }
   </style>
   <div class="container mx-auto px-4">

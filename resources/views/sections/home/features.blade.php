@@ -1,11 +1,11 @@
 <!-- Features Section -->
-<section class="pt-8 pb-10 md:pb-16 bg-white -mt-1 relative overflow-hidden">
+<section class="pt-8 pb-10 md:pb-16 bg-white -mt-1 relative overflow-hidden max-w-full">
   <!-- Planta decorativa que continúa hacia services - ajustada con dimensiones específicas -->
   <div id="plant-decoration" class="absolute hidden md:block" style="width: 332px; height: 392px; transform: rotate(-94.18deg); top: 1662px; left: 430px; z-index: 0; pointer-events: none;" data-aos="fade-up" data-aos-duration="1500">
     <img src="{{ get_theme_file_uri('resources/images/planta.png') }}" alt="Decorative Plants" class="w-full h-full object-contain">
   </div>
 
-  <div class="container mx-auto px-4 relative z-10">
+  <div class="container mx-auto px-4 relative z-10 overflow-hidden">
     <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
       <div class="w-full md:w-1/2 mb-8 md:mb-0" data-aos="fade-up" data-aos-duration="1000">
         <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl leading-tight mb-4 md:mb-6" style="font-family: 'Playfair Display', serif;">Psicoterapia EMDR<br>orientada al trauma</h2>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html @php(language_attributes())>
+<html @php(language_attributes()) class="overflow-x-hidden">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,11 +17,27 @@
     <style>
       body {
         font-family: 'Roboto', sans-serif;
+        overflow-x: hidden; /* Prevenir scroll horizontal */
+      }
+      
+      /* Prevenir overflow en todos los contenedores principales */
+      html, #app, main {
+        overflow-x: hidden;
+        width: 100%;
+      }
+      
+      /* Fix for header and footer on mobile */
+      @media (max-width: 1023px) {
+        #main-header {
+          width: 100%;
+          left: 0;
+          right: 0;
+        }
       }
     </style>
   </head>
 
-  <body @php(body_class('overflow-x-hidden'))>
+  <body @php(body_class())>
     @php(wp_body_open())
     @php(do_action('get_header'))
 

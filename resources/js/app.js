@@ -3,8 +3,8 @@ import.meta.glob([
   '../fonts/**',
 ]);
 
-// Funcionalidad para el menú móvil principal
 document.addEventListener('DOMContentLoaded', () => {
+  // Funcionalidad para el menú móvil principal
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenuClose = document.getElementById('mobile-menu-close');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -12,16 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // Abrir menú móvil
   if (mobileMenuButton) {
     mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.remove('hidden');
-      document.body.classList.add('overflow-hidden');
+      mobileMenu.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Solo bloquea scroll vertical
     });
   }
 
   // Cerrar menú móvil
   if (mobileMenuClose) {
     mobileMenuClose.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden');
-      document.body.classList.remove('overflow-hidden');
+      mobileMenu.classList.remove('active');
+      document.body.style.overflow = ''; // Restaurar scroll
     });
   }
 
