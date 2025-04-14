@@ -10,12 +10,12 @@
     <div class="relative max-w-[650px] mx-auto">
       <!-- Decorative image left -->
       <div class="absolute -left-40 top-1/2 transform -translate-y-1/2 hidden md:block" data-aos="fade-right" data-aos-duration="1200">
-        <img src="{{ get_theme_file_uri('resources/images/deco1.png') }}" alt="Decorative Element" class="w-40">
+        <img src="{{ get_theme_file_uri('resources/images/deco1.png') }}" alt="Decorative Element" class="w-40 decorative-image">
       </div>
       
       <!-- Decorative image right -->
       <div class="absolute -right-28 top-2/6 transform -translate-y-1/2 hidden md:block" data-aos="fade-left" data-aos-duration="1200">
-        <img src="{{ get_theme_file_uri('resources/images/deco2.png') }}" alt="Decorative Element" class="w-40">
+        <img src="{{ get_theme_file_uri('resources/images/deco2.png') }}" alt="Decorative Element" class="w-40 decorative-image">
       </div>
       
       <!-- FAQ Items -->
@@ -152,6 +152,33 @@
     
     .faq-answer {
       transition: max-height 600ms ease-out;
+    }
+    
+    .testimonial-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(171, 39, 122, 0.1);
+    }
+    
+    .decorative-image {
+      transition: transform 0.5s ease;
+    }
+    .decorative-image:hover {
+      animation: pulse 1.5s infinite alternate;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+    
+    .faq-item {
+      transition: border 0.3s ease, box-shadow 0.3s ease;
+    }
+    .faq-item:hover {
+      border-image-source: linear-gradient(90deg, #FF3382, #5A0989);
+      box-shadow: 0 0 15px rgba(171, 39, 122, 0.15);
     }
   </style>
   

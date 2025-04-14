@@ -61,5 +61,79 @@
         });
       });
     </script>
+    
+    <!-- Estilos para animaciones hover -->
+    <style>
+      /* Tarjetas de Testimonios - Elevación y sombra */
+      .testimonial-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(171, 39, 122, 0.1);
+      }
+      
+      /* Imágenes decorativas - Efecto de pulso suave */
+      .decorative-image {
+        transition: transform 0.5s ease;
+      }
+      .decorative-image:hover {
+        animation: pulse 1.5s infinite alternate;
+      }
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        100% { transform: scale(1.05); }
+      }
+      
+      /* Elementos FAQ - Efecto de brillo en el borde */
+      .faq-item {
+        transition: border 0.3s ease, box-shadow 0.3s ease;
+      }
+      .faq-item:hover {
+        border-image-source: linear-gradient(90deg, #FF3382, #5A0989);
+        box-shadow: 0 0 15px rgba(171, 39, 122, 0.15);
+      }
+      
+      /* Imágenes de Perfil - Zoom controlado */
+      .profile-image-container {
+        overflow: hidden;
+      }
+      .profile-image {
+        transition: transform 0.5s ease;
+      }
+      .profile-image-container:hover .profile-image {
+        transform: scale(1.05);
+      }
+      
+      /* Botones de servicio - Efecto brillante en hover */
+      .service-button {
+        position: relative;
+        overflow: hidden;
+      }
+      .service-button:hover::after {
+        transform: rotate(30deg) translate(20%, -10%);
+        opacity: 1;
+      }
+      
+      /* Tarjetas de servicio - Intensificación de color */
+      .service-card {
+        transition: all 0.4s ease;
+      }
+      .service-card:hover {
+        box-shadow: 0 15px 30px rgba(171, 39, 122, 0.2);
+      }
+      .service-card:hover img {
+        transform: scale(1.05);
+        transition: transform 0.6s ease;
+      }
+      
+      /* Imágenes con forma orgánica - Rotación leve */
+      .organic-image-container {
+        transition: transform 0.5s ease;
+      }
+      .organic-image-container:hover {
+        transform: rotate(2deg) scale(1.02);
+      }
+    </style>
   </body>
 </html>

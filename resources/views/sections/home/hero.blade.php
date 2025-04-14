@@ -24,7 +24,7 @@
       <a href="/reservar-cita" class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 
                     text-white px-5 md:px-6 py-2 md:py-3 rounded-full font-medium transition-all 
                     duration-300 transform hover:scale-105 shadow-md hover:shadow-lg 
-                    font-roboto text-base md:text-lg" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    font-roboto text-base md:text-lg service-button" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
         Reservar Cita
       </a>
     </div>

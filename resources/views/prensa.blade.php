@@ -41,11 +41,11 @@
 </section>
 
 <!-- Sección 1: Noticias destacadas en el carrusel -->
-<section class="bg-white py-16 overflow-hidden">
-  <div class="container mx-auto px-4">
+  <section class="bg-white py-16 overflow-hidden">
+    <div class="container mx-auto px-4">
     <h2 class="text-3xl md:text-4xl font-bold text-[#030D55] mb-8 text-left" style="font-family: 'Playfair Display', serif;">
       Noticias destacadas
-    </h2>
+      </h2>
 
     <!-- Shortcode para el carrusel con noticias seleccionadas específicamente -->
     <?php
@@ -61,25 +61,25 @@
       echo do_shortcode('[administracion_noticias_carrousel count="6"]');
     }
     ?>
-  </div>
-</section>
+    </div>
+  </section>
 
 <!-- Sección 2: Todas las noticias -->
 <section class="bg-gray-50 py-16 relative">
-  <div class="container mx-auto px-4 relative">
+    <div class="container mx-auto px-4 relative">
     <h2 class="text-3xl md:text-4xl font-bold text-[#030D55] mb-8 text-left" style="font-family: 'Playfair Display', serif;">
       Todas las noticias
-    </h2>
-    
+        </h2>
+        
     <!-- Shortcode para todas las noticias con buscador y paginación -->
     {!! do_shortcode('[administracion_noticias]') !!}
-  </div>
+              </div>
 </section>
 
 <!-- Sección para contenido de Elementor -->
 <section class="elementor-section">
   <div class="elementor-container">
     @php the_content(); @endphp
-  </div>
-</section>
+    </div>
+  </section>
 @endsection

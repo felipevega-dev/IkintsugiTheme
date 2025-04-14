@@ -80,12 +80,12 @@
   </section>
 
   <!-- Contact Section -->
-  <section class="py-12 md:py-16 bg-white relative">
-    <div class="container mx-auto px-4 relative">
-      <!-- Section title -->
-      <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl md:text-[48px] leading-[100%] mb-10 md:mb-16 text-center" style="font-family: 'Playfair Display', serif;">
+<section class="py-12 md:py-16 bg-white relative">
+  <div class="container mx-auto px-4 relative">
+    <!-- Section title -->
+    <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl md:text-[48px] leading-[100%] mb-10 md:mb-16 text-center" style="font-family: 'Playfair Display', serif;">
         Contáctanos
-      </h2>
+    </h2>
       
       <!-- Contact Container -->
       <div class="flex flex-col md:flex-row items-center md:items-start justify-center gap-8 md:gap-12 lg:gap-16 max-w-6xl mx-auto">
@@ -106,16 +106,16 @@
             // Asegúrate de reemplazar '123' con el ID real de tu formulario
             echo do_shortcode('[contact-form-7 id="4655e97" title="Formulario de contacto"]');
             @endphp
-          </div>
-          
+        </div>
+        
           <div class="text-center mt-6">
             <p class="text-gray-600">O contáctanos vía email: <a href="mailto:hola@ikintsugi.cl" class="text-[#D93280] hover:underline">hola@ikintsugi.cl</a></p>
-          </div>
         </div>
       </div>
     </div>
-    
-    <style>
+  </div>
+  
+  <style>
       /* Estilo para Contact Form 7 */
       .contact-form-container .wpcf7-form {
         display: flex;
@@ -177,5 +177,5 @@
         text-align: center;
       }
     </style>
-  </section>
+</section>
 @endsection
