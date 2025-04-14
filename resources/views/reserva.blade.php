@@ -7,7 +7,7 @@
 @section('content')
   <!-- HERO SECTION -->
   <section class="relative bg-white overflow-hidden">
-    <div class="container mx-auto px-4 relative z-10 mt-10">
+    <div class="container mx-auto px-4 relative z-10 md:mt-10 sm:mt-5">
       <div class="flex flex-col md:flex-row items-center justify-center gap-3">
         <!-- Texto del lado izquierdo --> 
         <div class="md:w-3/6 mb-10 md:mb-0 mt-10">
