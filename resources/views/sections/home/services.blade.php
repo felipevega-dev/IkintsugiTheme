@@ -4,7 +4,7 @@
   
   <div class="container mx-auto px-4 relative z-10">
     <!-- Section title -->
-    <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl md:text-[48px] leading-tight mb-8 md:mb-12 text-center max-w-[600px] mx-auto" style="font-family: 'Playfair Display', serif;">
+    <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl md:text-[48px] leading-tight mb-8 md:mb-12 text-center max-w-[600px] mx-auto" style="font-family: 'Playfair Display', serif;" data-aos="fade-up" data-aos-duration="1000">
       Empieza aquí tu viaje de 
       sanación y crecimiento
     </h2>
@@ -12,7 +12,7 @@
     <!-- Service boxes -->
     <div class="flex flex-wrap lg:flex-nowrap justify-center gap-6 md:gap-6 lg:gap-10 mb-16 md:mb-24">
       <!-- Service 1 -->
-      <div class="rounded-[16px] overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2 w-full lg:w-1/3 mb-6 lg:mb-0" style="max-width: 395px; height: 380px; md:height: 419px;">
+      <a href="/psicoterapia-emdr/" class="rounded-[16px] overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2 w-full lg:w-1/3 mb-6 lg:mb-0" style="max-width: 395px; height: 380px; md:height: 419px;" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
         <div class="relative h-full">
           <img src="{{ get_theme_file_uri('resources/images/servicio1.jpeg') }}" alt="Terapia Individual" class="w-full h-full object-cover">
           <!-- Gradient overlay for text readability -->
@@ -23,10 +23,10 @@
             <p class="text-white font-roboto text-sm md:text-base">Brindamos acompañamiento terapéutico profesional para tu bienestar emocional y mental.</p>
           </div>
         </div>
-      </div>
+      </a>
       
       <!-- Service 2 -->
-      <div class="rounded-[16px] overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2 w-full lg:w-1/3 mb-6 lg:mb-0" style="max-width: 395px; height: 380px; md:height: 419px;">
+      <a href="/charlas-y-talleres/" class="rounded-[16px] overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2 w-full lg:w-1/3 mb-6 lg:mb-0" style="max-width: 395px; height: 380px; md:height: 419px;" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
         <div class="relative h-full">
           <img src="{{ get_theme_file_uri('resources/images/servicio2.png') }}" alt="Terapia de Pareja" class="w-full h-full object-cover">
           <!-- Gradient overlay for text readability -->
@@ -37,10 +37,10 @@
             <p class="text-white font-roboto text-sm md:text-base">Aprende, crece y disfruta de actividades para mejorar talleres dinámicos sobre bienestar, crianza y vínculos.</p>
           </div>
         </div>
-      </div>
+      </a>
       
       <!-- Service 3 -->
-      <div class="rounded-[16px] overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2 w-full lg:w-1/3 mb-6 lg:mb-0" style="max-width: 395px; height: 380px; md:height: 419px;">
+      <a href="/a-quienes-atendemos/" class="rounded-[16px] overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2 w-full lg:w-1/3 mb-6 lg:mb-0" style="max-width: 395px; height: 380px; md:height: 419px;" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
         <div class="relative h-full">
           <img src="{{ get_theme_file_uri('resources/images/servicio3.jpeg') }}" alt="Terapia Familiar" class="w-full h-full object-cover">
           <!-- Gradient overlay for text readability -->
@@ -51,7 +51,7 @@
             <p class="text-white font-roboto text-sm md:text-base">Acompañamos a niños, adolescentes, adultos, parejas y familias en su camino hacia el bienestar personal.</p>
           </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
   

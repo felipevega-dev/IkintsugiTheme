@@ -2,26 +2,26 @@
 <section class="py-12 md:py-16 bg-white relative">
   <div class="container mx-auto px-4 relative">
     <!-- Section title -->
-    <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl md:text-[48px] leading-[100%] mb-10 md:mb-16 text-center" style="font-family: 'Playfair Display', serif;">
+    <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl md:text-[48px] leading-[100%] mb-10 md:mb-16 text-center" style="font-family: 'Playfair Display', serif;" data-aos="fade-up" data-aos-duration="1000">
       FAQ's
     </h2>
     
     <!-- FAQs Container with decorations -->
     <div class="relative max-w-[650px] mx-auto">
       <!-- Decorative image left -->
-      <div class="absolute -left-40 top-1/2 transform -translate-y-1/2 hidden md:block">
+      <div class="absolute -left-40 top-1/2 transform -translate-y-1/2 hidden md:block" data-aos="fade-right" data-aos-duration="1200">
         <img src="{{ get_theme_file_uri('resources/images/deco1.png') }}" alt="Decorative Element" class="w-40">
       </div>
       
       <!-- Decorative image right -->
-      <div class="absolute -right-28 top-2/6 transform -translate-y-1/2 hidden md:block">
+      <div class="absolute -right-28 top-2/6 transform -translate-y-1/2 hidden md:block" data-aos="fade-left" data-aos-duration="1200">
         <img src="{{ get_theme_file_uri('resources/images/deco2.png') }}" alt="Decorative Element" class="w-40">
       </div>
       
       <!-- FAQ Items -->
       <div class="space-y-4 md:space-y-6">
         <!-- FAQ Item 1 -->
-        <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;">
+        <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
           <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
             <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4" style="font-family: 'Playfair Display', serif;">¿Cómo saber si necesito psicoterapia?</h3>
             <div class="arrow-icon w-5 md:w-6 h-5 md:h-6 flex-shrink-0 flex items-center justify-center transform transition-transform duration-500">
@@ -38,7 +38,7 @@
         </div>
         
         <!-- FAQ Item 2 -->
-        <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;">
+        <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;" data-aos="fade-up" data-aos-duration="800" data-aos-delay="150">
           <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
             <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4" style="font-family: 'Playfair Display', serif;">Con EMDR, ¿los recuerdos se olvidan?</h3>
             <div class="arrow-icon w-5 md:w-6 h-5 md:h-6 flex-shrink-0 flex items-center justify-center transform transition-transform duration-500">
@@ -55,7 +55,7 @@
         </div>
         
         <!-- FAQ Item 3 -->
-        <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;">
+        <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
           <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
             <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4" style="font-family: 'Playfair Display', serif;">¿Quienes pueden atenderse con EMDR?</h3>
             <div class="arrow-icon w-5 md:w-6 h-5 md:h-6 flex-shrink-0 flex items-center justify-center transform transition-transform duration-500">
@@ -72,7 +72,7 @@
         </div>
         
         <!-- FAQ Item 4 -->
-        <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;">
+        <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;" data-aos="fade-up" data-aos-duration="800" data-aos-delay="250">
           <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
             <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4" style="font-family: 'Playfair Display', serif;">¿Cuánto dura el tratamiento psicológico EMDR?</h3>
             <div class="arrow-icon w-5 md:w-6 h-5 md:h-6 flex-shrink-0 flex items-center justify-center transform transition-transform duration-500">
@@ -89,7 +89,7 @@
         </div>
         
         <!-- FAQ Item 5 -->
-        <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;">
+        <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
           <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
             <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4" style="font-family: 'Playfair Display', serif;">¿Qué duración tienen las sesiones?</h3>
             <div class="arrow-icon w-5 md:w-6 h-5 md:h-6 flex-shrink-0 flex items-center justify-center transform transition-transform duration-500">
@@ -106,7 +106,7 @@
         </div>
         
         <!-- FAQ Item 6 -->
-        <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;">
+        <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;" data-aos="fade-up" data-aos-duration="800" data-aos-delay="350">
           <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
             <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4" style="font-family: 'Playfair Display', serif;">¿Cada cuánto tiempo se hace una sesión?</h3>
             <div class="arrow-icon w-5 md:w-6 h-5 md:h-6 flex-shrink-0 flex items-center justify-center transform transition-transform duration-500">
@@ -123,7 +123,7 @@
         </div>
         
         <!-- FAQ Item 7 -->
-        <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;">
+        <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
           <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
             <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4" style="font-family: 'Playfair Display', serif;">¿Cómo me puede ayudar EMDR?</h3>
             <div class="arrow-icon w-5 md:w-6 h-5 md:h-6 flex-shrink-0 flex items-center justify-center transform transition-transform duration-500">

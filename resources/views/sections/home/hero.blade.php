@@ -19,12 +19,12 @@
   <!-- Contenido del hero -->
   <div class="container mx-auto px-4 relative z-10 min-h-[90vh] md:min-h-[100vh] flex flex-col justify-center items-center">
     <div class="max-w-3xl mx-auto text-center text-white py-24 md:py-40 lg:py-52">
-      <h2 class="text-lg md:text-2xl font-500 mb-3 md:mb-5">Psicología Clínica EMDR</h2>
-      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 font-playfair" style="font-family: 'Playfair Display', serif;">El Trauma se puede superar!</h1>
+      <h2 class="text-lg md:text-2xl font-500 mb-3 md:mb-5" data-aos="fade-up" data-aos-duration="800">Psicología Clínica EMDR</h2>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 font-playfair" style="font-family: 'Playfair Display', serif;" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100">El Trauma se puede superar!</h1>
       <a href="/reservar-cita" class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 
                     text-white px-5 md:px-6 py-2 md:py-3 rounded-full font-medium transition-all 
                     duration-300 transform hover:scale-105 shadow-md hover:shadow-lg 
-                    font-roboto text-base md:text-lg">
+                    font-roboto text-base md:text-lg" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
         Reservar Cita
       </a>
     </div>

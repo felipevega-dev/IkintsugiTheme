@@ -2,16 +2,16 @@
 <section class="py-10 bg-white relative">
   <div class="container mx-auto px-4 pt-10">
     <!-- Section title -->
-    <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl md:text-[48px] leading-tight mb-32 md:mb-56 text-center" style="font-family: 'Playfair Display', serif;">
+    <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl md:text-[48px] leading-tight mb-32 md:mb-56 text-center" style="font-family: 'Playfair Display', serif;" data-aos="fade-up" data-aos-duration="1000">
       Nuestros testimonios
     </h2>
     
     <!-- Testimonials Grid -->
     <div class="flex flex-wrap justify-center gap-10 md:gap-[50px] max-w-6xl mx-auto">
       <!-- Testimonio 1 -->
-      <div class="relative p-[24px] w-full md:w-[525px] h-auto md:h-[398px] rounded-[16px] border border-[#D9D9D9] mb-20 md:mb-0" style="background: linear-gradient(180deg, rgba(3, 13, 85, 0.15) 0%, rgba(171, 39, 122, 0.15) 100%);">
+      <div class="relative p-[24px] w-full md:w-[525px] h-auto md:h-[398px] rounded-[16px] border border-[#D9D9D9] mb-20 md:mb-0" style="background: linear-gradient(180deg, rgba(3, 13, 85, 0.15) 0%, rgba(171, 39, 122, 0.15) 100%);" data-aos="fade-up" data-aos-duration="1200">
         <!-- Profile image -->
-        <div class="absolute w-[160px] h-[160px] md:w-[290px] md:h-[290px] top-[-80px] md:top-[-114px] left-1/2 -translate-x-1/2 md:left-[117.5px] md:translate-x-0">
+        <div class="absolute w-[160px] h-[160px] md:w-[290px] md:h-[290px] top-[-80px] md:top-[-114px] left-1/2 -translate-x-1/2 md:left-[117.5px] md:translate-x-0" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">
           <div class="w-full h-full rounded-full overflow-hidden border-[8px] border-white">
             <img src="{{ get_theme_file_uri('resources/images/persona2.png') }}" alt="Lorena López" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/290?text=L'">
           </div>
@@ -27,9 +27,9 @@
       </div>
       
       <!-- Testimonio 2 -->
-      <div class="relative p-[24px] w-full md:w-[525px] h-auto md:h-[398px] rounded-[16px] border border-[#D9D9D9]" style="background: linear-gradient(180deg, rgba(3, 13, 85, 0.15) 0%, rgba(171, 39, 122, 0.15) 100%);">
+      <div class="relative p-[24px] w-full md:w-[525px] h-auto md:h-[398px] rounded-[16px] border border-[#D9D9D9]" style="background: linear-gradient(180deg, rgba(3, 13, 85, 0.15) 0%, rgba(171, 39, 122, 0.15) 100%);" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
         <!-- Profile image -->
-        <div class="absolute w-[160px] h-[160px] md:w-[290px] md:h-[290px] top-[-80px] md:top-[-114px] left-1/2 -translate-x-1/2 md:left-[117.5px] md:translate-x-0">
+        <div class="absolute w-[160px] h-[160px] md:w-[290px] md:h-[290px] top-[-80px] md:top-[-114px] left-1/2 -translate-x-1/2 md:left-[117.5px] md:translate-x-0" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="500">
           <div class="w-full h-full rounded-full overflow-hidden border-[8px] border-white">
             <img src="{{ get_theme_file_uri('resources/images/persona1.png') }}" alt="Fernando Torres" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/290?text=F'">
           </div>
