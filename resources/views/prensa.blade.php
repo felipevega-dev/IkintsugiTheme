@@ -62,11 +62,29 @@
     
     /* Mejorar la apariencia del carrusel para que se vea como unidad */
     .kintsugi-carousel-container {
-      border: 1px solid #eaeaea !important;
+      border: none !important;
       border-radius: 12px !important;
       padding: 15px !important;
       background: #f9f9f9 !important;
       box-shadow: 0 5px 15px rgba(0,0,0,0.05) !important;
+      position: relative !important;
+    }
+    
+    /* Añadir borde con gradiente */
+    .kintsugi-carousel-container::before {
+      content: "" !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      border-radius: 12px !important;
+      padding: 2px !important; /* Grosor del borde */
+      background: linear-gradient(180deg, rgba(171, 39, 122, 0.48) 0%, rgba(3, 13, 85, 0.48) 61%) !important;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) !important;
+      -webkit-mask-composite: xor !important;
+      mask-composite: exclude !important;
+      pointer-events: none !important; /* Asegura que los eventos pasen a través del borde */
     }
     
     /* Añadir indicadores visuales para el carrusel */
@@ -195,6 +213,35 @@
     position: relative !important;
     width: 100% !important;
     height: 100% !important;
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+  }
+  
+  /* Arreglar problema específico con los videos */
+  .kintsugi-noticia-item a[data-video-url] .kintsugi-noticia-video {
+    position: relative !important;
+    height: 0 !important;
+    padding-bottom: 56.25% !important;
+    overflow: hidden !important;
+    display: block !important;
+  }
+  
+  .kintsugi-noticia-item a[data-video-url] .kintsugi-noticia-video .kintsugi-noticia-video-preview img {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+  
+  .kintsugi-noticia-video-preview[data-video-id] {
+    background-size: cover !important;
+    background-position: center center !important;
   }
   
   .kintsugi-noticia-video-play {
@@ -229,6 +276,7 @@
       grid-gap: 20px !important;
     }
     
+    /* Asegurar que todas las noticias tengan la misma altura en móvil */
     .kintsugi-noticia-item {
       margin-bottom: 20px !important;
       max-width: 100% !important;
@@ -240,8 +288,40 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
     }
     
+    /* Forzar resolución horizontal para imágenes en móvil */
+    .kintsugi-noticia-image,
+    .kintsugi-noticia-video {
+      height: 0 !important;
+      padding-bottom: 56.25% !important; /* Proporción 16:9 para un aspecto más horizontal */
+      position: relative !important;
+      overflow: hidden !important;
+      width: 100% !important;
+    }
+    
+    .kintsugi-noticia-image img,
+    .kintsugi-noticia-video img,
+    .kintsugi-noticia-video-preview img {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+    }
+    
+    /* Mejorar filtros en móvil */
+    .kintsugi-filters-container {
+      background: #f5f7fa !important;
+      padding: 15px !important;
+      border-radius: 10px !important;
+      margin-bottom: 20px !important;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+    }
+    
     .kintsugi-filters-container .flex {
       flex-direction: column !important;
+      gap: 10px !important;
     }
     
     .kintsugi-filters-container .search-container,
@@ -249,6 +329,23 @@
     .kintsugi-filters-container .sort-container {
       width: 100% !important;
       margin-bottom: 10px !important;
+    }
+    
+    .kintsugi-filters-container input,
+    .kintsugi-filters-container select {
+      width: 100% !important;
+      padding: 12px !important;
+      border-radius: 8px !important;
+      border: 1px solid #e0e0e0 !important;
+      font-size: 16px !important; /* Increase font size for mobile */
+      -webkit-appearance: none !important; /* Fix for iOS */
+    }
+    
+    .kintsugi-filters-container select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: right 10px center !important;
+      padding-right: 30px !important;
     }
     
     .kintsugi-carousel-container {
@@ -340,10 +437,70 @@
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
   }
+  
+  /* Fallback para videos cuando no carga la imagen */
+  .kintsugi-noticia-item a[data-video-url] {
+    position: relative !important;
+    display: block !important;
+    height: 100% !important;
+    width: 100% !important;
+  }
+  
+  .kintsugi-noticia-item a[data-video-url]::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 56.25% !important; /* Maintain 16:9 ratio */
+    background-color: #362766 !important;
+    z-index: 0 !important;
+  }
+  
+  .kintsugi-noticia-item a[data-video-url] .kintsugi-noticia-video-preview {
+    z-index: 1 !important;
+  }
+  
+  .kintsugi-noticia-item a[data-video-url] .kintsugi-noticia-video-play {
+    z-index: 2 !important;
+  }
+
+  /* Enfoque simple para el borde gradiente que funciona en todos los navegadores */
+  .swiper-container-custom {
+    padding: 0 !important;
+    border-radius: 14px !important;
+    background: linear-gradient(180deg, rgba(171, 39, 122, 0.48) 0%, rgba(3, 13, 85, 0.48) 61%) !important;
+    position: relative !important;
+  }
+
+  .kintsugi-carousel-container {
+    border: none !important;
+    border-radius: 12px !important;  /* Ligeramente menor que el contenedor padre */
+    margin: 2px !important;  /* Esto crea el "borde" de 2px */
+    padding: 15px !important;
+    background: #f9f9f9 !important;
+    box-shadow: none !important; /* Quitar sombra para que no se sobreponga al borde */
+    position: relative !important;
+  }
+
+  /* Borde con gradiente para móviles */
+  @media (max-width: 767px) {
+    .swiper-container-custom {
+      padding: 0 !important;
+      border-radius: 10px !important;
+    }
+    
+    .kintsugi-carousel-container {
+      border-radius: 8px !important;
+      margin: 2px !important;
+      padding: 10px !important;
+    }
+  }
 </style>
 
 <!-- Hero Section -->
-<section class="relative bg-[#362766] overflow-hidden pt-24 md:pt-32">
+<section class="relative bg-[#362766] overflow-hidden pt-20 md:pt-32">
   <!-- Imagen de fondo con overlay -->
   <div class="absolute inset-0 z-0">
     <div class="absolute inset-0 bg-[#362766] opacity-70 z-10"></div>
@@ -371,7 +528,7 @@
 </section>
 
 <!-- Sección 1: Noticias destacadas en el carrusel -->
-<section class="bg-white py-16 overflow-hidden">
+<section class="bg-white py-4 overflow-hidden">
   <div class="container mx-auto px-4">
     <h2 class="text-3xl md:text-4xl font-bold text-[#030D55] mb-8 text-left" style="font-family: 'Playfair Display', serif;">
       Noticias destacadas
@@ -408,7 +565,7 @@
 </section>
 
 <!-- Sección 2: Todas las noticias -->
-<section class="bg-gray-50 py-16 relative">
+<section class="bg-gray-50 py-4 relative">
   <div class="container mx-auto px-4 relative">
     <h2 class="text-3xl md:text-4xl font-bold text-[#030D55] mb-8 text-left" style="font-family: 'Playfair Display', serif;">
       Todas las noticias
@@ -418,10 +575,19 @@
     <div class="kintsugi-filters-container mb-8">
       <div class="flex flex-wrap items-center gap-4">
         <div class="search-container flex-grow">
-          <input type="text" id="kintsugi-search-input" placeholder="Buscar noticias..." class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#362766]">
+          <label for="kintsugi-search-input" class="block mb-1 text-sm font-medium text-gray-700 md:hidden">Buscar</label>
+          <div class="relative">
+            <input type="text" id="kintsugi-search-input" placeholder="Buscar noticias..." class="w-full px-4 py-2 pl-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#362766]">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </div>
         </div>
         
         <div class="filter-container">
+          <label for="kintsugi-year-filter" class="block mb-1 text-sm font-medium text-gray-700 md:hidden">Año</label>
           <select id="kintsugi-year-filter" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#362766]">
             <option value="all">Todos los años</option>
             <?php 
@@ -436,6 +602,7 @@
         </div>
         
         <div class="sort-container">
+          <label for="kintsugi-sort-filter" class="block mb-1 text-sm font-medium text-gray-700 md:hidden">Ordenar por</label>
           <select id="kintsugi-sort-filter" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#362766]">
             <option value="date-desc">Más recientes primero</option>
             <option value="date-asc">Más antiguos primero</option>
@@ -472,6 +639,28 @@
     if ($('.kintsugi-video-popup').length > 1) {
       $('.kintsugi-video-popup:gt(0)').remove();
     }
+    
+    // Fix para asegurar que los thumbnails de videos se carguen correctamente
+    $('.kintsugi-noticia-video-preview').each(function() {
+      var $this = $(this);
+      var videoId = $this.data('video-id');
+      
+      if (videoId) {
+        // Intentar cargar imagen HD primero
+        var hdImg = new Image();
+        hdImg.onload = function() {
+          $this.find('img').attr('src', this.src);
+        };
+        hdImg.onerror = function() {
+          // Si falla, cargar imagen estándar
+          $this.find('img').attr('src', 'https://img.youtube.com/vi/' + videoId + '/0.jpg');
+        };
+        hdImg.src = 'https://img.youtube.com/vi/' + videoId + '/maxresdefault.jpg';
+        
+        // Establece también un fondo de respaldo por si la imagen no carga
+        $this.css('background-image', 'url(https://img.youtube.com/vi/' + videoId + '/0.jpg)');
+      }
+    });
     
     // Inicializar las funciones principales si existen
     if (typeof window.initKintsugiPublic === 'function') {
