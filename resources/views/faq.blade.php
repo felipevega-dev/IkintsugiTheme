@@ -6,7 +6,7 @@
 
 @section('content')
   <!-- HERO SECTION -->
-  <section class="relative bg-white py-25 overflow-hidden">
+  <section class="relative bg-white py-15 overflow-hidden mt-10">
     <div class="container mx-auto px-4 relative z-10">
       <div class="flex flex-col md:flex-row items-center justify-center gap-3">
         <!-- Texto del lado izquierdo --> 
@@ -22,7 +22,7 @@
         
         <!-- Imagen del lado derecho -->
         <div class="md:w-2/5 md:ml-0">
-          <div class="relative mt-15">
+          <div class="relative sm:mt-5 md:mt-15">
             <!-- Imagen con marco personalizado -->
             <div class="relative transition-all duration-700 hover:scale-105" style="width: 500px; height: 500px;">
               
@@ -80,7 +80,7 @@
   </section>
 
   <!-- FAQs Section -->
-<section class="py-12 md:py-16 bg-white relative">
+<section class="bg-white relative mb-20">
   <div class="container mx-auto px-4 relative">
     <!-- Section title -->
     <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl md:text-[48px] leading-[100%] mb-10 md:mb-16 text-center" style="font-family: 'Playfair Display', serif;">

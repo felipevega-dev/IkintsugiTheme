@@ -5,6 +5,65 @@
 @extends('layouts.app')
 
 @section('content')
+<!-- Estilos específicos para esta página -->
+<style>
+  /* Corrige problemas de iframes y líneas negras en móvil */
+  .iframe-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    max-width: 100%;
+  }
+  
+  iframe {
+    border: none !important;
+    max-width: 100% !important;
+  }
+  
+  /* Asegura que los reproductores de video no generen líneas negras */
+  .admin-youtube-container, 
+  .video_player_container, 
+  .fluid_video_wrapper {
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+  
+  /* Corrige líneas negras en móvil */
+  @media (max-width: 767px) {
+    .admin-youtube-container,
+    .video_player_container,
+    .fluid_video_wrapper {
+      width: 100% !important;
+      height: auto !important;
+      min-height: 250px !important;
+    }
+    
+    .fluid_video_wrapper video {
+      background: transparent !important;
+    }
+    
+    /* Corregir mensaje de DRM */
+    .fluid_nonLinear_top {
+      display: none !important;
+    }
+    
+    /* Ocultar advertencias de consola en móvil */
+    .fluid_video_wrapper .fp_logo {
+      display: none !important;
+    }
+    
+    /* Eliminar líneas negras superiores e inferiores */
+    .fluid_controls_container {
+      background-color: transparent !important;
+    }
+    
+    .admin-youtube-wrapper {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+  }
+</style>
+
 <!-- Hero Section -->
 <section class="relative bg-[#362766] overflow-hidden pt-24 md:pt-32">
   <!-- Imagen de fondo con overlay -->
@@ -52,8 +111,8 @@
         
         <!-- Contenido de Spotify desde el plugin de administración -->
         <div class="md:w-1/2 relative flex justify-center" data-aos="fade-left" data-aos-duration="1000">
-          <div class="w-full admin-spotify-container">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/show/08J06mjqK1UxNgXPTVlMkJ?utm_source=generator" width="624" height="350" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <div class="w-full iframe-container">
+            <iframe style="border-radius:12px;" src="https://open.spotify.com/embed/show/08J06mjqK1UxNgXPTVlMkJ?utm_source=generator" width="100%" height="350" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           </div>
         </div>
       </div>
@@ -62,10 +121,12 @@
       <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-10">
         <!-- Contenido de YouTube desde el plugin de administración -->
         <div class="md:w-1/2 relative flex justify-center" data-aos="fade-right" data-aos-duration="1000">
-          <div class="w-full admin-youtube-container">
-            @php
-              echo do_shortcode('[Elite_video_player id="1"]');
-            @endphp
+          <div class="w-full iframe-container admin-youtube-wrapper">
+            <div class="admin-youtube-container">
+              @php
+                echo do_shortcode('[Elite_video_player id="1"]');
+              @endphp
+            </div>
           </div>
         </div>
 
@@ -163,4 +224,33 @@
       </div>
     </div>
   </section>
+  
+  <!-- Script para solucionar errores de consola -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Resolver advertencias de consola
+      setTimeout(function() {
+        // Ocultar mensajes de advertencia DRM
+        const drmMessages = document.querySelectorAll('.fluid_nonLinear_top');
+        drmMessages.forEach(function(msg) {
+          msg.style.display = 'none';
+        });
+        
+        // Ajustar iframes para evitar errores de allowfullscreen
+        const iframes = document.querySelectorAll('iframe');
+        iframes.forEach(function(iframe) {
+          if (!iframe.getAttribute('allowfullscreen')) {
+            iframe.setAttribute('allowfullscreen', '');
+          }
+        });
+        
+        // Ajustar contenedores de video
+        const videoContainers = document.querySelectorAll('.fluid_video_wrapper');
+        videoContainers.forEach(function(container) {
+          container.style.maxWidth = '100%';
+          container.style.overflow = 'hidden';
+        });
+      }, 1000);
+    });
+  </script>
 @endsection

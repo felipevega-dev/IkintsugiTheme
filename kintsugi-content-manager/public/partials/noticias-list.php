@@ -19,13 +19,6 @@ $search_query = isset($_GET['search_noticias']) ? sanitize_text_field($_GET['sea
 ?>
 
 <div class="kintsugi-noticias-container">
-    <!-- Search form -->
-    <div class="kintsugi-noticias-search">
-        <form method="get" action="<?php echo esc_url(get_permalink()); ?>">
-            <input type="text" name="search_noticias" placeholder="<?php esc_attr_e('Buscar noticias...', 'kintsugi-content-manager'); ?>" value="<?php echo esc_attr($search_query); ?>">
-            <button type="submit"><?php _e('Buscar', 'kintsugi-content-manager'); ?></button>
-        </form>
-    </div>
     
     <?php if ($query->have_posts()) : ?>
     

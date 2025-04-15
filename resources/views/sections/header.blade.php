@@ -660,9 +660,9 @@
           Charlas y talleres
         </a>
                   
-        <a href="{{ home_url('/faqs') }}" 
+        <a href="{{ home_url('/preguntas-frecuentes') }}" 
                     class="block py-3 border-b border-gray-100 text-gray-900 font-roboto
-                  {{ (strpos($current_url, 'faqs') !== false) 
+                  {{ (strpos($current_url, 'preguntas-frecuentes') !== false) 
                             ? 'menu-active-highlight' 
                      : 'hover:text-[#D93280]' }} 
                   transition-colors duration-300">

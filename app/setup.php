@@ -230,3 +230,68 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+
+/**
+ * Add AJAX handlers for the Kintsugi Content Manager
+ */
+add_action('wp_ajax_kintsugi_filter_noticias', 'App\kintsugi_filter_noticias');
+add_action('wp_ajax_nopriv_kintsugi_filter_noticias', 'App\kintsugi_filter_noticias');
+
+/**
+ * AJAX handler for filtering noticias
+ */
+function kintsugi_filter_noticias() {
+    // Get parameters
+    $search = isset($_POST['search']) ? sanitize_text_field($_POST['search']) : '';
+    $year = isset($_POST['year']) ? sanitize_text_field($_POST['year']) : 'all';
+    $orderby = isset($_POST['orderby']) ? sanitize_text_field($_POST['orderby']) : 'date';
+    $order = isset($_POST['order']) ? sanitize_text_field($_POST['order']) : 'DESC';
+    $paged = isset($_POST['paged']) ? intval($_POST['paged']) : 1;
+    $per_page = isset($_POST['per_page']) ? intval($_POST['per_page']) : 4;
+    
+    // Setup query args
+    $args = [
+        'post_type' => 'noticia',
+        'posts_per_page' => $per_page,
+        'paged' => $paged,
+        'post_status' => 'publish',
+        'orderby' => $orderby,
+        'order' => $order,
+    ];
+    
+    // Add search if provided
+    if (!empty($search)) {
+        $args['s'] = $search;
+    }
+    
+    // Add year filter if selected
+    if ($year !== 'all') {
+        $args['date_query'] = [
+            [
+                'year' => intval($year),
+            ]
+        ];
+    }
+    
+    // Run the query
+    $query = new \WP_Query($args);
+    
+    // Start output buffer
+    ob_start();
+    
+    // Include the same template that the shortcode uses
+    if (file_exists(KINTSUGI_CONTENT_MANAGER_PLUGIN_DIR . 'public/partials/noticias-list.php')) {
+        include KINTSUGI_CONTENT_MANAGER_PLUGIN_DIR . 'public/partials/noticias-list.php';
+    } else {
+        echo '<div class="p-4 bg-red-100 text-red-700 rounded">Error: Template not found.</div>';
+    }
+    
+    // Get buffer content
+    $output = ob_get_clean();
+    
+    // Send response
+    echo $output;
+    
+    // Always exit in AJAX callbacks
+    wp_die();
+}

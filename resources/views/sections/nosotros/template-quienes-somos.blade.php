@@ -217,14 +217,11 @@
       </div>
     </div>
     
-    <!-- Decoración - Ajustada para móvil -->
-    <div class="absolute right-0 top-[200px] md:top-4 -z-0 opacity-20 md:opacity-50">
-      <img src="{{ get_theme_file_uri('resources/images/deco1.png') }}" alt="Decoración" class="w-24 md:w-32">
-    </div>
+  
   </section>
 
   <!-- MISIÓN Y VALORES SECTION (antes en mision-valores.blade.php) -->
-  <section class="py-12 md:py-50 relative overflow-hidden" style="background-color: #030D550D;">
+  <section class="py-12 md:py-50 relative overflow-hidden">
     <!-- Fondo con imagen vectorial y efecto de degradado -->
     <div class="absolute top-0 left-0 w-full h-full z-0">
       <img src="{{ get_theme_file_uri('resources/images/vector1.png') }}" alt="Fondo" class="w-full h-full object-cover">

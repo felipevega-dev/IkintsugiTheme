@@ -7,6 +7,9 @@
 
 (function($) {
     'use strict';
+    
+    // Variable global para controlar si hay un video reproduciéndose
+    let videoIsPlaying = false;
 
     // Function to initialize everything
     function initKintsugiPublic() {
@@ -23,8 +26,14 @@
         $('.kintsugi-noticia-video-link').on('click', function(e) {
             e.preventDefault();
             
+            // Prevenir múltiples reproducciones simultáneas
+            if (videoIsPlaying) {
+                return false;
+            }
+            
             var videoUrl = $(this).data('video-url');
             if (videoUrl) {
+                videoIsPlaying = true; // Marcar que hay un video reproduciéndose
                 openVideoPopup(videoUrl);
             }
         });
@@ -90,6 +99,9 @@
         
         // Remove class from body
         $('body').removeClass('kintsugi-popup-open');
+        
+        // Resetear el estado de reproducción
+        videoIsPlaying = false;
     }
     
     // Function to extract YouTube video ID

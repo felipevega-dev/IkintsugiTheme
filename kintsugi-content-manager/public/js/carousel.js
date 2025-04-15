@@ -8,6 +8,9 @@
 (function($) {
     'use strict';
 
+    // Variable global para controlar si hay un video reproduciéndose
+    let videoIsPlaying = false;
+
     // Function to initialize everything
     function initKintsugiCarousel() {
         initCarousel();
@@ -72,7 +75,7 @@
                             spaceBetween: 20,
                         },
                         992: {
-                            slidesPerView: 2,
+                            slidesPerView: 3,
                             spaceBetween: 30,
                         },
                     },
@@ -109,8 +112,15 @@
         // Agregar evento click para links de video
         $(document).on('click', '.kintsugi-carousel-video-link', function(e) {
             e.preventDefault();
+            
+            // Prevenir múltiples reproducciones simultáneas
+            if (videoIsPlaying) {
+                return false;
+            }
+            
             var videoUrl = $(this).data('video-url');
             if (videoUrl) {
+                videoIsPlaying = true; // Marcar que hay un video reproduciéndose
                 openVideoPopup(videoUrl);
                 
                 // Pausar autoplay cuando se abre un video
@@ -177,6 +187,9 @@
         
         // Quitar clase del body
         $('body').removeClass('kintsugi-popup-open');
+        
+        // Resetear el estado de reproducción
+        videoIsPlaying = false;
         
         // Reanudar autoplay de los carruseles
         if (window.kintsugiSwiperInstances && window.kintsugiSwiperInstances.length) {
