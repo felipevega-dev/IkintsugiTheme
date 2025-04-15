@@ -1,5 +1,5 @@
 <!doctype html>
-<html @php(language_attributes()) class="overflow-x-hidden">
+<html @php(language_attributes())>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,11 +17,10 @@
     <style>
       body {
         font-family: 'Roboto', sans-serif;
-        overflow-x: hidden; /* Prevenir scroll horizontal */
       }
       
-      /* Prevenir overflow en todos los contenedores principales */
-      html, #app, main {
+      /* Prevenir scroll horizontal en el nivel más externo */
+      html {
         overflow-x: hidden;
         width: 100%;
       }
