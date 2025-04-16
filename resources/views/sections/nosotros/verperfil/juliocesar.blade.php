@@ -198,8 +198,8 @@
   </style>
   
   <!-- Sección de héroe con fondo y borde curvo -->
-  <div class="bg-[#CCA0E00D] pb-20 relative pt-0">
-    <div class="container mx-auto px-4 py-6 mt-0 hero-container">
+  <div class="bg-[#CCA0E00D] pb-20 relative pt-24">
+    <div class="container mx-auto px-4 py-12 hero-container">
       <div class="flex flex-col md:flex-row items-center md:items-start gap-8 max-w-6xl mx-auto hero-profile">
         <!-- Imagen con borde redondeado y degradado -->
         <div class="flex-shrink-0 w-100 h-100 rounded-full overflow-hidden relative mt-0 fade-up" data-delay="200">
