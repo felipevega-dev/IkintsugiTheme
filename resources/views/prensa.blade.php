@@ -5,6 +5,242 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+  /* Importar archivo de estilos específicos de prensa */
+  @import url("{{ get_theme_file_uri('resources/styles/prensa.css') }}");
+  
+  /* Override para forzar 5 columnas (sobreescribe reglas del plugin) */
+  @media (min-width: 1200px) {
+    .kintsugi-noticias-grid {
+      grid-template-columns: repeat(5, 1fr) !important;
+      grid-gap: 20px !important;
+    }
+  }
+  
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .kintsugi-noticias-grid {
+      grid-template-columns: repeat(4, 1fr) !important;
+      grid-gap: 20px !important;
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 991px) {
+    .kintsugi-noticias-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+      grid-gap: 15px !important;
+    }
+  }
+  
+  @media (min-width: 576px) and (max-width: 767px) {
+    .kintsugi-noticias-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      grid-gap: 15px !important;
+    }
+  }
+  
+  @media (max-width: 575px) {
+    .kintsugi-noticias-grid {
+      grid-template-columns: repeat(1, 1fr) !important;
+    }
+  }
+  
+  /* Ajustes para las tarjetas de noticia */
+  .kintsugi-noticia-item {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  .kintsugi-noticia-image,
+  .kintsugi-noticia-video {
+    height: 0 !important;
+    padding-bottom: 75% !important; /* Proporción 4:3 para mejor visualización en grid pequeño */
+    position: relative !important;
+    overflow: hidden !important;
+  }
+  
+  .kintsugi-noticia-content {
+    padding: 15px !important;
+  }
+  
+  .kintsugi-noticia-title {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    margin-bottom: 8px !important;
+    line-height: 1.3 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+  
+  .kintsugi-noticia-excerpt {
+    font-size: 13px !important;
+    margin-top: 8px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+  
+  /* Estilos adicionales específicos para esta página */
+  .kintsugi-carousel-container {
+    border: none !important;
+    overflow: visible !important;
+  }
+  
+  .kintsugi-carousel-date {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: rgba(217, 50, 128, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 5;
+  }
+  
+  .swiper-pagination {
+    bottom: -30px !important;
+  }
+  
+  /* Estilos para evitar conflictos con el tema */
+  .kintsugi-noticia-item a:hover {
+    text-decoration: none !important;
+  }
+  
+  .kintsugi-noticia-item img,
+  .kintsugi-carousel-slide img {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Ajustes adicionales para el carrusel de 5 columnas */
+  /* Forzar estilos para sobreescribir plugins */
+  body .swiper-container-custom,
+  body .kintsugi-carousel-container,
+  body .swiper-slide {
+    transition: all 0.3s ease !important;
+  }
+  
+  body .kintsugi-carousel-slide {
+    height: auto !important;
+    min-height: 280px !important;
+    width: 100% !important; /* Asegurar que el slide se ajuste al ancho de su slot */
+  }
+  
+  /* Asegurar que la configuración de Swiper tenga prioridad */
+  body .swiper[id^="kintsugi-carousel"] .swiper-wrapper {
+    display: flex !important;
+  }
+  
+  /* Forzar ancho de slides según breakpoints */
+  @media (min-width: 1200px) {
+    body .swiper-container-custom .swiper-slide {
+      width: 20% !important;
+      box-sizing: border-box !important;
+    }
+  }
+  
+  @media (min-width: 992px) and (max-width: 1199px) {
+    body .swiper-container-custom .swiper-slide {
+      width: 25% !important;
+      box-sizing: border-box !important;
+    }
+  }
+  
+  @media (min-width: 640px) and (max-width: 991px) {
+    body .swiper-container-custom .swiper-slide {
+      width: 33.333% !important;
+      box-sizing: border-box !important;
+    }
+  }
+  
+  @media (min-width: 480px) and (max-width: 639px) {
+    body .swiper-container-custom .swiper-slide {
+      width: 50% !important;
+      box-sizing: border-box !important;
+    }
+  }
+  
+  @media (max-width: 479px) {
+    body .swiper-container-custom .swiper-slide {
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+  }
+  
+  /* Evitar que los slides se deformen */
+  body .swiper-container-custom {
+    overflow: visible !important;
+  }
+  
+  /* Mejoras de apariencia para el carrusel */
+  .swiper-container-custom {
+    padding: 0 !important;
+    margin-bottom: 40px !important;
+  }
+  
+  .swiper-pagination {
+    position: absolute !important;
+    bottom: -30px !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 20 !important;
+  }
+  
+  .swiper-pagination-bullet {
+    width: 10px !important;
+    height: 10px !important;
+    background: rgba(54, 39, 102, 0.5) !important;
+    opacity: 1 !important;
+  }
+  
+  .swiper-pagination-bullet-active {
+    background: #362766 !important;
+    transform: scale(1.2) !important;
+  }
+  
+  /* Mejorar navegación */
+  .kintsugi-carousel-nav-prev,
+  .kintsugi-carousel-nav-next {
+    background-color: rgba(54, 39, 102, 0.7) !important;
+    color: white !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 10 !important;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    cursor: pointer !important;
+    opacity: 0 !important;
+    transition: opacity 0.3s ease !important;
+  }
+  
+  .kintsugi-carousel-nav-prev {
+    left: -15px !important;
+  }
+  
+  .kintsugi-carousel-nav-next {
+    right: -15px !important;
+  }
+  
+  .kintsugi-carousel-container:hover .kintsugi-carousel-nav-prev,
+  .kintsugi-carousel-container:hover .kintsugi-carousel-nav-next {
+    opacity: 0.8 !important;
+  }
+  
+  .kintsugi-carousel-nav-prev:hover,
+  .kintsugi-carousel-nav-next:hover {
+    opacity: 1 !important;
+    background-color: rgba(54, 39, 102, 0.9) !important;
+  }
+</style>
+
 <!-- Hero Section -->
 <section class="relative bg-[#362766] overflow-hidden pt-20 md:pt-32">
   <!-- Imagen de fondo con overlay -->
@@ -51,21 +287,24 @@
       </div>
     </div>
 
-    <!-- Shortcode para el carrusel con noticias seleccionadas específicamente -->
-    <div class="swiper-container-custom">
-      <?php
-      // Obtener las noticias marcadas para el carrusel
-      $carousel_settings = get_option('kintsugi_carousel_noticias', array());
-      $carousel_ids = isset($carousel_settings['noticias_ids']) ? $carousel_settings['noticias_ids'] : array();
-      
-      if (!empty($carousel_ids)) {
-        // Si hay noticias seleccionadas, mostrar el carrusel con esas noticias específicas
-        echo do_shortcode('[administracion_noticias_carrousel ids="' . implode(',', $carousel_ids) . '" count="6"]');
-      } else {
-        // Si no hay noticias seleccionadas, mostrar el carrusel normal con las más recientes
-        echo do_shortcode('[administracion_noticias_carrousel count="6"]');
-      }
-      ?>
+    <!-- Contenedor mejorado del carrusel -->
+    <div class="carousel-outer-wrapper shadow-lg rounded-xl overflow-hidden mb-8">
+      <!-- Shortcode para el carrusel con noticias seleccionadas específicamente -->
+      <div class="swiper-container-custom">
+        <?php
+        // Obtener las noticias marcadas para el carrusel
+        $carousel_settings = get_option('kintsugi_carousel_noticias', array());
+        $carousel_ids = isset($carousel_settings['noticias_ids']) ? $carousel_settings['noticias_ids'] : array();
+        
+        if (!empty($carousel_ids)) {
+          // Si hay noticias seleccionadas, mostrar el carrusel con esas noticias específicas
+          echo do_shortcode('[administracion_noticias_carrousel ids="' . implode(',', $carousel_ids) . '" count="6"]');
+        } else {
+          // Si no hay noticias seleccionadas, mostrar el carrusel normal con las más recientes
+          echo do_shortcode('[administracion_noticias_carrousel count="6"]');
+        }
+        ?>
+      </div>
     </div>
   </div>
 </section>
@@ -73,15 +312,20 @@
 <!-- Sección 2: Todas las noticias -->
 <section class="bg-gray-50 py-4 relative">
   <div class="container mx-auto px-4 relative">
-    <h2 class="text-3xl md:text-4xl font-bold text-[#030D55] mb-8 text-left" style="font-family: 'Playfair Display', serif;">
-      Todas las noticias
-    </h2>
+    <div class="max-w-3xl mb-8">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#030D55] mb-4 text-left" style="font-family: 'Playfair Display', serif;">
+        Todas las noticias
+      </h2>
+      <p class="text-lg text-gray-600 mb-2">
+        Explora nuestra colección completa de apariciones en medios, artículos, entrevistas y videos sobre psicología, EMDR y tratamiento del trauma. Utiliza los filtros para encontrar exactamente lo que buscas.
+      </p>
+    </div>
     
     <!-- Filtros y Búsqueda AJAX -->
     <div class="kintsugi-filters-container mb-8">
-      <div class="flex flex-wrap items-center gap-4">
+      <div class="flex flex-wrap items-start gap-4">
         <div class="search-container flex-grow">
-          <label for="kintsugi-search-input" class="block mb-1 text-sm font-medium text-gray-700 md:hidden">Buscar</label>
+          <label for="kintsugi-search-input" class="block mb-2 text-sm font-medium text-gray-700">Buscar por palabra clave</label>
           <div class="relative">
             <input type="text" id="kintsugi-search-input" placeholder="Buscar noticias..." class="w-full px-4 py-2 pl-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#362766]">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -93,7 +337,7 @@
         </div>
         
         <div class="filter-container">
-          <label for="kintsugi-year-filter" class="block mb-1 text-sm font-medium text-gray-700 md:hidden">Año</label>
+          <label for="kintsugi-year-filter" class="block mb-2 text-sm font-medium text-gray-700">Filtrar por año</label>
           <select id="kintsugi-year-filter" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#362766]">
             <option value="all">Todos los años</option>
             <?php 
@@ -108,7 +352,7 @@
         </div>
         
         <div class="sort-container">
-          <label for="kintsugi-sort-filter" class="block mb-1 text-sm font-medium text-gray-700 md:hidden">Ordenar por</label>
+          <label for="kintsugi-sort-filter" class="block mb-2 text-sm font-medium text-gray-700">Ordenar resultados</label>
           <select id="kintsugi-sort-filter" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#362766]">
             <option value="date-desc">Más recientes primero</option>
             <option value="date-asc">Más antiguos primero</option>
@@ -117,12 +361,13 @@
           </select>
         </div>
       </div>
+      <div class="mt-3 text-sm text-gray-500 italic">Realiza una búsqueda, filtra por año o cambia el orden para encontrar contenido específico.</div>
     </div>
         
     <!-- Contenedor para el contenido AJAX -->
     <div id="kintsugi-noticias-ajax-container">
-      <!-- Shortcode para todas las noticias con buscador y paginación - mostrando 4 por página (2x2) -->
-      {!! do_shortcode('[administracion_noticias per_page="4"]') !!}
+      <!-- Shortcode para todas las noticias con buscador y paginación - mostrando 10 por página (5x2) -->
+      {!! do_shortcode('[administracion_noticias per_page="10"]') !!}
     </div>
   </div>
 </section>
@@ -133,4 +378,113 @@
     @php the_content(); @endphp
   </div>
 </section>
+
+<script>
+  // Script para inicializar funcionalidades cuando el DOM esté cargado
+  document.addEventListener('DOMContentLoaded', function() {
+    // Inicialización del filtro y búsqueda AJAX
+    jQuery(function($) {
+      let ajaxRunning = false;
+      
+      // Función para cargar las noticias filtradas
+      function loadNoticias(page = 1) {
+        if (ajaxRunning) return;
+        
+        ajaxRunning = true;
+        const search = $('#kintsugi-search-input').val();
+        const year = $('#kintsugi-year-filter').val();
+        const sortVal = $('#kintsugi-sort-filter').val();
+        let orderby = 'date';
+        let order = 'DESC';
+        
+        if (sortVal === 'date-asc') {
+          orderby = 'date';
+          order = 'ASC';
+        } else if (sortVal === 'title-asc') {
+          orderby = 'title';
+          order = 'ASC';
+        } else if (sortVal === 'title-desc') {
+          orderby = 'title';
+          order = 'DESC';
+        }
+        
+        $('#kintsugi-noticias-ajax-container').html('<div class="text-center py-10 w-full"><div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#D93280]"></div><p class="mt-2 text-gray-600">Cargando noticias...</p></div>');
+        
+        $.ajax({
+          url: '<?php echo admin_url('admin-ajax.php'); ?>',
+          type: 'POST',
+          data: {
+            action: 'kintsugi_filter_noticias',
+            search: search,
+            year: year,
+            orderby: orderby,
+            order: order,
+            paged: page,
+            per_page: 10
+          },
+          success: function(response) {
+            $('#kintsugi-noticias-ajax-container').html(response);
+            ajaxRunning = false;
+            
+            // Actualizar la URL con los parámetros de filtro (sin recargar la página)
+            const url = new URL(window.location);
+            if (search) url.searchParams.set('search_noticias', search);
+            else url.searchParams.delete('search_noticias');
+            
+            if (year !== 'all') url.searchParams.set('year', year);
+            else url.searchParams.delete('year');
+            
+            if (sortVal !== 'date-desc') url.searchParams.set('sort', sortVal);
+            else url.searchParams.delete('sort');
+            
+            if (page > 1) url.searchParams.set('pg', page);
+            else url.searchParams.delete('pg');
+            
+            window.history.replaceState({}, '', url);
+          }
+        });
+      }
+      
+      // Event listeners para filtros
+      $('#kintsugi-search-input').on('keyup', $.debounce(500, function() {
+        loadNoticias();
+      }));
+      
+      $('#kintsugi-year-filter, #kintsugi-sort-filter').on('change', function() {
+        loadNoticias();
+      });
+      
+      // Delegación de eventos para paginación
+      $(document).on('click', '.kintsugi-noticias-pagination a.page-numbers', function(e) {
+        e.preventDefault();
+        const href = $(this).attr('href');
+        const page = href.match(/paged=(\d+)/) ? parseInt(href.match(/paged=(\d+)/)[1]) : 1;
+        loadNoticias(page);
+        
+        // Scroll hacia arriba cuando cambia la página
+        $('html, body').animate({
+          scrollTop: $('#kintsugi-noticias-ajax-container').offset().top - 100
+        }, 500);
+      });
+      
+      // Función debounce para evitar muchas peticiones en keyup
+      function debounce(func, wait) {
+        let timeout;
+        return function() {
+          const context = this;
+          const args = arguments;
+          clearTimeout(timeout);
+          timeout = setTimeout(function() {
+            func.apply(context, args);
+          }, wait);
+        };
+      }
+      
+      // Agregar método debounce a jQuery
+      $.debounce = function(wait, func) {
+        return debounce(func, wait);
+      };
+    });
+  });
+</script>
 @endsection
