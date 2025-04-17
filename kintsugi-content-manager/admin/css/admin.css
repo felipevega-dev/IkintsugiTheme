@@ -7,35 +7,309 @@
 
 /* Admin general styles */
 .kintsugi-admin-header {
-    margin-bottom: 20px;
+    background: linear-gradient(90deg, #D93280 0%, #030D55 100%);
+    padding: 30px 20px;
+    margin-bottom: 30px;
+    color: white;
+    border-radius: 0 0 8px 8px;
 }
 
 .kintsugi-admin-header h1 {
-    font-size: 24px;
-    font-weight: bold;
+    color: white;
+    font-size: 28px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.kintsugi-admin-header p {
+    margin: 10px 0 0 0;
+    opacity: 0.9;
+    font-size: 15px;
+}
+
+.kintsugi-admin-content {
+    padding: 0 20px;
+}
+
+.kintsugi-admin-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    padding: 25px;
+    margin-bottom: 25px;
+    border-top: 4px solid #D93280;
+    transition: all 0.3s ease;
+}
+
+.kintsugi-admin-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+}
+
+.kintsugi-admin-card h2 {
+    margin-top: 0;
+    color: #030D55;
+    font-size: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 15px;
+}
+
+.kintsugi-admin-card code {
+    background: #f7f7f7;
+    padding: 12px;
+    display: inline-block;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Estilos del dashboard de resumen */
+.kintsugi-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.kintsugi-dashboard-item {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-left: 4px solid #D93280;
+}
+
+.kintsugi-dashboard-item h3 {
+    margin-top: 0;
+    font-size: 16px;
     margin-bottom: 10px;
+    color: #333;
+}
+
+.kintsugi-dashboard-value {
+    font-size: 36px;
+    font-weight: 700;
+    color: #030D55;
+    margin-bottom: 10px;
+}
+
+.kintsugi-dashboard-description {
+    color: #666;
+    margin-top: auto;
+    font-size: 13px;
 }
 
 /* Meta box styles */
 .noticia-meta-box label {
     font-weight: bold;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    color: #030D55;
 }
 
 .noticia-meta-box select,
 .noticia-meta-box input {
     margin-bottom: 15px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 .noticia-meta-box .description {
     display: block;
     font-style: italic;
-    margin-top: 3px;
+    margin-top: 5px;
+    color: #666;
+    font-size: 13px;
+}
+
+/* Estilos de metabox de carrusel */
+.kintsugi-carousel-metabox {
+    padding: 10px 5px;
+}
+
+.kintsugi-carousel-metabox label {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.kintsugi-carousel-metabox input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+/* Estilos para la página de configuración del carrusel */
+.kintsugi-carousel-list {
+    margin: 0;
+    padding: 0;
+}
+
+.kintsugi-carousel-list li {
+    border-bottom: 1px solid #f0f0f0;
+    margin: 0;
+    padding: 12px 0;
+}
+
+.kintsugi-carousel-item {
+    display: flex;
+    align-items: center;
+}
+
+.kintsugi-carousel-item strong {
+    flex: 1;
+    color: #030D55;
+}
+
+.kintsugi-carousel-item-type {
+    margin: 0 10px;
+    color: #666;
+    background: #f5f5f5;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.kintsugi-carousel-item-date {
+    margin-right: 10px;
     color: #666;
 }
 
-/* Admin list styles */
+.kintsugi-shortcode-container {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    background: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+}
+
+.kintsugi-shortcode-container code {
+    flex: 1;
+    padding: 10px 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 15px;
+}
+
+.copy-shortcode {
+    margin-left: 10px !important;
+    background-color: #D93280 !important;
+    color: white !important;
+    border-color: #D93280 !important;
+}
+
+.copy-shortcode:hover {
+    background-color: #c02574 !important;
+}
+
+/* Tablas de admin */
+.kintsugi-all-noticias table {
+    margin-top: 15px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.kintsugi-all-noticias table th {
+    background-color: #f2f2f2;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    color: #030D55;
+}
+
+.kintsugi-all-noticias table td {
+    padding: 12px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.kintsugi-all-noticias table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.column-type,
+.column-date,
+.column-carousel {
+    width: 15%;
+}
+
+.column-carousel {
+    text-align: center;
+}
+
+.column-actions {
+    width: 10%;
+    text-align: right;
+}
+
+/* Botones personalizados */
+.kintsugi-btn {
+    background-color: #D93280;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.kintsugi-btn:hover {
+    background-color: #c02574;
+    color: white;
+}
+
+.kintsugi-btn-secondary {
+    background-color: #030D55;
+    color: white;
+}
+
+.kintsugi-btn-secondary:hover {
+    background-color: #020a3b;
+}
+
+/* Branding notice */
+.kintsugi-branding-notice {
+    border-left-color: #D93280 !important;
+    padding: 15px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin: 15px 0 15px 0 !important;
+    background: linear-gradient(90deg, rgba(250,242,248,1) 0%, rgba(255,255,255,1) 100%) !important;
+    border-radius: 4px;
+}
+
+.kintsugi-branding-notice h2 {
+    margin: 0 !important;
+    color: #030D55 !important;
+    font-weight: 600 !important;
+}
+
+.kintsugi-branding-notice p {
+    margin: 5px 0 0 0 !important;
+    color: #555 !important;
+}
+
+.kintsugi-branding-buttons {
+    display: flex !important;
+    gap: 10px !important;
+}
+
+/* Acciones rápidas */
+.kintsugi-quick-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para admin list */
 .post-type-noticia .column-tipo_noticia {
     width: 15%;
 }

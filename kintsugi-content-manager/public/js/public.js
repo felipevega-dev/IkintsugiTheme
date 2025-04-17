@@ -13,6 +13,9 @@
 
     // Function to initialize everything
     function initKintsugiPublic() {
+        // Asegurar que los thumbnails de videos se carguen correctamente
+        initializeVideoThumbnails();
+        
         // Ensure all external article links open in a new tab
         $('.kintsugi-noticia-item a, .kintsugi-carousel-slide a').each(function() {
             if (!$(this).hasClass('kintsugi-noticia-video-link') && 
@@ -56,6 +59,174 @@
                 closeVideoPopup();
             }
         });
+        
+        // Fix para el video popup duplicado
+        if ($('.kintsugi-video-popup').length > 1) {
+            $('.kintsugi-video-popup:gt(0)').remove();
+        }
+        
+        // Inicializar AJAX Search & Filtering si están presentes los elementos
+        initializeAjaxFiltering();
+    }
+    
+    // Function to initialize video thumbnails
+    function initializeVideoThumbnails() {
+        $('.kintsugi-noticia-video-preview').each(function() {
+            var $this = $(this);
+            var videoId = $this.data('video-id');
+            
+            if (videoId) {
+                // Intentar cargar imagen HD primero
+                var hdImg = new Image();
+                hdImg.onload = function() {
+                    $this.find('img').attr('src', this.src);
+                };
+                hdImg.onerror = function() {
+                    // Si falla, cargar imagen estándar
+                    $this.find('img').attr('src', 'https://img.youtube.com/vi/' + videoId + '/0.jpg');
+                };
+                hdImg.src = 'https://img.youtube.com/vi/' + videoId + '/maxresdefault.jpg';
+                
+                // Establece también un fondo de respaldo por si la imagen no carga
+                $this.css('background-image', 'url(https://img.youtube.com/vi/' + videoId + '/0.jpg)');
+            }
+        });
+    }
+    
+    // Function to initialize AJAX filtering
+    function initializeAjaxFiltering() {
+        if ($('#kintsugi-search-input').length && $('#kintsugi-noticias-ajax-container').length) {
+            var ajaxUrl = typeof ajaxurl !== 'undefined' ? ajaxurl : '/wp-admin/admin-ajax.php';
+            var searchTimer;
+            var currentPage = 1;
+            
+            // Handle search input with debounce
+            $('#kintsugi-search-input').on('input', function() {
+                clearTimeout(searchTimer);
+                searchTimer = setTimeout(function() {
+                    currentPage = 1;
+                    fetchFilteredResults();
+                }, 500);
+            });
+            
+            // Handle year filter
+            $('#kintsugi-year-filter').on('change', function() {
+                currentPage = 1;
+                fetchFilteredResults();
+            });
+            
+            // Handle sort filter
+            $('#kintsugi-sort-filter').on('change', function() {
+                currentPage = 1;
+                fetchFilteredResults();
+            });
+            
+            // Handle pagination clicks
+            $(document).on('click', '.kintsugi-noticias-pagination a.page-numbers', function(e) {
+                e.preventDefault();
+                var href = $(this).attr('href');
+                var page = getParameterByName('paged', href) || 1;
+                currentPage = parseInt(page);
+                fetchFilteredResults();
+                
+                // Scroll to top of results
+                $('html, body').animate({
+                    scrollTop: $('#kintsugi-noticias-ajax-container').offset().top - 100
+                }, 300);
+            });
+            
+            // Function to fetch filtered results
+            function fetchFilteredResults() {
+                var searchQuery = $('#kintsugi-search-input').val();
+                var yearFilter = $('#kintsugi-year-filter').val();
+                var sortFilter = $('#kintsugi-sort-filter').val();
+                
+                // Show loading state
+                $('#kintsugi-noticias-ajax-container').html('<div class="text-center py-8"><div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#362766]"></div><p class="mt-2 text-gray-600">Cargando...</p></div>');
+                
+                // Parse sort filter
+                var orderby = 'date';
+                var order = 'DESC';
+                
+                if (sortFilter === 'date-asc') {
+                    orderby = 'date';
+                    order = 'ASC';
+                } else if (sortFilter === 'title-asc') {
+                    orderby = 'title';
+                    order = 'ASC';
+                } else if (sortFilter === 'title-desc') {
+                    orderby = 'title';
+                    order = 'DESC';
+                }
+                
+                // Make AJAX request
+                $.ajax({
+                    url: ajaxUrl,
+                    type: 'POST',
+                    data: {
+                        action: 'kintsugi_filter_noticias',
+                        search: searchQuery,
+                        year: yearFilter,
+                        orderby: orderby,
+                        order: order,
+                        paged: currentPage,
+                        per_page: 4 // Match the default per page
+                    },
+                    success: function(response) {
+                        $('#kintsugi-noticias-ajax-container').html(response);
+                        
+                        // Reinitialize components
+                        initializeVideoThumbnails();
+                        
+                        // Ensure all external article links open in a new tab
+                        $('.kintsugi-noticia-item a').each(function() {
+                            if (!$(this).hasClass('kintsugi-noticia-video-link')) {
+                                $(this).attr('target', '_blank');
+                                $(this).attr('rel', 'noopener noreferrer');
+                            }
+                        });
+                        
+                        // Rebind video click events
+                        $('.kintsugi-noticia-video-link').on('click', function(e) {
+                            e.preventDefault();
+                            
+                            if (videoIsPlaying) {
+                                return false;
+                            }
+                            
+                            var videoUrl = $(this).data('video-url');
+                            if (videoUrl) {
+                                videoIsPlaying = true;
+                                openVideoPopup(videoUrl);
+                            }
+                        });
+                        
+                        // Highlight the active page in pagination
+                        $('.kintsugi-noticias-pagination .page-numbers').removeClass('current');
+                        $('.kintsugi-noticias-pagination .page-numbers').each(function() {
+                            var pageNum = parseInt($(this).text());
+                            if (pageNum === currentPage) {
+                                $(this).addClass('current');
+                            }
+                        });
+                    },
+                    error: function() {
+                        $('#kintsugi-noticias-ajax-container').html('<div class="p-4 bg-red-100 text-red-700 rounded">Error al cargar las noticias. Por favor, inténtalo de nuevo.</div>');
+                    }
+                });
+            }
+        }
+    }
+    
+    // Function to get URL parameters - utility for pagination
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
 
     // Document ready

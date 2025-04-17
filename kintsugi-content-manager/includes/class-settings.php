@@ -47,7 +47,7 @@ class Kintsugi_Content_Manager_Settings {
         add_action('admin_init', array($this, 'register_settings'));
         
         // Add settings page if needed
-        // add_action('admin_menu', array($this, 'add_settings_page'));
+        add_action('admin_menu', array($this, 'add_settings_page'));
     }
 
     /**
@@ -83,6 +83,16 @@ class Kintsugi_Content_Manager_Settings {
                 'class'     => 'kintsugi-content-manager-row',
             )
         );
+
+        // Registrar la configuración del carrusel
+        register_setting('kintsugi_settings', 'kintsugi_carousel_noticias');
+        
+        // Registrar opción para forzar la carga estándar de scripts/estilos
+        register_setting('kintsugi_settings', 'kintsugi_force_standard_loading', array(
+            'type' => 'boolean',
+            'default' => false,
+            'sanitize_callback' => 'rest_sanitize_boolean'
+        ));
     }
 
     /**
@@ -144,5 +154,66 @@ class Kintsugi_Content_Manager_Settings {
     public function get_option($key, $default = '') {
         $options = get_option($this->option_name);
         return isset($options[$key]) ? $options[$key] : $default;
+    }
+
+    /**
+     * Add settings submenu page under main menu.
+     *
+     * @since    1.0.0
+     */
+    public function add_settings_page() {
+        // Añadir página de configuración como submenú de Kintsugi Content
+        add_submenu_page(
+            'kintsugi-content-manager',
+            __('Configuración General', 'kintsugi-content-manager'),
+            __('Configuración General', 'kintsugi-content-manager'),
+            'manage_options',
+            'kintsugi-settings',
+            array($this, 'display_settings_page')
+        );
+    }
+
+    /**
+     * Display settings page.
+     *
+     * @since    1.0.0
+     */
+    public function display_settings_page() {
+        // Obtener opción actual
+        $force_standard = get_option('kintsugi_force_standard_loading', false);
+        ?>
+        <div class="wrap">
+            <h1><?php _e('Configuración General de Kintsugi Content Manager', 'kintsugi-content-manager'); ?></h1>
+            
+            <form method="post" action="options.php">
+                <?php
+                settings_fields('kintsugi_settings');
+                do_settings_sections('kintsugi_settings');
+                ?>
+                
+                <div class="kintsugi-admin-card">
+                    <h2><?php _e('Configuración de Carga de Scripts', 'kintsugi-content-manager'); ?></h2>
+                    <p><?php _e('Si estás experimentando problemas con la carga de estilos o scripts en tu tema, puedes probar cambiando esta configuración.', 'kintsugi-content-manager'); ?></p>
+                    
+                    <table class="form-table">
+                        <tr>
+                            <th scope="row"><?php _e('Método de Carga', 'kintsugi-content-manager'); ?></th>
+                            <td>
+                                <label for="kintsugi_force_standard_loading">
+                                    <input type="checkbox" id="kintsugi_force_standard_loading" name="kintsugi_force_standard_loading" value="1" <?php checked(true, $force_standard); ?>>
+                                    <?php _e('Forzar carga estándar (WordPress tradicional)', 'kintsugi-content-manager'); ?>
+                                </label>
+                                <p class="description">
+                                    <?php _e('Activa esta opción si los estilos y scripts no se están cargando correctamente en tu tema. Esto forzará el uso del método estándar de WordPress para cargar recursos, en lugar del método específico para temas Sage/Laravel.', 'kintsugi-content-manager'); ?>
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <?php submit_button(); ?>
+            </form>
+        </div>
+        <?php
     }
 }

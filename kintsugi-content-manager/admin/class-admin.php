@@ -289,59 +289,52 @@ class Kintsugi_Content_Manager_Admin {
             )
         );
         
-        // Advanced settings
-        register_setting(
-            'kintsugi-advanced-settings',
-            'kintsugi_force_standard_loading',
-            array(
-                'sanitize_callback' => 'rest_sanitize_boolean',
-                'default'           => false,
-            )
-        );
-        
-        // Register advanced settings section
-        add_settings_section(
-            'kintsugi_advanced_section',
-            __('Configuración Avanzada', 'kintsugi-content-manager'),
-            array($this, 'render_advanced_section'),
-            'kintsugi-content-manager'
-        );
-        
-        // Register script loading field
-        add_settings_field(
-            'kintsugi_force_standard_loading',
-            __('Compatibilidad con Sage', 'kintsugi-content-manager'),
-            array($this, 'render_force_standard_loading_field'),
-            'kintsugi-content-manager',
-            'kintsugi_advanced_section'
-        );
+        // Registrar acción AJAX para actualizar el estado del carrusel
+        add_action('wp_ajax_update_carousel_status', array($this, 'update_carousel_status_ajax'));
     }
     
     /**
-     * Render the advanced settings section.
-     *
-     * @since    1.0.2
+     * Actualizar estado del carrusel vía AJAX
+     * 
+     * @since 1.0.3
      */
-    public function render_advanced_section() {
-        echo '<p>' . __('Ajustes avanzados para la compatibilidad del plugin.', 'kintsugi-content-manager') . '</p>';
-    }
-    
-    /**
-     * Render the force standard loading field.
-     *
-     * @since    1.0.2
-     */
-    public function render_force_standard_loading_field() {
-        $force_standard = get_option('kintsugi_force_standard_loading', false);
-        ?>
-        <label>
-            <input type="checkbox" name="kintsugi_force_standard_loading" value="1" <?php checked($force_standard, true); ?>>
-            <?php _e('Forzar carga estándar de scripts (útil para temas Sage)', 'kintsugi-content-manager'); ?>
-        </label>
-        <p class="description">
-            <?php _e('Active esta opción si está experimentando problemas con la visualización del carrusel o los videos en temas basados en Sage.', 'kintsugi-content-manager'); ?>
-        </p>
-        <?php
+    public function update_carousel_status_ajax() {
+        // Verificar nonce
+        if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'update_carousel_status')) {
+            wp_send_json_error(array('message' => 'Error de seguridad. Por favor, recarga la página.'));
+        }
+        
+        // Verificar permisos
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error(array('message' => 'No tienes permiso para realizar esta acción.'));
+        }
+        
+        // Obtener datos
+        $noticia_id = isset($_POST['noticia_id']) ? intval($_POST['noticia_id']) : 0;
+        $in_carousel = isset($_POST['in_carousel']) ? intval($_POST['in_carousel']) : 0;
+        
+        if (!$noticia_id) {
+            wp_send_json_error(array('message' => 'ID de noticia inválido.'));
+        }
+        
+        // Actualizar meta
+        update_post_meta($noticia_id, '_show_in_carousel', $in_carousel ? '1' : '0');
+        
+        // Actualizar configuración global del carrusel
+        $carousel_settings = get_option('kintsugi_carousel_noticias', array());
+        $noticias_ids = isset($carousel_settings['noticias_ids']) ? $carousel_settings['noticias_ids'] : array();
+        
+        if ($in_carousel && !in_array($noticia_id, $noticias_ids)) {
+            $noticias_ids[] = $noticia_id;
+            $carousel_settings['noticias_ids'] = $noticias_ids;
+            update_option('kintsugi_carousel_noticias', $carousel_settings);
+        } elseif (!$in_carousel && in_array($noticia_id, $noticias_ids)) {
+            $noticias_ids = array_diff($noticias_ids, array($noticia_id));
+            $carousel_settings['noticias_ids'] = $noticias_ids;
+            update_option('kintsugi_carousel_noticias', $carousel_settings);
+        }
+        
+        wp_send_json_success(array('message' => 'Estado del carrusel actualizado.'));
     }
     
     /**

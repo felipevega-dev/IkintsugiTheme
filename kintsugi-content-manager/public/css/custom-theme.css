@@ -1,0 +1,503 @@
+/**
+ * Custom theme styles for Kintsugi Content Manager.
+ * Specific styles for the Ikintsugi theme integration.
+ *
+ * @package    Kintsugi_Content_Manager
+ * @subpackage Kintsugi_Content_Manager/public/css
+ */
+
+/* Asegurar que las noticias se muestran en 2 columnas en lugar de 3 */
+@media (min-width: 768px) {
+  .kintsugi-noticias-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-gap: 30px !important;
+  }
+  
+  /* Hacer que las noticias sean más anchas/horizontales */
+  .kintsugi-noticia-item {
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  }
+  
+  .kintsugi-noticia-item:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12) !important;
+  }
+  
+  .kintsugi-noticia-image,
+  .kintsugi-noticia-video {
+    height: 0 !important;
+    padding-bottom: 56.25% !important; /* Proporción 16:9 para un aspecto más horizontal */
+    position: relative !important;
+    overflow: hidden !important;
+  }
+  
+  .kintsugi-noticia-image img,
+  .kintsugi-noticia-video img,
+  .kintsugi-noticia-video-preview img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important; /* Centrar la imagen */
+  }
+  
+  /* Ajustar el tamaño del contenedor del carrusel */
+  .swiper-container-custom .swiper-slide {
+    height: auto !important;
+  }
+  
+  /* Mejorar la apariencia del carrusel para que se vea como unidad */
+  .kintsugi-carousel-container {
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 15px !important;
+    background: #f9f9f9 !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05) !important;
+    position: relative !important;
+  }
+  
+  /* Añadir indicadores visuales para el carrusel */
+  .kintsugi-carousel-nav-prev,
+  .kintsugi-carousel-nav-next {
+    background-color: rgba(54, 39, 102, 0.7) !important;
+    color: white !important;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 24px !important;
+    z-index: 10 !important;
+    opacity: 0 !important;
+    transition: opacity 0.3s ease !important;
+    cursor: pointer !important;
+    position: absolute !important;
+  }
+  
+  .kintsugi-carousel-nav-prev:after {
+    content: "\2039" !important;
+    font-size: 30px !important;
+  }
+  
+  .kintsugi-carousel-nav-next:after {
+    content: "\203A" !important;
+    font-size: 30px !important;
+  }
+  
+  .kintsugi-carousel-container:hover .kintsugi-carousel-nav-prev,
+  .kintsugi-carousel-container:hover .kintsugi-carousel-nav-next {
+    opacity: 1 !important;
+  }
+  
+  /* Mejorar la paginación */
+  .swiper-pagination-bullet {
+    width: 12px !important;
+    height: 12px !important;
+    background: #362766 !important;
+    opacity: 0.5 !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  .swiper-pagination-bullet-active {
+    opacity: 1 !important;
+    width: 30px !important;
+    border-radius: 6px !important;
+  }
+  
+  /* Pequeña animación para los slides */
+  .swiper-slide-active {
+    transform: scale(1.02) !important;
+    transition: transform 0.5s ease !important;
+    z-index: 2 !important;
+  }
+}
+
+/* Animación del indicador de deslizamiento */
+.swipe-indicator {
+  width: 40px;
+  height: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.left-indicator .swipe-indicator-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #362766;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: swipeAnimationLeft 1.5s infinite ease-in-out;
+}
+
+.right-indicator .swipe-indicator-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #362766;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: swipeAnimationRight 1.5s infinite ease-in-out;
+}
+
+@keyframes swipeAnimationLeft {
+  0% {
+    right: 0;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    right: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes swipeAnimationRight {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+/* Fix para mostrar miniaturas de video en la cuadrícula 2x2 */
+.kintsugi-noticia-video-preview {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+}
+
+/* Arreglar problema específico con los videos */
+.kintsugi-noticia-item a[data-video-url] .kintsugi-noticia-video {
+  position: relative !important;
+  height: 0 !important;
+  padding-bottom: 56.25% !important;
+  overflow: hidden !important;
+  display: block !important;
+}
+
+.kintsugi-noticia-item a[data-video-url] .kintsugi-noticia-video .kintsugi-noticia-video-preview img {
+  position: absolute !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.kintsugi-noticia-video-preview[data-video-id] {
+  background-size: cover !important;
+  background-position: center center !important;
+}
+
+.kintsugi-noticia-video-play {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 60px !important;
+  height: 60px !important;
+  background-color: rgba(54, 39, 102, 0.7) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 5 !important;
+}
+
+.kintsugi-noticia-video-play:after {
+  content: '' !important;
+  width: 0 !important; 
+  height: 0 !important;
+  border-top: 12px solid transparent !important;
+  border-bottom: 12px solid transparent !important;
+  border-left: 20px solid white !important;
+  margin-left: 5px !important;
+}
+
+/* Mejorar la responsividad en móvil */
+@media (max-width: 767px) {
+  .kintsugi-noticias-grid {
+    grid-template-columns: 1fr !important;
+    grid-gap: 20px !important;
+  }
+  
+  /* Asegurar que todas las noticias tengan la misma altura en móvil */
+  .kintsugi-noticia-item {
+    margin-bottom: 20px !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08) !important;
+  }
+  
+  /* Forzar resolución horizontal para imágenes en móvil */
+  .kintsugi-noticia-image,
+  .kintsugi-noticia-video {
+    height: 0 !important;
+    padding-bottom: 56.25% !important; /* Proporción 16:9 para un aspecto más horizontal */
+    position: relative !important;
+    overflow: hidden !important;
+    width: 100% !important;
+  }
+  
+  .kintsugi-noticia-image img,
+  .kintsugi-noticia-video img,
+  .kintsugi-noticia-video-preview img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+  
+  /* Mejorar filtros en móvil */
+  .kintsugi-filters-container {
+    background: #f5f7fa !important;
+    padding: 15px !important;
+    border-radius: 10px !important;
+    margin-bottom: 20px !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+  }
+  
+  .kintsugi-filters-container .flex {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  
+  .kintsugi-filters-container .search-container,
+  .kintsugi-filters-container .filter-container,
+  .kintsugi-filters-container .sort-container {
+    width: 100% !important;
+    margin-bottom: 10px !important;
+  }
+  
+  .kintsugi-filters-container input,
+  .kintsugi-filters-container select {
+    width: 100% !important;
+    padding: 12px !important;
+    border-radius: 8px !important;
+    border: 1px solid #e0e0e0 !important;
+    font-size: 16px !important; /* Increase font size for mobile */
+    -webkit-appearance: none !important; /* Fix for iOS */
+  }
+  
+  .kintsugi-filters-container select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 10px center !important;
+    padding-right: 30px !important;
+  }
+  
+  .kintsugi-carousel-container {
+    padding: 10px !important;
+    border-radius: 8px !important;
+  }
+  
+  .kintsugi-carousel-slide {
+    height: 350px !important;
+  }
+  
+  .kintsugi-carousel-nav-prev,
+  .kintsugi-carousel-nav-next {
+    width: 40px !important;
+    height: 40px !important;
+    opacity: 0.7 !important;
+  }
+  
+  .kintsugi-carousel-title {
+    font-size: 16px !important;
+  }
+  
+  .kintsugi-carousel-excerpt {
+    font-size: 13px !important;
+    -webkit-line-clamp: 2 !important;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+  
+  .swipe-indicator {
+    width: 30px !important;
+  }
+  
+  .swiper-pagination-bullet {
+    width: 8px !important;
+    height: 8px !important;
+  }
+  
+  .swiper-pagination-bullet-active {
+    width: 20px !important;
+  }
+  
+  .kintsugi-noticia-content {
+    padding: 15px !important;
+  }
+  
+  .kintsugi-noticia-title {
+    font-size: 16px !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .kintsugi-noticia-date {
+    font-size: 12px !important;
+  }
+  
+  .kintsugi-noticia-excerpt {
+    font-size: 13px !important;
+    -webkit-line-clamp: 3 !important;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+}
+
+/* Arreglar bug en Safari con tamaño de imágenes */
+.kintsugi-noticia-image,
+.kintsugi-noticia-video,
+.kintsugi-carousel-image {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Fallback para videos cuando no carga la imagen */
+.kintsugi-noticia-item a[data-video-url] {
+  position: relative !important;
+  display: block !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.kintsugi-noticia-item a[data-video-url]::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 56.25% !important; /* Maintain 16:9 ratio */
+  background-color: #362766 !important;
+  z-index: 0 !important;
+}
+
+.kintsugi-noticia-item a[data-video-url] .kintsugi-noticia-video-preview {
+  z-index: 1 !important;
+}
+
+.kintsugi-noticia-item a[data-video-url] .kintsugi-noticia-video-play {
+  z-index: 2 !important;
+}
+
+/* Enfoque simple para el borde gradiente que funciona en todos los navegadores */
+.swiper-container-custom {
+  padding: 0 !important;
+  border-radius: 14px !important;
+  background: linear-gradient(180deg, rgba(171, 39, 122, 0.48) 0%, rgba(3, 13, 85, 0.48) 61%) !important;
+  position: relative !important;
+}
+
+.kintsugi-carousel-container {
+  border: none !important;
+  border-radius: 12px !important;  /* Ligeramente menor que el contenedor padre */
+  margin: 2px !important;  /* Esto crea el "borde" de 2px */
+  padding: 15px !important;
+  background: #f9f9f9 !important;
+  box-shadow: none !important; /* Quitar sombra para que no se sobreponga al borde */
+  position: relative !important;
+}
+
+/* Borde con gradiente para móviles */
+@media (max-width: 767px) {
+  .swiper-container-custom {
+    padding: 0 !important;
+    border-radius: 10px !important;
+  }
+  
+  .kintsugi-carousel-container {
+    border-radius: 8px !important;
+    margin: 2px !important;
+    padding: 10px !important;
+  }
+}
+
+/* Estilo para paginación */
+.kintsugi-noticias-pagination {
+  display: flex !important;
+  justify-content: center !important;
+  margin-top: 30px !important;
+}
+
+.kintsugi-noticias-pagination .page-numbers {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 40px !important;
+  height: 40px !important;
+  padding: 0 12px !important;
+  margin: 0 5px !important;
+  border-radius: 4px !important;
+  background-color: #f5f5f5 !important;
+  color: #333 !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.kintsugi-noticias-pagination .page-numbers.current {
+  background-color: #362766 !important;
+  color: #fff !important;
+}
+
+.kintsugi-noticias-pagination .page-numbers:hover:not(.current) {
+  background-color: #e0e0e0 !important;
+}
+
+/* Mostrar spinner de carga */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+} 

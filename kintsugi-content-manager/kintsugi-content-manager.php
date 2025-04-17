@@ -10,7 +10,7 @@
  * Plugin Name:       Kintsugi Content Manager
  * Plugin URI:        https://ikintsugi.com
  * Description:       Administra el contenido de noticias para el sitio de Kintsugi.
- * Version:           1.0.2
+ * Version:           1.0.3
  * Author:            Ikintsugi
  * Author URI:        https://ikintsugi.com
  * License:           GPL-2.0+
@@ -25,7 +25,7 @@ if (!defined('WPINC')) {
 }
 
 // Plugin version
-define('KINTSUGI_CONTENT_MANAGER_VERSION', '1.0.2');
+define('KINTSUGI_CONTENT_MANAGER_VERSION', '1.0.3');
 
 // Plugin folder URL.
 define('KINTSUGI_CONTENT_MANAGER_PLUGIN_URL', plugin_dir_url(__FILE__));
@@ -39,7 +39,27 @@ define('KINTSUGI_CONTENT_MANAGER_PLUGIN_DIR', plugin_dir_path(__FILE__));
  * @return bool Whether a Sage theme is active
  */
 function kintsugi_detect_sage_theme() {
-    $is_sage = function_exists('sage') || (function_exists('app') && method_exists(app(), 'sage'));
+    $is_sage = false;
+    
+    // Método 1: Detectar por las funciones de Sage
+    if (function_exists('sage') || (function_exists('app') && method_exists(app(), 'sage'))) {
+        $is_sage = true;
+    }
+    
+    // Método 2: Detectar por la estructura de archivos
+    if (!$is_sage) {
+        $theme_dir = get_template_directory();
+        if (file_exists($theme_dir . '/resources/views') || file_exists($theme_dir . '/resources/assets')) {
+            $is_sage = true;
+        }
+    }
+    
+    // Método 3: Detectar por nombre del tema
+    $theme = wp_get_theme();
+    $theme_name = $theme->get('Name');
+    if (strpos(strtolower($theme_name), 'sage') !== false || strpos(strtolower($theme_name), 'ikintsugi') !== false) {
+        $is_sage = true;
+    }
     
     // Check if we're forcing standard loading
     $force_standard = get_option('kintsugi_force_standard_loading', false);
@@ -48,6 +68,9 @@ function kintsugi_detect_sage_theme() {
     if ($force_standard) {
         return false;
     }
+    
+    // Recomendado para depuración
+    error_log('Kintsugi: Sage theme detected: ' . ($is_sage ? 'Yes' : 'No'));
     
     // Allow forcing standard WP script loading via filter
     return apply_filters('kintsugi_is_sage_theme', $is_sage);
