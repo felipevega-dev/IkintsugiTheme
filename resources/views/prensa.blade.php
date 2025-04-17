@@ -5,11 +5,27 @@
 @extends('layouts.app')
 
 @section('content')
+<?php
+// Desregistrar los estilos y scripts del plugin para usar solo los del tema
+add_action('wp_print_styles', function() {
+    wp_deregister_style('kintsugi-content-manager-public');
+}, 100);
+
+add_action('wp_print_scripts', function() {
+    wp_deregister_script('kintsugi-content-manager-carousel');
+    wp_deregister_script('kintsugi-content-manager-public');
+}, 100);
+?>
+
 <!-- Cargar jQuery primero -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 
 <!-- Cargar hoja de estilos de Swiper desde CDN -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+
+<!-- Cargar nuestros scripts personalizados para el funcionamiento del carrusel y videos -->
+<script src="{{ get_theme_file_uri('resources/scripts/kintsugi-carousel.js') }}" defer></script>
+<script src="{{ get_theme_file_uri('resources/scripts/kintsugi-public.js') }}" defer></script>
 
 <!-- Estilos específicos de la página -->
 <style>
@@ -500,6 +516,43 @@ body.kintsugi-popup-open {
   width: auto !important;
   padding: 0 12px !important;
 }
+
+/* Añadimos estilos inline para forzar dos columnas */
+.kintsugi-noticias-grid {
+  display: grid !important;
+  grid-template-columns: repeat(1, 1fr) !important;
+  gap: 20px !important;
+  margin-bottom: 30px !important;
+}
+
+@media (min-width: 640px) {
+  .kintsugi-noticias-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+.kintsugi-noticia-item {
+  position: relative !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+  height: 100% !important;
+  background-color: #fff !important;
+  border: 1px solid rgba(54, 39, 102, 0.1) !important;
+  transition: transform 0.3s, box-shadow 0.3s !important;
+  margin-bottom: 0 !important; /* Anulamos el margen inferior para que grid-gap maneje el espaciado */
+}
+
+.kintsugi-noticia-image, .kintsugi-noticia-video {
+  height: 200px !important;
+  overflow: hidden !important;
+}
+
+.kintsugi-noticia-content {
+  padding: 15px !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
 </style>
 
 <!-- Wrapper para aumentar especificidad -->
@@ -560,17 +613,13 @@ body.kintsugi-popup-open {
         
         if (!empty($carousel_ids)) {
           // Si hay noticias seleccionadas, mostrar el carrusel con esas noticias específicas
-          echo do_shortcode('[administracion_noticias_carrousel ids="' . implode(',', $carousel_ids) . '" count="6"]');
+          echo do_shortcode('[administracion_noticias_carrousel ids="' . implode(',', $carousel_ids) . '" count="8"]');
         } else {
           // Si no hay noticias seleccionadas, mostrar el carrusel normal con las más recientes
-          echo do_shortcode('[administracion_noticias_carrousel count="6"]');
+          echo do_shortcode('[administracion_noticias_carrousel count="8"]');
         }
         ?>
       </div>
-      <!-- Añadimos manualmente los elementos de navegación y paginación -->
-      <div class="swiper-pagination" style="position: absolute !important; bottom: 10px !important; left: 0 !important; right: 0 !important; text-align: center !important; z-index: 10 !important;"></div>
-      <div class="kintsugi-carousel-nav-prev" style="position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; left: 10px !important; z-index: 10 !important; width: 40px !important; height: 40px !important; background: rgba(54, 39, 102, 0.7) !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important;"></div>
-      <div class="kintsugi-carousel-nav-next" style="position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; right: 10px !important; z-index: 10 !important; width: 40px !important; height: 40px !important; background: rgba(54, 39, 102, 0.7) !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important;"></div>
     </div>
   </div>
 </section>
@@ -626,6 +675,45 @@ body.kintsugi-popup-open {
         
     <!-- Contenedor para el contenido AJAX -->
     <div id="kintsugi-noticias-ajax-container" style="position: relative;">
+      <!-- Añadimos estilos inline para forzar dos columnas -->
+      <style>
+        .kintsugi-noticias-grid {
+          display: grid !important;
+          grid-template-columns: repeat(1, 1fr) !important;
+          gap: 20px !important;
+          margin-bottom: 30px !important;
+        }
+
+        @media (min-width: 640px) {
+          .kintsugi-noticias-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+
+        .kintsugi-noticia-item {
+          position: relative !important;
+          border-radius: 8px !important;
+          overflow: hidden !important;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+          height: 100% !important;
+          background-color: #fff !important;
+          border: 1px solid rgba(54, 39, 102, 0.1) !important;
+          transition: transform 0.3s, box-shadow 0.3s !important;
+          margin-bottom: 0 !important; /* Anulamos el margen inferior para que grid-gap maneje el espaciado */
+        }
+        
+        .kintsugi-noticia-image, .kintsugi-noticia-video {
+          height: 200px !important;
+          overflow: hidden !important;
+        }
+        
+        .kintsugi-noticia-content {
+          padding: 15px !important;
+          position: relative !important;
+          z-index: 2 !important;
+        }
+      </style>
+      
       <!-- Shortcode para todas las noticias con buscador y paginación - mostrando 4 por página (2x2) -->
       {!! do_shortcode('[administracion_noticias per_page="4"]') !!}
     </div>
@@ -682,6 +770,12 @@ var kintsugi_ajax = {
     // Initialize when document is ready
     $(document).ready(function() {
         initNoticiasFilters();
+        initKintsugiCarousel();
+        
+        // Eliminar popups de video duplicados
+        if ($('.kintsugi-video-popup').length > 1) {
+            $('.kintsugi-video-popup:not(:first)').remove();
+        }
         
         // Nueva función para aplicar estilos inline a elementos del plugin
         function applyInlineStyles() {
@@ -890,184 +984,151 @@ var kintsugi_ajax = {
     });
     
     function initKintsugiCarousel() {
-        // También buscar div[class*="kintsugi-carousel"] para capturar todas las posibles variaciones
-        if ($('[class*="kintsugi-carousel"]').length) {
-            var swiperInstances = [];
-            
-            // Seleccionar cualquier div que pueda actuar como contenedor de carrusel
-            $('[id*="kintsugi-carousel"], .kintsugi-carousel-container, .swiper, .swiper-container').each(function(index) {
-                // Verificar si ya tiene un ID, de lo contrario asignarle uno
-                var $container = $(this);
-                var carouselId = $container.attr('id');
-                if (!carouselId) {
-                    carouselId = 'kintsugi-carousel-' + index;
-                    $container.attr('id', carouselId);
-                }
-                
-                // Check if this carousel is already initialized
-                if ($container.hasClass('carousel-initialized')) {
-                    return;
-                }
-                
-                console.log('Inicializando carrusel con ID:', carouselId);
-                
-                // Verificar si hay un contenedor secundario de Swiper dentro
-                var $swiperContainer = $container.find('.swiper-container');
-                if ($swiperContainer.length > 0) {
-                    console.log('Encontrado contenedor Swiper interno, usando éste para inicializar');
-                    $container = $swiperContainer;
-                    $container.attr('id', carouselId + '-inner');
-                    carouselId = carouselId + '-inner';
-                }
-                
-                // Verificar si ya tiene los elementos necesarios
-                if ($container.find('.swiper-wrapper').length === 0) {
-                    console.log('No se encontró .swiper-wrapper, creando estructura');
-                    // Envolver el contenido en un wrapper si no existe
-                    $container.wrapInner('<div class="swiper-wrapper"></div>');
-                }
-                
-                // Verificar si hay slides
-                var $slides = $container.find('.swiper-wrapper').children();
-                if (!$slides.hasClass('swiper-slide')) {
-                    console.log('Convirtiendo elementos en slides de Swiper');
-                    $slides.addClass('swiper-slide');
-                }
-                
-                // Añadir paginación y navegación si no existen
-                if ($container.find('.swiper-pagination').length === 0) {
-                    $container.append('<div class="swiper-pagination"></div>');
-                }
-                
-                if ($container.find('.kintsugi-carousel-nav-prev').length === 0) {
-                    $container.append('<div class="kintsugi-carousel-nav-prev"></div>');
-                }
-                
-                if ($container.find('.kintsugi-carousel-nav-next').length === 0) {
-                    $container.append('<div class="kintsugi-carousel-nav-next"></div>');
-                }
-                
-                // Aplicar estilos directamente con atributos style
-                $container.attr('style', 'position: relative !important; overflow: hidden !important; margin-left: auto !important; margin-right: auto !important; padding-bottom: 40px !important; border-radius: 8px !important; box-shadow: 0 10px 30px rgba(3, 13, 85, 0.1) !important;');
-                
-                $container.find('.swiper-wrapper').attr('style', 'display: flex !important; width: 100% !important; height: 100% !important; position: relative !important; z-index: 1 !important; box-sizing: content-box !important; transition-property: transform !important;');
-                
-                $container.find('.swiper-pagination').attr('style', 'position: absolute !important; bottom: 10px !important; left: 0 !important; right: 0 !important; text-align: center !important; z-index: 10 !important;');
-                
-                $container.find('.kintsugi-carousel-nav-prev').attr('style', 'position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; left: 10px !important; z-index: 10 !important; width: 40px !important; height: 40px !important; background: rgba(54, 39, 102, 0.7) !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important;');
-                
-                $container.find('.kintsugi-carousel-nav-next').attr('style', 'position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; right: 10px !important; z-index: 10 !important; width: 40px !important; height: 40px !important; background: rgba(54, 39, 102, 0.7) !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important;');
-                
-                // Añadir los triángulos para los botones de navegación
-                $container.find('.kintsugi-carousel-nav-prev').html('<div style="width: 12px !important; height: 12px !important; border-top: 2px solid white !important; border-right: 2px solid white !important; transform: rotate(-135deg) !important; margin-left: 5px !important;"></div>');
-                
-                $container.find('.kintsugi-carousel-nav-next').html('<div style="width: 12px !important; height: 12px !important; border-top: 2px solid white !important; border-right: 2px solid white !important; transform: rotate(45deg) !important; margin-right: 5px !important;"></div>');
-                
-                // Inicializar Swiper con opciones adaptadas
-                var swiper = new Swiper('#' + carouselId, {
-                    slidesPerView: 1,
-                    spaceBetween: 20,
-                    loop: true,
-                    grabCursor: true,
-                    effect: 'slide',
-                    speed: 800,
-                    autoplay: {
-                        delay: 5000,
-                        disableOnInteraction: false,
-                        pauseOnMouseEnter: true,
-                    },
-                    pagination: {
-                        el: '#' + carouselId + ' .swiper-pagination',
-                        clickable: true,
-                        dynamicBullets: true,
-                    },
-                    navigation: {
-                        nextEl: '#' + carouselId + ' .kintsugi-carousel-nav-next',
-                        prevEl: '#' + carouselId + ' .kintsugi-carousel-nav-prev',
-                    },
-                    breakpoints: {
-                        768: {
-                            slidesPerView: 2,
-                            spaceBetween: 20,
-                        },
-                        992: {
-                            slidesPerView: 3,
-                            spaceBetween: 30,
-                        },
-                    },
-                    on: {
-                        init: function() {
-                            $('#' + carouselId).addClass('carousel-initialized');
-                            
-                            // Aplicar estilos adicionales a los slides después de la inicialización
-                            setTimeout(function() {
-                                // Aplicar estilos a los slides del carrusel
-                                $('.kintsugi-carousel-slide, .swiper-slide').attr('style', 'position: relative !important; border-radius: 8px !important; overflow: hidden !important; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important; background-color: #fff !important; border: 1px solid rgba(54, 39, 102, 0.1) !important; height: 400px !important; transition: transform 0.3s, box-shadow 0.3s !important;');
-                                
-                                $('.kintsugi-carousel-image').attr('style', 'height: 200px !important; overflow: hidden !important;');
-                                $('.kintsugi-carousel-image img').attr('style', 'width: 100% !important; height: 100% !important; object-fit: cover !important; transition: transform 0.5s !important;');
-                                
-                                $('.kintsugi-carousel-date').attr('style', 'position: absolute !important; top: 10px !important; right: 10px !important; background: rgba(54, 39, 102, 0.8) !important; color: #fff !important; padding: 4px 8px !important; border-radius: 4px !important; font-size: 12px !important; z-index: 5 !important;');
-                                $('.kintsugi-carousel-overlay').attr('style', 'position: absolute !important; inset: 0 !important; background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%) !important; z-index: 1 !important;');
-                                
-                                $('.kintsugi-carousel-content').attr('style', 'padding: 15px !important; position: relative !important; z-index: 2 !important;');
-                                $('.kintsugi-carousel-title').attr('style', 'margin: 0 0 8px !important; font-size: 18px !important; font-weight: 700 !important; color: #030D55 !important; line-height: 1.3 !important; font-family: "Playfair Display", serif !important;');
-                                $('.kintsugi-carousel-excerpt').attr('style', 'font-size: 14px !important; color: #4a4a4a !important; line-height: 1.5 !important;');
-                                
-                                $('.kintsugi-carousel-play').attr('style', 'position: absolute !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; width: 60px !important; height: 60px !important; background-color: rgba(54, 39, 102, 0.8) !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 3 !important; cursor: pointer !important;');
-                                
-                                // Crear triángulo de reproducción
-                                $('.kintsugi-carousel-play').each(function() {
-                                    if (!$(this).find('.play-triangle').length) {
-                                        $(this).html('<div class="play-triangle" style="width: 0 !important; height: 0 !important; border-top: 12px solid transparent !important; border-bottom: 12px solid transparent !important; border-left: 18px solid white !important; margin-left: 5px !important;"></div>');
-                                    }
-                                });
-                            }, 100);
-                        }
-                    }
-                });
-                
-                swiperInstances.push(swiper);
+        // Solo inicializamos el carrusel si existe el contenedor y no ha sido inicializado previamente
+        if ($('.swiper-container').length && !$('.swiper-container').hasClass('swiper-container-initialized')) {
+            // IMPORTANTE: Añadimos !important a todos los estilos inline para evitar que Tailwind los sobrescriba
+            $('.swiper-container').css({
+                'position': 'relative !important',
+                'width': '100% !important',
+                'overflow': 'hidden !important',
+                'margin': '0 auto !important',
+                'z-index': '1 !important'
             });
             
-            // Guardar referencia global de instancias de Swiper
-            window.kintsugiSwiperInstances = swiperInstances;
-        }
-        
-        // Inicializar handlers de video
-        $(document).on('click', '.kintsugi-carousel-video-link, .kintsugi-noticia-video-link', function(e) {
-            e.preventDefault();
-            
-            var videoUrl = $(this).data('video-url');
-            if (videoUrl) {
-                openVideoPopup(videoUrl);
-                
-                // Pausar autoplay cuando se abre un video
-                if (window.kintsugiSwiperInstances && window.kintsugiSwiperInstances.length) {
-                    window.kintsugiSwiperInstances.forEach(function(swiper) {
-                        if (swiper && swiper.autoplay) {
-                            swiper.autoplay.stop();
-                        }
-                    });
+            $('.swiper-wrapper').css({
+                'display': 'flex !important',
+                'width': '100% !important',
+                'height': '100% !important',
+                'z-index': '1 !important',
+                'position': 'relative !important'
+            });
+
+            // Eliminar navegación y paginación duplicados si existen más de uno
+            if ($('.swiper-button-next').length > 1) {
+                $('.swiper-container .swiper-button-next:not(:first)').remove();
+            }
+            if ($('.swiper-button-prev').length > 1) {
+                $('.swiper-container .swiper-button-prev:not(:first)').remove();
+            }
+            if ($('.swiper-pagination').length > 1) {
+                $('.swiper-container .swiper-pagination:not(:first)').remove();
+            }
+
+            // Inicializar Swiper con configuración para mostrar múltiples slides
+            var mySwiper = new Swiper('.swiper-container-custom', {
+                loop: true,
+                spaceBetween: 20,
+                slidesPerView: 1,  // Por defecto en móvil
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.kintsugi-carousel-nav-next',
+                    prevEl: '.kintsugi-carousel-nav-prev',
+                },
+                // Configuración responsiva
+                breakpoints: {
+                    480: {  // >= 480px
+                        slidesPerView: 2,
+                        spaceBetween: 15,
+                    },
+                    768: {  // >= 768px
+                        slidesPerView: 3,
+                        spaceBetween: 20,
+                    },
+                    1024: { // >= 1024px
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    }
+                },
+                on: {
+                    init: function() {
+                        // Aplicar estilos a los slides después de que se generen
+                        $('.swiper-slide').css({
+                            'width': 'auto !important',
+                            'height': 'auto !important',
+                            'position': 'relative !important',
+                            'border-radius': '8px !important',
+                            'overflow': 'hidden !important',
+                            'background': '#fff !important',
+                            'box-shadow': '0 4px 10px rgba(0, 0, 0, 0.1) !important',
+                            'transition': 'transform 0.3s !important',
+                            'flex-shrink': '0 !important'
+                        });
+                        
+                        // Aplicamos estilo a los controles de navegación
+                        $('.swiper-button-next, .swiper-button-prev').css({
+                            'width': '40px !important',
+                            'height': '40px !important',
+                            'background-color': 'rgba(255, 255, 255, 0.9) !important',
+                            'border-radius': '50% !important',
+                            'box-shadow': '0 2px 5px rgba(0, 0, 0, 0.2) !important',
+                            'cursor': 'pointer !important',
+                            'z-index': '10 !important',
+                            'display': 'flex !important',
+                            'justify-content': 'center !important',
+                            'align-items': 'center !important',
+                            'transition': 'all 0.3s !important'
+                        });
+                        
+                        // Estilizamos la paginación
+                        $('.swiper-pagination-bullet').css({
+                            'width': '12px !important',
+                            'height': '12px !important',
+                            'background': 'rgba(54, 39, 102, 0.5) !important',
+                            'margin': '0 5px !important',
+                            'opacity': '1 !important',
+                            'transition': 'all 0.3s !important'
+                        });
+                        
+                        $('.swiper-pagination-bullet-active').css({
+                            'background': 'rgba(54, 39, 102, 1) !important',
+                            'transform': 'scale(1.2) !important'
+                        });
+                    }
                 }
-            }
-            return false;
-        });
-        
-        // Cerrar popup al hacer click en el botón o fondo
-        $(document).on('click', '.kintsugi-video-popup-close, .kintsugi-video-popup', function(e) {
-            if ($(e.target).is('.kintsugi-video-popup-close') || $(e.target).is('.kintsugi-video-popup')) {
-                closeVideoPopup();
-            }
-        });
-        
-        // Cerrar popup con tecla Escape
-        $(document).on('keyup', function(e) {
-            if (e.key === 'Escape') {
-                closeVideoPopup();
-            }
-        });
+            });
+        }
     }
+    
+    // Inicializar handlers de video
+    $(document).on('click', '.kintsugi-carousel-video-link, .kintsugi-noticia-video-link', function(e) {
+        e.preventDefault();
+        
+        var videoUrl = $(this).data('video-url');
+        if (videoUrl) {
+            openVideoPopup(videoUrl);
+            
+            // Pausar autoplay cuando se abre un video
+            if (window.kintsugiSwiperInstances && window.kintsugiSwiperInstances.length) {
+                window.kintsugiSwiperInstances.forEach(function(swiper) {
+                    if (swiper && swiper.autoplay) {
+                        swiper.autoplay.stop();
+                    }
+                });
+            }
+        }
+        return false;
+    });
+    
+    // Cerrar popup al hacer click en el botón o fondo
+    $(document).on('click', '.kintsugi-video-popup-close, .kintsugi-video-popup', function(e) {
+        if ($(e.target).is('.kintsugi-video-popup-close') || $(e.target).is('.kintsugi-video-popup')) {
+            closeVideoPopup();
+        }
+    });
+    
+    // Cerrar popup con tecla Escape
+    $(document).on('keyup', function(e) {
+        if (e.key === 'Escape') {
+            closeVideoPopup();
+        }
+    });
     
     // Función para abrir el popup de video
     function openVideoPopup(videoUrl) {
@@ -1075,6 +1136,10 @@ var kintsugi_ajax = {
         var videoId = extractYouTubeId(videoUrl);
         
         if (videoId) {
+            // Limpiar cualquier iframe existente para evitar reproducción doble
+            $('.kintsugi-video-popup-content iframe').remove();
+            $('.kintsugi-video-popup-content').html('<iframe allow="autoplay; encrypted-media" allowfullscreen></iframe>');
+            
             // Crear URL para embeber
             var embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
             
