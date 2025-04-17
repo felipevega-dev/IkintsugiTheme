@@ -13,8 +13,14 @@
 
 <!-- Estilos específicos de la página -->
 <style>
-/* Swiper Carousel Basic Styles */
-.swiper-container {
+/* Contenedor principal para aumentar especificidad */
+.kintsugi-theme-wrapper {
+  /* Este contenedor no aplica estilos propios pero aumenta la especificidad */
+}
+
+/* Swiper Carousel Basic Styles - más específicos para superar Tailwind */
+.kintsugi-theme-wrapper .swiper-container,
+.kintsugi-theme-wrapper .swiper {
   margin-left: auto !important;
   margin-right: auto !important;
   position: relative !important;
@@ -22,9 +28,10 @@
   list-style: none !important;
   padding: 0 !important;
   z-index: 1 !important;
+  width: 100% !important;
 }
 
-.swiper-wrapper {
+.kintsugi-theme-wrapper .swiper-wrapper {
   position: relative !important;
   width: 100% !important;
   height: 100% !important;
@@ -34,7 +41,7 @@
   box-sizing: content-box !important;
 }
 
-.swiper-slide {
+.kintsugi-theme-wrapper .swiper-slide {
   flex-shrink: 0 !important;
   width: 100% !important;
   height: 100% !important;
@@ -42,27 +49,31 @@
   transition-property: transform !important;
 }
 
-.swiper-pagination {
-  position: absolute;
-  text-align: center;
-  transition: 300ms opacity;
-  transform: translate3d(0, 0, 0);
-  z-index: 10;
+/* Estilos altamente específicos para asegurar que se aplican */
+.kintsugi-theme-wrapper .swiper-pagination {
+  position: absolute !important;
+  text-align: center !important;
+  transition: 300ms opacity !important;
+  transform: translate3d(0, 0, 0) !important;
+  z-index: 10 !important;
+  bottom: 10px !important;
+  left: 0 !important;
+  right: 0 !important;
 }
 
-.swiper-pagination-bullet {
-  width: 8px;
-  height: 8px;
-  display: inline-block;
-  border-radius: 100%;
-  background: #000;
-  opacity: 0.2;
-  margin: 0 4px;
+.kintsugi-theme-wrapper .swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  display: inline-block !important;
+  border-radius: 50% !important;
+  background: rgba(54, 39, 102, 0.5) !important;
+  opacity: 1 !important;
+  margin: 0 4px !important;
 }
 
-.swiper-pagination-bullet-active {
-  opacity: 1;
-  background: #007aff;
+.kintsugi-theme-wrapper .swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  background: #362766 !important;
 }
 
 /**
@@ -70,115 +81,325 @@
  */
 
 /* Enhance the appearance of news items to match the ikintsugi theme */
-.kintsugi-noticia-item,
-.kintsugi-noticia-reciente-item,
-.kintsugi-carousel-slide {
-  border: 1px solid rgba(54, 39, 102, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+.kintsugi-theme-wrapper .kintsugi-noticia-item,
+.kintsugi-theme-wrapper .kintsugi-noticia-reciente-item,
+.kintsugi-theme-wrapper .kintsugi-carousel-slide {
+  position: relative !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.3s, box-shadow 0.3s !important;
+  background-color: #fff !important;
+  height: 100% !important;
+  border: 1px solid rgba(54, 39, 102, 0.1) !important;
 }
 
-.kintsugi-noticia-item:hover,
-.kintsugi-noticia-reciente-item:hover,
-.kintsugi-carousel-slide:hover {
-  border-color: rgba(54, 39, 102, 0.3);
+.kintsugi-theme-wrapper .kintsugi-noticia-item:hover,
+.kintsugi-theme-wrapper .kintsugi-noticia-reciente-item:hover,
+.kintsugi-theme-wrapper .kintsugi-carousel-slide:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+  border-color: rgba(54, 39, 102, 0.3) !important;
 }
 
-/* Make titles match the theme's typography */
-.kintsugi-noticia-title,
-.kintsugi-carousel-title {
-  font-family: 'Playfair Display', serif;
-  color: #030D55;
+.kintsugi-theme-wrapper .kintsugi-noticia-date,
+.kintsugi-theme-wrapper .kintsugi-carousel-date {
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+  background: rgba(54, 39, 102, 0.8) !important;
+  color: #fff !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+  font-size: 12px !important;
+  z-index: 5 !important;
+}
+
+.kintsugi-theme-wrapper .kintsugi-noticia-overlay,
+.kintsugi-theme-wrapper .kintsugi-carousel-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%) !important;
+  z-index: 1 !important;
+}
+
+.kintsugi-theme-wrapper .kintsugi-noticia-image,
+.kintsugi-theme-wrapper .kintsugi-noticia-video,
+.kintsugi-theme-wrapper .kintsugi-carousel-image {
+  height: 200px !important;
+  overflow: hidden !important;
+}
+
+.kintsugi-theme-wrapper .kintsugi-noticia-img,
+.kintsugi-theme-wrapper .kintsugi-carousel-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: transform 0.5s !important;
+}
+
+.kintsugi-theme-wrapper .kintsugi-noticia-item:hover .kintsugi-noticia-img,
+.kintsugi-theme-wrapper .kintsugi-carousel-slide:hover .kintsugi-carousel-image img {
+  transform: scale(1.05) !important;
+}
+
+.kintsugi-theme-wrapper .kintsugi-noticia-content,
+.kintsugi-theme-wrapper .kintsugi-carousel-content {
+  padding: 15px !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.kintsugi-theme-wrapper .kintsugi-noticia-title,
+.kintsugi-theme-wrapper .kintsugi-carousel-title {
+  margin: 0 0 8px !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #030D55 !important;
+  line-height: 1.3 !important;
+  font-family: 'Playfair Display', serif !important;
+}
+
+.kintsugi-theme-wrapper .kintsugi-noticia-excerpt,
+.kintsugi-theme-wrapper .kintsugi-carousel-excerpt {
+  font-size: 14px !important;
+  color: #4a4a4a !important;
+  line-height: 1.5 !important;
+}
+
+/* Video Styles */
+.kintsugi-theme-wrapper .kintsugi-noticia-video-play,
+.kintsugi-theme-wrapper .kintsugi-carousel-play {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 60px !important;
+  height: 60px !important;
+  background-color: rgba(54, 39, 102, 0.8) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 3 !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s !important;
+  animation: pulse 2s infinite !important;
+}
+
+.kintsugi-theme-wrapper .kintsugi-noticia-video-play:hover,
+.kintsugi-theme-wrapper .kintsugi-carousel-play:hover {
+  background-color: rgba(54, 39, 102, 1) !important;
+}
+
+.kintsugi-theme-wrapper .kintsugi-noticia-video-play::after,
+.kintsugi-theme-wrapper .kintsugi-carousel-play::after {
+  content: '' !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-top: 12px solid white !important;
+  border-bottom: 12px solid white !important;
+  border-left: 18px solid white !important;
+  margin-left: 5px !important;
 }
 
 /* Custom styling for the filters section */
-.kintsugi-filters-container {
-  background-color: #f8f6ff;
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 30px;
+.kintsugi-theme-wrapper .kintsugi-filters-container {
+  background-color: #f8f6ff !important;
+  padding: 20px !important;
+  border-radius: 8px !important;
+  margin-bottom: 30px !important;
 }
 
-.kintsugi-filters-container input,
-.kintsugi-filters-container select {
-  border-color: #ddd;
-  border-radius: 6px;
-  padding: 10px 15px;
+.kintsugi-theme-wrapper .kintsugi-filters-container input,
+.kintsugi-theme-wrapper .kintsugi-filters-container select {
+  border-color: #ddd !important;
+  border-radius: 6px !important;
+  padding: 10px 15px !important;
 }
 
-.kintsugi-filters-container input:focus,
-.kintsugi-filters-container select:focus {
-  border-color: #362766;
-  box-shadow: 0 0 0 3px rgba(54, 39, 102, 0.15);
-}
-
-/* Custom styling for search container */
-.search-container {
-  position: relative;
+.kintsugi-theme-wrapper .kintsugi-filters-container input:focus,
+.kintsugi-theme-wrapper .kintsugi-filters-container select:focus {
+  border-color: #362766 !important;
+  box-shadow: 0 0 0 3px rgba(54, 39, 102, 0.15) !important;
 }
 
 /* Custom styles for the carousel section */
-.kintsugi-carousel-wrapper {
-  padding: 30px 0;
+.kintsugi-theme-wrapper .kintsugi-carousel-wrapper {
+  position: relative !important;
+  margin-bottom: 40px !important;
+  padding: 30px 0 !important;
 }
 
-.kintsugi-carousel-container {
-  box-shadow: 0 10px 30px rgba(3, 13, 85, 0.1);
+.kintsugi-theme-wrapper .kintsugi-carousel-container,
+.kintsugi-theme-wrapper .swiper-container-custom {
+  overflow: hidden !important;
+  border-radius: 8px !important;
+  padding-bottom: 30px !important;
+  box-shadow: 0 10px 30px rgba(3, 13, 85, 0.1) !important;
 }
 
-/* Enhance swipe indicators */
-.swipe-indicator {
-  padding: 5px 10px;
-  background-color: #f5f5f5;
-  border-radius: 20px;
+.kintsugi-theme-wrapper .kintsugi-carousel-slide {
+  height: 400px !important;
 }
 
-/* Enhance the video popup for better UX */
+@media (max-width: 767px) {
+  .kintsugi-theme-wrapper .kintsugi-carousel-slide {
+    height: 350px !important;
+  }
+}
+
+.kintsugi-theme-wrapper .kintsugi-carousel-nav-prev,
+.kintsugi-theme-wrapper .kintsugi-carousel-nav-next {
+  position: absolute !important;
+  top: 50% !important;
+  width: 40px !important;
+  height: 40px !important;
+  background: rgba(54, 39, 102, 0.7) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  z-index: 10 !important;
+  transform: translateY(-50%) !important;
+  transition: background 0.3s !important;
+}
+
+.kintsugi-theme-wrapper .kintsugi-carousel-nav-prev:hover,
+.kintsugi-theme-wrapper .kintsugi-carousel-nav-next:hover {
+  background: rgba(54, 39, 102, 1) !important;
+}
+
+.kintsugi-theme-wrapper .kintsugi-carousel-nav-prev {
+  left: 10px !important;
+}
+
+.kintsugi-theme-wrapper .kintsugi-carousel-nav-next {
+  right: 10px !important;
+}
+
+.kintsugi-theme-wrapper .kintsugi-carousel-nav-prev::after,
+.kintsugi-theme-wrapper .kintsugi-carousel-nav-next::after {
+  content: '' !important;
+  display: block !important;
+  width: 12px !important;
+  height: 12px !important;
+  border-top: 2px solid white !important;
+  border-right: 2px solid white !important;
+}
+
+.kintsugi-theme-wrapper .kintsugi-carousel-nav-prev::after {
+  transform: rotate(-135deg) !important;
+  margin-left: 5px !important;
+}
+
+.kintsugi-theme-wrapper .kintsugi-carousel-nav-next::after {
+  transform: rotate(45deg) !important;
+  margin-right: 5px !important;
+}
+
+/* Loading state styles */
+.kintsugi-theme-wrapper .kintsugi-noticias-ajax-container.loading {
+  min-height: 300px !important;
+  position: relative !important;
+  opacity: 0.7 !important;
+}
+
+.kintsugi-theme-wrapper .kintsugi-loading {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  text-align: center !important;
+  z-index: 10 !important;
+}
+
+.kintsugi-theme-wrapper .kintsugi-loading .spinner {
+  display: inline-block !important;
+  width: 50px !important;
+  height: 50px !important;
+  border: 3px solid rgba(54, 39, 102, 0.3) !important;
+  border-radius: 50% !important;
+  border-top-color: #362766 !important;
+  animation: spin 1s ease-in-out infinite !important;
+  margin-bottom: 10px !important;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.kintsugi-theme-wrapper .kintsugi-loading p {
+  color: #362766 !important;
+  font-weight: 500 !important;
+}
+
+/* Video popup - super specific */
+body.kintsugi-popup-open {
+  overflow: hidden !important;
+}
+
+.kintsugi-video-popup {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0.9) !important;
+  z-index: 9999 !important;
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.kintsugi-video-popup.active {
+  display: flex !important;
+}
+
 .kintsugi-video-popup-inner {
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  position: relative !important;
+  width: 90% !important;
+  max-width: 900px !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important;
+}
+
+.kintsugi-video-popup-content {
+  position: relative !important;
+  padding-top: 56.25% !important;
+  overflow: hidden !important;
+  border-radius: 8px !important;
+}
+
+.kintsugi-video-popup-content iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
 }
 
 .kintsugi-video-popup-close {
-  background-color: rgba(54, 39, 102, 0.8);
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-  border-radius: 50%;
-  top: -50px;
-  right: -10px;
-  transition: background-color 0.3s, transform 0.3s;
+  position: absolute !important;
+  top: -50px !important;
+  right: -10px !important;
+  width: 40px !important;
+  height: 40px !important;
+  color: white !important;
+  font-size: 30px !important;
+  line-height: 40px !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  z-index: 10 !important;
+  transition: transform 0.3s, background-color 0.3s !important;
+  background-color: rgba(54, 39, 102, 0.8) !important;
+  border-radius: 50% !important;
 }
 
 .kintsugi-video-popup-close:hover {
-  background-color: rgba(54, 39, 102, 1);
-}
-
-/* Adjust pagination to match theme style */
-.kintsugi-noticias-pagination .page-numbers {
-  font-weight: 500;
-}
-
-.kintsugi-noticias-pagination .page-numbers.current {
-  background-color: #030D55;
-  border-color: #030D55;
-}
-
-/* Add responsive adjustments */
-@media (max-width: 767px) {
-  .kintsugi-filters-container .flex-wrap {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .kintsugi-filters-container .search-container,
-  .kintsugi-filters-container .filter-container,
-  .kintsugi-filters-container .sort-container {
-    width: 100%;
-  }
-  
-  .kintsugi-noticia-title,
-  .kintsugi-carousel-title {
-    font-size: 16px;
-  }
+  transform: scale(1.2) !important;
+  background-color: rgba(54, 39, 102, 1) !important;
 }
 
 /* Enhanced animation for video play buttons */
@@ -197,82 +418,92 @@
   }
 }
 
-.kintsugi-noticia-video-play,
-.kintsugi-carousel-play {
-  animation: pulse 2s infinite;
+/* Swipe indicators */
+.kintsugi-theme-wrapper .swipe-indicator {
+  display: flex !important;
+  align-items: center !important;
+  opacity: 0.6 !important;
+  padding: 5px 10px !important;
+  background-color: #f5f5f5 !important;
+  border-radius: 20px !important;
 }
 
-/* Fix for the mobile view of the grid */
-@media (max-width: 639px) {
-  .kintsugi-noticias-grid,
-  .kintsugi-noticias-recientes-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
+.kintsugi-theme-wrapper .swipe-indicator-dot {
+  width: 8px !important;
+  height: 8px !important;
+  background-color: #362766 !important;
+  border-radius: 50% !important;
+  position: relative !important;
+  animation: swipePulse 1.5s infinite !important;
 }
 
-/* Loading state styles */
-.kintsugi-noticias-ajax-container.loading {
-  min-height: 300px;
-  position: relative;
-  opacity: 0.7;
+.kintsugi-theme-wrapper .left-indicator .swipe-indicator-dot::before,
+.kintsugi-theme-wrapper .right-indicator .swipe-indicator-dot::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  width: 8px !important;
+  height: 8px !important;
+  background-color: #362766 !important;
+  border-radius: 50% !important;
+  opacity: 0.5 !important;
 }
 
-.kintsugi-loading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  z-index: 10;
+.kintsugi-theme-wrapper .left-indicator .swipe-indicator-dot::before {
+  right: 12px !important;
 }
 
-.kintsugi-loading .spinner {
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  border: 3px solid rgba(54, 39, 102, 0.3);
-  border-radius: 50%;
-  border-top-color: #362766;
-  animation: spin 1s ease-in-out infinite;
-  margin-bottom: 10px;
+.kintsugi-theme-wrapper .right-indicator .swipe-indicator-dot::after {
+  left: 12px !important;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+@keyframes swipePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
 }
 
-.kintsugi-loading p {
-  color: #362766;
-  font-weight: 500;
+/* Estilos para la paginación */
+.kintsugi-theme-wrapper .kintsugi-noticias-pagination {
+  display: flex !important;
+  justify-content: center !important;
+  margin-top: 30px !important;
 }
 
-/* Error message styling */
-.kintsugi-error {
-  background-color: #fff1f1;
-  border-left: 4px solid #e53e3e;
-  color: #c53030;
-  padding: 12px 15px;
-  margin-bottom: 20px;
-  border-radius: 4px;
+.kintsugi-theme-wrapper .kintsugi-noticias-pagination .page-numbers {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  height: 36px !important;
+  margin: 0 3px !important;
+  border-radius: 4px !important;
+  border: 1px solid #ddd !important;
+  color: #4a4a4a !important;
+  text-decoration: none !important;
+  transition: all 0.3s !important;
+  font-weight: 500 !important;
 }
 
-/* No results styling */
-.kintsugi-noticias-no-results {
-  background-color: #f8f9fa;
-  padding: 30px;
-  text-align: center;
-  border-radius: 8px;
-  color: #4a4a4a;
+.kintsugi-theme-wrapper .kintsugi-noticias-pagination .page-numbers.current {
+  background-color: #030D55 !important;
+  border-color: #030D55 !important;
+  color: white !important;
 }
 
-.kintsugi-noticias-no-results p {
-  font-size: 18px;
-  margin: 0;
+.kintsugi-theme-wrapper .kintsugi-noticias-pagination .page-numbers:hover:not(.current) {
+  background-color: #f5f5f5 !important;
+  border-color: #bbb !important;
+}
+
+.kintsugi-theme-wrapper .kintsugi-noticias-pagination .prev,
+.kintsugi-theme-wrapper .kintsugi-noticias-pagination .next {
+  width: auto !important;
+  padding: 0 12px !important;
 }
 </style>
 
+<!-- Wrapper para aumentar especificidad -->
+<div class="kintsugi-theme-wrapper">
 <!-- Hero Section -->
 <section class="relative bg-[#362766] overflow-hidden pt-20 md:pt-32">
   <!-- Imagen de fondo con overlay -->
@@ -320,8 +551,8 @@
     </div>
 
     <!-- Shortcode para el carrusel con noticias seleccionadas específicamente -->
-    <div id="kintsugi-carousel-main" class="swiper-container-custom kintsugi-carousel-container swiper">
-      <div class="swiper-wrapper">
+    <div id="kintsugi-carousel-main" class="swiper-container-custom kintsugi-carousel-container swiper" style="position: relative !important; overflow: hidden !important; margin-left: auto !important; margin-right: auto !important; padding-bottom: 40px !important; border-radius: 8px !important; box-shadow: 0 10px 30px rgba(3, 13, 85, 0.1) !important;">
+      <div class="swiper-wrapper" style="display: flex !important; width: 100% !important; height: 100% !important; position: relative !important; z-index: 1 !important; box-sizing: content-box !important; transition-property: transform !important;">
         <?php
         // Obtener las noticias marcadas para el carrusel
         $carousel_settings = get_option('kintsugi_carousel_noticias', array());
@@ -337,9 +568,9 @@
         ?>
       </div>
       <!-- Añadimos manualmente los elementos de navegación y paginación -->
-      <div class="swiper-pagination"></div>
-      <div class="kintsugi-carousel-nav-prev"></div>
-      <div class="kintsugi-carousel-nav-next"></div>
+      <div class="swiper-pagination" style="position: absolute !important; bottom: 10px !important; left: 0 !important; right: 0 !important; text-align: center !important; z-index: 10 !important;"></div>
+      <div class="kintsugi-carousel-nav-prev" style="position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; left: 10px !important; z-index: 10 !important; width: 40px !important; height: 40px !important; background: rgba(54, 39, 102, 0.7) !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important;"></div>
+      <div class="kintsugi-carousel-nav-next" style="position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; right: 10px !important; z-index: 10 !important; width: 40px !important; height: 40px !important; background: rgba(54, 39, 102, 0.7) !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important;"></div>
     </div>
   </div>
 </section>
@@ -352,12 +583,12 @@
     </h2>
     
     <!-- Filtros y Búsqueda AJAX -->
-    <div class="kintsugi-filters-container mb-8">
+    <div class="kintsugi-filters-container mb-8" style="background-color: #f8f6ff !important; padding: 20px !important; border-radius: 8px !important; margin-bottom: 30px !important;">
       <div class="flex flex-wrap items-center gap-4">
-        <div class="search-container flex-grow">
+        <div class="search-container flex-grow" style="position: relative !important;">
           <label for="kintsugi-search-input" class="block mb-1 text-sm font-medium text-gray-700 md:hidden">Buscar</label>
           <div class="relative">
-            <input type="text" id="kintsugi-search-input" placeholder="Buscar noticias..." class="w-full px-4 py-2 pl-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#362766]">
+            <input type="text" id="kintsugi-search-input" placeholder="Buscar noticias..." class="w-full px-4 py-2 pl-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#362766]" style="border-color: #ddd !important; border-radius: 6px !important; padding: 10px 15px 10px 40px !important;">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -368,7 +599,7 @@
         
         <div class="filter-container">
           <label for="kintsugi-year-filter" class="block mb-1 text-sm font-medium text-gray-700 md:hidden">Año</label>
-          <select id="kintsugi-year-filter" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#362766]">
+          <select id="kintsugi-year-filter" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#362766]" style="border-color: #ddd !important; border-radius: 6px !important; padding: 10px 15px !important;">
             <option value="all">Todos los años</option>
             <?php 
               // Generar opciones para los últimos 5 años
@@ -383,7 +614,7 @@
         
         <div class="sort-container">
           <label for="kintsugi-sort-filter" class="block mb-1 text-sm font-medium text-gray-700 md:hidden">Ordenar por</label>
-          <select id="kintsugi-sort-filter" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#362766]">
+          <select id="kintsugi-sort-filter" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#362766]" style="border-color: #ddd !important; border-radius: 6px !important; padding: 10px 15px !important;">
             <option value="date-desc">Más recientes primero</option>
             <option value="date-asc">Más antiguos primero</option>
             <option value="title-asc">Título (A-Z)</option>
@@ -394,7 +625,7 @@
     </div>
         
     <!-- Contenedor para el contenido AJAX -->
-    <div id="kintsugi-noticias-ajax-container">
+    <div id="kintsugi-noticias-ajax-container" style="position: relative;">
       <!-- Shortcode para todas las noticias con buscador y paginación - mostrando 4 por página (2x2) -->
       {!! do_shortcode('[administracion_noticias per_page="4"]') !!}
     </div>
@@ -590,7 +821,71 @@ var kintsugi_ajax = {
     
     $(document).ready(function() {
         initKintsugiCarousel();
+        applyInlineStyles(); // Función para aplicar estilos inline
     });
+    
+    // Función para aplicar estilos inline a elementos generados dinámicamente
+    function applyInlineStyles() {
+        console.log('Aplicando estilos inline a elementos generados dinámicamente');
+        
+        // Aplicar estilos a elementos del carrusel
+        $('.kintsugi-carousel-slide').attr('style', 'position: relative !important; border-radius: 8px !important; overflow: hidden !important; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important; height: 400px !important; transition: transform 0.3s, box-shadow 0.3s !important; background-color: #fff !important; border: 1px solid rgba(54, 39, 102, 0.1) !important;');
+        
+        $('.kintsugi-carousel-image').attr('style', 'height: 200px !important; overflow: hidden !important;');
+        $('.kintsugi-carousel-image img').attr('style', 'width: 100% !important; height: 100% !important; object-fit: cover !important; transition: transform 0.5s !important;');
+        
+        $('.kintsugi-carousel-content').attr('style', 'padding: 15px !important; position: relative !important; z-index: 2 !important;');
+        $('.kintsugi-carousel-title').attr('style', 'margin: 0 0 8px !important; font-size: 18px !important; font-weight: 700 !important; color: #030D55 !important; line-height: 1.3 !important; font-family: "Playfair Display", serif !important;');
+        $('.kintsugi-carousel-excerpt').attr('style', 'font-size: 14px !important; color: #4a4a4a !important; line-height: 1.5 !important;');
+        
+        $('.kintsugi-carousel-date').attr('style', 'position: absolute !important; top: 10px !important; right: 10px !important; background: rgba(54, 39, 102, 0.8) !important; color: #fff !important; padding: 4px 8px !important; border-radius: 4px !important; font-size: 12px !important; z-index: 5 !important;');
+        $('.kintsugi-carousel-overlay').attr('style', 'position: absolute !important; inset: 0 !important; background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%) !important; z-index: 1 !important;');
+        
+        // Aplicar estilos a los botones de reproducción de video
+        $('.kintsugi-carousel-play, .kintsugi-noticia-video-play').attr('style', 'position: absolute !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; width: 60px !important; height: 60px !important; background-color: rgba(54, 39, 102, 0.8) !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 3 !important; cursor: pointer !important;');
+        
+        // Crear triángulo de reproducción
+        $('.kintsugi-carousel-play, .kintsugi-noticia-video-play').each(function() {
+            if (!$(this).find('.play-triangle').length) {
+                $(this).html('<div class="play-triangle" style="width: 0 !important; height: 0 !important; border-top: 12px solid transparent !important; border-bottom: 12px solid transparent !important; border-left: 18px solid white !important; margin-left: 5px !important;"></div>');
+            }
+        });
+        
+        // Aplicar estilos a elementos de noticias
+        $('.kintsugi-noticia-item').attr('style', 'position: relative !important; border-radius: 8px !important; overflow: hidden !important; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important; height: 100% !important; background-color: #fff !important; border: 1px solid rgba(54, 39, 102, 0.1) !important; transition: transform 0.3s, box-shadow 0.3s !important; margin-bottom: 20px !important;');
+        
+        $('.kintsugi-noticia-image, .kintsugi-noticia-video').attr('style', 'height: 200px !important; overflow: hidden !important;');
+        $('.kintsugi-noticia-img').attr('style', 'width: 100% !important; height: 100% !important; object-fit: cover !important; transition: transform 0.5s !important;');
+        
+        $('.kintsugi-noticia-content').attr('style', 'padding: 15px !important; position: relative !important; z-index: 2 !important;');
+        $('.kintsugi-noticia-title').attr('style', 'margin: 0 0 8px !important; font-size: 18px !important; font-weight: 700 !important; color: #030D55 !important; line-height: 1.3 !important; font-family: "Playfair Display", serif !important;');
+        $('.kintsugi-noticia-excerpt').attr('style', 'font-size: 14px !important; color: #4a4a4a !important; line-height: 1.5 !important;');
+        
+        $('.kintsugi-noticia-date').attr('style', 'position: absolute !important; top: 10px !important; right: 10px !important; background: rgba(54, 39, 102, 0.8) !important; color: #fff !important; padding: 4px 8px !important; border-radius: 4px !important; font-size: 12px !important; z-index: 5 !important;');
+        $('.kintsugi-noticia-overlay').attr('style', 'position: absolute !important; inset: 0 !important; background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%) !important; z-index: 1 !important;');
+        
+        // Aplicar estilos a la paginación
+        $('.kintsugi-noticias-pagination').attr('style', 'display: flex !important; justify-content: center !important; margin-top: 30px !important;');
+        $('.kintsugi-noticias-pagination .page-numbers').attr('style', 'display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 36px !important; height: 36px !important; margin: 0 3px !important; border-radius: 4px !important; border: 1px solid #ddd !important; color: #4a4a4a !important; text-decoration: none !important; transition: all 0.3s !important; font-weight: 500 !important;');
+        $('.kintsugi-noticias-pagination .page-numbers.current').attr('style', 'background-color: #030D55 !important; border-color: #030D55 !important; color: white !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 36px !important; height: 36px !important; margin: 0 3px !important; border-radius: 4px !important;');
+        $('.kintsugi-noticias-pagination .prev, .kintsugi-noticias-pagination .next').attr('style', 'width: auto !important; padding: 0 12px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; height: 36px !important; margin: 0 3px !important; border-radius: 4px !important; border: 1px solid #ddd !important; color: #4a4a4a !important; text-decoration: none !important; transition: all 0.3s !important;');
+        
+        // Monitorear cambios en el DOM para aplicar estilos a nuevos elementos
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.addedNodes.length) {
+                    // Aplicar estilos nuevamente
+                    setTimeout(applyInlineStyles, 100);
+                }
+            });
+        });
+        
+        // Configurar el observador para observar cambios en el contenedor AJAX
+        observer.observe(document.getElementById('kintsugi-noticias-ajax-container'), {
+            childList: true,
+            subtree: true
+        });
+    }
     
     function initKintsugiCarousel() {
         // También buscar div[class*="kintsugi-carousel"] para capturar todas las posibles variaciones
