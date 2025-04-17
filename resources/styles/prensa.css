@@ -1,0 +1,206 @@
+/**
+ * Theme-specific styles for the Prensa page
+ */
+
+/* Enhance the appearance of news items to match the ikintsugi theme */
+.kintsugi-noticia-item,
+.kintsugi-noticia-reciente-item,
+.kintsugi-carousel-slide {
+  border: 1px solid rgba(54, 39, 102, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.kintsugi-noticia-item:hover,
+.kintsugi-noticia-reciente-item:hover,
+.kintsugi-carousel-slide:hover {
+  border-color: rgba(54, 39, 102, 0.3);
+}
+
+/* Make titles match the theme's typography */
+.kintsugi-noticia-title,
+.kintsugi-carousel-title {
+  font-family: 'Playfair Display', serif;
+  color: #030D55;
+}
+
+/* Custom styling for the filters section */
+.kintsugi-filters-container {
+  background-color: #f8f6ff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.kintsugi-filters-container input,
+.kintsugi-filters-container select {
+  border-color: #ddd;
+  border-radius: 6px;
+  padding: 10px 15px;
+}
+
+.kintsugi-filters-container input:focus,
+.kintsugi-filters-container select:focus {
+  border-color: #362766;
+  box-shadow: 0 0 0 3px rgba(54, 39, 102, 0.15);
+}
+
+/* Custom styling for search container */
+.search-container {
+  position: relative;
+}
+
+/* Custom styles for the carousel section */
+.kintsugi-carousel-wrapper {
+  padding: 30px 0;
+}
+
+.kintsugi-carousel-container {
+  box-shadow: 0 10px 30px rgba(3, 13, 85, 0.1);
+}
+
+/* Enhance swipe indicators */
+.swipe-indicator {
+  padding: 5px 10px;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+}
+
+/* Enhance the video popup for better UX */
+.kintsugi-video-popup-inner {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.kintsugi-video-popup-close {
+  background-color: rgba(54, 39, 102, 0.8);
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  top: -50px;
+  right: -10px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.kintsugi-video-popup-close:hover {
+  background-color: rgba(54, 39, 102, 1);
+}
+
+/* Adjust pagination to match theme style */
+.kintsugi-noticias-pagination .page-numbers {
+  font-weight: 500;
+}
+
+.kintsugi-noticias-pagination .page-numbers.current {
+  background-color: #030D55;
+  border-color: #030D55;
+}
+
+/* Add responsive adjustments */
+@media (max-width: 767px) {
+  .kintsugi-filters-container .flex-wrap {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .kintsugi-filters-container .search-container,
+  .kintsugi-filters-container .filter-container,
+  .kintsugi-filters-container .sort-container {
+    width: 100%;
+  }
+  
+  .kintsugi-noticia-title,
+  .kintsugi-carousel-title {
+    font-size: 16px;
+  }
+}
+
+/* Enhanced animation for video play buttons */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(54, 39, 102, 0.7);
+    transform: translate(-50%, -50%) scale(1);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(54, 39, 102, 0);
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(54, 39, 102, 0);
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.kintsugi-noticia-video-play,
+.kintsugi-carousel-play {
+  animation: pulse 2s infinite;
+}
+
+/* Fix for the mobile view of the grid */
+@media (max-width: 639px) {
+  .kintsugi-noticias-grid,
+  .kintsugi-noticias-recientes-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+/* Loading state styles */
+.kintsugi-noticias-ajax-container.loading {
+  min-height: 300px;
+  position: relative;
+  opacity: 0.7;
+}
+
+.kintsugi-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+}
+
+.kintsugi-loading .spinner {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(54, 39, 102, 0.3);
+  border-radius: 50%;
+  border-top-color: #362766;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.kintsugi-loading p {
+  color: #362766;
+  font-weight: 500;
+}
+
+/* Error message styling */
+.kintsugi-error {
+  background-color: #fff1f1;
+  border-left: 4px solid #e53e3e;
+  color: #c53030;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+/* No results styling */
+.kintsugi-noticias-no-results {
+  background-color: #f8f9fa;
+  padding: 30px;
+  text-align: center;
+  border-radius: 8px;
+  color: #4a4a4a;
+}
+
+.kintsugi-noticias-no-results p {
+  font-size: 18px;
+  margin: 0;
+}

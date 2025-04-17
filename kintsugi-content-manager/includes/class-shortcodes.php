@@ -41,6 +41,10 @@ class Kintsugi_Content_Manager_Shortcodes {
         
         // Enqueue scripts and styles for frontend
         add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
+        
+        // Register AJAX handlers
+        add_action('wp_ajax_kintsugi_filter_noticias', array($this, 'ajax_filter_noticias'));
+        add_action('wp_ajax_nopriv_kintsugi_filter_noticias', array($this, 'ajax_filter_noticias'));
     }
 
     /**
@@ -456,5 +460,80 @@ class Kintsugi_Content_Manager_Shortcodes {
         $output = ob_get_clean();
         
         return $output;
+    }
+
+    /**
+     * AJAX handler for filtering news
+     *
+     * @since    1.0.0
+     */
+    public function ajax_filter_noticias() {
+        // Check nonce for security
+        check_ajax_referer('kintsugi_ajax_nonce', 'nonce');
+        
+        // Get filter parameters
+        $search = isset($_POST['search']) ? sanitize_text_field($_POST['search']) : '';
+        $year = isset($_POST['year']) ? sanitize_text_field($_POST['year']) : 'all';
+        $sort = isset($_POST['sort']) ? sanitize_text_field($_POST['sort']) : 'date-desc';
+        $paged = isset($_POST['paged']) ? intval($_POST['paged']) : 1;
+        
+        // Setup the basic query arguments
+        $args = array(
+            'post_type'      => 'noticia',
+            'posts_per_page' => 4, // Match the per_page attribute from shortcode
+            'paged'          => $paged,
+            'post_status'    => 'publish',
+        );
+        
+        // Add search if provided
+        if (!empty($search)) {
+            $args['s'] = $search;
+        }
+        
+        // Add year filter if not 'all'
+        if ($year !== 'all') {
+            $args['date_query'] = array(
+                array(
+                    'year' => intval($year),
+                ),
+            );
+        }
+        
+        // Set sort order
+        switch ($sort) {
+            case 'date-asc':
+                $args['orderby'] = 'date';
+                $args['order'] = 'ASC';
+                break;
+            case 'title-asc':
+                $args['orderby'] = 'title';
+                $args['order'] = 'ASC';
+                break;
+            case 'title-desc':
+                $args['orderby'] = 'title';
+                $args['order'] = 'DESC';
+                break;
+            case 'date-desc':
+            default:
+                $args['orderby'] = 'date';
+                $args['order'] = 'DESC';
+                break;
+        }
+        
+        // Execute the query
+        $query = new WP_Query($args);
+        
+        // Start output buffering
+        ob_start();
+        
+        // Include the template
+        include KINTSUGI_CONTENT_MANAGER_PLUGIN_DIR . 'public/partials/noticias-list.php';
+        
+        // Send the response
+        $response = ob_get_clean();
+        echo $response;
+        
+        // Always die in AJAX callbacks
+        wp_die();
     }
 }

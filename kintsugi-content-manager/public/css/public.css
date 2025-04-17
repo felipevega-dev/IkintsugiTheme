@@ -1,0 +1,424 @@
+/**
+ * Public styles for Kintsugi Content Manager
+ *
+ * @package    Kintsugi_Content_Manager
+ * @subpackage Kintsugi_Content_Manager/public/css
+ */
+
+/******************************
+ * General Styles
+ ******************************/
+.kintsugi-noticia-item,
+.kintsugi-noticia-reciente-item,
+.kintsugi-carousel-slide {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #fff;
+    height: 100%;
+}
+
+.kintsugi-noticia-item:hover,
+.kintsugi-noticia-reciente-item:hover,
+.kintsugi-carousel-slide:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.kintsugi-noticia-date,
+.kintsugi-carousel-date {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(54, 39, 102, 0.8);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 5;
+}
+
+.kintsugi-noticia-overlay,
+.kintsugi-carousel-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%);
+    z-index: 1;
+}
+
+.kintsugi-noticia-image,
+.kintsugi-noticia-video,
+.kintsugi-carousel-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.kintsugi-noticia-img,
+.kintsugi-carousel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.kintsugi-noticia-item:hover .kintsugi-noticia-img,
+.kintsugi-carousel-slide:hover .kintsugi-carousel-image img {
+    transform: scale(1.05);
+}
+
+.kintsugi-noticia-content,
+.kintsugi-carousel-content {
+    padding: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.kintsugi-noticia-title,
+.kintsugi-carousel-title {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #362766;
+    line-height: 1.3;
+}
+
+.kintsugi-noticia-excerpt,
+.kintsugi-carousel-excerpt {
+    font-size: 14px;
+    color: #4a4a4a;
+    line-height: 1.5;
+}
+
+/******************************
+ * Video Styles
+ ******************************/
+.kintsugi-noticia-video-play,
+.kintsugi-carousel-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background-color: rgba(54, 39, 102, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.kintsugi-noticia-video-play:hover,
+.kintsugi-carousel-play:hover {
+    background-color: rgba(54, 39, 102, 1);
+}
+
+.kintsugi-noticia-video-play::after,
+.kintsugi-carousel-play::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 18px solid white;
+    margin-left: 5px;
+}
+
+/******************************
+ * Video Popup
+ ******************************/
+body.kintsugi-popup-open {
+    overflow: hidden;
+}
+
+.kintsugi-video-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.kintsugi-video-popup.active {
+    display: flex !important;
+}
+
+.kintsugi-video-popup-inner {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+}
+
+.kintsugi-video-popup-content {
+    position: relative;
+    padding-top: 56.25%;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.kintsugi-video-popup-content iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.kintsugi-video-popup-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    color: white;
+    font-size: 30px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.3s;
+}
+
+.kintsugi-video-popup-close:hover {
+    transform: scale(1.2);
+}
+
+/******************************
+ * News Grid
+ ******************************/
+.kintsugi-noticias-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 640px) {
+    .kintsugi-noticias-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .kintsugi-noticias-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.kintsugi-noticias-recientes-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+}
+
+@media (min-width: 640px) {
+    .kintsugi-noticias-recientes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .kintsugi-noticias-recientes-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/******************************
+ * Carousel Styles
+ ******************************/
+.kintsugi-carousel-wrapper {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.kintsugi-carousel-container {
+    overflow: hidden;
+    border-radius: 8px;
+    padding-bottom: 30px;
+}
+
+.kintsugi-carousel-slide {
+    height: 400px !important;
+}
+
+@media (max-width: 767px) {
+    .kintsugi-carousel-slide {
+        height: 350px !important;
+    }
+}
+
+.kintsugi-carousel-nav-prev,
+.kintsugi-carousel-nav-next {
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    background: rgba(54, 39, 102, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transform: translateY(-50%);
+    transition: background 0.3s;
+}
+
+.kintsugi-carousel-nav-prev:hover,
+.kintsugi-carousel-nav-next:hover {
+    background: rgba(54, 39, 102, 1);
+}
+
+.kintsugi-carousel-nav-prev {
+    left: 10px;
+}
+
+.kintsugi-carousel-nav-next {
+    right: 10px;
+}
+
+.kintsugi-carousel-nav-prev::after,
+.kintsugi-carousel-nav-next::after {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-top: 2px solid white;
+    border-right: 2px solid white;
+}
+
+.kintsugi-carousel-nav-prev::after {
+    transform: rotate(-135deg);
+    margin-left: 5px;
+}
+
+.kintsugi-carousel-nav-next::after {
+    transform: rotate(45deg);
+    margin-right: 5px;
+}
+
+/* Swiper pagination customization */
+.swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: rgba(54, 39, 102, 0.5);
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    background: rgba(54, 39, 102, 1);
+}
+
+/******************************
+ * Filter & Search Styles
+ ******************************/
+.kintsugi-filters-container {
+    margin-bottom: 30px;
+}
+
+.kintsugi-filters-container select,
+.kintsugi-filters-container input {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.kintsugi-filters-container select:focus,
+.kintsugi-filters-container input:focus {
+    border-color: #362766;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(54, 39, 102, 0.2);
+}
+
+/******************************
+ * Pagination Styles
+ ******************************/
+.kintsugi-noticias-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.kintsugi-noticias-pagination .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin: 0 3px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    color: #4a4a4a;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.kintsugi-noticias-pagination .page-numbers.current {
+    background-color: #362766;
+    border-color: #362766;
+    color: white;
+}
+
+.kintsugi-noticias-pagination .page-numbers:hover:not(.current) {
+    background-color: #f5f5f5;
+    border-color: #bbb;
+}
+
+.kintsugi-noticias-pagination .prev,
+.kintsugi-noticias-pagination .next {
+    width: auto;
+    padding: 0 12px;
+}
+
+/* Swipe indicators */
+.swipe-indicator {
+    display: flex;
+    align-items: center;
+    opacity: 0.6;
+}
+
+.swipe-indicator-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #362766;
+    border-radius: 50%;
+    position: relative;
+    animation: swipePulse 1.5s infinite;
+}
+
+.left-indicator .swipe-indicator-dot::before,
+.right-indicator .swipe-indicator-dot::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 8px;
+    height: 8px;
+    background-color: #362766;
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+.left-indicator .swipe-indicator-dot::before {
+    right: 12px;
+}
+
+.right-indicator .swipe-indicator-dot::after {
+    left: 12px;
+}
+
+@keyframes swipePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+}
