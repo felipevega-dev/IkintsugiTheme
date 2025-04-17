@@ -70,33 +70,21 @@
                         prevEl: '#' + carouselId + ' .kintsugi-carousel-nav-prev',
                     },
                     breakpoints: {
-                        640: {
-                            slidesPerView: 2,
-                            spaceBetween: 10,
-                        },
                         768: {
-                            slidesPerView: 3,
+                            slidesPerView: 2,
                             spaceBetween: 20,
-                            centeredSlides: false,
                         },
                         992: {
-                            slidesPerView: 4,
-                            spaceBetween: 20,
-                            centeredSlides: false,
+                            slidesPerView: 3,
+                            spaceBetween: 30,
                         },
-                        1200: {
-                            slidesPerView: 5,
-                            spaceBetween: 20,
-                            centeredSlides: false,
-                        }
                     },
                     on: {
                         init: function() {
                             $('#' + carouselId).addClass('carousel-initialized');
                             
-                            // Ajustar tamaño de las imágenes en base al viewport
-                            var slideHeight = window.innerWidth < 768 ? '350px' : '400px';
-                            $('.kintsugi-carousel-slide').css('height', slideHeight);
+                            // Garantizar que todas las imágenes tengan altura uniforme
+                            $('.kintsugi-carousel-slide').css('height', '400px');
                             
                             // Garantizar que todas las imágenes se muestren correctamente
                             $('.kintsugi-carousel-image img').css({
@@ -104,11 +92,6 @@
                                 'height': '100%',
                                 'object-fit': 'cover'
                             });
-                        },
-                        resize: function() {
-                            // Actualizar altura de slides cuando cambia el tamaño de la ventana
-                            var slideHeight = window.innerWidth < 768 ? '350px' : '400px';
-                            $('.kintsugi-carousel-slide').css('height', slideHeight);
                         }
                     }
                 });
@@ -217,10 +200,5 @@
             });
         }
     }
-
-    // Expose functions to global scope for cross-script access
-    window.kintsugiOpenVideoPopup = openVideoPopup;
-    window.kintsugiCloseVideoPopup = closeVideoPopup;
-    window.kintsugiExtractYouTubeId = extractYouTubeId;
 
 })(jQuery); 

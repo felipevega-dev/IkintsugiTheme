@@ -41,10 +41,6 @@ class Kintsugi_Content_Manager_Shortcodes {
         
         // Enqueue scripts and styles for frontend
         add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
-        
-        // Register AJAX handler for filtering news
-        add_action('wp_ajax_kintsugi_filter_noticias', array($this, 'ajax_filter_noticias'));
-        add_action('wp_ajax_nopriv_kintsugi_filter_noticias', array($this, 'ajax_filter_noticias'));
     }
 
     /**
@@ -70,14 +66,6 @@ class Kintsugi_Content_Manager_Shortcodes {
                     'kintsugi-content-manager-public',
                     KINTSUGI_CONTENT_MANAGER_PLUGIN_URL . 'public/css/public.css',
                     array(),
-                    KINTSUGI_CONTENT_MANAGER_VERSION
-                );
-                
-                // Añadir estilos personalizados del tema
-                wp_enqueue_style(
-                    'kintsugi-content-manager-custom-theme',
-                    KINTSUGI_CONTENT_MANAGER_PLUGIN_URL . 'public/css/custom-theme.css',
-                    array('kintsugi-content-manager-public'),
                     KINTSUGI_CONTENT_MANAGER_VERSION
                 );
                 
@@ -236,20 +224,7 @@ class Kintsugi_Content_Manager_Shortcodes {
         
         // Main plugin styles
         echo '<style id="kintsugi-content-manager-styles">';
-        $public_css_path = KINTSUGI_CONTENT_MANAGER_PLUGIN_DIR . 'public/css/public.css';
-        if (file_exists($public_css_path)) {
-            readfile($public_css_path);
-        } else {
-            echo "/* Error: No se pudo encontrar public.css */\n";
-        }
-        
-        // Custom theme styles
-        $custom_theme_css_path = KINTSUGI_CONTENT_MANAGER_PLUGIN_DIR . 'public/css/custom-theme.css';
-        if (file_exists($custom_theme_css_path)) {
-            readfile($custom_theme_css_path);
-        } else {
-            echo "/* Error: No se pudo encontrar custom-theme.css */\n";
-        }
+        readfile(KINTSUGI_CONTENT_MANAGER_PLUGIN_DIR . 'public/css/public.css');
         
         // Carousel-specific styles
         if ($use_swiper) {
@@ -287,23 +262,13 @@ class Kintsugi_Content_Manager_Shortcodes {
         
         // Main plugin script
         echo '<script id="kintsugi-content-manager-script">';
-        $public_js_path = KINTSUGI_CONTENT_MANAGER_PLUGIN_DIR . 'public/js/public.js';
-        if (file_exists($public_js_path)) {
-            readfile($public_js_path);
-        } else {
-            echo "console.error('Error: No se pudo encontrar public.js');";
-        }
+        readfile(KINTSUGI_CONTENT_MANAGER_PLUGIN_DIR . 'public/js/public.js');
         echo '</script>';
         
         // Carousel script if needed
         if ($use_swiper) {
             echo '<script id="kintsugi-carousel-script">';
-            $carousel_js_path = KINTSUGI_CONTENT_MANAGER_PLUGIN_DIR . 'public/js/carousel.js';
-            if (file_exists($carousel_js_path)) {
-                readfile($carousel_js_path);
-            } else {
-                echo "console.error('Error: No se pudo encontrar carousel.js');";
-            }
+            readfile(KINTSUGI_CONTENT_MANAGER_PLUGIN_DIR . 'public/js/carousel.js');
             echo '</script>';
         }
         
@@ -491,62 +456,5 @@ class Kintsugi_Content_Manager_Shortcodes {
         $output = ob_get_clean();
         
         return $output;
-    }
-
-    /**
-     * Handle AJAX filtering for noticias
-     * 
-     * @since 1.0.3
-     */
-    public function ajax_filter_noticias() {
-        // Get filter parameters
-        $search = isset($_POST['search']) ? sanitize_text_field($_POST['search']) : '';
-        $year = isset($_POST['year']) ? sanitize_text_field($_POST['year']) : 'all';
-        $orderby = isset($_POST['orderby']) ? sanitize_text_field($_POST['orderby']) : 'date';
-        $order = isset($_POST['order']) ? sanitize_text_field($_POST['order']) : 'DESC';
-        $paged = isset($_POST['paged']) ? intval($_POST['paged']) : 1;
-        $per_page = isset($_POST['per_page']) ? intval($_POST['per_page']) : 6;
-        
-        // Setup query args
-        $args = array(
-            'post_type'      => 'noticia',
-            'posts_per_page' => $per_page,
-            'paged'          => $paged,
-            'post_status'    => 'publish',
-            'orderby'        => $orderby,
-            'order'          => $order,
-        );
-        
-        // Add search if provided
-        if (!empty($search)) {
-            $args['s'] = $search;
-        }
-        
-        // Add year filter if provided and not 'all'
-        if (!empty($year) && $year !== 'all') {
-            $args['date_query'] = array(
-                array(
-                    'year' => intval($year),
-                ),
-            );
-        }
-        
-        // Execute the query
-        $query = new WP_Query($args);
-        
-        // Start output buffering
-        ob_start();
-        
-        // Include the template
-        include KINTSUGI_CONTENT_MANAGER_PLUGIN_DIR . 'public/partials/noticias-list.php';
-        
-        // Get the buffered content
-        $output = ob_get_clean();
-        
-        // Return the HTML
-        echo $output;
-        
-        // End AJAX request
-        wp_die();
     }
 }
