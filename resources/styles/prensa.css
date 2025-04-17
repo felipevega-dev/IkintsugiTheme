@@ -403,7 +403,7 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.9);
-    z-index: 9999;
+    z-index: 99999 !important;
     display: none;
     align-items: center;
     justify-content: center;
@@ -633,4 +633,33 @@ body.kintsugi-popup-open {
 /* Mejoras para sección "Todas las noticias" */
 #kintsugi-noticias-ajax-container {
     margin-top: 30px;
+}
+
+/* Mejoras para funcionamiento del video popup */
+.kintsugi-carousel-video-link,
+.kintsugi-noticia-video-link {
+    cursor: pointer !important;
+}
+
+/* Override para estilos del título central */
+.text-center {
+    text-align: center !important;
+}
+
+/* Estilos para los títulos y subtítulos específicos */
+h2[style*="font-family: 'Playfair Display'"] {
+    font-family: 'Playfair Display', serif !important;
+}
+
+h2[style*="color: #AB277A"] {
+    color: #AB277A !important;
+}
+
+h2[style*="color: #030D55"] {
+    color: #030D55 !important;
+}
+
+/* Ajustes finales para el filtro de año */
+.kintsugi-filters-right-container {
+    margin-left: auto;
 } 
