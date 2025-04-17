@@ -682,6 +682,72 @@ var kintsugi_ajax = {
     // Initialize when document is ready
     $(document).ready(function() {
         initNoticiasFilters();
+        
+        // Nueva función para aplicar estilos inline a elementos del plugin
+        function applyInlineStyles() {
+            console.log('Aplicando estilos inline a elementos generados dinámicamente');
+            
+            // Aplicar estilos a elementos del carrusel
+            $('.kintsugi-carousel-slide').attr('style', 'position: relative !important; border-radius: 8px !important; overflow: hidden !important; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important; height: 400px !important; transition: transform 0.3s, box-shadow 0.3s !important; background-color: #fff !important; border: 1px solid rgba(54, 39, 102, 0.1) !important;');
+            
+            $('.kintsugi-carousel-image').attr('style', 'height: 200px !important; overflow: hidden !important;');
+            $('.kintsugi-carousel-image img').attr('style', 'width: 100% !important; height: 100% !important; object-fit: cover !important; transition: transform 0.5s !important;');
+            
+            $('.kintsugi-carousel-content').attr('style', 'padding: 15px !important; position: relative !important; z-index: 2 !important;');
+            $('.kintsugi-carousel-title').attr('style', 'margin: 0 0 8px !important; font-size: 18px !important; font-weight: 700 !important; color: #030D55 !important; line-height: 1.3 !important; font-family: "Playfair Display", serif !important;');
+            $('.kintsugi-carousel-excerpt').attr('style', 'font-size: 14px !important; color: #4a4a4a !important; line-height: 1.5 !important;');
+            
+            $('.kintsugi-carousel-date').attr('style', 'position: absolute !important; top: 10px !important; right: 10px !important; background: rgba(54, 39, 102, 0.8) !important; color: #fff !important; padding: 4px 8px !important; border-radius: 4px !important; font-size: 12px !important; z-index: 5 !important;');
+            $('.kintsugi-carousel-overlay').attr('style', 'position: absolute !important; inset: 0 !important; background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%) !important; z-index: 1 !important;');
+            
+            // Aplicar estilos a los botones de reproducción de video
+            $('.kintsugi-carousel-play, .kintsugi-noticia-video-play').attr('style', 'position: absolute !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; width: 60px !important; height: 60px !important; background-color: rgba(54, 39, 102, 0.8) !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 3 !important; cursor: pointer !important;');
+            
+            // Crear triángulo de reproducción
+            $('.kintsugi-carousel-play, .kintsugi-noticia-video-play').each(function() {
+                if (!$(this).find('.play-triangle').length) {
+                    $(this).html('<div class="play-triangle" style="width: 0 !important; height: 0 !important; border-top: 12px solid transparent !important; border-bottom: 12px solid transparent !important; border-left: 18px solid white !important; margin-left: 5px !important;"></div>');
+                }
+            });
+            
+            // Aplicar estilos a elementos de noticias
+            $('.kintsugi-noticia-item').attr('style', 'position: relative !important; border-radius: 8px !important; overflow: hidden !important; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important; height: 100% !important; background-color: #fff !important; border: 1px solid rgba(54, 39, 102, 0.1) !important; transition: transform 0.3s, box-shadow 0.3s !important; margin-bottom: 20px !important;');
+            
+            $('.kintsugi-noticia-image, .kintsugi-noticia-video').attr('style', 'height: 200px !important; overflow: hidden !important;');
+            $('.kintsugi-noticia-img').attr('style', 'width: 100% !important; height: 100% !important; object-fit: cover !important; transition: transform 0.5s !important;');
+            
+            $('.kintsugi-noticia-content').attr('style', 'padding: 15px !important; position: relative !important; z-index: 2 !important;');
+            $('.kintsugi-noticia-title').attr('style', 'margin: 0 0 8px !important; font-size: 18px !important; font-weight: 700 !important; color: #030D55 !important; line-height: 1.3 !important; font-family: "Playfair Display", serif !important;');
+            $('.kintsugi-noticia-excerpt').attr('style', 'font-size: 14px !important; color: #4a4a4a !important; line-height: 1.5 !important;');
+            
+            $('.kintsugi-noticia-date').attr('style', 'position: absolute !important; top: 10px !important; right: 10px !important; background: rgba(54, 39, 102, 0.8) !important; color: #fff !important; padding: 4px 8px !important; border-radius: 4px !important; font-size: 12px !important; z-index: 5 !important;');
+            $('.kintsugi-noticia-overlay').attr('style', 'position: absolute !important; inset: 0 !important; background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%) !important; z-index: 1 !important;');
+            
+            // Aplicar estilos a la paginación
+            $('.kintsugi-noticias-pagination').attr('style', 'display: flex !important; justify-content: center !important; margin-top: 30px !important;');
+            $('.kintsugi-noticias-pagination .page-numbers').attr('style', 'display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 36px !important; height: 36px !important; margin: 0 3px !important; border-radius: 4px !important; border: 1px solid #ddd !important; color: #4a4a4a !important; text-decoration: none !important; transition: all 0.3s !important; font-weight: 500 !important;');
+            $('.kintsugi-noticias-pagination .page-numbers.current').attr('style', 'background-color: #030D55 !important; border-color: #030D55 !important; color: white !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 36px !important; height: 36px !important; margin: 0 3px !important; border-radius: 4px !important;');
+            $('.kintsugi-noticias-pagination .prev, .kintsugi-noticias-pagination .next').attr('style', 'width: auto !important; padding: 0 12px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; height: 36px !important; margin: 0 3px !important; border-radius: 4px !important; border: 1px solid #ddd !important; color: #4a4a4a !important; text-decoration: none !important; transition: all 0.3s !important;');
+        }
+        
+        // Aplicar estilos ahora y después de cada carga de AJAX
+        applyInlineStyles();
+        
+        // Monitorear cambios en el DOM para aplicar estilos a nuevos elementos
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.addedNodes.length) {
+                    // Aplicar estilos nuevamente
+                    setTimeout(applyInlineStyles, 100);
+                }
+            });
+        });
+        
+        // Configurar el observador para observar cambios en el contenedor AJAX
+        observer.observe(document.getElementById('kintsugi-noticias-ajax-container'), {
+            childList: true,
+            subtree: true
+        });
     });
 
     function initNoticiasFilters() {
@@ -821,71 +887,7 @@ var kintsugi_ajax = {
     
     $(document).ready(function() {
         initKintsugiCarousel();
-        applyInlineStyles(); // Función para aplicar estilos inline
     });
-    
-    // Función para aplicar estilos inline a elementos generados dinámicamente
-    function applyInlineStyles() {
-        console.log('Aplicando estilos inline a elementos generados dinámicamente');
-        
-        // Aplicar estilos a elementos del carrusel
-        $('.kintsugi-carousel-slide').attr('style', 'position: relative !important; border-radius: 8px !important; overflow: hidden !important; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important; height: 400px !important; transition: transform 0.3s, box-shadow 0.3s !important; background-color: #fff !important; border: 1px solid rgba(54, 39, 102, 0.1) !important;');
-        
-        $('.kintsugi-carousel-image').attr('style', 'height: 200px !important; overflow: hidden !important;');
-        $('.kintsugi-carousel-image img').attr('style', 'width: 100% !important; height: 100% !important; object-fit: cover !important; transition: transform 0.5s !important;');
-        
-        $('.kintsugi-carousel-content').attr('style', 'padding: 15px !important; position: relative !important; z-index: 2 !important;');
-        $('.kintsugi-carousel-title').attr('style', 'margin: 0 0 8px !important; font-size: 18px !important; font-weight: 700 !important; color: #030D55 !important; line-height: 1.3 !important; font-family: "Playfair Display", serif !important;');
-        $('.kintsugi-carousel-excerpt').attr('style', 'font-size: 14px !important; color: #4a4a4a !important; line-height: 1.5 !important;');
-        
-        $('.kintsugi-carousel-date').attr('style', 'position: absolute !important; top: 10px !important; right: 10px !important; background: rgba(54, 39, 102, 0.8) !important; color: #fff !important; padding: 4px 8px !important; border-radius: 4px !important; font-size: 12px !important; z-index: 5 !important;');
-        $('.kintsugi-carousel-overlay').attr('style', 'position: absolute !important; inset: 0 !important; background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%) !important; z-index: 1 !important;');
-        
-        // Aplicar estilos a los botones de reproducción de video
-        $('.kintsugi-carousel-play, .kintsugi-noticia-video-play').attr('style', 'position: absolute !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; width: 60px !important; height: 60px !important; background-color: rgba(54, 39, 102, 0.8) !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 3 !important; cursor: pointer !important;');
-        
-        // Crear triángulo de reproducción
-        $('.kintsugi-carousel-play, .kintsugi-noticia-video-play').each(function() {
-            if (!$(this).find('.play-triangle').length) {
-                $(this).html('<div class="play-triangle" style="width: 0 !important; height: 0 !important; border-top: 12px solid transparent !important; border-bottom: 12px solid transparent !important; border-left: 18px solid white !important; margin-left: 5px !important;"></div>');
-            }
-        });
-        
-        // Aplicar estilos a elementos de noticias
-        $('.kintsugi-noticia-item').attr('style', 'position: relative !important; border-radius: 8px !important; overflow: hidden !important; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important; height: 100% !important; background-color: #fff !important; border: 1px solid rgba(54, 39, 102, 0.1) !important; transition: transform 0.3s, box-shadow 0.3s !important; margin-bottom: 20px !important;');
-        
-        $('.kintsugi-noticia-image, .kintsugi-noticia-video').attr('style', 'height: 200px !important; overflow: hidden !important;');
-        $('.kintsugi-noticia-img').attr('style', 'width: 100% !important; height: 100% !important; object-fit: cover !important; transition: transform 0.5s !important;');
-        
-        $('.kintsugi-noticia-content').attr('style', 'padding: 15px !important; position: relative !important; z-index: 2 !important;');
-        $('.kintsugi-noticia-title').attr('style', 'margin: 0 0 8px !important; font-size: 18px !important; font-weight: 700 !important; color: #030D55 !important; line-height: 1.3 !important; font-family: "Playfair Display", serif !important;');
-        $('.kintsugi-noticia-excerpt').attr('style', 'font-size: 14px !important; color: #4a4a4a !important; line-height: 1.5 !important;');
-        
-        $('.kintsugi-noticia-date').attr('style', 'position: absolute !important; top: 10px !important; right: 10px !important; background: rgba(54, 39, 102, 0.8) !important; color: #fff !important; padding: 4px 8px !important; border-radius: 4px !important; font-size: 12px !important; z-index: 5 !important;');
-        $('.kintsugi-noticia-overlay').attr('style', 'position: absolute !important; inset: 0 !important; background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%) !important; z-index: 1 !important;');
-        
-        // Aplicar estilos a la paginación
-        $('.kintsugi-noticias-pagination').attr('style', 'display: flex !important; justify-content: center !important; margin-top: 30px !important;');
-        $('.kintsugi-noticias-pagination .page-numbers').attr('style', 'display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 36px !important; height: 36px !important; margin: 0 3px !important; border-radius: 4px !important; border: 1px solid #ddd !important; color: #4a4a4a !important; text-decoration: none !important; transition: all 0.3s !important; font-weight: 500 !important;');
-        $('.kintsugi-noticias-pagination .page-numbers.current').attr('style', 'background-color: #030D55 !important; border-color: #030D55 !important; color: white !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 36px !important; height: 36px !important; margin: 0 3px !important; border-radius: 4px !important;');
-        $('.kintsugi-noticias-pagination .prev, .kintsugi-noticias-pagination .next').attr('style', 'width: auto !important; padding: 0 12px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; height: 36px !important; margin: 0 3px !important; border-radius: 4px !important; border: 1px solid #ddd !important; color: #4a4a4a !important; text-decoration: none !important; transition: all 0.3s !important;');
-        
-        // Monitorear cambios en el DOM para aplicar estilos a nuevos elementos
-        const observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (mutation.addedNodes.length) {
-                    // Aplicar estilos nuevamente
-                    setTimeout(applyInlineStyles, 100);
-                }
-            });
-        });
-        
-        // Configurar el observador para observar cambios en el contenedor AJAX
-        observer.observe(document.getElementById('kintsugi-noticias-ajax-container'), {
-            childList: true,
-            subtree: true
-        });
-    }
     
     function initKintsugiCarousel() {
         // También buscar div[class*="kintsugi-carousel"] para capturar todas las posibles variaciones
@@ -945,6 +947,22 @@ var kintsugi_ajax = {
                     $container.append('<div class="kintsugi-carousel-nav-next"></div>');
                 }
                 
+                // Aplicar estilos directamente con atributos style
+                $container.attr('style', 'position: relative !important; overflow: hidden !important; margin-left: auto !important; margin-right: auto !important; padding-bottom: 40px !important; border-radius: 8px !important; box-shadow: 0 10px 30px rgba(3, 13, 85, 0.1) !important;');
+                
+                $container.find('.swiper-wrapper').attr('style', 'display: flex !important; width: 100% !important; height: 100% !important; position: relative !important; z-index: 1 !important; box-sizing: content-box !important; transition-property: transform !important;');
+                
+                $container.find('.swiper-pagination').attr('style', 'position: absolute !important; bottom: 10px !important; left: 0 !important; right: 0 !important; text-align: center !important; z-index: 10 !important;');
+                
+                $container.find('.kintsugi-carousel-nav-prev').attr('style', 'position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; left: 10px !important; z-index: 10 !important; width: 40px !important; height: 40px !important; background: rgba(54, 39, 102, 0.7) !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important;');
+                
+                $container.find('.kintsugi-carousel-nav-next').attr('style', 'position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; right: 10px !important; z-index: 10 !important; width: 40px !important; height: 40px !important; background: rgba(54, 39, 102, 0.7) !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important;');
+                
+                // Añadir los triángulos para los botones de navegación
+                $container.find('.kintsugi-carousel-nav-prev').html('<div style="width: 12px !important; height: 12px !important; border-top: 2px solid white !important; border-right: 2px solid white !important; transform: rotate(-135deg) !important; margin-left: 5px !important;"></div>');
+                
+                $container.find('.kintsugi-carousel-nav-next').html('<div style="width: 12px !important; height: 12px !important; border-top: 2px solid white !important; border-right: 2px solid white !important; transform: rotate(45deg) !important; margin-right: 5px !important;"></div>');
+                
                 // Inicializar Swiper con opciones adaptadas
                 var swiper = new Swiper('#' + carouselId, {
                     slidesPerView: 1,
@@ -981,15 +999,30 @@ var kintsugi_ajax = {
                         init: function() {
                             $('#' + carouselId).addClass('carousel-initialized');
                             
-                            // Garantizar que todas las imágenes tengan altura uniforme
-                            $('.kintsugi-carousel-slide').css('height', '400px');
-                            
-                            // Garantizar que todas las imágenes se muestren correctamente
-                            $('.kintsugi-carousel-image img').css({
-                                'width': '100%',
-                                'height': '100%',
-                                'object-fit': 'cover'
-                            });
+                            // Aplicar estilos adicionales a los slides después de la inicialización
+                            setTimeout(function() {
+                                // Aplicar estilos a los slides del carrusel
+                                $('.kintsugi-carousel-slide, .swiper-slide').attr('style', 'position: relative !important; border-radius: 8px !important; overflow: hidden !important; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important; background-color: #fff !important; border: 1px solid rgba(54, 39, 102, 0.1) !important; height: 400px !important; transition: transform 0.3s, box-shadow 0.3s !important;');
+                                
+                                $('.kintsugi-carousel-image').attr('style', 'height: 200px !important; overflow: hidden !important;');
+                                $('.kintsugi-carousel-image img').attr('style', 'width: 100% !important; height: 100% !important; object-fit: cover !important; transition: transform 0.5s !important;');
+                                
+                                $('.kintsugi-carousel-date').attr('style', 'position: absolute !important; top: 10px !important; right: 10px !important; background: rgba(54, 39, 102, 0.8) !important; color: #fff !important; padding: 4px 8px !important; border-radius: 4px !important; font-size: 12px !important; z-index: 5 !important;');
+                                $('.kintsugi-carousel-overlay').attr('style', 'position: absolute !important; inset: 0 !important; background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%) !important; z-index: 1 !important;');
+                                
+                                $('.kintsugi-carousel-content').attr('style', 'padding: 15px !important; position: relative !important; z-index: 2 !important;');
+                                $('.kintsugi-carousel-title').attr('style', 'margin: 0 0 8px !important; font-size: 18px !important; font-weight: 700 !important; color: #030D55 !important; line-height: 1.3 !important; font-family: "Playfair Display", serif !important;');
+                                $('.kintsugi-carousel-excerpt').attr('style', 'font-size: 14px !important; color: #4a4a4a !important; line-height: 1.5 !important;');
+                                
+                                $('.kintsugi-carousel-play').attr('style', 'position: absolute !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; width: 60px !important; height: 60px !important; background-color: rgba(54, 39, 102, 0.8) !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 3 !important; cursor: pointer !important;');
+                                
+                                // Crear triángulo de reproducción
+                                $('.kintsugi-carousel-play').each(function() {
+                                    if (!$(this).find('.play-triangle').length) {
+                                        $(this).html('<div class="play-triangle" style="width: 0 !important; height: 0 !important; border-top: 12px solid transparent !important; border-bottom: 12px solid transparent !important; border-left: 18px solid white !important; margin-left: 5px !important;"></div>');
+                                    }
+                                });
+                            }, 100);
                         }
                     }
                 });
