@@ -218,4 +218,9 @@
         }
     }
 
+    // Expose functions to global scope for cross-script access
+    window.kintsugiOpenVideoPopup = openVideoPopup;
+    window.kintsugiCloseVideoPopup = closeVideoPopup;
+    window.kintsugiExtractYouTubeId = extractYouTubeId;
+
 })(jQuery); 

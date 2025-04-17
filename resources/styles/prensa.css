@@ -132,7 +132,7 @@
 }
 
 .kintsugi-carousel-container {
-    border-radius: 0;
+    border-radius: 14px;
     overflow: hidden;
     background: #fff;
     position: relative;
@@ -606,28 +606,28 @@ body.kintsugi-popup-open {
 
 /* Contenedor externo para el carrusel */
 .carousel-outer-wrapper {
-    background: transparent;
-    padding: 0;
+    background: linear-gradient(180deg, rgba(171, 39, 122, 0.4) 0%, rgba(3, 13, 85, 0.4) 61%);
+    padding: 2px;
     border-radius: 16px;
     position: relative;
     margin-bottom: 2rem;
-    box-shadow: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Estilo para fecha en el carrusel */
 .kintsugi-carousel-date {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: rgba(217, 50, 128, 0.85);
+    top: 15px;
+    left: 15px;
+    background-color: #030D55;
     color: white;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 12px;
     font-weight: 600;
     z-index: 5;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+    text-shadow: none;
 }
 
 /* Mejoras para sección "Todas las noticias" */

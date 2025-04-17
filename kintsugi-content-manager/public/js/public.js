@@ -25,8 +25,9 @@
             }
         });
         
-        // Handle video links click (only for noticia items, not carousel ones - those are handled in carousel.js)
-        $('.kintsugi-noticia-video-link').on('click', function(e) {
+        // Handle video links click (for noticia items and carousel items)
+        // Use event delegation for dynamically loaded content
+        $(document).on('click', '.kintsugi-noticia-item a[data-video-url], .kintsugi-noticia-video-link, .kintsugi-carousel-video-link', function(e) {
             e.preventDefault();
             
             // Prevenir múltiples reproducciones simultáneas
@@ -39,10 +40,13 @@
                 videoIsPlaying = true; // Marcar que hay un video reproduciéndose
                 openVideoPopup(videoUrl);
             }
+            
+            return false;
         });
         
         // Handle video popup close
-        $('.kintsugi-video-popup-close').on('click', function() {
+        // Use event delegation for dynamically loaded content
+        $(document).on('click', '.kintsugi-video-popup-close', function() {
             closeVideoPopup();
         });
         
@@ -54,7 +58,8 @@
         });
         
         // Close popup on background click
-        $('.kintsugi-video-popup').on('click', function(e) {
+        // Use event delegation for dynamically loaded content
+        $(document).on('click', '.kintsugi-video-popup', function(e) {
             if ($(e.target).hasClass('kintsugi-video-popup')) {
                 closeVideoPopup();
             }
@@ -106,7 +111,7 @@
                 searchTimer = setTimeout(function() {
                     currentPage = 1;
                     fetchFilteredResults();
-                }, 500);
+                }, 300); // Reduced from 500ms to 300ms for faster response
             });
             
             // Handle year filter
@@ -122,7 +127,8 @@
             });
             
             // Handle pagination clicks
-            $(document).on('click', '.kintsugi-noticias-pagination a.page-numbers', function(e) {
+            // Ensure event delegation for pagination links inside the ajax container
+            $(document).on('click', '#kintsugi-noticias-ajax-container .kintsugi-noticias-pagination a.page-numbers', function(e) {
                 e.preventDefault();
                 var href = $(this).attr('href');
                 var page = getParameterByName('paged', href) || 1;
@@ -170,7 +176,7 @@
                         orderby: orderby,
                         order: order,
                         paged: currentPage,
-                        per_page: 4 // Match the default per page
+                        per_page: 10 // Match the default per page (was 4)
                     },
                     success: function(response) {
                         $('#kintsugi-noticias-ajax-container').html(response);
@@ -186,8 +192,8 @@
                             }
                         });
                         
-                        // Rebind video click events
-                        $('.kintsugi-noticia-video-link').on('click', function(e) {
+                        // Rebind video click events for grid items
+                        $('.kintsugi-noticia-item a[data-video-url], .kintsugi-noticia-video-link').off('click').on('click', function(e) {
                             e.preventDefault();
                             
                             if (videoIsPlaying) {
@@ -199,6 +205,8 @@
                                 videoIsPlaying = true;
                                 openVideoPopup(videoUrl);
                             }
+                            
+                            return false;
                         });
                         
                         // Highlight the active page in pagination
@@ -253,10 +261,25 @@
             $('.kintsugi-video-popup-content iframe').attr('src', embedUrl);
             
             // Show popup
-            $('.kintsugi-video-popup').addClass('active').fadeIn(300);
+            // Ensure the popup exists and is unique
+            var $popup = $('.kintsugi-video-popup');
+            if ($popup.length > 1) {
+                $popup.slice(1).remove(); // Remove duplicates if any
+                $popup = $('.kintsugi-video-popup'); // Re-select the unique one
+            }
+            $popup.addClass('active').fadeIn(300);
             
             // Add class to body to prevent scroll
             $('body').addClass('kintsugi-popup-open');
+            
+            // Also stop any carousel auto-play if it exists (using the carousel.js functions)
+            if (typeof window.kintsugiSwiperInstances !== 'undefined') {
+                window.kintsugiSwiperInstances.forEach(function(swiper) {
+                    if (swiper && swiper.autoplay) {
+                        swiper.autoplay.stop();
+                    }
+                });
+            }
         }
     }
     
@@ -266,13 +289,28 @@
         $('.kintsugi-video-popup-content iframe').attr('src', '');
         
         // Hide popup
-        $('.kintsugi-video-popup').removeClass('active').fadeOut(300);
+        // Ensure the popup exists and is unique
+        var $popup = $('.kintsugi-video-popup');
+        if ($popup.length > 1) {
+            $popup.slice(1).remove(); // Remove duplicates if any
+            $popup = $('.kintsugi-video-popup'); // Re-select the unique one
+        }
+        $popup.removeClass('active').fadeOut(300);
         
         // Remove class from body
         $('body').removeClass('kintsugi-popup-open');
         
         // Resetear el estado de reproducción
         videoIsPlaying = false;
+        
+        // Also resume any carousel auto-play if it exists (using the carousel.js functions)
+        if (typeof window.kintsugiSwiperInstances !== 'undefined') {
+            window.kintsugiSwiperInstances.forEach(function(swiper) {
+                if (swiper && swiper.autoplay) {
+                    swiper.autoplay.start();
+                }
+            });
+        }
     }
     
     // Function to extract YouTube video ID
@@ -281,5 +319,10 @@
         var match = url.match(regExp);
         return (match && match[7].length === 11) ? match[7] : false;
     }
+    
+    // Expose functions to global scope to ensure they're accessible from other scripts
+    window.kintsugiOpenVideoPopup = openVideoPopup;
+    window.kintsugiCloseVideoPopup = closeVideoPopup;
+    window.kintsugiExtractYouTubeId = extractYouTubeId;
 
 })(jQuery); 

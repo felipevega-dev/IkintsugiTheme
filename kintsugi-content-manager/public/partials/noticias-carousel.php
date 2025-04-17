@@ -54,7 +54,7 @@ $carousel_id = 'kintsugi-carousel-' . uniqid();
             <div class="kintsugi-carousel-slide swiper-slide">
                 <?php if ($tipo_noticia === 'video' && !empty($video_id)) : ?>
                 <!-- Video slide -->
-                <a href="javascript:void(0);" class="kintsugi-carousel-video-link" data-video-url="<?php echo esc_url($youtube_url); ?>">
+                <a href="javascript:void(0);" class="kintsugi-carousel-video-link" data-video-url="<?php echo esc_url($youtube_url); ?>" data-video-id="<?php echo esc_attr($video_id); ?>">
                     <div class="kintsugi-carousel-date"><?php echo esc_html($post_date); ?></div>
                     <div class="kintsugi-carousel-overlay"></div>
                     <div class="kintsugi-carousel-image">

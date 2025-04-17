@@ -272,8 +272,9 @@
 <!-- Sección 1: Noticias destacadas en el carrusel -->
 <section class="bg-white py-4 overflow-hidden">
   <div class="container mx-auto px-4">
-    <h2 class="text-3xl md:text-4xl font-bold text-[#030D55] mb-8 text-left" style="font-family: 'Playfair Display', serif;">
-      Noticias destacadas
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-8"
+        style="font-family: 'Playfair Display', serif; font-weight: 800; font-size: 24px; line-height: 100%; letter-spacing: 0%; color: #AB277A;">
+      Las más recientes
     </h2>
 
     <!-- Indicador visual de deslizamiento -->
@@ -288,7 +289,7 @@
     </div>
 
     <!-- Contenedor mejorado del carrusel -->
-    <div class="carousel-outer-wrapper shadow-lg rounded-xl overflow-hidden mb-8">
+    <div class="carousel-outer-wrapper shadow-lg rounded-xl overflow-hidden mb-8" style="background: linear-gradient(180deg, rgba(171, 39, 122, 0.4) 0%, rgba(3, 13, 85, 0.4) 61%);">
       <!-- Shortcode para el carrusel con noticias seleccionadas específicamente -->
       <div class="swiper-container-custom">
         <?php
@@ -312,35 +313,24 @@
 <!-- Sección 2: Todas las noticias -->
 <section class="bg-gray-50 py-4 relative">
   <div class="container mx-auto px-4 relative">
-    <div class="max-w-3xl mb-8">
-      <h2 class="text-3xl md:text-4xl font-bold text-[#030D55] mb-4 text-left" style="font-family: 'Playfair Display', serif;">
-        Todas las noticias
-      </h2>
-      <p class="text-lg text-gray-600 mb-2">
-        Explora nuestra colección completa de apariciones en medios, artículos, entrevistas y videos sobre psicología, EMDR y tratamiento del trauma. Utiliza los filtros para encontrar exactamente lo que buscas.
-      </p>
-    </div>
-    
-    <!-- Filtros y Búsqueda AJAX -->
-    <div class="kintsugi-filters-container mb-8">
-      <div class="flex flex-wrap items-start gap-4">
-        <div class="search-container flex-grow">
-          <label for="kintsugi-search-input" class="block mb-2 text-sm font-medium text-gray-700">Buscar por palabra clave</label>
-          <div class="relative">
-            <input type="text" id="kintsugi-search-input" placeholder="Buscar noticias..." class="w-full px-4 py-2 pl-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#362766]">
-            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        
-        <div class="filter-container">
+    <div class="flex flex-wrap justify-between items-start mb-8">
+      <div class="max-w-3xl mb-4 md:mb-0">
+        <h2 class="text-center md:text-left"
+            style="font-family: 'Playfair Display', serif; font-weight: 800; font-size: 48px; line-height: 100%; letter-spacing: 0%; color: #030D55;">
+          Artículos y notas en prensa
+        </h2>
+        <p class="text-lg text-gray-600 mb-2 text-center md:text-left">
+          Explora nuestra colección completa de apariciones en medios, artículos, entrevistas y videos sobre psicología, EMDR y tratamiento del trauma. Utiliza los filtros para encontrar exactamente lo que buscas.
+        </p>
+      </div>
+
+      <!-- Contenedor para filtros a la derecha -->
+      <div class="kintsugi-filters-right-container flex flex-col sm:flex-row gap-4 items-start w-full md:w-auto">
+        <div class="filter-container w-full sm:w-auto">
           <label for="kintsugi-year-filter" class="block mb-2 text-sm font-medium text-gray-700">Filtrar por año</label>
-          <select id="kintsugi-year-filter" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#362766]">
+          <select id="kintsugi-year-filter" class="w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#362766]">
             <option value="all">Todos los años</option>
-            <?php 
+            <?php
               // Generar opciones para los últimos 5 años
               $currentYear = date('Y');
               for ($i = 0; $i <= 4; $i++) {
@@ -350,10 +340,10 @@
             ?>
           </select>
         </div>
-        
-        <div class="sort-container">
+
+        <div class="sort-container w-full sm:w-auto">
           <label for="kintsugi-sort-filter" class="block mb-2 text-sm font-medium text-gray-700">Ordenar resultados</label>
-          <select id="kintsugi-sort-filter" class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#362766]">
+          <select id="kintsugi-sort-filter" class="w-full sm:w-auto px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#362766]">
             <option value="date-desc">Más recientes primero</option>
             <option value="date-asc">Más antiguos primero</option>
             <option value="title-asc">Título (A-Z)</option>
@@ -361,9 +351,26 @@
           </select>
         </div>
       </div>
-      <div class="mt-3 text-sm text-gray-500 italic">Realiza una búsqueda, filtra por año o cambia el orden para encontrar contenido específico.</div>
     </div>
-        
+
+    <!-- Filtros y Búsqueda AJAX (Solo búsqueda ahora) -->
+    <div class="kintsugi-filters-container mb-8">
+      <div class="flex flex-wrap items-start gap-4">
+        <div class="search-container flex-grow">
+          <label for="kintsugi-search-input" class="block mb-2 text-sm font-medium text-gray-700">Buscar por palabra clave</label>
+          <div class="relative">
+            <input type="text" id="kintsugi-search-input" placeholder="Escribe aquí para buscar noticias..." class="w-full px-4 py-2 pl-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#362766]">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-3 text-sm text-gray-500 italic">La búsqueda se actualiza automáticamente mientras escribes.</div>
+    </div>
+
     <!-- Contenedor para el contenido AJAX -->
     <div id="kintsugi-noticias-ajax-container">
       <!-- Shortcode para todas las noticias con buscador y paginación - mostrando 10 por página (5x2) -->
@@ -378,113 +385,4 @@
     @php the_content(); @endphp
   </div>
 </section>
-
-<script>
-  // Script para inicializar funcionalidades cuando el DOM esté cargado
-  document.addEventListener('DOMContentLoaded', function() {
-    // Inicialización del filtro y búsqueda AJAX
-    jQuery(function($) {
-      let ajaxRunning = false;
-      
-      // Función para cargar las noticias filtradas
-      function loadNoticias(page = 1) {
-        if (ajaxRunning) return;
-        
-        ajaxRunning = true;
-        const search = $('#kintsugi-search-input').val();
-        const year = $('#kintsugi-year-filter').val();
-        const sortVal = $('#kintsugi-sort-filter').val();
-        let orderby = 'date';
-        let order = 'DESC';
-        
-        if (sortVal === 'date-asc') {
-          orderby = 'date';
-          order = 'ASC';
-        } else if (sortVal === 'title-asc') {
-          orderby = 'title';
-          order = 'ASC';
-        } else if (sortVal === 'title-desc') {
-          orderby = 'title';
-          order = 'DESC';
-        }
-        
-        $('#kintsugi-noticias-ajax-container').html('<div class="text-center py-10 w-full"><div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-[#D93280]"></div><p class="mt-2 text-gray-600">Cargando noticias...</p></div>');
-        
-        $.ajax({
-          url: '<?php echo admin_url('admin-ajax.php'); ?>',
-          type: 'POST',
-          data: {
-            action: 'kintsugi_filter_noticias',
-            search: search,
-            year: year,
-            orderby: orderby,
-            order: order,
-            paged: page,
-            per_page: 10
-          },
-          success: function(response) {
-            $('#kintsugi-noticias-ajax-container').html(response);
-            ajaxRunning = false;
-            
-            // Actualizar la URL con los parámetros de filtro (sin recargar la página)
-            const url = new URL(window.location);
-            if (search) url.searchParams.set('search_noticias', search);
-            else url.searchParams.delete('search_noticias');
-            
-            if (year !== 'all') url.searchParams.set('year', year);
-            else url.searchParams.delete('year');
-            
-            if (sortVal !== 'date-desc') url.searchParams.set('sort', sortVal);
-            else url.searchParams.delete('sort');
-            
-            if (page > 1) url.searchParams.set('pg', page);
-            else url.searchParams.delete('pg');
-            
-            window.history.replaceState({}, '', url);
-          }
-        });
-      }
-      
-      // Event listeners para filtros
-      $('#kintsugi-search-input').on('keyup', $.debounce(500, function() {
-        loadNoticias();
-      }));
-      
-      $('#kintsugi-year-filter, #kintsugi-sort-filter').on('change', function() {
-        loadNoticias();
-      });
-      
-      // Delegación de eventos para paginación
-      $(document).on('click', '.kintsugi-noticias-pagination a.page-numbers', function(e) {
-        e.preventDefault();
-        const href = $(this).attr('href');
-        const page = href.match(/paged=(\d+)/) ? parseInt(href.match(/paged=(\d+)/)[1]) : 1;
-        loadNoticias(page);
-        
-        // Scroll hacia arriba cuando cambia la página
-        $('html, body').animate({
-          scrollTop: $('#kintsugi-noticias-ajax-container').offset().top - 100
-        }, 500);
-      });
-      
-      // Función debounce para evitar muchas peticiones en keyup
-      function debounce(func, wait) {
-        let timeout;
-        return function() {
-          const context = this;
-          const args = arguments;
-          clearTimeout(timeout);
-          timeout = setTimeout(function() {
-            func.apply(context, args);
-          }, wait);
-        };
-      }
-      
-      // Agregar método debounce a jQuery
-      $.debounce = function(wait, func) {
-        return debounce(func, wait);
-      };
-    });
-  });
-</script>
 @endsection
