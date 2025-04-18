@@ -34,6 +34,7 @@
         }
       }
     </style>
+    @yield('styles')
   </head>
 
   <body @php(body_class())>

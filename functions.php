@@ -112,3 +112,25 @@ add_filter('blade.compiler', function ($compiler) {
     
     return $compiler;
 });
+
+add_action('wp_enqueue_scripts', function() {
+    global $template;
+    if (basename($template) === 'prensa.blade.php' || is_page('prensa')) {
+        // Primero jQuery
+        wp_enqueue_script('jquery');
+        
+        // Luego Swiper CSS y JS
+        wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css');
+        wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js', ['jquery'], null, true);
+        
+        // Nuestros estilos y scripts propios
+        wp_enqueue_style('prensa-styles', plugins_url('/kintsugi-content-manager/public/css/prensa.css'), ['swiper-css'], null);
+        wp_enqueue_script('prensa-scripts', plugins_url('/kintsugi-content-manager/public/js/prensa.js'), ['jquery', 'swiper-js'], null, true);
+        
+        // Pasar AJAX params
+        wp_localize_script('prensa-scripts', 'kintsugi_ajax', [
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('kintsugi_ajax_nonce')
+        ]);
+    }
+}, 20);
