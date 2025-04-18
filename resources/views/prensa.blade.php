@@ -1,15 +1,4 @@
-{{--
-  Template Name: Prensa
---}}
-
 @extends('layouts.app')
-
-@section('styles')
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
-  <!-- Ruta corregida al CSS del plugin -->
-  <link rel="stylesheet" href="<?php echo plugin_dir_url(__FILE__) . '../public/css/prensa.css'; ?>">
-@endsection
-
 @section('content')
 <?php
 // Desregistrar estilos y scripts del plugin para usar solo los del tema
@@ -135,15 +124,4 @@ $nonce    = wp_create_nonce('kintsugi_ajax_nonce');
     </div>
   </div>
 </div>
-@endsection
-
-@section('scripts')
-  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-  <script src="{{ get_theme_file_uri('kintsugi-content-manager/public/js/prensa.js') }}"></script>
-  <script>
-    var kintsugi_ajax = {
-      ajax_url: '{{ $ajax_url }}',
-      nonce: '{{ $nonce }}'
-    };
-  </script>
 @endsection

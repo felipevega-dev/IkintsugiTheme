@@ -1,4 +1,6 @@
 // Verificar disponibilidad de jQuery
+
+jQuery(function($) {  
 document.addEventListener('DOMContentLoaded', function() {
   if (typeof jQuery !== 'undefined') {
     jQuery(function($) {
@@ -350,7 +352,7 @@ function applyInlineStyles() {
 }
 
 // Función para inicializar los filtros de noticias
-function initNoticiasFilters() {
+function initNoticiasFilters($) {
   // DOM elements
   const $searchInput = $('#kintsugi-search-input');
   const $yearFilter = $('#kintsugi-year-filter');
@@ -499,10 +501,12 @@ function initNoticiasFilters() {
 jQuery(document).ready(function($) {
   initKintsugiCarousel();
   setupVideoPopups();
-  setupSearchAndFilters();
+  initNoticiasFilters($);
 
   $(document).ajaxComplete(function() {
     setupVideoPopups();
     enforceGridLayout();
   });
+  });
+// Fin del bloque jQuery
 });
