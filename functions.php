@@ -113,16 +113,21 @@ add_filter('blade.compiler', function ($compiler) {
 add_action('wp_enqueue_scripts', function() {
     global $template;
     if (basename($template) === 'prensa.blade.php' || is_page('prensa')) {
-        // Primero jQuery
+        // Desregistrar los scripts duplicados del plugin
+        wp_deregister_script('kintsugi-content-manager-carousel');
+        wp_deregister_script('kintsugi-content-manager-public');
+        wp_deregister_style('kintsugi-content-manager-public');
+        
+        // Primero jQuery (asegurarse de que siempre está cargado)
         wp_enqueue_script('jquery');
         
-        // Luego Swiper CSS y JS
-        wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css');
+        // Luego Swiper CSS y JS (desde CDN)
+        wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css', [], null);
         wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js', ['jquery'], null, true);
         
         // Nuestros estilos y scripts propios
-        wp_enqueue_style('prensa-styles', plugins_url('/kintsugi-content-manager/public/css/prensa.css'), ['swiper-css'], null);
-        wp_enqueue_script('prensa-scripts', plugins_url('/kintsugi-content-manager/public/js/prensa.js'), ['jquery', 'swiper-js'], null, true);
+        wp_enqueue_style('prensa-styles', get_theme_file_uri('kintsugi-content-manager/public/css/prensa.css'), ['swiper-css'], null);
+        wp_enqueue_script('prensa-scripts', get_theme_file_uri('kintsugi-content-manager/public/js/prensa.js'), ['jquery', 'swiper-js'], null, true);
         
         // Pasar AJAX params
         wp_localize_script('prensa-scripts', 'kintsugi_ajax', [
@@ -130,5 +135,5 @@ add_action('wp_enqueue_scripts', function() {
             'nonce' => wp_create_nonce('kintsugi_ajax_nonce')
         ]);
     }
-}, 20);
+}, 20);  // Prioridad 20 para que se ejecute después de otros enqueues
 

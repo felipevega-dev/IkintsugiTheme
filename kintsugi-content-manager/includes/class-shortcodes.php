@@ -476,6 +476,7 @@ class Kintsugi_Content_Manager_Shortcodes {
         $year = isset($_POST['year']) ? sanitize_text_field($_POST['year']) : 'all';
         $sort = isset($_POST['sort']) ? sanitize_text_field($_POST['sort']) : 'date-desc';
         $paged = isset($_POST['paged']) ? intval($_POST['paged']) : 1;
+        $partial = isset($_POST['partial']) ? filter_var($_POST['partial'], FILTER_VALIDATE_BOOLEAN) : false;
         
         // Setup the basic query arguments
         $args = array(

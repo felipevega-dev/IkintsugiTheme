@@ -1,20 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<?php
-// Desregistrar estilos y scripts del plugin para usar solo los del tema
-  add_action('wp_print_styles', function() {
-      wp_deregister_style('kintsugi-content-manager-public');
-  }, 100);
-  add_action('wp_print_scripts', function() {
-      wp_deregister_script('kintsugi-content-manager-carousel');
-      wp_deregister_script('kintsugi-content-manager-public');
-  }, 100);
-
-// Pasar parámetros de AJAX al script
-$ajax_url = admin_url('admin-ajax.php');
-$nonce    = wp_create_nonce('kintsugi_ajax_nonce');
-?>
-
 <div class="kintsugi-theme-wrapper">
   <!-- Hero Section -->
   <section class="relative bg-[#362766] overflow-hidden pt-10 md:pt-22">
