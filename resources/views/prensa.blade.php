@@ -47,7 +47,7 @@
             if (!empty($carousel_ids['noticias_ids'] ?? [])) {
               echo do_shortcode('[administracion_noticias_carrousel ids="' . implode(',', $carousel_ids['noticias_ids']) . '" count="8"]');
             } else {
-              echo do_shortcode('[administracion_noticias_carrousel count="8"]');
+              echo do_shortcode('[administracion_noticias_carrousel count="5"]');
             }
           ?>
         </div>

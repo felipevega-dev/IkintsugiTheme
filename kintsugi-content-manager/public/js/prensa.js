@@ -1,38 +1,31 @@
 // Envolver todo en un closure seguro de jQuery para evitar conflictos
 jQuery(function($) {
   // Variables globales
-  var kintsugi_ajax = { ajax_url: '', nonce: '' };
+  var kintsugi_ajax = window.kintsugi_ajax || { ajax_url: '', nonce: '' };
 
   // Iniciar todo cuando el DOM esté listo
   $(document).ready(function() {
     initKintsugiCarousel();
     initNoticiasFilters();
     setupVideoPopups();
+    enforceGridLayout();
+    applyInlineStyles();
   });
 
   function initKintsugiCarousel() {
-    if (typeof Swiper === 'undefined') return;
-
-    // Destruir instancias existentes para evitar duplicados
-    if (window.mainCarousel && window.mainCarousel.destroy) {
-      window.mainCarousel.destroy(true, true);
-    }
-
-    // Carrusel principal
-    const main = document.querySelector('#kintsugi-carousel-main');
-    if (main) {
-      main.querySelectorAll('.main-carousel-prev, .main-carousel-next').forEach(el => el.remove());
-      main.insertAdjacentHTML('beforeend',
-        '<div class="main-carousel-prev kintsugi-carousel-nav-prev"></div>' +
-        '<div class="main-carousel-next kintsugi-carousel-nav-next"></div>'
-      );
-      
-      // Inicializar Swiper con loop y navegación
-      window.mainCarousel = new Swiper('#kintsugi-carousel-main', {
+    // Carrusel principal (si está presente)
+    const mainCarousel = document.getElementById('kintsugi-carousel-main');
+    if (mainCarousel) {
+      new Swiper('#kintsugi-carousel-main', {
         loop: true,
+        speed: 700,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
         navigation: {
-          prevEl: '.main-carousel-prev',
-          nextEl: '.main-carousel-next',
+          nextEl: '.kintsugi-carousel-nav-next',
+          prevEl: '.kintsugi-carousel-nav-prev',
         },
         pagination: { el: '.swiper-pagination', clickable: true },
         slidesPerView: 1,
@@ -52,6 +45,7 @@ jQuery(function($) {
         );
         new Swiper(`#${id}`, {
           loop: true,
+          speed: 700,
           navigation: { prevEl: `.${prev}`, nextEl: `.${next}` },
           pagination: { el: '.swiper-pagination', clickable: true }
         });
@@ -61,162 +55,128 @@ jQuery(function($) {
   }
 
   function setupVideoPopups() {
-    // Cerrar el popup al hacer clic en el botón de cerrar
-    $('.kintsugi-video-popup-close').off('click').on('click', function() {
-        closeVideoPopup();
+    // Limpiar cualquier handler previo
+    $('.kintsugi-carousel-video-link, .kintsugi-noticia-video-link, .swiper-slide[data-video-url], .kintsugi-noticia-video-play, .kintsugi-video-popup-close').off();
+    
+    // Asegurarse que el popup de video existe
+    if ($('.kintsugi-video-popup').length === 0) {
+      $('body').append(`
+        <div class="kintsugi-video-popup">
+          <div class="kintsugi-video-popup-inner">
+            <div class="kintsugi-video-popup-container">
+              <div class="kintsugi-video-popup-content"></div>
+            </div>
+            <div class="kintsugi-video-popup-close">&times;</div>
+          </div>
+        </div>
+      `);
+    }
+    
+    // Manejar clics en enlaces de video
+    $('.kintsugi-carousel-video-link, .kintsugi-noticia-video-link').on('click', function(e) {
+      e.preventDefault();
+      var videoUrl = $(this).data('video-url');
+      if (videoUrl) {
+        openVideoPopup(videoUrl);
+      }
     });
     
-    // Cerrar al hacer clic fuera del contenido
-    $('.kintsugi-video-popup').off('click').on('click', function(e) {
-        if ($(e.target).hasClass('kintsugi-video-popup')) {
-            closeVideoPopup();
-        }
-    });
-    
-    // Cerrar al presionar ESC
-    $(document).off('keydown.videoPopup').on('keydown.videoPopup', function(e) {
-        if (e.key === "Escape") {
-            closeVideoPopup();
-        }
-    });
-    
-    // Manejar clics en los botones de video en carrusel
-    $('.kintsugi-carousel-play').off('click').on('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        var videoUrl = $(this).closest('[data-video-url]').data('video-url');
-        if (videoUrl) {
-            openVideoPopup(videoUrl);
-        }
+    // Manejar clics en los botones de reproducción
+    $('.kintsugi-noticia-video-play').on('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var videoUrl = $(this).closest('[data-video-url]').data('video-url');
+      if (videoUrl) {
+        openVideoPopup(videoUrl);
+      }
     });
     
     // Manejar clics en las diapositivas de video del carrusel
-    $('.swiper-slide[data-video-url]').off('click').on('click', function(e) {
-        e.preventDefault();
-        var videoUrl = $(this).data('video-url');
-        if (videoUrl) {
-            openVideoPopup(videoUrl);
-        }
+    $('.swiper-slide[data-video-url]').on('click', function(e) {
+      e.preventDefault();
+      var videoUrl = $(this).data('video-url');
+      if (videoUrl) {
+        openVideoPopup(videoUrl);
+      }
     });
     
-    // Manejar clics en elementos de video de la cuadrícula de noticias
-    $('.kintsugi-noticia-video-play').off('click').on('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        var videoUrl = $(this).closest('[data-video-url]').data('video-url');
-        if (videoUrl) {
-            openVideoPopup(videoUrl);
-        }
+    // Cerrar el popup de video
+    $('.kintsugi-video-popup-close').on('click', function() {
+      closeVideoPopup();
+    });
+    
+    // También cerrar con Escape
+    $(document).on('keydown', function(e) {
+      if (e.key === 'Escape' && $('.kintsugi-video-popup').hasClass('active')) {
+        closeVideoPopup();
+      }
+    });
+    
+    // Y cerrar si se hace clic fuera del contenido del video
+    $('.kintsugi-video-popup').on('click', function(e) {
+      if ($(e.target).hasClass('kintsugi-video-popup') || $(e.target).hasClass('kintsugi-video-popup-inner')) {
+        closeVideoPopup();
+      }
     });
   }
 
   function openVideoPopup(videoUrl) {
-    // Detener cualquier reproducción de video anterior
-    $('.kintsugi-video-popup-content').empty();
-    
-    // Obtener el ID de YouTube o Vimeo
+    // Detectar tipo de video (YouTube / Vimeo)
+    var embedUrl = '';
     var youtubeId = getYoutubeID(videoUrl);
     var vimeoId = getVimeoID(videoUrl);
     
-    var embedCode = '';
-    
     if (youtubeId) {
-        // YouTube embed - añadir mute=1 para iniciar silenciado
-        embedCode = '<iframe src="https://www.youtube.com/embed/' + youtubeId + '?autoplay=1&mute=1&rel=0&showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+      embedUrl = 'https://www.youtube.com/embed/' + youtubeId + '?autoplay=1&rel=0';
     } else if (vimeoId) {
-        // Vimeo embed - añadir muted=1 para iniciar silenciado
-        embedCode = '<iframe src="https://player.vimeo.com/video/' + vimeoId + '?autoplay=1&muted=1" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>';
+      embedUrl = 'https://player.vimeo.com/video/' + vimeoId + '?autoplay=1';
     } else {
-        return;
+      console.error('URL de video no reconocida:', videoUrl);
+      return;
     }
     
-    // Insertar el código embed
-    $('.kintsugi-video-popup-content').html(embedCode);
+    // Crear iframe
+    var iframe = '<iframe src="' + embedUrl + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
     
-    // Mostrar el popup con animación
-    var $popup = $('.kintsugi-video-popup');
-    $popup.addClass('active');
+    // Insertar en el popup y mostrar
+    $('.kintsugi-video-popup-content').html(iframe);
+    $('.kintsugi-video-popup').addClass('active');
+    $('body').addClass('kintsugi-popup-open');
     
-    // Prevenir scroll del body mientras el popup está abierto
-    $('body').css('overflow', 'hidden');
+    // Animación
+    setTimeout(function() {
+      $('.kintsugi-video-popup-container').css({
+        'transform': 'scale(1)',
+        'opacity': '1'
+      });
+    }, 10);
   }
 
   function closeVideoPopup() {
-    // Detener la reproducción de video
-    $('.kintsugi-video-popup-content').empty();
+    // Animación de cierre
+    $('.kintsugi-video-popup-container').css({
+      'transform': 'scale(0.9)',
+      'opacity': '0'
+    });
     
-    // Ocultar el popup con animación
-    $('.kintsugi-video-popup').removeClass('active');
-    
-    // Restaurar scroll del body
-    $('body').css('overflow', '');
+    // Esperar a que termine la animación
+    setTimeout(function() {
+      $('.kintsugi-video-popup').removeClass('active');
+      $('.kintsugi-video-popup-content').html(''); // Limpiar iframe
+      $('body').removeClass('kintsugi-popup-open');
+    }, 300);
   }
 
   function getYoutubeID(url) {
-    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
     var match = url.match(regExp);
-    return (match && match[2].length === 11) ? match[2] : null;
+    return (match && match[7].length === 11) ? match[7] : false;
   }
 
   function getVimeoID(url) {
-    var regExp = /^.*(vimeo\.com\/)((channels\/[A-z]+\/)|(groups\/[A-z]+\/videos\/))?([0-9]+)/;
+    var regExp = /(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)/;
     var match = url.match(regExp);
-    return match ? match[5] : null;
-  }
-
-  function setupSearchAndFilters() {
-    const searchInput = $('#kintsugi-search-input');
-    let searchTimeout = null;
-    
-    if (searchInput.length) {
-        searchInput.on('input', function() {
-            clearTimeout(searchTimeout);
-            
-            searchTimeout = setTimeout(function() {
-                loadFilteredNoticias();
-            }, 500); // 500ms de debounce
-        });
-    }
-    
-    // Manejar cambios en los filtros
-    $('#kintsugi-year-filter, #kintsugi-sort-filter').on('change', function() {
-        loadFilteredNoticias();
-    });
-    
-    // Función para cargar noticias filtradas VIA AJAX
-    function loadFilteredNoticias() {
-        const searchQuery = $('#kintsugi-search-input').val() || '';
-        const yearFilter = $('#kintsugi-year-filter').val() || '';
-        const sortFilter = $('#kintsugi-sort-filter').val() || 'desc';
-        
-        // Mostrar spinner de carga SOLO en el contenedor de noticias
-        $('#kintsugi-noticias-ajax-container').html('<div class="kintsugi-loading"><div class="spinner"></div><div>Cargando noticias...</div></div>');
-        
-        $.ajax({
-            url: kintsugi_ajax.ajax_url,
-            type: 'POST',
-            data: {
-                action: 'kintsugi_filter_noticias',
-                search: searchQuery,
-                year: yearFilter,
-                sort: sortFilter,
-                partial: true, // Indicar que solo queremos el contenido parcial
-                nonce: kintsugi_ajax.nonce
-            },
-            success: function(response) {
-                $('#kintsugi-noticias-ajax-container').html(response);
-                
-                // Reinicializar los popups de video para los nuevos elementos
-                setupVideoPopups();
-                
-                // Aplicar estilos consistentes a los resultados
-                applyInlineStyles();
-            },
-            error: function(error) {
-                $('#kintsugi-noticias-ajax-container').html('<div class="alert alert-danger">Ocurrió un error al cargar las noticias. Por favor, intenta de nuevo.</div>');
-            }
-        });
-    }
+    return match ? match[3] : false;
   }
 
   function enforceGridLayout() {
@@ -230,7 +190,7 @@ jQuery(function($) {
     
     // Si los elementos no están dentro de un grid, envolverlos en uno
     if (!container.find('.kintsugi-noticias-grid').length) {
-        items.wrapAll('<div class="kintsugi-noticias-grid"></div>');
+      items.wrapAll('<div class="kintsugi-noticias-grid"></div>');
     }
   }
 
@@ -306,8 +266,64 @@ jQuery(function($) {
       'font-weight': '600',
       'z-index': '10',
       'backdrop-filter': 'blur(3px)',
-      'box-shadow': '0 2px 5px rgba(0,0,0,0.2)'
+      'box-shadow': '0 2px 6px rgba(0, 0, 0, 0.2)'
     });
+    
+    // Mejorar los botones de play para videos
+    $('.kintsugi-carousel-play, .kintsugi-noticia-video-play').css({
+      'background-color': 'rgba(54, 39, 102, 0.9)',
+      'width': '70px',
+      'height': '70px',
+      'border-radius': '50%',
+      'position': 'absolute',
+      'top': '50%',
+      'left': '50%',
+      'transform': 'translate(-50%, -50%)',
+      'z-index': '10',
+      'display': 'flex',
+      'align-items': 'center',
+      'justify-content': 'center',
+      'box-shadow': '0 8px 24px rgba(0, 0, 0, 0.3)',
+      'cursor': 'pointer',
+      'transition': 'all 0.3s ease'
+    });
+    
+    // Asegurarse que el botón play contenga un triángulo
+    $('.kintsugi-carousel-play, .kintsugi-noticia-video-play').each(function() {
+      if ($(this).children().length === 0) {
+        $(this).html('<div class="play-triangle"></div>');
+      }
+    });
+    
+    // Estilo para el triángulo de play
+    $('.play-triangle').css({
+      'width': '0',
+      'height': '0',
+      'border-top': '12px solid transparent',
+      'border-bottom': '12px solid transparent',
+      'border-left': '18px solid white',
+      'margin-left': '5px'
+    });
+    
+    // Estilos para las imágenes
+    $('.kintsugi-noticia-image img, .kintsugi-carousel-image img, .kintsugi-noticia-video img').css({
+      'transition': 'transform 0.5s ease',
+      'width': '100%',
+      'height': '250px',
+      'object-fit': 'cover'
+    });
+    
+    // Efecto hover para las tarjetas
+    $('.kintsugi-noticia-item, .kintsugi-carousel-slide').hover(
+      function() {
+        $(this).css('transform', 'translateY(-8px)');
+        $(this).find('img').css('transform', 'scale(1.05)');
+      },
+      function() {
+        $(this).css('transform', 'none');
+        $(this).find('img').css('transform', 'none');
+      }
+    );
   }
 
   function initNoticiasFilters() {
@@ -316,66 +332,66 @@ jQuery(function($) {
     const $sortFilter = $('#kintsugi-sort-filter');
     const $container = $('#kintsugi-noticias-ajax-container');
     
-    if (!$searchInput.length || !$yearFilter.length || !$sortFilter.length || !$container.length) {
-        return;
+    if (!$searchInput.length || !$container.length) {
+      return;
     }
     
     // Debounce function para limitar las peticiones de búsqueda
     function debounce(func, wait) {
-        let timeout;
-        return function() {
-            const context = this;
-            const args = arguments;
-            clearTimeout(timeout);
-            timeout = setTimeout(() => {
-                func.apply(context, args);
-            }, wait);
-        };
+      let timeout;
+      return function() {
+        const context = this;
+        const args = arguments;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+          func.apply(context, args);
+        }, wait);
+      };
     }
     
     // Función para cargar contenido filtrado
     function loadFilteredContent() {
-        // Valores actuales de los filtros
-        const searchQuery = $searchInput.val().trim();
-        const yearFilter = $yearFilter.val();
-        const sortOrder = $sortFilter.val();
-        
-        // Mostrar estado de carga
-        $container.addClass('loading');
-        $container.html('<div class="kintsugi-loading"><div class="spinner"></div><p>Cargando noticias...</p></div>');
-        
-        // Petición AJAX - SOLO para el contenedor de noticias, no la página completa
-        $.ajax({
-            url: kintsugi_ajax.ajax_url,
-            type: 'POST',
-            data: {
-                action: 'kintsugi_filter_noticias',
-                search: searchQuery,
-                year: yearFilter,
-                sort: sortOrder,
-                partial: true, // Indicar que solo queremos el contenido parcial
-                nonce: kintsugi_ajax.nonce
-            },
-            success: function(response) {
-                // Reemplazar SOLO el contenido de noticias
-                $container.html(response);
-                
-                // Reinicializar popups de video
-                setupVideoPopups();
-            },
-            error: function() {
-                $container.html('<div class="kintsugi-error">Hubo un error al cargar las noticias. Por favor intenta de nuevo.</div>');
-            },
-            complete: function() {
-                $container.removeClass('loading');
-                
-                // Aplicar estilos consistentes
-                applyInlineStyles();
-                
-                // Forzar layout de grid
-                enforceGridLayout();
-            }
-        });
+      // Valores actuales de los filtros
+      const searchQuery = $searchInput.val().trim();
+      const yearFilter = $yearFilter.length ? $yearFilter.val() : 'all';
+      const sortOrder = $sortFilter.length ? $sortFilter.val() : 'date-desc';
+      
+      // Mostrar estado de carga
+      $container.addClass('loading');
+      $container.html('<div class="kintsugi-loading"><div class="spinner"></div><p>Cargando noticias...</p></div>');
+      
+      // Petición AJAX - SOLO para el contenedor de noticias, no la página completa
+      $.ajax({
+        url: kintsugi_ajax.ajax_url,
+        type: 'POST',
+        data: {
+          action: 'kintsugi_filter_noticias',
+          search: searchQuery,
+          year: yearFilter,
+          sort: sortOrder,
+          partial: true, // Indicar que solo queremos el contenido parcial
+          nonce: kintsugi_ajax.nonce
+        },
+        success: function(response) {
+          // Reemplazar SOLO el contenido de noticias
+          $container.html(response);
+          
+          // Reinicializar popups de video
+          setupVideoPopups();
+        },
+        error: function() {
+          $container.html('<div class="kintsugi-error">Hubo un error al cargar las noticias. Por favor intenta de nuevo.</div>');
+        },
+        complete: function() {
+          $container.removeClass('loading');
+          
+          // Aplicar estilos consistentes
+          applyInlineStyles();
+          
+          // Forzar layout de grid
+          enforceGridLayout();
+        }
+      });
     }
     
     // Función de búsqueda con debounce (300ms)
@@ -383,65 +399,66 @@ jQuery(function($) {
     
     // Event listeners
     $searchInput.on('input', debouncedSearch);
-    $yearFilter.on('change', loadFilteredContent);
-    $sortFilter.on('change', loadFilteredContent);
+    if ($yearFilter.length) $yearFilter.on('change', loadFilteredContent);
+    if ($sortFilter.length) $sortFilter.on('change', loadFilteredContent);
     
     // Gestionar clics en paginación
     $(document).on('click', '.kintsugi-noticias-pagination a.page-numbers', function(e) {
-        e.preventDefault();
-        
-        // Extraer número de página de la URL
-        const href = $(this).attr('href');
-        const page = href.match(/page\/(\d+)/) || href.match(/paged=(\d+)/);
-        const pageNum = page ? page[1] : 1;
-        
-        // Valores actuales de filtros
-        const searchQuery = $searchInput.val().trim();
-        const yearFilter = $yearFilter.val();
-        const sortOrder = $sortFilter.val();
-        
-        // Mostrar estado de carga
-        $container.addClass('loading');
-        $container.html('<div class="kintsugi-loading"><div class="spinner"></div><p>Cargando noticias...</p></div>');
-        
-        // Petición AJAX para paginación
-        $.ajax({
-            url: kintsugi_ajax.ajax_url,
-            type: 'POST',
-            data: {
-                action: 'kintsugi_filter_noticias',
-                search: searchQuery,
-                year: yearFilter,
-                sort: sortOrder,
-                paged: pageNum,
-                partial: true, // Indicar que solo queremos el contenido parcial
-                nonce: kintsugi_ajax.nonce
-            },
-            success: function(response) {
-                $container.html(response);
-                
-                // Reinicializar popups de video
-                setupVideoPopups();
-                
-                // Scroll hacia el contenedor
-                $('html, body').animate({
-                    scrollTop: $container.offset().top - 100
-                }, 300);
-            },
-            error: function() {
-                $container.html('<div class="kintsugi-error">Hubo un error al cargar las noticias. Por favor intenta de nuevo.</div>');
-            },
-            complete: function() {
-                $container.removeClass('loading');
-                $('.kintsugi-loading').remove();
-                
-                // Aplicar estilos después de cargar
-                applyInlineStyles();
-                
-                // Forzar layout de grid
-                enforceGridLayout();
-            }
-        });
+      e.preventDefault();
+      
+      // Extraer número de página de la URL
+      const href = $(this).attr('href');
+      const page = href.match(/page\/(\d+)/) || href.match(/paged=(\d+)/);
+      const pageNum = page ? page[1] : 1;
+      
+      // Valores actuales de filtros
+      const searchQuery = $searchInput.val().trim();
+      const yearFilter = $yearFilter.length ? $yearFilter.val() : 'all';
+      const sortOrder = $sortFilter.length ? $sortFilter.val() : 'date-desc';
+      
+      // Mostrar estado de carga
+      $container.addClass('loading');
+      $container.html('<div class="kintsugi-loading"><div class="spinner"></div><p>Cargando noticias...</p></div>');
+      
+      // Petición AJAX para paginación
+      $.ajax({
+        url: kintsugi_ajax.ajax_url,
+        type: 'POST',
+        data: {
+          action: 'kintsugi_filter_noticias',
+          search: searchQuery,
+          year: yearFilter,
+          sort: sortOrder,
+          paged: pageNum,
+          partial: true, // Indicar que solo queremos el contenido parcial
+          nonce: kintsugi_ajax.nonce
+        },
+        success: function(response) {
+          $container.html(response);
+          
+          // Reinicializar popups de video
+          setupVideoPopups();
+          
+          // Scroll hacia el contenedor
+          $('html, body').animate({
+            scrollTop: $container.offset().top - 100
+          }, 300);
+        },
+        error: function() {
+          $container.html('<div class="kintsugi-error">Hubo un error al cargar las noticias. Por favor intenta de nuevo.</div>');
+        },
+        complete: function() {
+          $container.removeClass('loading');
+          
+          $('.kintsugi-loading').remove();
+          
+          // Aplicar estilos después de cargar
+          applyInlineStyles();
+          
+          // Forzar layout de grid
+          enforceGridLayout();
+        }
+      });
     });
   }
 
