@@ -1,71 +1,57 @@
-// Verificar la disponibilidad de jQuery
+// Verificar disponibilidad de jQuery
 document.addEventListener('DOMContentLoaded', function() {
-    if (typeof jQuery === 'undefined') {
-      console.error('jQuery NO está disponible');
-    } else {
-      jQuery(function($) {
-        initKintsugiCarousel();
-        initNoticiasFilters();
-        setupVideoPopups();
-      });
-    }
-  });
-  
-  var kintsugi_ajax = { ajax_url: '', nonce: '' };
-  
-  function initKintsugiCarousel() {
-    console.log('Initializing Kintsugi Carousel');
-    if (typeof Swiper === 'undefined') return console.error('Swiper no encontrado');
-  
-    // Limpiar flechas previas
-    document.querySelectorAll('.kintsugi-carousel-nav-prev, .kintsugi-carousel-nav-next')
-      .forEach(el => el.remove());
-  
-    // Carrusel principal
-    const main = document.querySelector('#kintsugi-carousel-main');
-    if (main) {
-      main.insertAdjacentHTML('beforeend',
-        '<div class="kintsugi-carousel-nav-prev main-carousel-prev"></div>' +
-        '<div class="kintsugi-carousel-nav-next main-carousel-next"></div>'
+  if (typeof jQuery !== 'undefined') {
+    jQuery(function($) {
+      initKintsugiCarousel();
+      initNoticiasFilters();
+      setupVideoPopups();
+    });
+  }
+});
+
+var kintsugi_ajax = { ajax_url: '', nonce: '' };
+
+function initKintsugiCarousel() {
+  if (typeof Swiper === 'undefined') return;
+
+  // Carrusel principal
+  const main = document.querySelector('#kintsugi-carousel-main');
+  if (main) {
+    main.querySelectorAll('.main-carousel-prev, .main-carousel-next').forEach(el => el.remove());
+    main.insertAdjacentHTML('beforeend',
+      '<div class="main-carousel-prev kintsugi-carousel-nav-prev"></div>' +
+      '<div class="main-carousel-next kintsugi-carousel-nav-next"></div>'
+    );
+    new Swiper('#kintsugi-carousel-main', {
+      loop: true,
+      navigation: {
+        prevEl: '.main-carousel-prev',
+        nextEl: '.main-carousel-next',
+      },
+      pagination: { el: '.swiper-pagination', clickable: true },
+      slidesPerView: 1,
+      breakpoints: { 640:{ slidesPerView:2 }, 992:{ slidesPerView:4 } }
+    });
+  }
+
+  // Carruseles secundarios (si los hubiera)
+  document.querySelectorAll('.kintsugi-carousel-container:not(#kintsugi-carousel-main)')
+    .forEach((container, i) => {
+      const id = container.id || `kintsugi-carousel-${i}`;
+      container.id = id;
+      const prev = `${id}-prev`, next = `${id}-next`;
+      container.insertAdjacentHTML('beforeend',
+        `<div class="${prev} kintsugi-carousel-nav-prev"></div>` +
+        `<div class="${next} kintsugi-carousel-nav-next"></div>`
       );
-      new Swiper('#kintsugi-carousel-main', { 
+      new Swiper(`#${id}`, {
         loop: true,
-        navigation: {
-          nextEl: '.main-carousel-next',
-          prevEl: '.main-carousel-prev',
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-      }); // Configuración del carrusel principal
-        ;
-    }
-  
-    // Carruseles secundarios
-    document.querySelectorAll('.kintsugi-carousel-container:not(#kintsugi-carousel-main)')
-      .forEach((container, i) => {
-        const id = container.id || `kintsugi-carousel-${i}`;
-        container.id = id;
-        const prev = `${id}-prev`, next = `${id}-next`;
-        container.insertAdjacentHTML('beforeend',
-          `<div class="kintsugi-carousel-nav-prev ${prev}"></div>` +
-          `<div class="kintsugi-carousel-nav-next ${next}"></div>`
-        );
-        new Swiper(`#${id}`, { 
-          loop: true,
-          navigation: {
-            nextEl: `.${next}`,
-            prevEl: `.${prev}`,
-          },
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-          },
-        });
+        navigation: { prevEl: `.${prev}`, nextEl: `.${next}` },
+        pagination: { el: '.swiper-pagination', clickable: true }
       });
-  
-    applyInlineStyles();
+    });
+
+  applyInlineStyles();
 }
 
 /**
@@ -511,40 +497,12 @@ function initNoticiasFilters() {
 * Custom JavaScript for Prensa page initialization
 */
 jQuery(document).ready(function($) {
-  'use strict';
-
-  console.log("Kintsugi Prensa JS initialized");
-
-  // Inicializar componentes cuando el DOM esté listo
   initKintsugiCarousel();
   setupVideoPopups();
   setupSearchAndFilters();
 
-  // Re-inicializar componentes después de cargas AJAX
   $(document).ajaxComplete(function() {
-      console.log("AJAX request completed, reinitializing components");
-      setupVideoPopups();
-      enforceGridLayout();
-  });
-});
-
-// filepath: c:\laragon\www\test\wp-content\plugins\kintsugi-content-manager\public\js\prensa.js
-jQuery(document).ready(function($){
-    // inicializa Swiper
-    if ( typeof Swiper !== 'undefined' ) {
-      // ejemplo: swiper principal
-      new Swiper('#kintsugi-carousel-main', {
-        pagination:{ el:'.swiper-pagination', clickable:true },
-        slidesPerView:1,
-        breakpoints:{
-          640:{ slidesPerView:2 },
-          992:{ slidesPerView:4 }
-        }
-      });
-    }
-    // tus funciones de popup, filtros, grid, etc.
-    initKintsugiCarousel();
     setupVideoPopups();
-    setupSearchAndFilters();
     enforceGridLayout();
   });
+});

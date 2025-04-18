@@ -101,9 +101,6 @@ if (!function_exists('sage_vite_assets')) {
     }
 }
 
-// Enganchar la función a WordPress
-add_action('wp_enqueue_scripts', 'sage_vite_assets');
-
 // Registrar la directiva @vite para Blade
 add_filter('blade.compiler', function ($compiler) {
     $compiler->directive('vite', function ($expression) {
@@ -135,37 +132,3 @@ add_action('wp_enqueue_scripts', function() {
     }
 }, 20);
 
-function theme_enqueue_prensa_assets() {
-  // CSS
-  wp_enqueue_style(
-    'prensa-css',
-    plugin_dir_url( __DIR__ ) . 'wp-content/plugins/kintsugi-content-manager/public/css/prensa.css',
-    [],
-    null
-  );
-  // Swiper
-  wp_enqueue_script(
-    'swiper',
-    'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js',
-    [],
-    null,
-    true
-  );
-  // JS del plugin
-  wp_enqueue_script(
-    'prensa-js',
-    plugin_dir_url( __DIR__ ) . 'wp-content/plugins/kintsugi-content-manager/public/js/prensa.js',
-    ['jquery','swiper'],
-    null,
-    true
-  );
-  wp_localize_script(
-    'prensa-js',
-    'kintsugi_ajax',
-    [
-      'ajax_url'=> admin_url('admin-ajax.php'),
-      'nonce'   => wp_create_nonce('kintsugi_ajax_nonce'),
-    ]
-  );
-}
-add_action('wp_enqueue_scripts','theme_enqueue_prensa_assets',20);

@@ -13,13 +13,13 @@
 @section('content')
 <?php
 // Desregistrar estilos y scripts del plugin para usar solo los del tema
-add_action('wp_print_styles', function() {
-    wp_deregister_style('kintsugi-content-manager-public');
-}, 100);
-add_action('wp_print_scripts', function() {
-    wp_deregister_script('kintsugi-content-manager-carousel');
-    wp_deregister_script('kintsugi-content-manager-public');
-}, 100);
+  add_action('wp_print_styles', function() {
+      wp_deregister_style('kintsugi-content-manager-public');
+  }, 100);
+  add_action('wp_print_scripts', function() {
+      wp_deregister_script('kintsugi-content-manager-carousel');
+      wp_deregister_script('kintsugi-content-manager-public');
+  }, 100);
 
 // Pasar parámetros de AJAX al script
 $ajax_url = admin_url('admin-ajax.php');
@@ -139,8 +139,11 @@ $nonce    = wp_create_nonce('kintsugi_ajax_nonce');
 
 @section('scripts')
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-  <script src="<?php echo plugin_dir_url(__FILE__) . '../public/js/prensa.js'; ?>"></script>
+  <script src="{{ get_theme_file_uri('kintsugi-content-manager/public/js/prensa.js') }}"></script>
   <script>
-    var kintsugi_ajax = { ajax_url: '<?php echo $ajax_url; ?>', nonce: '<?php echo $nonce; ?>' };
+    var kintsugi_ajax = {
+      ajax_url: '{{ $ajax_url }}',
+      nonce: '{{ $nonce }}'
+    };
   </script>
 @endsection
