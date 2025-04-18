@@ -194,18 +194,31 @@
     
     // Función para crear el popup de video si no existe
     function createVideoPopup() {
+        // Si ya existe un popup, no creamos otro
+        if ($('.kintsugi-video-popup').length > 0) {
+            return;
+        }
+        
         $('body').append(`
-            <div class="kintsugi-video-popup" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.9); z-index: 9999; justify-content: center; align-items: center;">
+            <div class="kintsugi-video-popup" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.9); z-index: 999999; justify-content: center; align-items: center;">
                 <div class="kintsugi-video-popup-container" style="position: relative; width: 90%; max-width: 900px; max-height: 80vh; background: #000; border-radius: 8px; overflow: hidden; box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);">
-                    <button class="kintsugi-video-popup-close" style="position: absolute; top: -40px; right: 0; background: none; border: none; color: white; font-size: 28px; cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; z-index: 2;">
-                        <span style="font-weight: bold; transform: rotate(45deg);">+</span>
-                    </button>
+                    <button class="kintsugi-video-popup-close" style="position: absolute; top: 10px; right: 10px; background: rgba(0, 0, 0, 0.7); color: white; font-size: 24px; font-weight: bold; width: 40px; height: 40px; border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 1000001;">✕</button>
                     <div class="kintsugi-video-popup-content" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-                        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
         `);
+        
+        // Añadir los event listeners
+        $('.kintsugi-video-popup-close').on('click', function() {
+            closeVideoPopup();
+        });
+        
+        $('.kintsugi-video-popup').on('click', function(e) {
+            if ($(e.target).hasClass('kintsugi-video-popup')) {
+                closeVideoPopup();
+            }
+        });
     }
     
     // Función para abrir el popup de video
@@ -214,20 +227,25 @@
         var videoId = extractYouTubeId(videoUrl);
         
         if (videoId) {
-            // Asegurarse de que el popup exista en el DOM
-            if ($('.kintsugi-video-popup').length === 0) {
-                createVideoPopup();
-            }
+            // Asegurarse de que el popup exista en el DOM - crearlo solo si es necesario
+            createVideoPopup();
             
             // Limpiar cualquier iframe existente para evitar reproducción doble
-            $('.kintsugi-video-popup-content iframe').remove();
-            $('.kintsugi-video-popup-content').html('<iframe allow="autoplay; encrypted-media" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"></iframe>');
+            $('.kintsugi-video-popup-content').empty();
+            
+            // Crear un nuevo iframe con los atributos correctos
+            var $iframe = $('<iframe></iframe>')
+                .attr({
+                    'allow': 'autoplay; encrypted-media',
+                    'allowfullscreen': 'true',
+                    'style': 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;'
+                });
             
             // Crear URL para embeber
             var embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
             
-            // Establecer src del iframe
-            $('.kintsugi-video-popup-content iframe').attr('src', embedUrl);
+            // Agregar el iframe al contenedor
+            $('.kintsugi-video-popup-content').append($iframe);
             
             // Mostrar popup - Forzar que esté sobre todo el contenido
             $('.kintsugi-video-popup')
@@ -245,6 +263,11 @@
             
             // Agregar clase al body para prevenir scroll
             $('body').addClass('kintsugi-popup-open').css('overflow', 'hidden');
+            
+            // Solo establecer el src después de que el popup sea visible para evitar problemas de carga
+            setTimeout(function() {
+                $iframe.attr('src', embedUrl);
+            }, 100);
         }
     }
     
@@ -257,11 +280,17 @@
     
     // Función para cerrar el popup de video
     function closeVideoPopup() {
-        // Limpiar src del iframe para detener el video
+        // Limpiar src del iframe para detener el video - primero vaciar el src y luego eliminar el iframe
         $('.kintsugi-video-popup-content iframe').attr('src', '');
+        setTimeout(function() {
+            $('.kintsugi-video-popup-content').empty();
+        }, 100);
         
         // Ocultar popup
-        $('.kintsugi-video-popup').removeClass('active').fadeOut(300);
+        $('.kintsugi-video-popup').removeClass('active').fadeOut(300, function() {
+            // Una vez que se ha ocultado completamente, eliminamos el popup del DOM
+            $(this).remove();
+        });
         
         // Quitar clase del body
         $('body').removeClass('kintsugi-popup-open').css('overflow', '');

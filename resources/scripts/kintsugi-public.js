@@ -68,6 +68,11 @@
     
     // Function to create video popup if it doesn't exist
     function createVideoPopup() {
+        // Si ya existe un popup, no creamos otro
+        if ($('.kintsugi-video-popup').length > 0) {
+            return;
+        }
+        
         $('body').append(`
             <div class="kintsugi-video-popup" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.9); z-index: 999999; justify-content: center; align-items: center;">
                 <div class="kintsugi-video-popup-container" style="position: relative; width: 90%; max-width: 900px; max-height: 80vh; background: #000; border-radius: 8px; overflow: hidden; box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);">
@@ -96,10 +101,8 @@
         var videoId = extractYouTubeId(videoUrl);
         
         if (videoId) {
-            // Asegurarse de que el popup exista en el DOM
-            if ($('.kintsugi-video-popup').length === 0) {
-                createVideoPopup();
-            }
+            // Asegurarse de que el popup exista en el DOM - crearlo solo si es necesario
+            createVideoPopup();
             
             // Limpiar cualquier iframe existente para evitar reproducción doble
             $('.kintsugi-video-popup-content').empty();
@@ -160,7 +163,10 @@
         }, 100);
         
         // Hide popup with fade out effect
-        $('.kintsugi-video-popup').removeClass('active').fadeOut(300);
+        $('.kintsugi-video-popup').removeClass('active').fadeOut(300, function() {
+            // Una vez que se ha ocultado completamente, eliminamos el popup del DOM
+            $(this).remove();
+        });
         
         // Remove class from body
         $('body').removeClass('kintsugi-popup-open').css('overflow', '');

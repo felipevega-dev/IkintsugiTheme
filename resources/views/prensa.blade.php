@@ -604,42 +604,6 @@ document.addEventListener('DOMContentLoaded', function() {
     height: 16px !important;
   }
   
-  /* Animación para el botón X del popup */
-  .kintsugi-video-popup-close span {
-    transition: transform 0.3s ease !important;
-  }
-  
-  .kintsugi-video-popup-close:hover span {
-    transform: rotate(135deg) !important;
-  }
-  
-  /* Animación de entrada para el popup */
-  .kintsugi-video-popup.active {
-    display: flex !important;
-    animation: fadeIn 0.3s ease forwards !important;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-</style>
-
-<!-- Video Popup mejorado con botón X estilizado (movido fuera del wrapper para mejor posicionamiento) -->
-<div class="kintsugi-video-popup" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.9); z-index: 999999; justify-content: center; align-items: center;">
-  <div class="kintsugi-video-popup-container" style="position: relative; width: 90%; max-width: 900px; max-height: 80vh; background: #000; border-radius: 8px; overflow: hidden; box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);">
-    <button class="kintsugi-video-popup-close" style="position: absolute; top: 10px; right: 10px; background: rgba(0, 0, 0, 0.7); color: white; font-size: 24px; font-weight: bold; width: 40px; height: 40px; border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 1000001;">✕</button>
-    <div class="kintsugi-video-popup-content" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <!-- Eliminamos el iframe por defecto para evitar cargas automáticas -->
-    </div>
-  </div>
-</div>
-
-<!-- Estilos adicionales para mejorar la apariencia del carrusel -->
-<style>
-  /* Mejoras al carrusel */
-  // ... existing code ...
-  
   /* Asegurar que las noticias siempre se muestren en grid correcto, incluso después de búsquedas */
   .kintsugi-noticias-grid {
     display: grid !important;
@@ -680,8 +644,39 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   /* Asegurar que el video popup funcione correctamente */
+  .kintsugi-video-popup {
+    display: none !important; /* Oculto por defecto */
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    z-index: 999999 !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  
   .kintsugi-video-popup.active {
     display: flex !important;
+  }
+  
+  .kintsugi-video-popup-container {
+    position: relative !important;
+    width: 90% !important;
+    max-width: 900px !important;
+    max-height: 80vh !important;
+    background: #000 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5) !important;
+  }
+  
+  .kintsugi-video-popup-content {
+    position: relative !important;
+    padding-bottom: 56.25% !important;
+    height: 0 !important;
+    overflow: hidden !important;
   }
   
   .kintsugi-video-popup iframe {
@@ -695,6 +690,22 @@ document.addEventListener('DOMContentLoaded', function() {
   
   /* Mejorar la visibilidad del botón de cierre */
   .kintsugi-video-popup-close {
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+    color: white !important;
+    font-size: 24px !important;
+    font-weight: bold !important;
+    width: 40px !important;
+    height: 40px !important;
+    border: none !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 1000001 !important;
     transition: transform 0.3s ease, background-color 0.3s ease !important;
   }
   
