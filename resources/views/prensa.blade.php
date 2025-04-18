@@ -558,7 +558,7 @@ body.kintsugi-popup-open {
 <!-- Wrapper para aumentar especificidad -->
 <div class="kintsugi-theme-wrapper">
 <!-- Hero Section -->
-<section class="relative bg-[#362766] overflow-hidden pt-20 md:pt-32">
+<section class="relative bg-[#362766] overflow-hidden pt-10 md:pt-22">
   <!-- Imagen de fondo con overlay -->
   <div class="absolute inset-0 z-0">
     <div class="absolute inset-0 bg-[#362766] opacity-70 z-10"></div>
@@ -570,7 +570,7 @@ body.kintsugi-popup-open {
   </div>
         
   <!-- Contenido del hero -->
-  <div class="container mx-auto px-4 relative z-10 min-h-[500px] md:min-h-[110vh] flex flex-col justify-center items-center">
+  <div class="container mx-auto px-4 relative z-10 min-h-[400px] md:min-h-[90vh] flex flex-col justify-center items-center">
     <div class="max-w-4xl mx-auto text-center text-white py-32 md:py-32">
       <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 font-playfair" style="font-family: 'Playfair Display', serif;">¡Mereces una vida mejor!</h1>
       <p class="text-xl md:text-2xl font-500 mb-2">Descubre nuestras intervenciones en medios, donde abordamos temas de EMDR, el tratamiento del trauma, psicología y felicidad</p>
@@ -976,211 +976,22 @@ var kintsugi_ajax = {
 
 <!-- Script para inicializar el carrusel -->
 <script>
-(function($) {
-    'use strict';
-    
-    $(document).ready(function() {
-        initKintsugiCarousel();
-    });
-    
-    function initKintsugiCarousel() {
-        // Solo inicializamos el carrusel si existe el contenedor y no ha sido inicializado previamente
-        if ($('.swiper-container').length && !$('.swiper-container').hasClass('swiper-container-initialized')) {
-            // IMPORTANTE: Añadimos !important a todos los estilos inline para evitar que Tailwind los sobrescriba
-            $('.swiper-container').css({
-                'position': 'relative !important',
-                'width': '100% !important',
-                'overflow': 'hidden !important',
-                'margin': '0 auto !important',
-                'z-index': '1 !important'
-            });
-            
-            $('.swiper-wrapper').css({
-                'display': 'flex !important',
-                'width': '100% !important',
-                'height': '100% !important',
-                'z-index': '1 !important',
-                'position': 'relative !important'
-            });
-
-            // Eliminar navegación y paginación duplicados si existen más de uno
-            if ($('.swiper-button-next').length > 1) {
-                $('.swiper-container .swiper-button-next:not(:first)').remove();
-            }
-            if ($('.swiper-button-prev').length > 1) {
-                $('.swiper-container .swiper-button-prev:not(:first)').remove();
-            }
-            if ($('.swiper-pagination').length > 1) {
-                $('.swiper-container .swiper-pagination:not(:first)').remove();
-            }
-
-            // Inicializar Swiper con configuración para mostrar múltiples slides
-            var mySwiper = new Swiper('.swiper-container-custom', {
-                loop: true,
-                spaceBetween: 20,
-                slidesPerView: 1,  // Por defecto en móvil
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.kintsugi-carousel-nav-next',
-                    prevEl: '.kintsugi-carousel-nav-prev',
-                },
-                // Configuración responsiva
-                breakpoints: {
-                    480: {  // >= 480px
-                        slidesPerView: 2,
-                        spaceBetween: 15,
-                    },
-                    768: {  // >= 768px
-                        slidesPerView: 3,
-                        spaceBetween: 20,
-                    },
-                    1024: { // >= 1024px
-                        slidesPerView: 3,
-                        spaceBetween: 30,
-                    }
-                },
-                on: {
-                    init: function() {
-                        // Aplicar estilos a los slides después de que se generen
-                        $('.swiper-slide').css({
-                            'width': 'auto !important',
-                            'height': 'auto !important',
-                            'position': 'relative !important',
-                            'border-radius': '8px !important',
-                            'overflow': 'hidden !important',
-                            'background': '#fff !important',
-                            'box-shadow': '0 4px 10px rgba(0, 0, 0, 0.1) !important',
-                            'transition': 'transform 0.3s !important',
-                            'flex-shrink': '0 !important'
-                        });
-                        
-                        // Aplicamos estilo a los controles de navegación
-                        $('.swiper-button-next, .swiper-button-prev').css({
-                            'width': '40px !important',
-                            'height': '40px !important',
-                            'background-color': 'rgba(255, 255, 255, 0.9) !important',
-                            'border-radius': '50% !important',
-                            'box-shadow': '0 2px 5px rgba(0, 0, 0, 0.2) !important',
-                            'cursor': 'pointer !important',
-                            'z-index': '10 !important',
-                            'display': 'flex !important',
-                            'justify-content': 'center !important',
-                            'align-items': 'center !important',
-                            'transition': 'all 0.3s !important'
-                        });
-                        
-                        // Estilizamos la paginación
-                        $('.swiper-pagination-bullet').css({
-                            'width': '12px !important',
-                            'height': '12px !important',
-                            'background': 'rgba(54, 39, 102, 0.5) !important',
-                            'margin': '0 5px !important',
-                            'opacity': '1 !important',
-                            'transition': 'all 0.3s !important'
-                        });
-                        
-                        $('.swiper-pagination-bullet-active').css({
-                            'background': 'rgba(54, 39, 102, 1) !important',
-                            'transform': 'scale(1.2) !important'
-                        });
-                    }
-                }
-            });
-        }
+document.addEventListener('DOMContentLoaded', function() {
+  // Forzar la actualización del carrusel después de que el contenido esté cargado
+  setTimeout(function() {
+    if (typeof window.initKintsugiCarousel === 'function') {
+      console.log('Inicializando kintsugi-carousel tras carga completa');
+      window.initKintsugiCarousel();
+      
+      // Forzar comportamiento de múltiples slides
+      var swiperElement = document.querySelector('#kintsugi-carousel-main');
+      if (swiperElement && swiperElement.swiper) {
+        swiperElement.swiper.params.slidesPerView = window.innerWidth >= 992 ? 3 : (window.innerWidth >= 640 ? 2 : 1);
+        swiperElement.swiper.update();
+        console.log('Carrusel actualizado: slidesPerView =', swiperElement.swiper.params.slidesPerView);
+      }
     }
-    
-    // Inicializar handlers de video
-    $(document).on('click', '.kintsugi-carousel-video-link, .kintsugi-noticia-video-link', function(e) {
-        e.preventDefault();
-        
-        var videoUrl = $(this).data('video-url');
-        if (videoUrl) {
-            openVideoPopup(videoUrl);
-            
-            // Pausar autoplay cuando se abre un video
-            if (window.kintsugiSwiperInstances && window.kintsugiSwiperInstances.length) {
-                window.kintsugiSwiperInstances.forEach(function(swiper) {
-                    if (swiper && swiper.autoplay) {
-                        swiper.autoplay.stop();
-                    }
-                });
-            }
-        }
-        return false;
-    });
-    
-    // Cerrar popup al hacer click en el botón o fondo
-    $(document).on('click', '.kintsugi-video-popup-close, .kintsugi-video-popup', function(e) {
-        if ($(e.target).is('.kintsugi-video-popup-close') || $(e.target).is('.kintsugi-video-popup')) {
-            closeVideoPopup();
-        }
-    });
-    
-    // Cerrar popup con tecla Escape
-    $(document).on('keyup', function(e) {
-        if (e.key === 'Escape') {
-            closeVideoPopup();
-        }
-    });
-    
-    // Función para abrir el popup de video
-    function openVideoPopup(videoUrl) {
-        // Extraer ID de YouTube
-        var videoId = extractYouTubeId(videoUrl);
-        
-        if (videoId) {
-            // Limpiar cualquier iframe existente para evitar reproducción doble
-            $('.kintsugi-video-popup-content iframe').remove();
-            $('.kintsugi-video-popup-content').html('<iframe allow="autoplay; encrypted-media" allowfullscreen></iframe>');
-            
-            // Crear URL para embeber
-            var embedUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0&modestbranding=1';
-            
-            // Establecer src del iframe
-            $('.kintsugi-video-popup-content iframe').attr('src', embedUrl);
-            
-            // Mostrar popup
-            $('.kintsugi-video-popup').addClass('active').fadeIn(300);
-            
-            // Agregar clase al body para prevenir scroll
-            $('body').addClass('kintsugi-popup-open');
-        }
-    }
-    
-    // Función para extraer ID de YouTube
-    function extractYouTubeId(url) {
-        var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-        var match = url.match(regExp);
-        return (match && match[7].length === 11) ? match[7] : false;
-    }
-    
-    // Función para cerrar el popup de video
-    function closeVideoPopup() {
-        // Limpiar src del iframe para detener el video
-        $('.kintsugi-video-popup-content iframe').attr('src', '');
-        
-        // Ocultar popup
-        $('.kintsugi-video-popup').removeClass('active').fadeOut(300);
-        
-        // Quitar clase del body
-        $('body').removeClass('kintsugi-popup-open');
-        
-        // Reanudar autoplay de los carruseles
-        if (window.kintsugiSwiperInstances && window.kintsugiSwiperInstances.length) {
-            window.kintsugiSwiperInstances.forEach(function(swiper) {
-                if (swiper && swiper.autoplay) {
-                    swiper.autoplay.start();
-                }
-            });
-        }
-    }
-})(jQuery);
+  }, 1000);
+});
 </script>
 @endsection

@@ -51,34 +51,57 @@
                     loop: true,
                     grabCursor: true,
                     effect: 'slide',
-                    speed: 800,
+                    speed: 600,
+                    watchOverflow: true,
+                    observer: true, 
+                    observeParents: true,
+                    updateOnWindowResize: true,
                     autoplay: {
                         delay: 5000,
                         disableOnInteraction: false,
                         pauseOnMouseEnter: true,
                     },
                     pagination: {
-                        el: '#' + carouselId + ' .swiper-pagination',
+                        el: '.swiper-pagination',
                         clickable: true,
                         dynamicBullets: true,
                     },
                     navigation: {
-                        nextEl: '#' + carouselId + ' .kintsugi-carousel-nav-next',
-                        prevEl: '#' + carouselId + ' .kintsugi-carousel-nav-prev',
+                        nextEl: '.kintsugi-carousel-nav-next',
+                        prevEl: '.kintsugi-carousel-nav-prev',
                     },
                     breakpoints: {
-                        768: {
+                        640: {
                             slidesPerView: 2,
-                            spaceBetween: 20,
+                            spaceBetween: 15,
                         },
                         992: {
                             slidesPerView: 3,
-                            spaceBetween: 30,
+                            spaceBetween: 20,
                         },
                     },
                     on: {
                         init: function() {
                             $('#' + carouselId).addClass('carousel-initialized');
+                            console.log('Swiper iniciado con slidesPerView:', this.params.slidesPerView);
+                            
+                            // Añadir elementos de navegación y paginación si no existen
+                            if ($('#' + carouselId + ' .swiper-pagination').length === 0) {
+                                $('#' + carouselId).append('<div class="swiper-pagination"></div>');
+                            }
+                            
+                            if ($('#' + carouselId + ' .kintsugi-carousel-nav-prev').length === 0) {
+                                $('#' + carouselId).append('<div class="kintsugi-carousel-nav-prev" role="button" aria-label="Previous slide"></div>');
+                            }
+                            
+                            if ($('#' + carouselId + ' .kintsugi-carousel-nav-next').length === 0) {
+                                $('#' + carouselId).append('<div class="kintsugi-carousel-nav-next" role="button" aria-label="Next slide"></div>');
+                            }
+                            
+                            // Forzar actualización de Swiper después de un breve retraso
+                            setTimeout(function() {
+                                swiper.update();
+                            }, 500);
                         }
                     }
                 });
