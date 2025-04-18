@@ -148,7 +148,7 @@ add_action('wp_print_scripts', function() {
     </div>
 
     <!-- Shortcode para el carrusel con noticias seleccionadas específicamente -->
-    <div id="kintsugi-carousel-main" class="swiper-container-custom kintsugi-carousel-container swiper" style="position: relative !important; overflow: hidden !important; margin-left: auto !important; margin-right: auto !important; padding-bottom: 40px !important; border-radius: 8px !important; box-shadow: 0 10px 30px rgba(3, 13, 85, 0.1) !important;">
+    <div id="kintsugi-carousel-main" class="swiper-container-custom kintsugi-carousel-container swiper" style="position: relative !important; overflow: hidden !important; margin-left: auto !important; margin-right: auto !important; border-radius: 8px !important; box-shadow: 0 10px 30px rgba(3, 13, 85, 0.1) !important;">
       <div class="swiper-wrapper" style="display: flex !important; width: 100% !important; height: 100% !important; position: relative !important; z-index: 1 !important; box-sizing: content-box !important; transition-property: transform !important;">
         <?php
         // Obtener las noticias marcadas para el carrusel
@@ -546,7 +546,6 @@ document.addEventListener('DOMContentLoaded', function() {
   /* Mejoras al carrusel */
   .kintsugi-carousel-container {
     overflow: visible !important;
-    padding-bottom: 60px !important;
   }
   
   .kintsugi-carousel-slide {
