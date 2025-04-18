@@ -12,132 +12,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Pass AJAX parameters to our script
+// Parámetros de AJAX global
 var kintsugi_ajax = {
   ajax_url: '',
   nonce: ''
 };
 
-// Función para inicializar el carrusel principal
-function initKintsugiCarousel() {
-    console.log('Inicializando carrusel principal...');
-    
-    // Verificar si Swiper está disponible
-    if (typeof Swiper === 'undefined') {
-        console.error('Error: Swiper no está disponible');
-        return;
-    }
-    
-    // Verificar si el elemento existe
-    const carouselElement = document.querySelector('#kintsugi-carousel-main');
-    if (!carouselElement) {
-        console.warn('Elemento del carrusel #kintsugi-carousel-main no encontrado');
-        return;
-    }
-    
-    // Inicializar carrusel con Swiper
-    try {
-        const mainCarousel = new Swiper('#kintsugi-carousel-main', {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.kintsugi-carousel-nav-next',
-                prevEl: '.kintsugi-carousel-nav-prev',
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 2,
-                    spaceBetween: 15,
-                },
-                992: {
-                    slidesPerView: 3,
-                    spaceBetween: 20,
-                }
-            }
-        });
-        console.log('Swiper inicializado correctamente:', mainCarousel);
-        
-        // Aplicar estilos a elementos del carrusel una vez inicializado
-        applyInlineStyles();
-    } catch (error) {
-        console.error('Error al inicializar Swiper:', error);
-    }
-}
-
-// Función para configurar popups de video
-function setupVideoPopups() {
-    console.log('Configurando popups de video...');
-    
-    // Seleccionar todos los botones de video
-    const videoButtons = document.querySelectorAll('.kintsugi-carousel-video-link, .kintsugi-noticia-video-link');
-    
-    if (videoButtons.length === 0) {
-        console.warn('No se encontraron botones de video para configurar');
-    } else {
-        console.log(`Configurando ${videoButtons.length} botones de video`);
-    }
-    
-    // Configurar cada botón de video
-    videoButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const videoUrl = this.getAttribute('data-video-url');
-            if (!videoUrl) {
-                console.warn('Botón de video sin URL:', this);
-                return;
-            }
-            
-            console.log('Abriendo video:', videoUrl);
-            
-            // Buscar el popup de video existente
-            let popup = document.querySelector('.kintsugi-video-popup');
-            
-            if (popup) {
-                // Si ya existe un popup, usar ese
-                const iframe = popup.querySelector('iframe');
-                if (iframe) {
-                    iframe.setAttribute('src', videoUrl);
-                }
-                popup.classList.add('active');
-                
-                // Configurar cierre de popup
-                const closeButton = popup.querySelector('.kintsugi-video-popup-close');
-                if (closeButton) {
-                    closeButton.addEventListener('click', function() {
-                        popup.classList.remove('active');
-                        popup.querySelector('iframe').setAttribute('src', '');
-                    });
-                }
-            } else {
-                console.error('No se encontró el elemento .kintsugi-video-popup en el DOM');
-            }
-        });
-    });
-    
-    // Cerrar popup al hacer clic fuera del contenido
-    document.addEventListener('click', function(e) {
-        const popup = document.querySelector('.kintsugi-video-popup.active');
-        if (popup && !popup.querySelector('.kintsugi-video-popup-inner').contains(e.target)) {
-            popup.classList.remove('active');
-            popup.querySelector('iframe').setAttribute('src', '');
-        }
-    });
-}
-
 /**
  * Custom JavaScript for Prensa page
- * Handles AJAX search, filtering, and sorting of news items
+ * Handles carousels, video popups, AJAX search, filtering, and sorting of news items
  */
 jQuery(document).ready(function($) {
     'use strict';
@@ -150,7 +33,7 @@ jQuery(document).ready(function($) {
     setupSearchAndFilters();
 
     /**
-     * Inicializa el carrusel de Swiper si existe el elemento y la librería
+     * Inicializa el carrusel de Swiper
      */
     function initKintsugiCarousel() {
         console.log("Initializing Kintsugi Carousel");
@@ -161,43 +44,100 @@ jQuery(document).ready(function($) {
             return;
         }
         
-        // Verificar si el contenedor del carrusel existe
-        if (!$('.kintsugi-carousel-container').length) {
-            console.log("No carousel container found, skipping initialization");
-            return;
+        // Inicializar el carrusel principal
+        const mainCarouselElement = document.querySelector('#kintsugi-carousel-main');
+        if (mainCarouselElement) {
+            try {
+                // Asegurarnos de que existan los botones de navegación
+                if (!mainCarouselElement.querySelector('.kintsugi-carousel-nav-prev')) {
+                    mainCarouselElement.insertAdjacentHTML('beforeend', '<div class="kintsugi-carousel-nav-prev"></div>');
+                }
+                if (!mainCarouselElement.querySelector('.kintsugi-carousel-nav-next')) {
+                    mainCarouselElement.insertAdjacentHTML('beforeend', '<div class="kintsugi-carousel-nav-next"></div>');
+                }
+                
+                const mainCarousel = new Swiper('#kintsugi-carousel-main', {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    loop: true,
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.kintsugi-carousel-nav-next',
+                        prevEl: '.kintsugi-carousel-nav-prev',
+                    },
+                    breakpoints: {
+                        640: {
+                            slidesPerView: 2,
+                            spaceBetween: 15,
+                        },
+                        992: {
+                            slidesPerView: 3,
+                            spaceBetween: 20,
+                        }
+                    }
+                });
+                console.log('Carrusel principal inicializado correctamente');
+            } catch (error) {
+                console.error('Error al inicializar el carrusel principal:', error);
+            }
+        } else {
+            console.log('Carrusel principal no encontrado en el DOM');
         }
         
-        try {
-            // Inicializar carrusel de noticias
-            var swiper = new Swiper('.kintsugi-carousel-container', {
-                slidesPerView: 'auto',
-                spaceBetween: 20,
-                grabCursor: true,
-                loop: false,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.kintsugi-carousel-nav-next',
-                    prevEl: '.kintsugi-carousel-nav-prev',
-                },
-                breakpoints: {
-                    640: {
-                        slidesPerView: 2,
-                        spaceBetween: 15
-                    },
-                    992: {
-                        slidesPerView: 3,
-                        spaceBetween: 20
+        // Inicializar otros carruseles con la clase kintsugi-carousel-container
+        const carouselContainers = document.querySelectorAll('.kintsugi-carousel-container:not(#kintsugi-carousel-main)');
+        
+        if (carouselContainers.length) {
+            carouselContainers.forEach((container, index) => {
+                try {
+                    // Asegurarnos de que existan los botones de navegación
+                    if (!container.querySelector('.kintsugi-carousel-nav-prev')) {
+                        container.insertAdjacentHTML('beforeend', '<div class="kintsugi-carousel-nav-prev"></div>');
                     }
+                    if (!container.querySelector('.kintsugi-carousel-nav-next')) {
+                        container.insertAdjacentHTML('beforeend', '<div class="kintsugi-carousel-nav-next"></div>');
+                    }
+                    
+                    const swiper = new Swiper(container, {
+                        slidesPerView: 'auto',
+                        spaceBetween: 20,
+                        grabCursor: true,
+                        loop: false,
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                        navigation: {
+                            nextEl: '.kintsugi-carousel-nav-next',
+                            prevEl: '.kintsugi-carousel-nav-prev',
+                        },
+                        breakpoints: {
+                            640: {
+                                slidesPerView: 2,
+                                spaceBetween: 15
+                            },
+                            992: {
+                                slidesPerView: 3,
+                                spaceBetween: 20
+                            }
+                        }
+                    });
+                    console.log(`Carrusel #${index + 1} inicializado correctamente`);
+                } catch (error) {
+                    console.error(`Error al inicializar el carrusel #${index + 1}:`, error);
                 }
             });
-            
-            console.log("Kintsugi Carousel initialized successfully");
-        } catch (error) {
-            console.error("Error initializing Swiper carousel:", error);
         }
+        
+        // Aplicar estilos inline a elementos del carrusel una vez inicializado
+        applyInlineStyles();
     }
 
     /**
@@ -207,7 +147,7 @@ jQuery(document).ready(function($) {
         console.log("Setting up video popups");
         
         // Selector que agrupa todos los posibles botones de video
-        const videoButtons = $('.kintsugi-carousel-play, .kintsugi-noticia-video-play, .kintsugi-video-button');
+        const videoButtons = $('.kintsugi-carousel-play, .kintsugi-noticia-video-play, .kintsugi-video-button, .kintsugi-carousel-video-link, .kintsugi-noticia-video-link, .noticia-video');
         
         if (!videoButtons.length) {
             console.log("No video buttons found, skipping setup");
@@ -234,7 +174,17 @@ jQuery(document).ready(function($) {
             e.preventDefault();
             console.log("Video button clicked");
             
-            const videoUrl = $(this).data('video-url');
+            // Buscar URL de video - verificar diferentes fuentes posibles
+            let videoUrl = $(this).data('video-url') || 
+                           $(this).attr('data-video-url') || 
+                           $(this).closest('[data-video-url]').attr('data-video-url') ||
+                           $(this).find('[data-video-url]').attr('data-video-url');
+                           
+            // Si es el elemento con clase "noticia-video", buscar dentro o en el padre
+            if ($(this).hasClass('noticia-video')) {
+                videoUrl = videoUrl || $(this).parents('[data-video-url]').attr('data-video-url');
+            }
+            
             console.log("Video URL:", videoUrl);
             
             if (!videoUrl) {
@@ -393,6 +343,85 @@ jQuery(document).ready(function($) {
         setupVideoPopups();
         enforceGridLayout();
     });
+
+    /**
+     * Aplica estilos inline a elementos generados dinámicamente
+     */
+    function applyInlineStyles() {
+        console.log('Aplicando estilos inline a elementos generados dinámicamente');
+        
+        // Aplicar estilos a elementos del carrusel
+        $('.kintsugi-carousel-slide, .swiper-slide').attr('style', 'position: relative !important; border-radius: 8px !important; overflow: hidden !important; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important; transition: transform 0.3s, box-shadow 0.3s !important; background-color: #fff !important; border: 1px solid rgba(54, 39, 102, 0.1) !important; height: 400px !important; min-height: 350px !important;');
+        
+        $('.kintsugi-carousel-image').attr('style', 'height: 200px !important; overflow: hidden !important;');
+        $('.kintsugi-carousel-image img').attr('style', 'width: 100% !important; height: 100% !important; object-fit: cover !important; transition: transform 0.5s !important;');
+        
+        $('.kintsugi-carousel-content').attr('style', 'padding: 15px !important; position: relative !important; z-index: 2 !important;');
+        $('.kintsugi-carousel-title').attr('style', 'margin: 0 0 8px !important; font-size: 18px !important; font-weight: 700 !important; color: #030D55 !important; line-height: 1.3 !important; font-family: "Playfair Display", serif !important;');
+        $('.kintsugi-carousel-excerpt').attr('style', 'font-size: 14px !important; color: #4a4a4a !important; line-height: 1.5 !important;');
+        
+        $('.kintsugi-carousel-date').attr('style', 'position: absolute !important; top: 10px !important; right: 10px !important; background: rgba(54, 39, 102, 0.8) !important; color: #fff !important; padding: 4px 8px !important; border-radius: 4px !important; font-size: 12px !important; z-index: 5 !important;');
+        $('.kintsugi-carousel-overlay').attr('style', 'position: absolute !important; inset: 0 !important; background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%) !important; z-index: 1 !important;');
+        
+        // Aplicar estilos a los botones de navegación
+        $('.kintsugi-carousel-nav-prev, .kintsugi-carousel-nav-next').attr('style', 'position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; width: 40px !important; height: 40px !important; background: rgba(54, 39, 102, 0.8) !important; border-radius: 50% !important; z-index: 10 !important; cursor: pointer !important; display: flex !important; align-items: center !important; justify-content: center !important;');
+        
+        $('.kintsugi-carousel-nav-prev').attr('style', 'position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; width: 40px !important; height: 40px !important; background: rgba(54, 39, 102, 0.8) !important; border-radius: 50% !important; z-index: 10 !important; cursor: pointer !important; display: flex !important; align-items: center !important; justify-content: center !important; left: 10px !important;');
+        
+        $('.kintsugi-carousel-nav-next').attr('style', 'position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; width: 40px !important; height: 40px !important; background: rgba(54, 39, 102, 0.8) !important; border-radius: 50% !important; z-index: 10 !important; cursor: pointer !important; display: flex !important; align-items: center !important; justify-content: center !important; right: 10px !important;');
+        
+        // Crear flechas dentro de los botones de navegación
+        $('.kintsugi-carousel-nav-prev').each(function() {
+            if (!$(this).find('.nav-arrow').length) {
+                $(this).html('<span class="nav-arrow" style="display: block; width: 10px; height: 10px; border-top: 2px solid white; border-right: 2px solid white; transform: rotate(-135deg); margin-left: 5px;"></span>');
+            }
+        });
+        
+        $('.kintsugi-carousel-nav-next').each(function() {
+            if (!$(this).find('.nav-arrow').length) {
+                $(this).html('<span class="nav-arrow" style="display: block; width: 10px; height: 10px; border-top: 2px solid white; border-right: 2px solid white; transform: rotate(45deg); margin-right: 5px;"></span>');
+            }
+        });
+        
+        // Aplicar estilos a los botones de reproducción de video
+        $('.kintsugi-carousel-play, .kintsugi-noticia-video-play').attr('style', 'position: absolute !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; width: 60px !important; height: 60px !important; background-color: rgba(54, 39, 102, 0.8) !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 3 !important; cursor: pointer !important;');
+        
+        // Crear triángulo de reproducción
+        $('.kintsugi-carousel-play, .kintsugi-noticia-video-play').each(function() {
+            if (!$(this).find('.play-triangle').length) {
+                $(this).html('<div class="play-triangle" style="width: 0 !important; height: 0 !important; border-top: 12px solid transparent !important; border-bottom: 12px solid transparent !important; border-left: 18px solid white !important; margin-left: 5px !important;"></div>');
+            }
+        });
+        
+        // Aplicar estilos a elementos de noticias
+        $('.kintsugi-noticia-item').attr('style', 'width: 590px !important; height: 419px !important; border-radius: 16px !important; padding: 24px 16px 24px 16px !important; position: relative !important; overflow: hidden !important; background-color: transparent !important; border: none !important; transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important; margin-bottom: 20px !important; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08) !important;');
+        
+        $('.kintsugi-noticia-image, .kintsugi-noticia-video').attr('style', 'height: 200px !important; overflow: hidden !important;');
+        $('.kintsugi-noticia-img').attr('style', 'width: 100% !important; height: 100% !important; object-fit: cover !important; transition: transform 0.5s !important;');
+        
+        $('.kintsugi-noticia-content').attr('style', 'padding: 15px !important; position: relative !important; z-index: 2 !important;');
+        $('.kintsugi-noticia-title').attr('style', 'margin: 0 0 8px !important; font-size: 18px !important; font-weight: 700 !important; color: #030D55 !important; line-height: 1.3 !important; font-family: "Playfair Display", serif !important;');
+        $('.kintsugi-noticia-excerpt').attr('style', 'font-size: 14px !important; color: #4a4a4a !important; line-height: 1.5 !important;');
+        
+        $('.kintsugi-noticia-date').attr('style', 'position: absolute !important; top: 10px !important; right: 10px !important; background: rgba(54, 39, 102, 0.8) !important; color: #fff !important; padding: 4px 8px !important; border-radius: 4px !important; font-size: 12px !important; z-index: 5 !important;');
+        $('.kintsugi-noticia-overlay').attr('style', 'position: absolute !important; inset: 0 !important; background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%) !important; z-index: 1 !important;');
+        
+        // Estilo especial para noticias de video en el carrusel principal
+        $('.noticia-video').attr('style', 'position: relative; cursor: pointer;');
+        
+        // Aplicar gradiente a las tarjetas de noticias
+        $('.kintsugi-noticia-item').each(function() {
+            if (!$(this).find('.gradient-overlay').length) {
+                $(this).prepend('<div class="gradient-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(171, 39, 122, 0.4) 0%, rgba(3, 13, 85, 0.4) 61%); z-index: 1; pointer-events: none;"></div>');
+            }
+        });
+        
+        // Aplicar estilos a la paginación
+        $('.kintsugi-noticias-pagination').attr('style', 'display: flex !important; justify-content: center !important; margin-top: 30px !important;');
+        $('.kintsugi-noticias-pagination .page-numbers').attr('style', 'display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 36px !important; height: 36px !important; margin: 0 3px !important; border-radius: 4px !important; border: 1px solid #ddd !important; color: #4a4a4a !important; text-decoration: none !important; transition: all 0.3s !important; font-weight: 500 !important;');
+        $('.kintsugi-noticias-pagination .page-numbers.current').attr('style', 'background-color: #030D55 !important; border-color: #030D55 !important; color: white !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 36px !important; height: 36px !important; margin: 0 3px !important; border-radius: 4px !important;');
+        $('.kintsugi-noticias-pagination .prev, .kintsugi-noticias-pagination .next').attr('style', 'width: auto !important; padding: 0 12px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; height: 36px !important; margin: 0 3px !important; border-radius: 4px !important; border: 1px solid #ddd !important; color: #4a4a4a !important; text-decoration: none !important; transition: all 0.3s !important;');
+    }
 });
 
 // Función para inicializar los filtros de noticias
@@ -537,51 +566,5 @@ function initNoticiasFilters() {
             }
         });
     });
-}
-// Función para aplicar estilos inline a elementos del plugin
-function applyInlineStyles() {
-    console.log('Aplicando estilos inline a elementos generados dinámicamente');
-    
-    // Aplicar estilos a elementos del carrusel
-    $('.kintsugi-carousel-slide').attr('style', 'position: relative !important; border-radius: 8px !important; overflow: hidden !important; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important; height: 400px !important; transition: transform 0.3s, box-shadow 0.3s !important; background-color: #fff !important; border: 1px solid rgba(54, 39, 102, 0.1) !important;');
-    
-    $('.kintsugi-carousel-image').attr('style', 'height: 200px !important; overflow: hidden !important;');
-    $('.kintsugi-carousel-image img').attr('style', 'width: 100% !important; height: 100% !important; object-fit: cover !important; transition: transform 0.5s !important;');
-    
-    $('.kintsugi-carousel-content').attr('style', 'padding: 15px !important; position: relative !important; z-index: 2 !important;');
-    $('.kintsugi-carousel-title').attr('style', 'margin: 0 0 8px !important; font-size: 18px !important; font-weight: 700 !important; color: #030D55 !important; line-height: 1.3 !important; font-family: "Playfair Display", serif !important;');
-    $('.kintsugi-carousel-excerpt').attr('style', 'font-size: 14px !important; color: #4a4a4a !important; line-height: 1.5 !important;');
-    
-    $('.kintsugi-carousel-date').attr('style', 'position: absolute !important; top: 10px !important; right: 10px !important; background: rgba(54, 39, 102, 0.8) !important; color: #fff !important; padding: 4px 8px !important; border-radius: 4px !important; font-size: 12px !important; z-index: 5 !important;');
-    $('.kintsugi-carousel-overlay').attr('style', 'position: absolute !important; inset: 0 !important; background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%) !important; z-index: 1 !important;');
-    
-    // Aplicar estilos a los botones de reproducción de video
-    $('.kintsugi-carousel-play, .kintsugi-noticia-video-play').attr('style', 'position: absolute !important; top: 50% !important; left: 50% !important; transform: translate(-50%, -50%) !important; width: 60px !important; height: 60px !important; background-color: rgba(54, 39, 102, 0.8) !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; z-index: 3 !important; cursor: pointer !important;');
-    
-    // Crear triángulo de reproducción
-    $('.kintsugi-carousel-play, .kintsugi-noticia-video-play').each(function() {
-        if (!$(this).find('.play-triangle').length) {
-            $(this).html('<div class="play-triangle" style="width: 0 !important; height: 0 !important; border-top: 12px solid transparent !important; border-bottom: 12px solid transparent !important; border-left: 18px solid white !important; margin-left: 5px !important;"></div>');
-        }
-    });
-    
-    // Aplicar estilos a elementos de noticias
-    $('.kintsugi-noticia-item').attr('style', 'width: 590px !important; height: 419px !important; border-radius: 16px !important; padding: 24px 16px 24px 16px !important; position: relative !important; overflow: hidden !important; background-color: transparent !important; border: none !important; transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important; margin-bottom: 20px !important;');
-    
-    $('.kintsugi-noticia-image, .kintsugi-noticia-video').attr('style', 'height: 200px !important; overflow: hidden !important;');
-    $('.kintsugi-noticia-img').attr('style', 'width: 100% !important; height: 100% !important; object-fit: cover !important; transition: transform 0.5s !important;');
-    
-    $('.kintsugi-noticia-content').attr('style', 'padding: 15px !important; position: relative !important; z-index: 2 !important;');
-    $('.kintsugi-noticia-title').attr('style', 'margin: 0 0 8px !important; font-size: 18px !important; font-weight: 700 !important; color: #030D55 !important; line-height: 1.3 !important; font-family: "Playfair Display", serif !important;');
-    $('.kintsugi-noticia-excerpt').attr('style', 'font-size: 14px !important; color: #4a4a4a !important; line-height: 1.5 !important;');
-    
-    $('.kintsugi-noticia-date').attr('style', 'position: absolute !important; top: 10px !important; right: 10px !important; background: rgba(54, 39, 102, 0.8) !important; color: #fff !important; padding: 4px 8px !important; border-radius: 4px !important; font-size: 12px !important; z-index: 5 !important;');
-    $('.kintsugi-noticia-overlay').attr('style', 'position: absolute !important; inset: 0 !important; background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.7) 100%) !important; z-index: 1 !important;');
-    
-    // Aplicar estilos a la paginación
-    $('.kintsugi-noticias-pagination').attr('style', 'display: flex !important; justify-content: center !important; margin-top: 30px !important;');
-    $('.kintsugi-noticias-pagination .page-numbers').attr('style', 'display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 36px !important; height: 36px !important; margin: 0 3px !important; border-radius: 4px !important; border: 1px solid #ddd !important; color: #4a4a4a !important; text-decoration: none !important; transition: all 0.3s !important; font-weight: 500 !important;');
-    $('.kintsugi-noticias-pagination .page-numbers.current').attr('style', 'background-color: #030D55 !important; border-color: #030D55 !important; color: white !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 36px !important; height: 36px !important; margin: 0 3px !important; border-radius: 4px !important;');
-    $('.kintsugi-noticias-pagination .prev, .kintsugi-noticias-pagination .next').attr('style', 'width: auto !important; padding: 0 12px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; height: 36px !important; margin: 0 3px !important; border-radius: 4px !important; border: 1px solid #ddd !important; color: #4a4a4a !important; text-decoration: none !important; transition: all 0.3s !important;');
 }
 

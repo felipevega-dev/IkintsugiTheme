@@ -75,7 +75,7 @@ $nonce = wp_create_nonce('kintsugi_ajax_nonce');
       </div>
 
       <!-- Shortcode para el carrusel con noticias seleccionadas específicamente -->
-      <div id="kintsugi-carousel-main" class="swiper">
+      <div id="kintsugi-carousel-main" class="swiper kintsugi-carousel-container">
         <div class="swiper-wrapper">
           <?php
           // Obtener las noticias marcadas para el carrusel
@@ -92,6 +92,9 @@ $nonce = wp_create_nonce('kintsugi_ajax_nonce');
           ?>
         </div>
         <div class="swiper-pagination"></div>
+        <!-- Botones de navegación que serán renderizados por JS -->
+        <div class="kintsugi-carousel-nav-prev"></div>
+        <div class="kintsugi-carousel-nav-next"></div>
       </div>
     </div>
   </section>
@@ -159,6 +162,16 @@ $nonce = wp_create_nonce('kintsugi_ajax_nonce');
       @php the_content(); @endphp
     </div>
   </section>
+  
+  <!-- Container del popup de video (se añadirá contenido dinámicamente) -->
+  <div class="kintsugi-video-popup">
+    <div class="kintsugi-video-popup-inner">
+        <div class="kintsugi-video-popup-container">
+            <div class="kintsugi-video-popup-content"></div>
+        </div>
+        <button class="kintsugi-video-popup-close">×</button>
+    </div>
+  </div>
 
 </div>
 
