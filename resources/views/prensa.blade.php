@@ -256,6 +256,196 @@ add_action('wp_print_scripts', function() {
           position: relative !important;
           z-index: 2 !important;
         }
+
+                /* Indicador de deslizamiento más visible */
+        .swipe-indicator {
+          display: flex;
+          align-items: center;
+          animation: pulseIndicator 2s infinite;
+        }
+
+        .swipe-indicator-dot {
+          width: 8px;
+          height: 8px;
+          background-color: #362766;
+          border-radius: 50%;
+          margin: 0 3px;
+        }
+
+        @keyframes pulseIndicator {
+          0% { opacity: 0.4; }
+          50% { opacity: 1; }
+          100% { opacity: 0.4; }
+        } 
+
+        /* Contenedor de filtros con estilo más moderno */
+        .kintsugi-filters-container {
+          background: linear-gradient(135deg, #f8f6ff 0%, #eee8ff 100%) !important;
+          border-radius: 12px !important;
+          box-shadow: 0 8px 20px rgba(54, 39, 102, 0.08) !important;
+          padding: 24px !important;
+          margin-bottom: 35px !important;
+          border: 1px solid rgba(54, 39, 102, 0.1) !important;
+        }
+
+        /* Mejora los campos de búsqueda y filtros */
+        #kintsugi-search-input,
+        #kintsugi-year-filter,
+        #kintsugi-sort-filter {
+          border-radius: 8px !important;
+          border: 1px solid rgba(54, 39, 102, 0.2) !important;
+          transition: all 0.3s !important;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05) !important;
+        }
+
+        #kintsugi-search-input:focus,
+        #kintsugi-year-filter:focus,
+        #kintsugi-sort-filter:focus {
+          border-color: #362766 !important;
+          box-shadow: 0 0 0 3px rgba(54, 39, 102, 0.2) !important;
+        } 
+
+        /* Tarjeta de noticia más elegante */
+        .kintsugi-noticia-item {
+          border-radius: 16px !important;
+          overflow: hidden !important;
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08) !important;
+          transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+          border: none !important;
+        }
+
+        .kintsugi-noticia-item:hover {
+          transform: translateY(-8px) !important;
+          box-shadow: 0 15px 30px rgba(54, 39, 102, 0.15) !important;
+        }
+
+        /* Mejora la imagen */
+        .kintsugi-noticia-image, .kintsugi-noticia-video {
+          height: 220px !important; /* Más alto para mejor impacto visual */
+        }
+
+        /* Efecto de imagen al hacer hover */
+        .kintsugi-noticia-item:hover .kintsugi-noticia-img {
+          transform: scale(1.05) !important;
+        }
+
+        /* Mejora la fecha */
+        .kintsugi-noticia-date {
+          backdrop-filter: blur(4px) !important;
+          background: rgba(54, 39, 102, 0.7) !important;
+          border-radius: 6px !important;
+          font-weight: 600 !important;
+          letter-spacing: 0.5px !important;
+        } 
+
+        /* Spinner de carga más bonito */
+        .kintsugi-loading {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          justify-content: center !important;
+          padding: 30px 0 !important;
+          width: 100% !important;
+        }
+
+        .kintsugi-loading .spinner {
+          width: 40px !important;
+          height: 40px !important;
+          border: 4px solid rgba(54, 39, 102, 0.1) !important;
+          border-radius: 50% !important;
+          border-top-color: #362766 !important;
+          animation: spin 1s linear infinite !important;
+          margin-bottom: 10px !important;
+        }
+
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        } 
+
+        /* Popup de video más elegante */
+        .kintsugi-video-popup-container {
+          border-radius: 16px !important;
+          overflow: hidden !important;
+          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25) !important;
+          border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        }
+
+        .kintsugi-video-popup-close {
+          background: rgba(54, 39, 102, 0.8) !important;
+          width: 48px !important;
+          height: 48px !important;
+          top: 15px !important;
+          right: 15px !important;
+          font-size: 28px !important;
+          transition: all 0.3s !important;
+        } 
+
+        /* Tarjeta de noticia con las dimensiones y gradiente solicitados */
+        .kintsugi-noticia-item {
+          width: 590px !important;
+          height: 419px !important;
+          border-radius: 16px !important;
+          padding: 24px 16px 24px 16px !important;
+          position: relative !important;
+          overflow: hidden !important;
+          margin-bottom: 20px !important;
+          transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+        }
+
+        /* Agregar el gradiente como overlay */
+        .kintsugi-noticia-item::before {
+          content: '' !important;
+          position: absolute !important;
+          top: 0 !important;
+          left: 0 !important;
+          width: 100% !important;
+          height: 100% !important;
+          background: linear-gradient(180deg, rgba(171, 39, 122, 0.4) 0%, rgba(3, 13, 85, 0.4) 61%) !important;
+          z-index: 1 !important;
+          pointer-events: none !important;
+        }
+
+        /* Ajustar el grid para acomodar las tarjetas más anchas */
+        .kintsugi-noticias-grid {
+          display: grid !important;
+          grid-template-columns: repeat(1, 1fr) !important;
+          gap: 169px !important; /* Gap solicitado */
+          margin-bottom: 30px !important;
+          justify-items: center !important;
+        }
+
+        @media (min-width: 1280px) {
+          .kintsugi-noticias-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+
+        /* Asegurar que el contenido esté por encima del gradiente */
+        .kintsugi-noticia-content {
+          position: relative !important;
+          z-index: 2 !important;
+          height: 100% !important;
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: space-between !important;
+        }
+
+        /* Mejorar la visibilidad del texto sobre el gradiente */
+        .kintsugi-noticia-title {
+          color: white !important;
+          font-size: 22px !important;
+          font-weight: 700 !important;
+          line-height: 1.3 !important;
+          text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+        }
+
+        .kintsugi-noticia-excerpt {
+          color: rgba(255, 255, 255, 0.9) !important;
+          font-size: 16px !important;
+          line-height: 1.5 !important;
+          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+        }
       </style>
       
       <!-- Shortcode para todas las noticias con buscador y paginación - mostrando 4 por página (2x2) -->
@@ -351,7 +541,7 @@ var kintsugi_ajax = {
             });
             
             // Aplicar estilos a elementos de noticias
-            $('.kintsugi-noticia-item').attr('style', 'position: relative !important; border-radius: 8px !important; overflow: hidden !important; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important; height: 100% !important; background-color: #fff !important; border: 1px solid rgba(54, 39, 102, 0.1) !important; transition: transform 0.3s, box-shadow 0.3s !important; margin-bottom: 20px !important;');
+            $('.kintsugi-noticia-item').attr('style', 'width: 590px !important; height: 419px !important; border-radius: 16px !important; padding: 24px 16px 24px 16px !important; position: relative !important; overflow: hidden !important; background-color: transparent !important; border: none !important; transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important; margin-bottom: 20px !important;');
             
             $('.kintsugi-noticia-image, .kintsugi-noticia-video').attr('style', 'height: 200px !important; overflow: hidden !important;');
             $('.kintsugi-noticia-img').attr('style', 'width: 100% !important; height: 100% !important; object-fit: cover !important; transition: transform 0.5s !important;');
@@ -765,11 +955,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Aplicar estilos inline a cada elemento para forzar el layout
     const allGrids = document.querySelectorAll('.kintsugi-noticias-grid');
     allGrids.forEach(grid => {
-      grid.setAttribute('style', 'display: grid !important; grid-template-columns: repeat(1, 1fr) !important; gap: 20px !important; width: 100% !important;');
+      grid.setAttribute('style', 'display: grid !important; grid-template-columns: repeat(1, 1fr) !important; gap: 169px !important; width: 100% !important; justify-items: center !important;');
       
       // Aplicar media query manualmente
-      if (window.innerWidth >= 640) {
-        grid.setAttribute('style', 'display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 20px !important; width: 100% !important;');
+      if (window.innerWidth >= 1280px) {
+        grid.setAttribute('style', 'display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 169px !important; width: 100% !important; justify-items: center !important;');
       }
     });
   }
