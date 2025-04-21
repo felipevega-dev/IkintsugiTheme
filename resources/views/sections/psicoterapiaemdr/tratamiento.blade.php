@@ -10,8 +10,8 @@
     <div class="container mx-auto px-4 relative z-10 mb-10">
       <div class="flex flex-col md:flex-row items-center justify-center gap-16 mt-15">
         <!-- Texto del lado izquierdo con más margen a la derecha -->
-        <div class="md:w-2/5 mb-10 md:mb-0 md:ml-auto mt-10 lg:w-1/2">
-          <h1 class="text-5xl md:text-5xl lg:text-7xl font-bold mb-4 text-[#030D55] transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 1.1;">
+        <div class="md:w-2/5 mb-10 md:mb-0 md:ml-auto mt-10 lg:w-1/2" data-aos="fade-right" data-aos-duration="600">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-[#030D55] transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 1.1;">
           Reprocesando el <br>trauma: La <br>metodología EMDR <br>en acción
           </h1>
           
@@ -21,7 +21,7 @@
         </div>
         
         <!-- Imagen del lado derecho con más margen a la derecha -->
-        <div class="md:w-2/5 md:ml-0">
+        <div class="md:w-2/5 md:ml-0" data-aos="fade-left" data-aos-duration="600">
           <div class="relative mt-15">
             <!-- Imagen con marco personalizado -->
             <div class="relative transition-all duration-700 hover:scale-105" style="width: 500px; height: 500px;">
@@ -70,7 +70,7 @@
               
               <!-- Imagen circular -->
               <div class="absolute inset-12 overflow-hidden rounded-full border-2 border-white transition-all duration-500 hover:shadow-lg">
-                <img src="{{ get_theme_file_uri('resources/images/tratamiento1.png') }}" alt="Psicoterapia EMDR" class="w-full h-full object-cover transition-all duration-700 hover:scale-110">
+                <img src="{{ get_theme_file_uri('resources/images/tratamiento1.png') }}" alt="Psicoterapia EMDR" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
               </div>
 
               
@@ -94,22 +94,22 @@
       <div class="relative mb-12">
         <!-- Elementos decorativos laterales -->
         <div class="flex justify-center items-center">
-          <div class="hidden md:block">
-            <img src="{{ get_theme_file_uri('resources/images/deco1.png') }}" alt="Psicoterapia EMDR" class="w-full h-full object-cover transition-all duration-700 hover:scale-110" style="max-width: 250px; max-height: 250px;">
+          <div class="hidden md:block" data-aos="fade-right" data-aos-duration="600">
+            <img src="{{ get_theme_file_uri('resources/images/deco1.png') }}" alt="Psicoterapia EMDR" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" style="max-width: 250px; max-height: 250px;">
           </div>
           
-          <div class="text-center px-4">
-            <h2 class="text-center text-4xl lg:text-5xl font-bold text-[#030D55]" style="font-family: 'Playfair Display', serif; font-weight: 800;">
+          <div class="text-center px-4" data-aos="fade-up" data-aos-duration="600">
+            <h2 class="text-center text-4xl lg:text-5xl font-bold text-[#030D55] transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; font-weight: 800;">
               ¿Qué ocurre durante el<br>tratamiento EMDR?
             </h2>
             
-            <p class="mt-6 text-base text-center max-w-3xl mx-auto">
+            <p class="mt-6 text-base text-center max-w-3xl mx-auto transition-all duration-300 hover:translate-y-[-2px]">
               En el proceso psicoterapéutico con EMDR, el psicólogo trabaja en conjunto con el paciente para identificar el o las problemáticas que lo aquejan, para luego definir un <br> plan psicoterapéutico que permita colocar foco en cada molestia.
             </p>
           </div>
           
-          <div class="hidden md:block">
-            <img src="{{ get_theme_file_uri('resources/images/deco2.png') }}" alt="Psicoterapia EMDR" class="w-full h-full object-cover transition-all duration-700 hover:scale-110" style="max-width: 250px; max-height: 250px;">
+          <div class="hidden md:block" data-aos="fade-left" data-aos-duration="600">
+            <img src="{{ get_theme_file_uri('resources/images/deco2.png') }}" alt="Psicoterapia EMDR" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" style="max-width: 250px; max-height: 250px;">
           </div>
         </div>
       </div>
@@ -117,57 +117,57 @@
       <!-- Timeline con puntos -->
       <div class="mt-16 max-w-5xl mx-auto pl-4">
         <!-- Punto 1 -->
-        <div class="flex opacity-0 animate-fade-in-up" style="animation-delay: 300ms; animation-duration: 1s; animation-fill-mode: forwards;">
+        <div class="flex opacity-0 animate-fade-in-up" style="animation-delay: 300ms; animation-duration: 1s; animation-fill-mode: forwards;" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
           <div class="mr-6 flex flex-col items-center">
             <div class="w-6 h-6 rounded-full bg-[#AB277A] shadow-lg shadow-pink-500/50 animate-pulse"></div>
             <div class="w-0.5 h-full mt-1" style="border-left: 1px dashed #C29FDA; height: 80px;"></div>
           </div>
           <div class="max-w-5xl pb-8">
-            <p class="text-base transform transition-all duration-500">El paciente describe el o los recuerdos dolorosos y/o traumáticos, muchas veces ya olvidados. Con ayuda del psicólogo se seleccionarán los aspectos que más angustian de dicho incidente.</p>
+            <p class="text-base transform transition-all duration-500 hover:translate-y-[-2px]">El paciente describe el o los recuerdos dolorosos y/o traumáticos, muchas veces ya olvidados. Con ayuda del psicólogo se seleccionarán los aspectos que más angustian de dicho incidente.</p>
           </div>
         </div>
         
         <!-- Punto 2 -->
-        <div class="flex opacity-0 animate-fade-in-up" style="animation-delay: 800ms; animation-duration: 1s; animation-fill-mode: forwards;">
+        <div class="flex opacity-0 animate-fade-in-up" style="animation-delay: 800ms; animation-duration: 1s; animation-fill-mode: forwards;" data-aos="fade-up" data-aos-duration="600" data-aos-delay="150">
           <div class="mr-6 flex flex-col items-center">
             <div class="w-6 h-6 rounded-full bg-[#AB277A] shadow-lg shadow-purple-500/50 animate-pulse" style="animation-delay: 500ms;"></div>
             <div class="w-0.5 h-full mt-1" style="border-left: 1px dashed #C29FDA; height: 115px;"></div>
           </div>
           <div class="max-w-5xl pb-8">
-            <p class="text-base transform transition-all duration-500">Luego para desensibilizar y reprocesar el profesional realizará estimulaciones bilaterales, (visual, auditiva o kinestésica). Esta estimulación facilitará la conexión entre los dos hemisferios cerebrales, permitiendo el procesamiento de la información y la disminución de la carga emocional, para un estado más adaptativo.</p>
+            <p class="text-base transform transition-all duration-500 hover:translate-y-[-2px]">Luego para desensibilizar y reprocesar el profesional realizará estimulaciones bilaterales, (visual, auditiva o kinestésica). Esta estimulación facilitará la conexión entre los dos hemisferios cerebrales, permitiendo el procesamiento de la información y la disminución de la carga emocional, para un estado más adaptativo.</p>
           </div>
         </div>
         
         <!-- Punto 3 -->
-        <div class="flex opacity-0 animate-fade-in-up" style="animation-delay: 1300ms; animation-duration: 1s; animation-fill-mode: forwards;">
+        <div class="flex opacity-0 animate-fade-in-up" style="animation-delay: 1300ms; animation-duration: 1s; animation-fill-mode: forwards;" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
           <div class="mr-6 flex flex-col items-center">
             <div class="w-6 h-6 rounded-full bg-[#AB277A] shadow-lg shadow-indigo-500/50 animate-pulse" style="animation-delay: 1000ms;"></div>
             <div class="w-0.5 h-full mt-1" style="border-left: 1px dashed #C29FDA; height: 145px;"></div>
           </div>
           <div class="max-w-5xl pb-8">
-            <p class="text-base transform transition-all duration-500">El psicólogo clínico entrenado en EMDR guía el proceso, tomando decisiones clínicas sobre la dirección que debe seguir la intervención. La meta es que el paciente procese la información sobre el incidente traumático, llevándolo a una "resolución adaptativa". En palabras de Francine Shapiro, esto significa: reducción de los síntomas cambio en creencias negativas y/o disruptivas a positivas y pertinentes y la posibilidad de funcionar mejor y adecuadamente en la vida cotidiana.</p>
+            <p class="text-base transform transition-all duration-500 hover:translate-y-[-2px]">El psicólogo clínico entrenado en EMDR guía el proceso, tomando decisiones clínicas sobre la dirección que debe seguir la intervención. La meta es que el paciente procese la información sobre el incidente traumático, llevándolo a una "resolución adaptativa". En palabras de Francine Shapiro, esto significa: reducción de los síntomas cambio en creencias negativas y/o disruptivas a positivas y pertinentes y la posibilidad de funcionar mejor y adecuadamente en la vida cotidiana.</p>
           </div>
         </div>
         
         <!-- Punto 4 -->
-        <div class="flex mb-12 opacity-0 animate-fade-in-up" style="animation-delay: 1800ms; animation-duration: 1s; animation-fill-mode: forwards;">
+        <div class="flex mb-12 opacity-0 animate-fade-in-up" style="animation-delay: 1800ms; animation-duration: 1s; animation-fill-mode: forwards;" data-aos="fade-up" data-aos-duration="600" data-aos-delay="250">
           <div class="mr-6 flex flex-col items-center">
             <div class="w-6 h-6 rounded-full bg-[#AB277A] shadow-lg shadow-blue-500/50 animate-pulse" style="animation-delay: 1500ms;"></div>
             <!-- Última línea no tiene extensión hacia abajo -->
           </div>
           <div class="max-w-5xl">
-            <p class="text-base transform transition-all duration-500">El abordaje empleado en EMDR se sustenta en tres puntos:</p>
+            <p class="text-base transform transition-all duration-500 hover:translate-y-[-2px]">El abordaje empleado en EMDR se sustenta en tres puntos:</p>
             <ol class="list-decimal pl-5 mt-3 space-y-1">
-              <li class="opacity-0 animate-fade-in" style="animation-delay: 2000ms; animation-fill-mode: forwards;">Experiencias pasadas de la vida temprana.</li>
-              <li class="opacity-0 animate-fade-in" style="animation-delay: 2200ms; animation-fill-mode: forwards;">Experiencias estresantes que detonan malestar en el presente.</li>
-              <li class="opacity-0 animate-fade-in" style="animation-delay: 2400ms; animation-fill-mode: forwards;">Pensamientos y comportamientos deseados para el futuro (desarrollo de recursos para situaciones futuras).</li>
+              <li class="opacity-0 animate-fade-in transition-all duration-300 hover:translate-x-1" style="animation-delay: 2000ms; animation-fill-mode: forwards;" data-aos="fade-up" data-aos-duration="400" data-aos-delay="300">Experiencias pasadas de la vida temprana.</li>
+              <li class="opacity-0 animate-fade-in transition-all duration-300 hover:translate-x-1" style="animation-delay: 2200ms; animation-fill-mode: forwards;" data-aos="fade-up" data-aos-duration="400" data-aos-delay="350">Experiencias estresantes que detonan malestar en el presente.</li>
+              <li class="opacity-0 animate-fade-in transition-all duration-300 hover:translate-x-1" style="animation-delay: 2400ms; animation-fill-mode: forwards;" data-aos="fade-up" data-aos-duration="400" data-aos-delay="400">Pensamientos y comportamientos deseados para el futuro (desarrollo de recursos para situaciones futuras).</li>
             </ol>
           </div>
         </div>
         
         <!-- Información final -->
-        <div class="ml-12 mt-2 opacity-0 animate-fade-in" style="animation-delay: 2600ms; animation-fill-mode: forwards;">
-          <p class="text-base">El tratamiento psicológico con EMDR puede ser desde 5 sesiones para un trauma simple y hasta más de un año para problemas complejos.</p>
+        <div class="ml-12 mt-2 opacity-0 animate-fade-in" style="animation-delay: 2600ms; animation-fill-mode: forwards;" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
+          <p class="text-base transition-all duration-300 hover:translate-y-[-2px]">El tratamiento psicológico con EMDR puede ser desde 5 sesiones para un trauma simple y hasta más de un año para problemas complejos.</p>
         </div>
       </div>
       

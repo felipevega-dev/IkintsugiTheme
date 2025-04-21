@@ -116,7 +116,7 @@
   </section>
 
   <!-- Sección 3: Coaching psicológico con elementos decorativos laterales -->
-  <section class="bg-white py-8 relative overflow-hidden">
+  <section class="bg-white py-8 relative overflow-hidden mb-10">
     <div class="container mx-auto px-4 relative">
       <!-- Contenido centrado con decorativos integrados -->
       <div class="max-w-4xl mx-auto text-center relative">

@@ -10,7 +10,7 @@
     <div class="container mx-auto px-4 relative z-10">
       <div class="flex flex-col md:flex-row items-center justify-center gap-8">
         <!-- Texto del lado izquierdo con más margen a la derecha --> 
-        <div class="md:w-3/6 mb-10 md:mb-0 mt-10">
+        <div class="md:w-3/6 mb-10 md:mb-0 mt-10" data-aos="fade-right" data-aos-duration="600">
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-[#030D55] transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 1.1;">
             Testimonios que<br>inspiran: La<br>sanación es posible
           </h1>
@@ -21,7 +21,7 @@
         </div>
         
         <!-- Imagen del lado derecho con más margen a la derecha -->
-        <div class="md:w-2/5 md:ml-0">
+        <div class="md:w-2/5 md:ml-0" data-aos="fade-left" data-aos-duration="600">
           <div class="relative mt-15">
             <!-- Imagen con marco personalizado -->
             <div class="relative transition-all duration-700 hover:scale-105" style="width: 500px; height: 500px;">
@@ -69,8 +69,8 @@
               </svg>
               
               <!-- Imagen circular -->
-              <div class="absolute inset-12 overflow-hidden rounded-full border-2 border-white transition-all duration-500 hover:shadow-lg">
-                <img src="{{ get_theme_file_uri('resources/images/transtornos1.png') }}" alt="Mujer en terapia" class="w-full h-full object-cover transition-all duration-700 hover:scale-110">
+              <div class="absolute inset-12 overflow-hidden rounded-full border-2 border-white transition-transform duration-500 hover:shadow-lg">
+                <img src="{{ get_theme_file_uri('resources/images/transtornos1.png') }}" alt="Mujer en terapia" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
               </div>
             </div>
           </div>
@@ -89,19 +89,19 @@
   <section class="relative py-16 overflow-hidden bg-[#030D550D]">
     <div class="container mx-auto px-4 relative z-10">
       <!-- Título principal centrado -->
-      <h2 class="text-4xl md:text-5xl font-bold text-center text-[#030D55] mb-12" style="font-family: 'Playfair Display', serif;">
+      <h2 class="text-4xl md:text-5xl font-bold text-center text-[#030D55] mb-12 transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif;" data-aos="fade-up" data-aos-duration="600">
         Trastornos y malestares que<br>atendemos
       </h2>
 
       <!-- Contenido de texto principal -->
-      <div class="max-w-4xl mx-auto text-base mb-16 text-center">
-        <p class="mb-4">
+      <div class="max-w-4xl mx-auto text-base mb-16 text-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+        <p class="mb-4 transition-all duration-300 hover:translate-y-[-2px]">
           En el Instituto Kintsugi sabemos que el trauma puede afectar profundamente la vida de las personas, generando síntomas como disociación, amnesia disociativa, desrealización, despersonalización, ansiedad, depresión, estrés postraumático, falta de límites, dificultades relacionales, labilidad emocional, baja autoestima y más.
         </p>
-        <p class="mb-4">
+        <p class="mb-4 transition-all duration-300 hover:translate-y-[-2px]">
           Por esto, somos un equipo de psicólogos clínicos que nos hemos especializado en el tratamiento del trauma, principalmente mediante la terapia EMDR (Eye Movement Desensitization and Reprocessing), como también desde la Hipnosis Clínica, EFT (Emotional Freedom Techniques – Tapping), Modelo PARCUVE, con enfoque de Apego, Trauma y Disociación, y Written Exposure Therapy for PTSD.
         </p>
-        <p>
+        <p class="transition-all duration-300 hover:translate-y-[-2px]">
           EMDR es una terapia de tercera generación, basada en evidencia, que utiliza la estimulación bilateral del cerebro para procesar y desactivar las memorias traumáticas, permitiendo así la recuperación emocional y la restauración de la identidad. Con el EMDR podrás liberarte del pasado, vivir el presente y proyectarte al futuro con confianza y esperanza. Te invitamos a conocer más sobre esta psicoterapia basada en neurociencias y solicitar una sesión con nosotros.
         </p>
       </div>
@@ -126,43 +126,43 @@
       <div class="container mx-auto px-4 relative z-10 pt-10">
         <div class="flex flex-col md:flex-row justify-between gap-8">
           <!-- Primera columna: Patologías con base traumática -->
-          <div class="bg-white/90 p-6 md:p-8 rounded-3xl shadow-lg md:w-1/2">
-            <h3 class="text-xl md:text-2xl font-semibold text-center text-[#AB277A] mb-6" style="font-family: 'Playfair Display', serif;">
+          <div class="bg-white/90 p-6 md:p-8 rounded-3xl shadow-lg md:w-1/2 transition-all duration-500 hover:bg-white hover:shadow-xl hover:-translate-y-2" data-aos="fade-right" data-aos-duration="600">
+            <h3 class="text-xl md:text-2xl font-semibold text-center text-[#AB277A] mb-6 transition-all duration-300 hover:text-[#030D55]" style="font-family: 'Playfair Display', serif;">
               Entre las patologías con base traumática que tratamos se encuentran:
             </h3>
             <ul class="list-disc pl-5 text-[#030D55] space-y-2">
-              <li>Trastorno por estrés postraumático (TEPT)</li>
-              <li>Trastornos disociativos (TID)</li>
-              <li>Trauma complejo (TEPC)</li>
-              <li>Trastorno límite de la personalidad (TLP)</li>
-              <li>Trastorno obsesivo compulsivo (TOC)</li>
-              <li>Trastornos de la conducta alimentaria (TCA)</li>
-              <li>Trastornos psicosomáticos, conversivo.</li>
-              <li>Depresión</li>
-              <li>Ansiedad</li>
-              <li>Crisis de Pánico</li>
-              <li>Fobias (Miedo a hablar en público, a volar, conducir, tragar alimentos, dentista, etc.).</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="100">Trastorno por estrés postraumático (TEPT)</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="150">Trastornos disociativos (TID)</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="200">Trauma complejo (TEPC)</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="250">Trastorno límite de la personalidad (TLP)</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="300">Trastorno obsesivo compulsivo (TOC)</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="350">Trastornos de la conducta alimentaria (TCA)</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="400">Trastornos psicosomáticos, conversivo.</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="450">Depresión</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="500">Ansiedad</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="550">Crisis de Pánico</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="600">Fobias (Miedo a hablar en público, a volar, conducir, tragar alimentos, dentista, etc.).</li>
             </ul>
           </div>
 
           <!-- Segunda columna: Otros traumas o malestares -->
-          <div class="bg-white/90 p-6 md:p-8 rounded-3xl shadow-lg md:w-1/2">
-            <h3 class="text-xl md:text-2xl font-semibold text-center text-[#AB277A] mb-6" style="font-family: 'Playfair Display', serif;">
+          <div class="bg-white/90 p-6 md:p-8 rounded-3xl shadow-lg md:w-1/2 transition-all duration-500 hover:bg-white hover:shadow-xl hover:-translate-y-2" data-aos="fade-left" data-aos-duration="600">
+            <h3 class="text-xl md:text-2xl font-semibold text-center text-[#AB277A] mb-6 transition-all duration-300 hover:text-[#030D55]" style="font-family: 'Playfair Display', serif;">
               Otro tipo de traumas o malestares psicológicos
             </h3>
             <ul class="list-disc pl-5 text-[#030D55] space-y-2">
-              <li>Abuso sexual</li>
-              <li>Violencia de género y violencia intrafamiliar</li>
-              <li>Bullying (acoso escolar)</li>
-              <li>Mobbing (acoso laboral)</li>
-              <li>Descontrol de impulsos</li>
-              <li>Duelos traumáticos</li>
-              <li>Baja Autoestima e inseguridad</li>
-              <li>Problemas para relacionarse</li>
-              <li>Creencias negativas o limitantes</li>
-              <li>Exceso de control</li>
-              <li>Angustia a rendir examen de grado</li>
-              <li>Estrés laboral</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="100">Abuso sexual</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="150">Violencia de género y violencia intrafamiliar</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="200">Bullying (acoso escolar)</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="250">Mobbing (acoso laboral)</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="300">Descontrol de impulsos</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="350">Duelos traumáticos</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="400">Baja Autoestima e inseguridad</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="450">Problemas para relacionarse</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="500">Creencias negativas o limitantes</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="550">Exceso de control</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="600">Angustia a rendir examen de grado</li>
+              <li class="transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="650">Estrés laboral</li>
             </ul>
           </div>
         </div>
@@ -175,16 +175,16 @@
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row gap-16 items-center max-w-6xl mx-auto">
         <!-- Texto del testimonio a la izquierda -->
-        <div class="md:w-4/9 order-2 md:order-1">
-          <h4 class="text-center text-2xl font-extrabold text-[#AB277A] mb-4" style="font-family: 'Playfair Display', serif; line-height: 100%;">Trabajemos en tu disociación   </h4>
-          <p class="text-center text-base leading-7 text-[#030D55] mb-4">
+        <div class="md:w-4/9 order-2 md:order-1" data-aos="fade-right" data-aos-duration="600">
+          <h4 class="text-center text-2xl font-extrabold text-[#AB277A] mb-4 transition-all duration-500 hover:text-[#030D55]" style="font-family: 'Playfair Display', serif; line-height: 100%;">Trabajemos en tu disociación   </h4>
+          <p class="text-center text-base leading-7 text-[#030D55] mb-4 transition-all duration-300 hover:translate-y-[-2px]">
           El video aborda la disociación como respuesta a traumas, explicando sus efectos y cómo la psicoterapia EMDR puede ayudar a reconectar contigo mismo y liderar tu vida con apoyo profesional.
           </p>
         </div>
         
         <!-- Video a la derecha -->
-        <div class="md:w-5/9 order-1 md:order-2">
-          <div style="border-radius: 16px; overflow: hidden; box-shadow: 0px 4px 16px 0px #AB277A; border: 4px solid white;">
+        <div class="md:w-5/9 order-1 md:order-2" data-aos="fade-left" data-aos-duration="600">
+          <div style="border-radius: 16px; overflow: hidden; box-shadow: 0px 4px 16px 0px #AB277A; border: 4px solid white;" class="transition-transform duration-500 hover:scale-105">
             <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/9z6mAyHNQVI" title="Testimonio de Lorena López" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
@@ -197,16 +197,16 @@
     <div class="container mx-auto px-4 py-12">
       <div class="flex flex-col md:flex-row gap-16 items-center max-w-6xl mx-auto">
         <!-- Video a la izquierda -->
-        <div class="md:w-5/9">
-          <div style="border-radius: 16px; overflow: hidden; box-shadow: 0px 4px 16px 0px #AB277A; border: 4px solid white;">
+        <div class="md:w-5/9" data-aos="fade-right" data-aos-duration="600">
+          <div style="border-radius: 16px; overflow: hidden; box-shadow: 0px 4px 16px 0px #AB277A; border: 4px solid white;" class="transition-transform duration-500 hover:scale-105">
             <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/miE8HNudwsM" title="Testimonio de Fernando Torres" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
         
         <!-- Texto del testimonio a la derecha -->
-        <div class="md:w-3/9">
-          <h4 class="text-center md:text-right text-2xl font-extrabold text-[#AB277A] mb-4" style="font-family: 'Playfair Display', serif; line-height: 100%;">Juntas podemos superar el abuso</h4>
-          <p class="text-center text-base leading-7 text-[#030D55] mb-4">
+        <div class="md:w-3/9" data-aos="fade-left" data-aos-duration="600">
+          <h4 class="text-center md:text-right text-2xl font-extrabold text-[#AB277A] mb-4 transition-all duration-500 hover:text-[#030D55]" style="font-family: 'Playfair Display', serif; line-height: 100%;">Juntas podemos superar el abuso</h4>
+          <p class="text-center text-base leading-7 text-[#030D55] mb-4 transition-all duration-300 hover:translate-y-[-2px]">
           El video aborda el dolor del abuso, ofreciendo apoyo profesional con psicoterapia EMDR para superar el trauma y recuperar bienestar emocional.
           </p>
         </div>
@@ -218,16 +218,16 @@
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row gap-16 items-center max-w-6xl mx-auto">
         <!-- Texto del testimonio a la izquierda -->
-        <div class="md:w-4/9 order-2 md:order-1">
-          <h4 class="text-center text-2xl font-extrabold text-[#AB277A] mb-4" style="font-family: 'Playfair Display', serif; line-height: 100%;">La mala suerte en el amor no existe, es trauma. Trabajemos juntos con EMDR.</h4>
-          <p class="text-center text-base leading-7 text-[#030D55] mb-4">
+        <div class="md:w-4/9 order-2 md:order-1" data-aos="fade-right" data-aos-duration="600">
+          <h4 class="text-center text-2xl font-extrabold text-[#AB277A] mb-4 transition-all duration-500 hover:text-[#030D55]" style="font-family: 'Playfair Display', serif; line-height: 100%;">La mala suerte en el amor no existe, es trauma. Trabajemos juntos con EMDR.</h4>
+          <p class="text-center text-base leading-7 text-[#030D55] mb-4 transition-all duration-300 hover:translate-y-[-2px]">
           Superar patrones dañinos en el amor es posible trabajando traumas pasados con psicoterapia EMDR para abrirse a relaciones saludables..
           </p>
         </div>
         
         <!-- Video a la derecha -->
-        <div class="md:w-5/9 order-1 md:order-2">
-          <div style="border-radius: 16px; overflow: hidden; box-shadow: 0px 4px 16px 0px #AB277A; border: 4px solid white;">
+        <div class="md:w-5/9 order-1 md:order-2" data-aos="fade-left" data-aos-duration="600">
+          <div style="border-radius: 16px; overflow: hidden; box-shadow: 0px 4px 16px 0px #AB277A; border: 4px solid white;" class="transition-transform duration-500 hover:scale-105">
             <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/nnW-a80PBMg" title="Testimonio de Lorena López" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
@@ -240,16 +240,16 @@
     <div class="container mx-auto px-4 py-12">
       <div class="flex flex-col md:flex-row gap-16 items-center max-w-6xl mx-auto">
         <!-- Video a la izquierda -->
-        <div class="md:w-5/9">
-          <div style="border-radius: 16px; overflow: hidden; box-shadow: 0px 4px 16px 0px #AB277A; border: 4px solid white;">
+        <div class="md:w-5/9" data-aos="fade-right" data-aos-duration="600">
+          <div style="border-radius: 16px; overflow: hidden; box-shadow: 0px 4px 16px 0px #AB277A; border: 4px solid white;" class="transition-transform duration-500 hover:scale-105">
             <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/EiXm9E8jqwM" title="Testimonio de Fernando Torres" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
         
         <!-- Texto del testimonio a la derecha -->
-        <div class="md:w-3/9">
-          <h4 class="text-center md:text-right text-2xl font-extrabold text-[#AB277A] mb-4" style="font-family: 'Playfair Display', serif; line-height: 100%;">Con EMDR, trabajemos juntos en tus miedos y traumas</h4>
-          <p class="text-center text-base leading-7 text-[#030D55] mb-4">
+        <div class="md:w-3/9" data-aos="fade-left" data-aos-duration="600">
+          <h4 class="text-center md:text-right text-2xl font-extrabold text-[#AB277A] mb-4 transition-all duration-500 hover:text-[#030D55]" style="font-family: 'Playfair Display', serif; line-height: 100%;">Con EMDR, trabajemos juntos en tus miedos y traumas</h4>
+          <p class="text-center text-base leading-7 text-[#030D55] mb-4 transition-all duration-300 hover:translate-y-[-2px]">
           Supera tus miedos y traumas con psicoterapia EMDR, sanando heridas del pasado, aprendiendo herramientas útiles y mejorando tu vida de manera duradera.
           </p>
         </div>
@@ -260,13 +260,13 @@
   <section class="bg-white py-16 mb-5">
     <div class="container mx-auto px-4 max-w-3xl">
       <!-- Contenido centrado con línea vertical -->
-      <div class="relative flex flex-col items-center text-center">
+      <div class="relative flex flex-col items-center text-center" data-aos="fade-up" data-aos-duration="600">
         
-        <h4 class="text-3xl font-bold mb-6 bg-white px-4 relative z-10" style="font-family: 'Playfair Display', serif;">
+        <h4 class="text-3xl font-bold mb-6 bg-white px-4 relative z-10 transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif;">
           Atención de emergencia:
         </h4>
         
-        <p class="text-base leading-7 max-w-xl bg-white px-4 relative z-10">
+        <p class="text-base leading-7 max-w-xl bg-white px-4 relative z-10 transition-all duration-300 hover:translate-y-[-2px]">
           Abordamos situaciones de emergencia, tales como desastres, catástrofe o delitos a nivel: individual, grupal, familiar o parejas, para empresas e instituciones.
         </p>
       </div>
