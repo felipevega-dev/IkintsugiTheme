@@ -1,21 +1,21 @@
 <!-- Footer Superior -->
-<footer class="relative bg-gradient-to-r from-[rgba(223,152,163,0.6)] to-[rgba(204,160,224,0.6)] overflow-hidden" style="height: 420px;">
-  <div class="container mx-auto relative px-4" style="max-width: 1512px; height: 100%;">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-14 relative py-12">
+<footer class="relative bg-gradient-to-r from-[rgba(223,152,163,0.6)] to-[rgba(204,160,224,0.6)] overflow-hidden py-16">
+  <div class="container mx-auto relative px-4" style="max-width: 1512px;">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-14 relative">
       <!-- Columna 1: Logo y redes sociales -->
       <div class="flex flex-col items-center md:items-start">
         <!-- Logo -->
-        <div class="mb-8 md:mb-16 md:ml-20 mt-0 md:mt-10">
-          <img src="{{ get_theme_file_uri('resources/images/kintsugi-hero.png') }}" alt="Logo" class="w-40 md:w-48 h-auto">
+        <div class="mb-8">
+          <img src="{{ get_theme_file_uri('resources/images/kintsugi-hero.png') }}" alt="Logo" class="w-40 h-auto">
         </div>
         
         <!-- Siguenos -->
-        <h3 class="text-[#AB277A] font-medium mb-4 text-xl md:ml-20" style="font-family: 'Roboto', sans-serif;">
+        <h3 class="text-[#AB277A] font-medium mb-4 text-xl" style="font-family: 'Roboto', sans-serif;">
           Síguenos
         </h3>
         
         <!-- Iconos sociales -->
-        <div class="flex space-x-8 items-center mb-6 md:ml-20">
+        <div class="flex space-x-8 items-center mb-6">
           <a href="https://www.instagram.com/instituto_kintsugi/" target="_blank" class="text-[#181818] hover:text-[#AB277A] transition-colors duration-300">
             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
@@ -39,19 +39,19 @@
         </div>
         
         <!-- Frase inspiradora -->
-        <p class="text-[#AB277A] text-2xl md:text-3xl text-center md:text-left md:ml-20" style="font-family: 'Hugamour', sans-serif;">
+        <p class="text-[#AB277A] text-2xl md:text-3xl text-center md:text-left w-full" style="font-family: 'Hugamour', sans-serif;">
           #El trauma se puede<br>superar
         </p>
       </div>
       
       <!-- Columna 2: Contacto -->
-      <div class="flex flex-col items-center md:items-start">
+      <div class="flex flex-col items-center md:items-start md:mt-[80px]">
         <h3 class="text-[#AB277A] font-medium mb-4 text-xl" style="font-family: 'Roboto', sans-serif;">
           Contacto
         </h3>
-        <ul class="space-y-4 text-center md:text-left">
+        <ul class="space-y-3 text-center md:text-left">
           <li>
-            <a href="mailto:hola@ikintsugi.cl" class="text-[#181818] underline text-base" style="font-family: 'Roboto', sans-serif; font-weight: 400;">
+            <a href="mailto:hola@ikintsugi.cl" class="text-[#181818] hover:text-[#AB277A] hover:underline transition-all duration-300 text-base" style="font-family: 'Roboto', sans-serif; font-weight: 400;">
               hola@ikintsugi.cl
             </a>
           </li>
@@ -69,18 +69,18 @@
       </div>
       
       <!-- Columna 3: Privacidad -->
-      <div class="flex flex-col items-center md:items-start">
+      <div class="flex flex-col items-center md:items-start md:mt-[80px]">
         <h3 class="text-[#AB277A] font-medium mb-4 text-xl" style="font-family: 'Roboto', sans-serif;">
           Privacidad
         </h3>
-        <ul class="space-y-4 text-center md:text-left">
+        <ul class="space-y-3 text-center md:text-left">
           <li>
-            <a href="#" class="text-[#181818] underline text-base" style="font-family: 'Roboto', sans-serif; font-weight: 400;">
+            <a href="#" class="text-[#181818] hover:text-[#AB277A] hover:underline transition-all duration-300 text-base" style="font-family: 'Roboto', sans-serif; font-weight: 400;">
               Términos Y condiciones
             </a>
           </li>
           <li>
-            <a href="#" class="text-[#181818] underline text-base" style="font-family: 'Roboto', sans-serif; font-weight: 400;">
+            <a href="#" class="text-[#181818] hover:text-[#AB277A] hover:underline transition-all duration-300 text-base" style="font-family: 'Roboto', sans-serif; font-weight: 400;">
               Política de privacidad
             </a>
           </li>
@@ -88,18 +88,18 @@
       </div>
       
       <!-- Columna 4: Instituciones Asociadas -->
-      <div class="flex flex-col items-center md:items-start">
+      <div class="flex flex-col items-center md:items-start md:mt-[80px]">
         <h3 class="text-[#AB277A] font-medium mb-4 text-xl" style="font-family: 'Roboto', sans-serif;">
           Instituciones Asociadas
         </h3>
-        <div class="flex flex-col items-center md:items-start">
+        <div class="flex flex-row items-center space-x-6">
           <!-- Logo 1 -->
-          <div class="mb-4">
-            <img src="{{ get_theme_file_uri('resources/images/logoemdr1.png') }}" alt="Asociación Chile" class="w-32 h-auto">
+          <div>
+            <img src="{{ get_theme_file_uri('resources/images/logoemdr1.png') }}" alt="Asociación Chile" class="w-28 h-auto hover:opacity-80 transition-opacity duration-300">
           </div>
           <!-- Logo 2 -->
           <div>
-            <img src="{{ get_theme_file_uri('resources/images/logoemdr2.png') }}" alt="EMDR Chile" class="w-24 h-auto">
+            <img src="{{ get_theme_file_uri('resources/images/logoemdr2.png') }}" alt="EMDR Chile" class="w-24 h-auto hover:opacity-80 transition-opacity duration-300">
           </div>
         </div>
       </div>
@@ -111,17 +111,17 @@
 <div class="h-20 bg-[#030D550D]"></div>
 
 <!-- Footer Inferior -->
-<footer class="relative bg-[#8961C480]" style="height: 79px;">
+<footer class="relative bg-[#C5ACE5]" style="height: 79px;">
   <div class="w-full h-full relative">
     <!-- Onda superior -->
     <svg viewBox="0 0 1512 30" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" class="w-full absolute -top-[30px] left-0" style="height: 30px;">
-      <path d="M0,30 L1512,30 L1512,10 C1200,0 800,5 500,15 C250,20 100,15 0,5 L0,30 Z" fill="#8961C480"></path>
+      <path d="M0,30 L1512,30 L1512,10 C1200,0 800,5 500,15 C250,20 100,15 0,5 L0,30 Z" fill="#C5ACE5"></path>
     </svg>
 
     <!-- Copyright -->
     <div class="flex items-center justify-center h-full">
       <p class="text-center font-medium text-base" style="font-family: 'Roboto', sans-serif; line-height: 100%;">
-        <a href="{{ home_url('/') }}" class="text-[#181818] hover:text-[#AB277A]">Ikintsugi</a> © {{ date('Y') }}. Todos los derechos reservados.
+        <a href="{{ home_url('/') }}" class="text-[#181818] hover:text-[#AB277A] transition-colors duration-300">Ikintsugi</a> © {{ date('Y') }}. Todos los derechos reservados.
       </p>
     </div>
   </div>
@@ -135,5 +135,25 @@
     font-weight: normal;
     font-style: normal;
     font-display: swap;
+  }
+  
+  /* Hover animations */
+  .footer-link {
+    position: relative;
+  }
+  
+  .footer-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #AB277A;
+    transition: width 0.3s ease;
+  }
+  
+  .footer-link:hover::after {
+    width: 100%;
   }
 </style>

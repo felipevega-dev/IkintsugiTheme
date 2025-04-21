@@ -8,7 +8,7 @@
   <!-- Hero Section con fondo blanco y figura morada alrededor de la foto -->
   <section class="relative bg-white overflow-hidden">
     <!-- Contenido del hero -->
-    <div class="container mx-auto px-4 py-20 lg:py-28 relative z-10 mt-15">
+    <div class="container mx-auto px-4 py-20 lg:py-22 relative z-10 mt-15">
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
         <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right" data-aos-duration="600">
@@ -49,7 +49,7 @@
   </section>
 
   <!-- Contact Section -->
-<section class="py-12 md:py-16 bg-white relative">
+<section class="py-8 md:py-12 bg-white relative">
   <div class="container mx-auto px-4 relative">
     <!-- Section title -->
     <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl md:text-[48px] leading-[100%] mb-10 md:mb-16 text-center transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif;" data-aos="fade-up" data-aos-duration="600">
