@@ -231,6 +231,7 @@
         'tratamiento-emdr',
         'que-esperar',
         'transtornos-y-malestares',
+        'preguntas-frecuentes'
         // Añadir aquí otras páginas con hero de fondo blanco según sea necesario
       ];
       
