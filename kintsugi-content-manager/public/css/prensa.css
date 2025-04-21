@@ -154,81 +154,84 @@
 
 /* Estilos para las noticias */
 .kintsugi-noticia-item {
-  position: relative !important;
-  border-radius: 16px !important;
-  overflow: hidden !important;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08) !important;
-  width: 100% !important; /* Ancho completo para ajustarse a la cuadrícula */
-  height: 420px !important; /* Altura fija para todas las tarjetas */
-  background-color: transparent !important;
-  border: none !important;
-  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
-  margin-bottom: 0 !important; /* Eliminar margen inferior, la cuadrícula ya tiene gap */
-  cursor: pointer !important;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  width: 100%; /* Ancho completo para ajustarse a la cuadrícula */
+  height: 420px; /* Altura fija para todas las tarjetas */
+  background-color: transparent;
+  border: none;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  margin-bottom: 0; /* Eliminar margen inferior, la cuadrícula ya tiene gap */
+  cursor: pointer;
 }
 
 .kintsugi-noticia-item::before {
-  content: '' !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  background: linear-gradient(180deg, rgba(171, 39, 122, 0.4) 0%, rgba(3, 13, 85, 0.6) 100%) !important;
-  z-index: 1 !important;
-  pointer-events: none !important;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(3, 13, 85, 0.2) 0%, rgba(3, 13, 85, 0.8) 100%);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .kintsugi-noticia-item:hover {
-  transform: translateY(-8px) !important;
-  box-shadow: 0 15px 30px rgba(54, 39, 102, 0.15) !important;
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(54, 39, 102, 0.15);
 }
 
 .kintsugi-noticia-image, .kintsugi-noticia-video {
-  height: 250px !important; /* Altura fija para las imágenes */
-  overflow: hidden !important;
+  height: 250px; /* Altura fija para las imágenes */
+  overflow: hidden;
 }
 
 .kintsugi-noticia-img, .kintsugi-noticia-video img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center !important; /* Centrar imagen */
-  transition: transform 0.5s !important;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center; /* Centrar imagen */
+  transition: transform 0.5s;
 }
 
 /* Efecto de imagen al hacer hover */
 .kintsugi-noticia-item:hover .kintsugi-noticia-img,
 .kintsugi-noticia-item:hover .kintsugi-noticia-video img {
-  transform: scale(1.05) !important;
+  transform: scale(1.05);
 }
 
 .kintsugi-noticia-content {
-  padding: 24px 16px !important;
-  position: relative !important;
-  z-index: 2 !important;
-  height: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
+  padding: 16px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: transparent;
 }
 
 /* Mejora la visibilidad del texto sobre el gradiente */
 .kintsugi-noticia-title {
-  color: white !important;
-  font-size: 22px !important;
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
-  font-family: 'Playfair Display', serif !important;
-  margin-bottom: 8px !important;
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 8px;
 }
 
 .kintsugi-noticia-excerpt {
-  color: rgba(255, 255, 255, 0.9) !important;
-  font-size: 16px !important;
-  line-height: 1.5 !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+  line-height: 1.5;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* Mejora la fecha */
@@ -506,20 +509,20 @@
 
 /* Corrección para los títulos y textos en el carrusel */
 .kintsugi-carousel-title {
-  color: white !important;
-  font-size: 22px !important;
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
-  font-family: 'Playfair Display', serif !important;
-  margin-bottom: 8px !important;
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 8px;
 }
 
 .kintsugi-carousel-excerpt {
-  color: rgba(255, 255, 255, 0.9) !important;
-  font-size: 16px !important;
-  line-height: 1.5 !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+  line-height: 1.5;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* Asegurar consistencia en la fecha del carrusel */
@@ -542,15 +545,15 @@
 
 /* Gradiente para las slides del carrusel */
 .kintsugi-carousel-slide::before {
-  content: '' !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  background: linear-gradient(180deg, rgba(171, 39, 122, 0.4) 0%, rgba(3, 13, 85, 0.6) 100%) !important;
-  z-index: 1 !important;
-  pointer-events: none !important;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(3, 13, 85, 0.2) 0%, rgba(3, 13, 85, 0.8) 100%);
+  z-index: 1;
+  pointer-events: none;
 }
 
 /* Estilos específicos para móvil */
@@ -585,4 +588,18 @@
   border-left: 4px solid #f35151 !important;
   margin: 20px 0 !important;
   font-weight: 500 !important;
+}
+
+/* Estilos para el carrusel */
+.kintsugi-carousel-content {
+  padding: 16px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: transparent;
 }

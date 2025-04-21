@@ -10,7 +10,7 @@
  * Plugin Name:       Kintsugi Content Manager
  * Plugin URI:        https://ikintsugi.com
  * Description:       Administra el contenido de noticias para el sitio de Kintsugi.
- * Version:           1.0.4
+ * Version:           1.0.5
  * Author:            Ikintsugi
  * Author URI:        https://ikintsugi.com
  * License:           GPL-2.0+

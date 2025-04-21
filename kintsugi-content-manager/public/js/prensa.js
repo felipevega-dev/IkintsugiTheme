@@ -218,19 +218,21 @@ jQuery(function($) {
     // Añadir gradiente a todos los elementos
     $('.kintsugi-carousel-slide, .swiper-slide, .kintsugi-noticia-item').each(function() {
       if (!$(this).find('.gradient-overlay').length) {
-        $(this).prepend('<div class="gradient-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(171, 39, 122, 0.4) 0%, rgba(3, 13, 85, 0.4) 61%); z-index: 1; pointer-events: none;"></div>');
+        $(this).prepend('<div class="gradient-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(3, 13, 85, 0.2) 0%, rgba(3, 13, 85, 0.8) 100%); z-index: 1; pointer-events: none;"></div>');
       }
     });
     
     // Estilos consistentes para el contenido
     $('.kintsugi-noticia-content, .kintsugi-carousel-content').css({
-      'padding': '24px 16px',
-      'position': 'relative',
+      'padding': '16px',
+      'position': 'absolute',
+      'bottom': '0',
+      'left': '0',
+      'right': '0',
       'z-index': '2',
-      'height': '100%',
       'display': 'flex',
       'flex-direction': 'column',
-      'justify-content': 'space-between',
+      'justify-content': 'flex-end',
       'background': 'transparent'
     });
 
@@ -253,8 +255,18 @@ jQuery(function($) {
       'margin-bottom': '8px'
     });
     
+    // Borrar explícitamente cualquier background que pudiera haber sido aplicado
+    $('.kintsugi-noticia-content, .kintsugi-carousel-content').css('background', 'transparent');
+    
+    // Asegurarse que todo el elemento de noticia tenga contenido posicionado en la parte inferior
+    $('.kintsugi-noticia-item a, .kintsugi-carousel-slide a').css({
+      'display': 'block',
+      'height': '100%',
+      'position': 'relative'
+    });
+    
     // Mejorar el estilo de las fechas
-    $('.kintsugi-noticia-date').css({
+    $('.kintsugi-noticia-date, .kintsugi-carousel-date').css({
       'position': 'absolute',
       'top': '15px',
       'left': '15px',
