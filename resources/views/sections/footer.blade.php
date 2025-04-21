@@ -1,9 +1,9 @@
 <!-- Footer Superior -->
 <footer class="relative bg-gradient-to-r from-[rgba(223,152,163,0.6)] to-[rgba(204,160,224,0.6)] overflow-hidden py-16">
   <div class="container mx-auto relative px-4" style="max-width: 1512px;">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-14 relative">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 relative">
       <!-- Columna 1: Logo y redes sociales -->
-      <div class="flex flex-col items-center md:items-start pl-8 md:pl-12">
+      <div class="flex flex-col items-center md:items-start pl-8 md:pl-12 md:col-span-4">
         <!-- Logo -->
         <div class="mb-8">
           <img src="{{ get_theme_file_uri('resources/images/kintsugi-hero.png') }}" alt="Logo" class="w-40 h-auto">
@@ -45,7 +45,7 @@
       </div>
       
       <!-- Columna 2: Contacto -->
-      <div class="flex flex-col items-center md:items-start md:mt-[80px]">
+      <div class="flex flex-col items-center md:items-start md:mt-[80px] md:col-span-2">
         <h3 class="text-[#AB277A] font-medium mb-4 text-xl" style="font-family: 'Roboto', sans-serif;">
           Contacto
         </h3>
@@ -69,7 +69,7 @@
       </div>
       
       <!-- Columna 3: Privacidad -->
-      <div class="flex flex-col items-center md:items-start md:mt-[80px]">
+      <div class="flex flex-col items-center md:items-start md:mt-[80px] md:col-span-2">
         <h3 class="text-[#AB277A] font-medium mb-4 text-xl" style="font-family: 'Roboto', sans-serif;">
           Privacidad
         </h3>
@@ -88,7 +88,7 @@
       </div>
       
       <!-- Columna 4: Instituciones Asociadas -->
-      <div class="flex flex-col items-center md:items-start md:mt-[80px]">
+      <div class="flex flex-col items-center md:items-start md:mt-[80px] md:col-span-4">
         <h3 class="text-[#AB277A] font-medium mb-4 text-xl" style="font-family: 'Roboto', sans-serif;">
           Instituciones Asociadas
         </h3>
