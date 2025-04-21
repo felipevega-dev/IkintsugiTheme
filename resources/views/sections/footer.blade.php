@@ -3,7 +3,7 @@
   <div class="container mx-auto relative px-4" style="max-width: 1512px;">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-14 relative">
       <!-- Columna 1: Logo y redes sociales -->
-      <div class="flex flex-col items-center md:items-start">
+      <div class="flex flex-col items-center md:items-start pl-8 md:pl-12">
         <!-- Logo -->
         <div class="mb-8">
           <img src="{{ get_theme_file_uri('resources/images/kintsugi-hero.png') }}" alt="Logo" class="w-40 h-auto">
@@ -95,11 +95,15 @@
         <div class="flex flex-row items-center space-x-6">
           <!-- Logo 1 -->
           <div>
-            <img src="{{ get_theme_file_uri('resources/images/logoemdr1.png') }}" alt="Asociación Chile" class="w-28 h-auto hover:opacity-80 transition-opacity duration-300">
+            <a href="https://www.emdr-es.org/Terapeutas" target="_blank" class="transition-opacity duration-300 hover:opacity-80">
+              <img src="{{ get_theme_file_uri('resources/images/logoemdr1.png') }}" alt="Asociación EMDR España" class="w-28 h-auto">
+            </a>
           </div>
           <!-- Logo 2 -->
           <div>
-            <img src="{{ get_theme_file_uri('resources/images/logoemdr2.png') }}" alt="EMDR Chile" class="w-24 h-auto hover:opacity-80 transition-opacity duration-300">
+            <a href="https://emdrchile.cl/terapeutas/julio-cesar-carrasco-rebolledo/" target="_blank" class="transition-opacity duration-300 hover:opacity-80">
+              <img src="{{ get_theme_file_uri('resources/images/logoemdr2.png') }}" alt="EMDR Chile" class="w-24 h-auto">
+            </a>
           </div>
         </div>
       </div>
