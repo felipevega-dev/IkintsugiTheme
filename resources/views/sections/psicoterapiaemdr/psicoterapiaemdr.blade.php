@@ -5,76 +5,47 @@
 @extends('layouts.app')
 
 @section('content')
-  <!-- HERO SECTION (antes en hero.blade.php) -->
-  <section class="relative bg-white pt-20 md:pt-36 pb-10 md:pb-15 overflow-hidden">
-    <div class="container mx-auto px-4 relative z-10">
-      <!-- Contenedor con flexbox en columna inversa para móvil y fila para desktop -->
-      <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
-        
-        <!-- ORDEN MODIFICADO: Primero mostramos la imagen en el DOM para que aparezca primero en móvil -->
-        <!-- Imagen - aparece primero en móvil, a la derecha en desktop -->
-        <div class="w-full md:w-2/5 md:order-last mb-6 md:mb-0" data-aos="fade-left" data-aos-duration="600">
-          <div class="relative mx-auto">
-            <!-- Imagen con forma orgánica -->
-            <div class="relative mx-auto hero-image-container transition-all duration-500 hover:scale-105" style="width: 330px; height: 330px; max-width: 100%; max-height: 100%;">
-              
-              <!-- Formas ameboides como en la imagen de referencia -->
-              <svg viewBox="0 0 450 450" class="absolute top-0 left-0 w-full h-full" style="transform-origin: center;">
-                <path d="M225,10 C280,10 330,30 360,80 C390,130 410,180 400,230 C390,280 370,320 330,370 C290,420 250,440 190,430 C130,420 90,390 60,340 C30,290 20,230 40,180 C60,130 90,80 140,40 C175,15 210,10 225,10 Z" 
-                    fill="none" stroke="#8961C4" stroke-width="1.5" stroke-opacity="0.6" style="transform-origin: center; animation: float 15s infinite ease-in-out;"/>
-              </svg>
-              
-              <svg viewBox="0 0 450 450" class="absolute top-0 left-0 w-full h-full" style="transform: scale(0.92); transform-origin: center;">
-                <path d="M225,30 C270,30 310,50 340,90 C370,130 385,170 380,210 C375,250 360,290 325,330 C290,370 260,390 210,385 C160,380 125,360 100,320 C75,280 65,230 80,190 C95,150 120,110 160,80 C185,60 210,30 225,30 Z" 
-                    fill="none" stroke="#F5B3F3" stroke-width="1.5" stroke-opacity="0.7" style="transform-origin: center; animation: float 12s infinite ease-in-out reverse;"/>
-              </svg>
-              
-              <svg viewBox="0 0 450 450" class="absolute top-0 left-0 w-full h-full" style="transform: scale(0.85); transform-origin: center;">
-                <path d="M225,50 C265,50 295,65 320,100 C345,135 360,170 355,205 C350,240 335,270 305,305 C275,340 245,355 205,350 C165,345 140,325 120,295 C100,265 90,230 100,195 C110,160 130,125 165,100 C185,85 200,50 225,50 Z" 
-                    fill="none" stroke="#030D55" stroke-width="1" stroke-opacity="0.7" style="transform-origin: center; animation: float 10s infinite ease-in-out;"/>
-              </svg>
-              
-              <!-- Animación flotante para las formas -->
-              <style>
-                @keyframes float {
-                  0% { transform: translateY(0) rotate(0deg); }
-                  25% { transform: translateY(5px) rotate(1deg); }
-                  50% { transform: translateY(0) rotate(0deg); }
-                  75% { transform: translateY(-5px) rotate(-1deg); }
-                  100% { transform: translateY(0) rotate(0deg); }
-                }
-              </style>
-              
-              <!-- Imagen circular -->
-              <div class="absolute inset-0 m-10 overflow-hidden rounded-full border-2 border-white shadow-md transition-transform duration-500 hover:shadow-lg">
-                <img src="{{ get_theme_file_uri('resources/images/psicoterapiaemdr1.png') }}" alt="Psicoterapia EMDR" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110">
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Texto - aparece segundo en móvil, a la izquierda en desktop -->
-        <div class="w-full md:w-3/5 md:order-first md:ml-auto" data-aos="fade-right" data-aos-duration="600">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-[#030D55] transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 1.1;">
-            EMDR: Sana<br>traumas y libera tu<br>bienestar emocional
+  <!-- Hero Section con fondo blanco y figura morada alrededor de la foto -->
+  <section class="relative bg-white overflow-hidden">
+    <!-- Contenido del hero -->
+    <div class="container mx-auto px-4 py-20 lg:py-28 relative z-10 mt-15">
+      <div class="flex flex-col lg:flex-row items-center">
+        <!-- Columna de texto -->
+        <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right" data-aos-duration="600">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 1.1;">
+            EMDR: Sana traumas y libera tu bienestar emocional
           </h1>
-          
-          <p class="text-2xl md:text-4xl mt-6 md:mt-14 text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
+          <p class="text-4xl mt-14 text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
             #Mereces una vida mejor
           </p>
         </div>
+        
+        <!-- Imagen a la derecha con fondo morado -->
+        <div class="lg:w-1/2 flex justify-center lg:justify-end relative" data-aos="fade-left" data-aos-duration="600">
+          <!-- Fondo morado orgánico que rodea la imagen con medidas precisas -->
+          <div class="absolute inset-0 z-0 transition-transform duration-700 hover:scale-105">
+            <svg width="586.48px" height="565.73px" viewBox="0 0 586.48 565.73" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 0; left: 0;">
+              <path d="M140,60 C100,110 20,180 40,280 C60,380 120,420 180,460 C240,500 300,540 400,500 C500,460 580,380 560,280 C540,200 500,160 440,100 C380,40 300,20 220,20 C180,20 180,10 140,60 Z" fill="#8961C4"/>
+            </svg>
+          </div>
+          
+          <!-- Elementos gráficos de fondo -->
+          <div class="absolute w-16 h-16 rounded-full bg-[#9978d1] opacity-40 top-10 left-5 z-0 animate-pulse"></div>
+          <div class="absolute w-12 h-12 rounded-full bg-[#9978d1] opacity-30 bottom-10 right-10 z-0 animate-pulse" style="animation-delay: 1s;"></div>
+          <!-- Líneas decorativas -->
+          <div class="absolute h-[40%] w-px bg-white opacity-20 top-10 left-1/3 z-0"></div>
+          <div class="absolute h-px w-[20%] bg-white opacity-20 top-1/3 right-20 z-0"></div>
+          
+          <!-- Imagen actual -->
+          <img 
+            src="{{ get_theme_file_uri('resources/images/psicoterapiaemdr1.png') }}" 
+            alt="Psicoterapia EMDR" 
+            class="max-w-full h-auto rounded-lg relative z-10 transition-transform duration-500 hover:scale-105"
+            style="max-width: 580px; position: relative;"
+          >
+        </div>
       </div>
     </div>
-    
-    <!-- Estilos específicos para asegurar el tamaño correcto en PC -->
-    <style>
-      @media (min-width: 768px) {
-        .hero-image-container {
-          width: 500px !important;
-          height: 500px !important;
-        }
-      }
-    </style>
   </section>
 
   
@@ -82,7 +53,7 @@
   <section class="bg-[#CCA0E00D] py-10 lg:py-16">
     <div class="container mx-auto px-4">
       <div class="flex flex-col lg:flex-row items-center gap-8">
-        <!-- Imagen a la izquierda -->
+        <!-- Imagen a la izquierda -->  
         <div class="w-full lg:w-1/2 flex justify-center lg:justify-start relative order-2 lg:order-1" data-aos="fade-right" data-aos-duration="600">
           <img 
             src="{{ get_theme_file_uri('resources/images/psicoterapiaemdr2.png') }}" 
