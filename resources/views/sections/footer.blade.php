@@ -31,9 +31,9 @@
               <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
             </svg>
           </a>
-          <a href="#" class="text-[#181818] hover:text-[#AB277A] transition-colors duration-300">
+          <a href="https://open.spotify.com/show/08J06mjqK1UxNgXPTVlMkJ?si=3bd91370c015422e" target="_blank" class="text-[#181818] hover:text-[#AB277A] transition-colors duration-300">
             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z"/>
+              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
             </svg>
           </a>
         </div>
@@ -75,12 +75,12 @@
         </h3>
         <ul class="space-y-3 text-center md:text-left">
           <li>
-            <a href="#" class="text-[#181818] hover:text-[#AB277A] hover:underline transition-all duration-300 text-base" style="font-family: 'Roboto', sans-serif; font-weight: 400;">
+            <a href="{{ home_url('/terminos-y-condiciones') }}" class="text-[#181818] hover:text-[#AB277A] hover:underline transition-all duration-300 text-base" style="font-family: 'Roboto', sans-serif; font-weight: 400;">
               Términos Y condiciones
             </a>
           </li>
           <li>
-            <a href="#" class="text-[#181818] hover:text-[#AB277A] hover:underline transition-all duration-300 text-base" style="font-family: 'Roboto', sans-serif; font-weight: 400;">
+            <a href="{{ home_url('/politica-de-privacidad') }}" class="text-[#181818] hover:text-[#AB277A] hover:underline transition-all duration-300 text-base" style="font-family: 'Roboto', sans-serif; font-weight: 400;">
               Política de privacidad
             </a>
           </li>
