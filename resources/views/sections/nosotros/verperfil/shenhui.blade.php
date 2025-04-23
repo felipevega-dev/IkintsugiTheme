@@ -26,7 +26,7 @@
       <p class="mb-4">He dedicado mi vida profesional a facilitar el proceso de cambio en las personas adultas que han sufrido dolorosas heridas emocionales, causadas por los vínculos interpersonales y laborales. Abordando los trastornos psicológicos derivados de las vivencias traumáticas, tales como; trastorno de estrés postraumático (TEPT), trauma complejo, trastornos disociativos, ansiedad, depresión, trastorno límite de la personalidad, como también la posibilidad de salir adelante y reparar el daño en quienes han sido víctimas de abuso, violencia de género, maltrato en ambiente laboral o mobbing, entre otros.</p>
       <p class="mb-4">Mi enfoque integrativo busca proporcionar un espacio seguro y comprensivo donde las personas puedan sentirse escuchadas y apoyadas, en su camino hacia la sanación y transformación de sus heridas y vidas.</p>
     ';
-    $titulo_video = "Estoy aquí para acompañarte en el<br>proceso de sanar y recuperar tu<br>bienestar emocional.";
+    $titulo_video = "Estoy aquí para acompañarte en el proceso de sanar y recuperar tu bienestar emocional.";
     $video_id = "XBhKLq9y9bE"; // ID del video de presentación de Shenhui
     
     $titulo_formacion = "Formación Académica y Certificaciones Internacionales";

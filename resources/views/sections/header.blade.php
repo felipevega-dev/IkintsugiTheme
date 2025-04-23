@@ -673,7 +673,7 @@
         <!-- Menú desplegable para Prensa y social media -->
         <div class="border-b border-gray-100">
           <div class="flex justify-between items-center py-3 cursor-pointer" id="prensa-toggle">
-            <a href="{{ home_url('/canales-oficiales') }}" 
+            <a href="{{ home_url('/prensa') }}" 
               class="text-gray-900 font-roboto
                     {{ (strpos($current_url, 'canales-oficiales') !== false || 
                       strpos($current_url, 'prensa-y-social') !== false || 
@@ -696,10 +696,10 @@
                     {{ (strpos($current_url, 'blog') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
               Blog
             </a>
-            <a href="{{ home_url('/prensa-y-social') }}" 
+            <a href="{{ home_url('/canales-oficiales') }}" 
               class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
-                    {{ (strpos($current_url, 'prensa-y-social') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
-              Prensa
+                    {{ (strpos($current_url, 'canales-oficiales') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+              Canales oficiales
             </a>
           </div>
         </div>
