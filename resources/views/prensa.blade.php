@@ -1,3 +1,6 @@
+{{--
+Template Name: Prensa Template
+--}}
 @extends('layouts.app')
 @section('content')
 <div class="kintsugi-theme-wrapper">
