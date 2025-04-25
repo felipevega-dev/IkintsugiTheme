@@ -1,5 +1,5 @@
 <!-- Hero Section -->
-<section class="relative bg-[#362766] pt-0 max-w-full">
+<section class="relative bg-[#362766] pt-0 overflow-x-hidden max-w-full">
   <!-- Video de fondo con overlay -->
   <div class="absolute inset-0 z-0">
     <div class="absolute inset-0 bg-[#362766] opacity-70 z-10"></div>

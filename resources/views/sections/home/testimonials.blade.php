@@ -1,5 +1,5 @@
 <!-- Testimonials Section -->
-<section class="py-10 bg-white relative">
+<section class="py-10 bg-white relative overflow-x-hidden">
   <div class="container mx-auto px-4 pt-10">
     <!-- Section title -->
     <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl md:text-[48px] leading-tight mb-32 md:mb-56 text-center" style="font-family: 'Playfair Display', serif;" data-aos="fade-up" data-aos-duration="600">

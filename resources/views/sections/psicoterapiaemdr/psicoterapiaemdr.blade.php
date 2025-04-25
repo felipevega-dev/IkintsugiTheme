@@ -6,7 +6,7 @@
 
 @section('content')
   <!-- Hero Section con fondo blanco y figura morada alrededor de la foto -->
-  <section class="relative bg-white overflow-hidden">
+  <section class="relative bg-white overflow-x-hidden">
     <!-- Contenido del hero -->
     <div class="container mx-auto px-4 py-20 lg:py-28 relative z-10 mt-15">
       <div class="flex flex-col lg:flex-row items-center">
@@ -22,27 +22,30 @@
         
         <!-- Imagen a la derecha con fondo morado -->
         <div class="lg:w-1/2 flex justify-center lg:justify-end relative" data-aos="fade-left" data-aos-duration="600">
-          <!-- Fondo morado orgánico que rodea la imagen con medidas precisas -->
-          <div class="absolute inset-0 z-0 transition-transform duration-700 hover:scale-105">
-            <svg width="586.48px" height="565.73px" viewBox="0 0 586.48 565.73" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 0; left: 0;">
-              <path d="M140,60 C100,110 20,180 40,280 C60,380 120,420 180,460 C240,500 300,540 400,500 C500,460 580,380 560,280 C540,200 500,160 440,100 C380,40 300,20 220,20 C180,20 180,10 140,60 Z" fill="#8961C4"/>
-            </svg>
+          <div class="relative w-full max-w-[580px] mx-auto">
+            <div class="relative">
+              <!-- Fondo morado orgánico que rodea la imagen con medidas precisas -->
+              <div class="absolute inset-0 z-0">
+                <svg viewBox="0 0 586 566" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                  <path d="M140,60 C100,110 20,180 40,280 C60,380 120,420 180,460 C240,500 300,540 400,500 C500,460 580,380 560,280 C540,200 500,160 440,100 C380,40 300,20 220,20 C180,20 180,10 140,60 Z" fill="#8961C4"/>
+                </svg>
+              </div>
+              
+              <!-- Elementos gráficos de fondo -->
+              <div class="absolute w-16 h-16 rounded-full bg-[#9978d1] opacity-40 top-10 left-5 z-0 animate-pulse"></div>
+              <div class="absolute w-12 h-12 rounded-full bg-[#9978d1] opacity-30 bottom-10 right-10 z-0 animate-pulse" style="animation-delay: 1s;"></div>
+              <!-- Líneas decorativas -->
+              <div class="absolute h-[40%] w-px bg-white opacity-20 top-10 left-1/3 z-0"></div>
+              <div class="absolute h-px w-[20%] bg-white opacity-20 top-1/3 right-20 z-0"></div>
+              
+              <!-- Imagen actual -->
+              <img 
+                src="{{ get_theme_file_uri('resources/images/psicoterapiaemdr1.png') }}" 
+                alt="Psicoterapia EMDR" 
+                class="relative z-10 w-full h-auto rounded-lg transition-transform duration-500 hover:scale-105"
+              >
+            </div>
           </div>
-          
-          <!-- Elementos gráficos de fondo -->
-          <div class="absolute w-16 h-16 rounded-full bg-[#9978d1] opacity-40 top-10 left-5 z-0 animate-pulse"></div>
-          <div class="absolute w-12 h-12 rounded-full bg-[#9978d1] opacity-30 bottom-10 right-10 z-0 animate-pulse" style="animation-delay: 1s;"></div>
-          <!-- Líneas decorativas -->
-          <div class="absolute h-[40%] w-px bg-white opacity-20 top-10 left-1/3 z-0"></div>
-          <div class="absolute h-px w-[20%] bg-white opacity-20 top-1/3 right-20 z-0"></div>
-          
-          <!-- Imagen actual -->
-          <img 
-            src="{{ get_theme_file_uri('resources/images/psicoterapiaemdr1.png') }}" 
-            alt="Psicoterapia EMDR" 
-            class="max-w-full h-auto rounded-lg relative z-10 transition-transform duration-500 hover:scale-105"
-            style="max-width: 580px; position: relative;"
-          >
         </div>
       </div>
     </div>
@@ -50,7 +53,7 @@
 
   
   <!-- Segunda sección con fondo lavanda claro -->
-  <section class="bg-[#CCA0E00D] py-10 lg:py-16">
+  <section class="bg-[#CCA0E00D] py-10 lg:py-16 overflow-x-hidden">
     <div class="container mx-auto px-4">
       <div class="flex flex-col lg:flex-row items-center gap-8">
         <!-- Imagen a la izquierda -->  
@@ -58,8 +61,7 @@
           <img 
             src="{{ get_theme_file_uri('resources/images/psicoterapiaemdr2.png') }}" 
             alt="Qué nos inspira" 
-            class="max-w-full h-auto rounded-lg relative z-10 transition-transform duration-500 hover:scale-105"
-            style="max-width: 100%; @media (min-width: 1024px) { max-width: 543px; }"
+            class="w-full max-w-[543px] h-auto rounded-lg relative z-10 transition-transform duration-500 hover:scale-105"
           >
         </div>
         
@@ -69,7 +71,7 @@
             ¿Qué es la Psicoterapia <br> EMDR?
           </h2>
           
-          <div class="prose prose-lg">
+          <div class="prose prose-lg max-w-none">
             <p class="font-normal text-base leading-7 transition-all duration-300 hover:translate-x-1" style="font-family: 'Roboto', sans-serif;">
               <strong>Historia</strong>
             </p>
@@ -92,7 +94,7 @@
   </section>
 
   <!-- Tercera sección con fondo blanco -->
-  <section class="bg-white py-10 lg:py-16 max-w-[1440px] mx-auto">
+  <section class="bg-white py-10 lg:py-16 overflow-x-hidden">
     <div class="container mx-auto px-4">
       <div class="flex flex-col lg:flex-row items-center gap-6 md:gap-4">
         <!-- Texto explicativo -->
@@ -101,7 +103,7 @@
             <strong>¿En que se basa?</strong>
           </h2>
           
-          <div class="prose prose-lg">
+          <div class="prose prose-lg max-w-none">
             <p class="font-normal text-base leading-7 transition-all duration-300 hover:translate-y-[-2px]" style="font-family: 'Roboto', sans-serif;">
               Se basa en la comprensión del efecto de las experiencias vitales adversas y traumáticas sobre la patología y en el procesamiento de dichas experiencias a través de procedimientos estructurados que incluyen movimientos oculares u otras formas de estimulación bilateral.
             </p>
@@ -130,8 +132,7 @@
           <img 
             src="{{ get_theme_file_uri('resources/images/psicoterapiaemdr3.png') }}" 
             alt="EMDR Therapy" 
-            class="max-w-full h-auto rounded-lg relative z-10 transition-transform duration-500 hover:scale-105"
-            style="max-width: 100%; @media (min-width: 1024px) { max-width: 543px; }"
+            class="w-full max-w-[543px] h-auto rounded-lg relative z-10 transition-transform duration-500 hover:scale-105"
           >
         </div>
       </div>

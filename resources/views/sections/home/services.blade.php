@@ -1,5 +1,5 @@
 <!-- Services Section -->
-<section class="py-10 md:py-16 pb-16 md:pb-24 mb-10 md:mb-20 relative overflow-hidden bg-[#030D550D]">
+<section class="py-10 md:py-16 pb-16 md:pb-24 mb-10 md:mb-20 relative overflow-x-hidden bg-[#030D550D]">
   <!-- La planta ahora está en la sección features con dimensiones específicas -->
   
   <div class="container mx-auto px-4 relative z-10">

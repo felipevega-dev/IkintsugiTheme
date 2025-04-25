@@ -34,11 +34,11 @@ Template Name: Prensa Template
 
   <!-- Sección 1: Noticias destacadas en el carrusel -->
   <section class="bg-white py-12 overflow-hidden">
-    <div class="container mx-auto px-4">
+    <div class="w-full max-w-7xl mx-auto px-4">
       <h2 class="text-3xl md:text-4xl font-bold text-[#030D55] mb-8 text-left font-playfair">Noticias destacadas</h2>
       
       <!-- Contenedor del carrusel con estilos personalizados -->
-      <div class="carousel-container max-w-[1200px] mx-auto">
+      <div class="max-w-[1200px] mx-auto">
         {!! do_shortcode('[simple_carousel]') !!}
       </div>
     </div>
