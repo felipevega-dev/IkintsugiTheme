@@ -5,6 +5,12 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+  .page-template-charlasytalleres {
+    padding-top: 0 !important;
+  }
+</style>
+
 <!-- Hero Section -->
 <section class="relative bg-[#362766] overflow-hidden pt-32 max-w-full">
   <!-- Video de fondo con overlay -->

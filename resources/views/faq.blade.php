@@ -5,6 +5,12 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+  .page-template-faq {
+    padding-top: 0 !important;
+  }
+</style>
+
   <!-- Hero Section con fondo blanco y figura morada alrededor de la foto -->
   <section class="relative bg-white overflow-hidden">
     <!-- Contenido del hero -->

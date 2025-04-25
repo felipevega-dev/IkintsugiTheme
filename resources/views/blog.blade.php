@@ -5,6 +5,12 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+  .page-template-blog {
+    padding-top: 0 !important;
+  }
+</style>
+
 <!-- Hero Section -->
 <section class="relative bg-[#362766] overflow-hidden pt-24 md:pt-32">
   <!-- Imagen de fondo con overlay -->

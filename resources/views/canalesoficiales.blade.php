@@ -5,6 +5,12 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+  .page-template-canalesoficiales {
+    padding-top: 0 !important;
+  }
+</style>
+
 <!-- Estilos específicos para esta página -->
 <style>
   /* Corrige problemas de iframes y líneas negras en móvil */

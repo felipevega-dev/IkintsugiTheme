@@ -3,6 +3,11 @@ Template Name: Prensa Template
 --}}
 @extends('layouts.app')
 @section('content')
+<style>
+  .page-template-prensa {
+    padding-top: 0 !important;
+  }
+</style>
 <div class="kintsugi-theme-wrapper">
   <!-- Hero Section -->
   <section class="relative bg-[#362766] overflow-hidden pt-10 md:pt-22">
