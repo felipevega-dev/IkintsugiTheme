@@ -6,7 +6,7 @@
 
 @section('content')
   <!-- Hero Section con fondo blanco y figura morada alrededor de la foto -->
-  <section class="relative bg-white overflow-hidden">
+  <section class="relative bg-white overflow-x-hidden">
     <!-- Contenido del hero -->
     <div class="container mx-auto px-4 py-20 lg:py-28 relative z-10 mt-15">
       <div class="flex flex-col lg:flex-row items-center">
@@ -56,7 +56,7 @@
   </section>
 
   <!-- Segunda sección con fondo lavanda claro -->
-  <section class="bg-[#CCA0E00D] py-10 lg:py-16">
+  <section class="bg-[#CCA0E00D] py-10 lg:py-16 overflow-x-hidden">
     <div class="container mx-auto px-4">
       <!-- Contenido centrado -->
       <div class="max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-duration="600">
@@ -78,7 +78,7 @@
   </section>
 
   <!-- Primer Testimonio - Lorena López -->
-  <section class="bg-white py-16 relative">
+  <section class="bg-white py-16 relative overflow-x-hidden">
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row gap-16 items-center max-w-6xl mx-auto">
         <!-- Texto del testimonio a la izquierda -->
@@ -98,7 +98,7 @@
   </section>
 
   <!-- Segundo Testimonio - Fernando Torres -->
-  <section class="bg-white pb-20 relative">
+  <section class="bg-white pb-20 relative overflow-x-hidden">
     <div class="container mx-auto px-4 py-12">
       <div class="flex flex-col md:flex-row gap-16 items-center max-w-6xl mx-auto">
         <!-- Video a la izquierda -->

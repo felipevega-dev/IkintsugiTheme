@@ -6,7 +6,7 @@
 
 @section('content')
   <!-- Hero Section con fondo blanco y figura morada alrededor de la foto -->
-  <section class="relative bg-white overflow-hidden">
+  <section class="relative bg-white overflow-x-hidden">
     <!-- Contenido del hero -->
     <div class="container mx-auto px-4 py-20 lg:py-28 relative z-10 mt-15">
       <div class="flex flex-col lg:flex-row items-center">
@@ -51,7 +51,7 @@
 
   <!-- Beneficios de la Psicoterapia EMDR -->
    <!-- MISIÓN Y VALORES SECTION (antes en mision-valores.blade.php) -->
-  <section class="py-50 relative overflow-hidden" style="background-color: #030D550D;">
+  <section class="py-50 relative overflow-x-hidden" style="background-color: #030D550D;">
     <!-- Fondo con imagen vectorial y efecto de degradado -->
     <div class="absolute top-0 left-0 w-full h-full z-0">
       <img src="{{ get_theme_file_uri('resources/images/vector1.png') }}" alt="Fondo" class="w-full h-full object-cover">
@@ -113,7 +113,7 @@
     </div>
   </section> 
   <!-- Segunda sección con fondo blanco-->
-  <section class="bg-white py-10 lg:py-16">
+  <section class="bg-white py-10 lg:py-16 overflow-x-hidden">
     <div class="container mx-auto px-4 max-w-7xl">
       <div class="flex flex-col lg:flex-row items-center gap-4">
         <!-- Imagen a la izquierda -->

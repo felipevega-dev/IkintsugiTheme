@@ -6,7 +6,7 @@
 
 @section('content')
   <!-- Hero Section -->
-  <section class="relative bg-white overflow-hidden">
+  <section class="relative bg-white overflow-x-hidden">
     <div class="container mx-auto px-4 py-20 lg:py-28 relative z-10 mt-15">
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
@@ -55,7 +55,7 @@
   </section>
   
   <!-- Segunda sección con fondo lavanda claro -->
-  <section class="bg-[#CCA0E00D] py-10 lg:py-16">
+  <section class="bg-[#CCA0E00D] py-10 lg:py-16 overflow-x-hidden">
     <div class="container mx-auto px-4">
       <div class="flex flex-col lg:flex-row items-center gap-8">
         <!-- Imagen a la izquierda -->
