@@ -33,83 +33,74 @@ Template Name: Prensa Template
   </section>
 
   <!-- Sección 1: Noticias destacadas en el carrusel -->
-  <section class="bg-white py-4 overflow-hidden">
+  <section class="bg-white py-12 overflow-hidden">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl md:text-4xl font-bold text-[#030D55] mb-8 text-left font-playfair">Noticias destacadas</h2>
-      <!-- Indicador visual de deslizamiento -->
-      <div class="flex items-center justify-center mb-4">
-        <div class="swipe-indicator left-indicator"><div class="swipe-indicator-dot"></div></div>
-        <span class="text-sm text-gray-500 mx-4">Desliza para ver más noticias</span>
-        <div class="swipe-indicator right-indicator"><div class="swipe-indicator-dot"></div></div>
+      
+      <!-- Contenedor del carrusel con estilos personalizados -->
+      <div class="carousel-container max-w-[1200px] mx-auto">
+        {!! do_shortcode('[simple_carousel]') !!}
       </div>
-      <!-- Carrusel principal -->
-      <div id="kintsugi-carousel-main" class="swiper kintsugi-carousel-container">
-        <div class="swiper-wrapper">
-          <?php
-            $carousel_ids = get_option('kintsugi_carousel_noticias', []);
-            if (!empty($carousel_ids['noticias_ids'] ?? [])) {
-              echo do_shortcode('[administracion_noticias_carrousel ids="' . implode(',', $carousel_ids['noticias_ids']) . '" count="8"]');
-            } else {
-              echo do_shortcode('[administracion_noticias_carrousel count="5"]');
-            }
-          ?>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
+
+      <style>
+        /* Estilos personalizados para el contenedor del carrusel */
+        .carousel-container .simple-carousel {
+          max-width: 100%;
+          margin: 0 auto;
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+          border-radius: 8px;
+          overflow: hidden;
+        }
+
+        /* Ajustes para los slides de video */
+        .carousel-container .video-slide {
+          background: #000;
+        }
+
+        /* Mejoras para las flechas de navegación */
+        .carousel-container .simple-carousel-prev,
+        .carousel-container .simple-carousel-next {
+          background: rgba(54, 39, 102, 0.7);
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+        }
+
+        .carousel-container .simple-carousel-prev:hover,
+        .carousel-container .simple-carousel-next:hover {
+          background: rgba(54, 39, 102, 0.9);
+          transform: scale(1.1);
+        }
+
+        /* Mejoras para los títulos */
+        .carousel-container .simple-carousel-caption {
+          background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+          padding: 20px;
+        }
+
+        .carousel-container .simple-carousel-caption h3 {
+          font-family: 'Playfair Display', serif;
+          font-size: 1.5rem;
+          margin-bottom: 0.5rem;
+        }
+      </style>
     </div>
   </section>
 
   <!-- Sección 2: Todas las noticias -->
-  <section class="bg-gray-50 py-4">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-[#030D55] mb-8 text-left font-playfair">Todas las noticias</h2>
-      <!-- Filtros y búsqueda AJAX -->
-      <div class="kintsugi-filters-container mb-8">
-        <div class="flex flex-wrap items-center gap-4">
-          <!-- Búsqueda -->
-          <div class="search-container flex-grow">
-            <label for="kintsugi-search-input" class="block mb-1 text-sm font-medium text-gray-700 md:hidden">Buscar</label>
-            <div class="relative">
-              <input id="kintsugi-search-input" type="text" placeholder="Buscar noticias..." class="w-full px-4 py-2 pl-10 border rounded-md focus:ring-2 focus:ring-[#362766]">
-              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <!-- Icono de búsqueda -->
-              </div>
-            </div>
-          </div>
-          <!-- Filtros de año y orden -->
-          <select id="kintsugi-year-filter" class="px-4 py-2 border rounded-md focus:ring-2 focus:ring-[#362766]">
-            <option value="all">Todos los años</option>
-            <?php for ($i = 0; $i <= 4; $i++): $year = date('Y') - $i; ?>
-            <option value="<?= $year; ?>"><?= $year; ?></option>
-            <?php endfor; ?>
-          </select>
-          <select id="kintsugi-sort-filter" class="px-4 py-2 border rounded-md focus:ring-2 focus:ring-[#362766]">
-            <option value="date-desc">Más recientes primero</option>
-            <option value="date-asc">Más antiguos primero</option>
-            <option value="title-asc">Título (A-Z)</option>
-            <option value="title-desc">Título (Z-A)</option>
-          </select>
-        </div>
-      </div>
-      <div id="kintsugi-noticias-ajax-container">
-        {!! do_shortcode('[administracion_noticias per_page="4"]') !!}
+  <section class="bg-gray-50 py-12">
+    <div class="container mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-[#030D55] mb-8 text-left font-playfair px-4">Todas las noticias</h2>
+      
+      <!-- Grid de noticias -->
+      <div class="news-grid-container">
+        {!! do_shortcode('[simple_carousel_grid items_per_page="9" orderby="date" order="DESC"]') !!}
       </div>
     </div>
   </section>
-
-  <!-- Elementor content -->
-  <section class="elementor-section">
-    <div class="elementor-container">@php the_content(); @endphp</div>
-  </section>
-
-  <!-- Popup de video -->
-  <div class="kintsugi-video-popup">
-    <div class="kintsugi-video-popup-inner">
-      <div class="kintsugi-video-popup-container">
-        <div class="kintsugi-video-popup-content"></div>
-      </div>
-      <button class="kintsugi-video-popup-close">×</button>
-    </div>
-  </div>
 </div>
 @endsection

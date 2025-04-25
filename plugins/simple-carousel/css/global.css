@@ -1,0 +1,33 @@
+/* Modal global para videos (usado en carousel y grid) */
+#video-modal-popup {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.85);
+      align-items: center;
+      justify-content: center;
+      display: flex !important;
+  }
+  #video-modal-content {
+      position: relative;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+  }
+  #video-modal-popup iframe {
+      width: 70vw; min-width: 320px;
+      height: 40vw; min-height: 200px;
+      max-width: 900px; max-height: 510px;
+      background: #000;
+      border: none;
+      border-radius: 12px;
+  }
+  #video-modal-close {
+      position: absolute; top: 0; right: 0;
+      font-size: 2rem; color: #fff; background: #362766;
+      border: none; border-radius: 0 8px 0 8px;
+      width: 44px; height: 44px; cursor: pointer;
+      z-index: 2;
+  }
+  

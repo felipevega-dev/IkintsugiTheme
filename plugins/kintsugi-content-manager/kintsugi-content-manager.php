@@ -27,8 +27,10 @@ if (!defined('WPINC')) {
 // Plugin version
 define('KINTSUGI_CONTENT_MANAGER_VERSION', '1.0.3');
 
-// Plugin folder URL.
-define('KINTSUGI_CONTENT_MANAGER_PLUGIN_URL', plugin_dir_url(__FILE__));
+// Plugin folder URL - fixing Windows path issues
+$plugin_url = plugin_dir_url(__FILE__);
+$plugin_url = str_replace('\\', '/', $plugin_url); // Convert Windows backslashes to forward slashes
+define('KINTSUGI_CONTENT_MANAGER_PLUGIN_URL', $plugin_url);
 
 // Plugin folder path.
 define('KINTSUGI_CONTENT_MANAGER_PLUGIN_DIR', plugin_dir_path(__FILE__));

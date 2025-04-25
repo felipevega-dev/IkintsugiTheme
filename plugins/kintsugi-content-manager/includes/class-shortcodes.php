@@ -53,82 +53,85 @@ class Kintsugi_Content_Manager_Shortcodes {
      * @since    1.0.0
      */
     public function enqueue_scripts() {
-        // Only enqueue on pages where shortcodes are used
+        // Only enqueue on pages where shortcodes are used or on the prensa template
         global $post;
-        if (is_a($post, 'WP_Post') && (
-            has_shortcode($post->post_content, 'administracion_noticias') || 
-            has_shortcode($post->post_content, 'administracion_noticias_carrousel') ||
-            has_shortcode($post->post_content, 'administracion_noticias_recientes'))) {
-            
-            // Check if we're using a Sage theme with Vite
-            $is_sage_theme = function_exists('kintsugi_detect_sage_theme') ? kintsugi_detect_sage_theme() : false;
-            
-            if (!$is_sage_theme) {
-                // Regular WordPress themes - standard enqueuing
-                // Styles
-                wp_enqueue_style(
-                    'kintsugi-content-manager-public',
-                    KINTSUGI_CONTENT_MANAGER_PLUGIN_URL . 'public/css/public.css',
-                    array(),
-                    KINTSUGI_CONTENT_MANAGER_VERSION
-                );
-                
-                // Scripts
-                wp_enqueue_script(
-                    'kintsugi-content-manager-public',
-                    KINTSUGI_CONTENT_MANAGER_PLUGIN_URL . 'public/js/public.js',
-                    array('jquery'),
-                    KINTSUGI_CONTENT_MANAGER_VERSION,
-                    true
-                );
-            } else {
-                // Direct output for Sage themes
-                add_action('wp_head', array($this, 'output_direct_styles'));
-                add_action('wp_footer', array($this, 'output_direct_scripts'));
-            }
-            
-            // Add Swiper.js for carousel (only if carousel shortcode is used)
-            if (has_shortcode($post->post_content, 'administracion_noticias_carrousel')) {
-                // Primero verificamos si Swiper ya está registrado (por el tema u otro plugin)
-                $swiper_registered = wp_script_is('swiper', 'registered') || wp_script_is('swiper-js', 'registered');
-                
-                if (!$swiper_registered) {
-                    if (!$is_sage_theme) {
-                        wp_enqueue_style(
-                            'swiper-css',
-                            'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css',
-                            array(),
-                            '8.0.0'
-                        );
-                        
-                        wp_enqueue_script(
-                            'swiper-js',
-                            'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js',
-                            array(),
-                            '8.0.0',
-                            true
-                        );
-                    } else {
-                        // We'll handle Swiper in the direct output functions
-                    }
-                }
-                
-                if (!$is_sage_theme) {
-                    wp_enqueue_script(
-                        'kintsugi-carousel',
-                        KINTSUGI_CONTENT_MANAGER_PLUGIN_URL . 'public/js/carousel.js',
-                        array('jquery', 'swiper-js'),
-                        KINTSUGI_CONTENT_MANAGER_VERSION,
-                        true
-                    );
-                }
-                
-                // Agregar estilos específicos del carrusel con mayor prioridad
-                if (!$is_sage_theme) {
-                    wp_add_inline_style('kintsugi-content-manager-public', $this->get_carousel_inline_styles());
-                }
-            }
+        if (!is_a($post, 'WP_Post')) {
+            return;
         }
+
+        // Check if we're on the prensa template or using shortcodes
+        $is_prensa_template = get_page_template_slug($post->ID) === 'views/prensa.blade.php';
+        $has_shortcodes = has_shortcode($post->post_content, 'administracion_noticias') || 
+                         has_shortcode($post->post_content, 'administracion_noticias_carrousel') ||
+                         has_shortcode($post->post_content, 'administracion_noticias_recientes');
+
+        if (!$is_prensa_template && !$has_shortcodes) {
+            return;
+        }
+
+        // Get the plugin's base URL
+        $plugin_url = plugin_dir_url(dirname(__FILE__));
+
+        // Debug: Log the URL and file path
+        error_log('Plugin URL: ' . $plugin_url);
+        error_log('CSS Path: ' . $plugin_url . 'public/css/prensa.css');
+        error_log('Template: ' . get_page_template_slug($post->ID));
+        error_log('Has Shortcodes: ' . ($has_shortcodes ? 'yes' : 'no'));
+
+        // Verify file exists
+        $css_file = dirname(dirname(__FILE__)) . '/public/css/prensa.css';
+        error_log('CSS File exists: ' . (file_exists($css_file) ? 'yes' : 'no'));
+        error_log('CSS File path: ' . $css_file);
+
+        // Enqueue main styles
+        wp_enqueue_style(
+            'kintsugi-content-manager-prensa',
+            $plugin_url . 'public/css/prensa.css',
+            array(),
+            KINTSUGI_CONTENT_MANAGER_VERSION
+        );
+
+        // Add Swiper.js for carousel
+        if ($is_prensa_template || has_shortcode($post->post_content, 'administracion_noticias_carrousel')) {
+            wp_enqueue_style(
+                'swiper-css',
+                'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css',
+                array(),
+                '8.0.0'
+            );
+            
+            wp_enqueue_script(
+                'swiper-js',
+                'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js',
+                array(),
+                '8.0.0',
+                true
+            );
+            
+            wp_enqueue_script(
+                'kintsugi-carousel',
+                $plugin_url . 'public/js/carousel.js',
+                array('jquery', 'swiper-js'),
+                KINTSUGI_CONTENT_MANAGER_VERSION,
+                true
+            );
+        }
+
+        // Main plugin script
+        wp_enqueue_script(
+            'kintsugi-content-manager-prensa',
+            $plugin_url . 'public/js/prensa.js',
+            array('jquery'),
+            KINTSUGI_CONTENT_MANAGER_VERSION,
+            true
+        );
+
+        // Add AJAX URL and nonce for frontend scripts
+        wp_localize_script('kintsugi-content-manager-prensa', 'kintsugiAjax', array(
+            'ajaxurl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('kintsugi_ajax_nonce'),
+            'pluginUrl' => $plugin_url
+        ));
     }
     
     /**
