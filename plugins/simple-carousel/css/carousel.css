@@ -4,7 +4,7 @@
     max-width: 1200px;
     margin: 0 auto;
     overflow: hidden;
-    height: 400px;
+    aspect-ratio: 21/9;
 }
 .simple-carousel-wrapper {
     display: flex;
@@ -13,45 +13,15 @@
     gap: 20px;
     will-change: transform;
 }
-.simple-carousel-slide {
-    flex: 0 0 calc(33.333% - 14px);
-    position: relative;
-    height: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #000;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    cursor: grab;
-    user-select: none;
-}
-.simple-carousel-slide img,
-.simple-carousel-slide .thumb {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
+/* .simple-carousel-slide, .simple-carousel-caption, img, etc.: AHORA en global.css */
+
 .simple-carousel-slide a {
     display: block;
     width: 100%;
     height: 100%;
 }
-.simple-carousel-caption {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 20px;
-    background: linear-gradient(to top,rgba(0,0,0,0.85),transparent 85%);
-    color: #fff;
-}
-.simple-carousel-caption h3 {
-    margin: 0 0 5px;
-    font-size: 18px; font-weight: bold;
-    line-height: 1.2;
-}
-.simple-carousel-caption p {
-    margin: 0; font-size: 14px;
-    opacity: 0.9; line-height: 1.4;
-}
+
+/* -------- CONTROLES -------- */
 .simple-carousel-prev, .simple-carousel-next {
     position: absolute; top: 50%;
     transform: translateY(-50%);
@@ -67,6 +37,8 @@
 }
 .simple-carousel-prev { left: 5px; }
 .simple-carousel-next { right: 5px; }
+
+/* -------- INDICADORES -------- */
 .simple-carousel-indicators {
     position: absolute; bottom: 20px; left: 50%;
     transform: translateX(-50%);
@@ -80,6 +52,8 @@
 .simple-carousel-indicator.active {
     opacity: 1; background: #362766; transform: scale(1.3);
 }
+
+/* -------- PLAY VIDEO -------- */
 .simple-carousel-slide .video-play-btn {
     position: absolute;
     left: 50%; top: 50%; transform: translate(-50%, -50%);
@@ -95,7 +69,8 @@
     border-color: transparent transparent transparent #fff;
     margin-left: 10px;
 }
-/* .carousel-modal y #video-modal-popup eliminados, van en global.css */
+
+/* -------- MODAL (opcional) -------- */
 .carousel-modal[hidden] { display: none; }
 .carousel-modal-inner {
     position: relative;
@@ -104,6 +79,8 @@
     box-shadow: 0 8px 40px rgba(0,0,0,0.7);
     display: flex; flex-direction: column;
 }
+
+/* -------- RESPONSIVE -------- */
 @media (max-width: 900px) {
     .simple-carousel-slide { flex: 0 0 calc(50% - 10px); }
 }

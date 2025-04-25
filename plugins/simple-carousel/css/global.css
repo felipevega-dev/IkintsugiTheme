@@ -31,3 +31,93 @@
       z-index: 2;
   }
   
+
+.simple-carousel-slide {
+      aspect-ratio: 21/9;
+}
+
+  /* Unifica slides y grid visualmente */
+.simple-carousel-slide,
+.carousel-grid-item {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(54,39,102,0.08);
+    background: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.simple-carousel-slide:hover,
+.carousel-grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.simple-carousel-slide img,
+.simple-carousel-slide .thumb,
+.carousel-grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+    display: block;
+}
+
+.simple-carousel-slide:hover img,
+.carousel-grid-item:hover img {
+    transform: scale(1.05);
+}
+
+.simple-carousel-slide.video-item,
+.carousel-grid-item.video-item {
+    background: #000;
+}
+
+/* Degradado sobre imagen */
+.simple-carousel-slide::after,
+.carousel-grid-item::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(171,39,122,0.45) 0%, rgba(3,13,85,0.47) 80%);
+    z-index: 1;
+}
+
+/* Unifica el caption */
+.simple-carousel-caption,
+.carousel-grid-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 28px 22px 22px 22px;
+    background: none !important;
+    color: #fff;
+    z-index: 2;
+    text-shadow: 0 2px 12px rgba(54,39,102,0.18);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.simple-carousel-slide:hover .simple-carousel-caption,
+.carousel-grid-item:hover .carousel-grid-caption {
+    transform: translateY(0);
+}
+
+.simple-carousel-caption h3,
+.carousel-grid-caption h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.15rem;
+    font-weight: bold;
+    line-height: 1.2;
+}
+.simple-carousel-caption p,
+.carousel-grid-caption p {
+    margin: 0;
+    font-size: 15px;
+    opacity: 0.95;
+    line-height: 1.4;
+}

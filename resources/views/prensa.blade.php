@@ -41,53 +41,6 @@ Template Name: Prensa Template
       <div class="carousel-container max-w-[1200px] mx-auto">
         {!! do_shortcode('[simple_carousel]') !!}
       </div>
-
-      <style>
-        /* Estilos personalizados para el contenedor del carrusel */
-        .carousel-container .simple-carousel {
-          max-width: 100%;
-          margin: 0 auto;
-          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-          border-radius: 8px;
-          overflow: hidden;
-        }
-
-        /* Ajustes para los slides de video */
-        .carousel-container .video-slide {
-          background: #000;
-        }
-
-        /* Mejoras para las flechas de navegación */
-        .carousel-container .simple-carousel-prev,
-        .carousel-container .simple-carousel-next {
-          background: rgba(54, 39, 102, 0.7);
-          border-radius: 50%;
-          width: 40px;
-          height: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all 0.3s ease;
-        }
-
-        .carousel-container .simple-carousel-prev:hover,
-        .carousel-container .simple-carousel-next:hover {
-          background: rgba(54, 39, 102, 0.9);
-          transform: scale(1.1);
-        }
-
-        /* Mejoras para los títulos */
-        .carousel-container .simple-carousel-caption {
-          background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-          padding: 20px;
-        }
-
-        .carousel-container .simple-carousel-caption h3 {
-          font-family: 'Playfair Display', serif;
-          font-size: 1.5rem;
-          margin-bottom: 0.5rem;
-        }
-      </style>
     </div>
   </section>
 
