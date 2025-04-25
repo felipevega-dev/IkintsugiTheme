@@ -8,17 +8,12 @@
 }
 .simple-carousel-wrapper {
     display: flex;
-    transition: transform 0.5s cubic-bezier(.77,0,.18,1);
-    height: 100%;
     gap: 20px;
-    will-change: transform;
 }
-/* .simple-carousel-slide, .simple-carousel-caption, img, etc.: AHORA en global.css */
-
-.simple-carousel-slide a {
-    display: block;
-    width: 100%;
-    height: 100%;
+.simple-carousel-slide {
+    flex: 0 0 calc(33.333% - 13.333px); /* 3 visibles SIEMPRE */
+    max-width: calc(33.333% - 13.333px);
+    min-width: 0;
 }
 
 /* -------- CONTROLES -------- */
@@ -80,11 +75,15 @@
     display: flex; flex-direction: column;
 }
 
-/* -------- RESPONSIVE -------- */
 @media (max-width: 900px) {
-    .simple-carousel-slide { flex: 0 0 calc(50% - 10px); }
+    .simple-carousel-slide {
+        flex: 0 0 calc(50% - 10px);
+        max-width: calc(50% - 10px);
+    }
 }
 @media (max-width: 600px) {
-    .simple-carousel-slide { flex: 0 0 100%; }
-    .simple-carousel-caption { padding: 12px; }
+    .simple-carousel-slide {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }
