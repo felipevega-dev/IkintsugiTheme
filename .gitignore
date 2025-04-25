@@ -27,7 +27,6 @@ yarn-error.log
 Thumbs.db
 *.bak
 *.sql
-*.zip
 *.gz
 
 # Archivos de IDEs y editores

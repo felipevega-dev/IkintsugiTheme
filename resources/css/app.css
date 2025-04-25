@@ -19,25 +19,3 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-/* filepath: resources/css/app.css */
-/* quitar fondo blanco y reducir padding */
-.kintsugi-noticia-content {
-  background: transparent !important;
-  padding: 8px !important;
-}
-.kintsugi-noticia-excerpt {
-  margin-bottom: 8px !important;
-  font-size: 14px !important;
-  color: #4a4a4a !important;
-  line-height: 1.4 !important;
-}
-.kintsugi-noticia-title {
-  margin-bottom: 4px !important;
-  font-size: 18px !important;
-}
-/* navegación más compacta */
-.kintsugi-carousel-nav-prev,
-.kintsugi-carousel-nav-next {
-  width: 36px !important;
-  height: 36px !important;
-}

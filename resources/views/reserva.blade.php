@@ -48,10 +48,13 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
-<section class="py-10" data-aos="fade-up" data-aos-duration="800">
-    <div class="elementor-content-area">
-        {!! the_content() !!}
+  <section class="reserva-section">
+    <div class="reserva-container">
+      <h2>Reserva tu cita con nosotros</h2>
+      <p>Selecciona el profesional y el horario que más te acomode.</p>
+      <div>
+        {!! do_shortcode('[bookly-staff-form my-form]') !!}
+      </div>
     </div>
-</section>
+  </section>
 @endsection
