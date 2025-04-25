@@ -75,7 +75,7 @@
           <div class="contact-form-container transition-all duration-300 hover:shadow-lg p-5 rounded-lg">
             @php
             // Asegúrate de reemplazar '123' con el ID real de tu formulario
-            echo do_shortcode('[contact-form-7 id="ea9e19b" title="Contacto kintsugi"]');
+            echo do_shortcode('[contact-form-7 id="7942127" title="Contact form (style 4) (Traducido a español)"]');
             @endphp
           </div>
         
@@ -111,6 +111,7 @@
       
       .contact-form-container input[type="text"],
       .contact-form-container input[type="email"],
+	  .contact-form-container input[type="tel"],
       .contact-form-container textarea {
         width: 100%;
         padding: 0.75rem 1rem;
@@ -121,6 +122,7 @@
       
       .contact-form-container input[type="text"]:focus,
       .contact-form-container input[type="email"]:focus,
+	  .contact-form-container input[type="tel"]:focus,
       .contact-form-container textarea:focus {
         outline: none;
         border-color: transparent;
