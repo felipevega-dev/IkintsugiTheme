@@ -6,7 +6,7 @@
 
 @section('content')
   <!-- Hero Section con fondo blanco y figura morada alrededor de la foto -->
-  <section class="relative bg-white overflow-hidden">
+  <section class="relative bg-white overflow-x-hidden">
     <!-- Contenido del hero -->
     <div class="container mx-auto px-4 py-20 lg:py-28 relative z-10 mt-15">
       <div class="flex flex-col lg:flex-row items-center">
@@ -62,7 +62,7 @@
   </section>
 
   <!-- Sección: Trastornos y malestares que atendemos -->
-  <section class="relative py-16 overflow-hidden bg-[#030D550D]">
+  <section class="relative py-16 overflow-x-hidden bg-[#030D550D]">
     <div class="container mx-auto px-4 relative z-10">
       <!-- Título principal centrado -->
       <h2 class="text-4xl md:text-5xl font-bold text-center text-[#030D55] mb-12 transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif;" data-aos="fade-up" data-aos-duration="600">
@@ -85,7 +85,7 @@
   </section>
 
   <!-- Sección con gradiente y listas -->
-  <div class="relative">
+  <div class="relative overflow-x-hidden">
     <!-- Curvatura en la parte superior -->
     <div class="absolute top-0 left-0 w-full h-24 overflow-hidden" style="z-index: 1;">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200" preserveAspectRatio="none" class="absolute -top-1 w-full h-full">
@@ -147,7 +147,7 @@
   </div>
 
   <!-- Primer Testimonio -->
-  <section class="bg-white py-16 relative">
+  <section class="bg-white py-16 relative overflow-x-hidden">
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row gap-16 items-center max-w-6xl mx-auto">
         <!-- Texto del testimonio a la izquierda -->
@@ -169,7 +169,7 @@
   </section>
 
   <!-- Segundo Testimonio - Fernando Torres -->
-  <section class="bg-white pb-20 relative">
+  <section class="bg-white pb-20 relative overflow-x-hidden">
     <div class="container mx-auto px-4 py-12">
       <div class="flex flex-col md:flex-row gap-16 items-center max-w-6xl mx-auto">
         <!-- Video a la izquierda -->
@@ -190,7 +190,7 @@
     </div>
   </section>
   <!-- Primer Testimonio - Lorena López -->
-  <section class="bg-white py-16 relative">
+  <section class="bg-white py-16 relative overflow-x-hidden">
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row gap-16 items-center max-w-6xl mx-auto">
         <!-- Texto del testimonio a la izquierda -->
@@ -212,7 +212,7 @@
   </section>
 
   <!-- Segundo Testimonio - Fernando Torres -->
-  <section class="bg-white pb-10 relative">
+  <section class="bg-white pb-10 relative overflow-x-hidden">
     <div class="container mx-auto px-4 py-12">
       <div class="flex flex-col md:flex-row gap-16 items-center max-w-6xl mx-auto">
         <!-- Video a la izquierda -->
@@ -233,7 +233,7 @@
     </div>
   </section>
 
-  <section class="bg-white py-16 mb-5">
+  <section class="bg-white py-16 mb-5 overflow-x-hidden">
     <div class="container mx-auto px-4 max-w-3xl">
       <!-- Contenido centrado con línea vertical -->
       <div class="relative flex flex-col items-center text-center" data-aos="fade-up" data-aos-duration="600">

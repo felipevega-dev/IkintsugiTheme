@@ -6,7 +6,7 @@
 
 @section('content')
   <!-- Hero Section con fondo blanco y figura morada alrededor de la foto -->
-  <section class="relative bg-white overflow-hidden">
+  <section class="relative bg-white overflow-x-hidden">
     <!-- Contenido del hero -->
     <div class="container mx-auto px-4 py-20 lg:py-28 relative z-10 mt-15">
       <div class="flex flex-col lg:flex-row items-center">
@@ -62,7 +62,7 @@
   </section>
 
   <!-- Sección: ¿Qué ocurre durante el tratamiento EMDR? -->
-  <section class="bg-[#CCA0E00D] py-10 lg:py-16 mx-auto">
+  <section class="bg-[#CCA0E00D] py-10 lg:py-16 mx-auto overflow-x-hidden">
     <div class="container mx-auto px-4">
       <div class="flex flex-col lg:flex-row items-center gap-6 max-w-7xl mx-auto">
         <!-- Imagen a la izquierda -->
