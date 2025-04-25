@@ -2,66 +2,79 @@ jQuery(document).ready(function($) {
     let page = 1;
     let loading = false;
     const grid = $('.carousel-grid');
-    
-    // Función para cargar más items
-    function loadMoreItems() {
+    const loadMoreBtn = $('#carousel-load-more');
+
+    function loadGridItems(reset = false) {
         if (loading) return;
         loading = true;
-        
-        const loadMoreBtn = $('#carousel-load-more');
-        loadMoreBtn.text('Cargando...');
-        
+        if (reset) {
+            page = 1;
+            grid.html('<div style="text-align:center;padding:2em 0;">Cargando...</div>');
+        } else {
+            loadMoreBtn.text('Cargando...');
+        }
+
         $.ajax({
             url: simpleCarouselGrid.ajaxurl,
             type: 'POST',
             data: {
-                action: 'load_more_carousel_items',
+                action: 'simple_carousel_grid_search',
                 nonce: simpleCarouselGrid.nonce,
-                page: page,
+                search: $('#carousel-search').val(),
                 year: $('#carousel-year').val(),
                 sort: $('#carousel-sort').val(),
-                search: $('#carousel-search').val()
+                page: page
             },
             success: function(response) {
-                if (response.success) {
-                    if (response.data.items) {
+                if (response.success && response.data.items) {
+                    if (reset) {
+                        grid.html(response.data.items);
+                    } else {
                         grid.append(response.data.items);
-                        page++;
-                        
-                        if (!response.data.has_more) {
-                            loadMoreBtn.hide();
-                        }
                     }
+                    page++;
+                    if (!response.data.has_more) {
+                        loadMoreBtn.hide();
+                    } else {
+                        loadMoreBtn.show();
+                    }
+                    // Lazy loading para nuevas imágenes:
+                    if ('IntersectionObserver' in window) {
+                        lazyLoadImages();
+                    }
+                } else {
+                    grid.html('<div style="text-align:center;padding:2em 0;">No se encontraron resultados.</div>');
+                    loadMoreBtn.hide();
                 }
                 loadMoreBtn.text('Cargar más');
                 loading = false;
             },
             error: function() {
+                grid.html('<div style="text-align:center;padding:2em 0;color:#e33;">Error al cargar.</div>');
                 loadMoreBtn.text('Cargar más');
                 loading = false;
             }
         });
     }
-    
-    // Click en "Cargar más"
-    $('#carousel-load-more').on('click', loadMoreItems);
-    
-    // Filtros
-    function applyFilters() {
-        page = 1;
-        grid.empty();
-        loadMoreItems();
-    }
-    
-    $('#carousel-year, #carousel-sort').on('change', applyFilters);
-    
-    // Búsqueda con debounce
+
+    // Filtros y búsqueda instantánea
+    $('#carousel-year, #carousel-sort').on('change', function() {
+        loadGridItems(true);
+    });
+
     let searchTimeout;
     $('#carousel-search').on('input', function() {
         clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(applyFilters, 500);
+        searchTimeout = setTimeout(function() {
+            loadGridItems(true);
+        }, 500);
     });
-    
+
+    // Cargar más
+    loadMoreBtn.on('click', function() {
+        loadGridItems();
+    });
+
     // Lazy loading de imágenes
     function lazyLoadImages() {
         const images = document.querySelectorAll('.carousel-grid-item img[data-src]');
@@ -75,14 +88,12 @@ jQuery(document).ready(function($) {
                 }
             });
         });
-        
+
         images.forEach(img => imageObserver.observe(img));
     }
-    
+
     // Inicializar lazy loading
     if ('IntersectionObserver' in window) {
         lazyLoadImages();
     }
 });
-
-// Modal video eliminado, va en global.js
