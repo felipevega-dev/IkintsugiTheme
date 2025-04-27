@@ -18,13 +18,16 @@
 
   <!-- Contenido del hero -->
   <div class="container mx-auto px-4 relative z-10 min-h-[90vh] md:min-h-[100vh] flex flex-col justify-center items-center">
-    <div class="max-w-3xl mx-auto text-center text-white py-24 md:py-40 lg:py-52">
-      <h2 class="text-lg md:text-2xl font-500 mb-3 md:mb-5" data-aos="fade-up" data-aos-duration="500">Psicología Clínica EMDR</h2>
-      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 font-playfair" style="font-family: 'Playfair Display', serif;" data-aos="fade-up" data-aos-duration="600" data-aos-delay="50">El Trauma se puede superar!</h1>
+    <div class="w-full max-w-5xl mx-auto text-center text-white py-24 md:py-40 lg:py-52">
+      <h2 class="text-base md:text-xl font-normal mb-3 font-roboto tracking-wider uppercase opacity-90" data-aos="fade-up" data-aos-duration="500">Psicología Clínica EMDR</h2>
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-10 md:mb-12 font-paytone tracking-tight leading-[1.1] px-4 md:px-0" data-aos="fade-up" data-aos-duration="600" data-aos-delay="50">
+        El Trauma<br>
+        se puede superar
+      </h1>
       <a href="/reservar-cita" class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 
-                    text-white px-5 md:px-6 py-2 md:py-3 rounded-full font-medium transition-all 
+                    text-white px-8 md:px-10 py-3 md:py-4 rounded-full transition-all 
                     duration-300 transform hover:scale-105 shadow-md hover:shadow-lg 
-                    font-roboto text-base md:text-lg service-button" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100">
+                    font-roboto text-lg md:text-xl tracking-wide font-medium service-button" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100">
         Reservar Cita
       </a>
     </div>

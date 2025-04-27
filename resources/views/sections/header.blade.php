@@ -292,9 +292,9 @@
         <div class="pl-8">
           <a class="flex items-center" href="{{ home_url('/') }}">
             <img 
-              src="{{ get_theme_file_uri('resources/images/kintsugi-hero.png') }}" 
+              src="{{ get_theme_file_uri('resources/images/kintsugi-hero-azul.png') }}" 
               alt="Kintsugi Logo" 
-              class="h-12 w-auto"
+              class="h-16 w-auto"
             >
           </a>
         </div>

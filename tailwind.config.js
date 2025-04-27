@@ -61,6 +61,8 @@ export default {
             'roboto': ['Roboto', 'sans-serif'],
             'hugamour': ['Hugamour', 'cursive'],
             'playfair': ['"Playfair Display"', 'serif'],
+            'paytone': ['"Paytone One"', 'sans-serif'],
+            'sigmar': ['"Sigmar"', 'regular'],
             'sans': ['Roboto', 'system-ui', 'sans-serif'],
             'display': ['Hugamour', 'cursive'],
           },

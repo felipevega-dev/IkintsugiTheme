@@ -6,6 +6,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&text=ElTraumsepd!&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sigmar&text=PsicologíaClínEMDRervt&display=swap" rel="stylesheet">
     <!-- AOS CSS para animaciones -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     @php(do_action('get_header'))
@@ -17,6 +19,18 @@
     <style>
       body {
         font-family: 'Roboto', sans-serif;
+      }
+      
+      .font-paytone {
+        font-family: 'Paytone One', sans-serif !important;
+        font-display: swap;
+        font-weight: 400;
+      }
+      
+      .font-sigmar {
+        font-family: 'Sigmar', system-ui !important;
+        font-display: swap;
+        font-weight: 400;
       }
       
       /* Prevenir scroll horizontal en el nivel más externo */
