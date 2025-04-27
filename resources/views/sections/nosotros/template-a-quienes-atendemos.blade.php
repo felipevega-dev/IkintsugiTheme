@@ -12,7 +12,7 @@
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
         <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right" data-aos-duration="600">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 1.1;">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
             Para quienes buscan alivio y bienestar
           </h1>
           <p class="text-4xl mt-14 text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
@@ -59,7 +59,7 @@
   <section class="bg-white py-12 overflow-x-hidden">
     <div class="container mx-auto px-4">
       <!-- Título Principal -->
-      <h1 class="text-4xl md:text-5xl font-bold text-center text-[#030D55] mb-16 transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif;" data-aos="fade-up" data-aos-duration="600">
+      <h1 class="text-4xl md:text-5xl font-bold text-center text-[#030D55] mb-16 transition-all duration-500 hover:text-[#AB277A] font-paytone">
         ¿A qué personas atendemos?
       </h1>
 
@@ -68,7 +68,7 @@
         <!-- Adolescentes -->
         <div class="flex flex-col md:flex-row items-center justify-between mb-20">
           <div class="md:w-1/2 pr-0 md:pr-10 self-center" data-aos="fade-right" data-aos-duration="600">
-            <h2 class="text-2xl font-bold text-[#AB277A] mb-6 transition-all duration-300 hover:translate-x-1" style="font-family: 'Playfair Display', serif;">
+            <h2 class="text-2xl font-bold text-[#AB277A] mb-6 transition-all duration-300 hover:translate-x-1 font-paytone">
               Adolescentes
             </h2>
             <p class="text-base text-[#030D55] transition-all duration-300 hover:translate-y-[-2px]">
@@ -90,7 +90,7 @@
         <!-- Adultos -->
         <div class="flex flex-col md:flex-row-reverse items-center justify-between mb-20">
           <div class="md:w-1/2 pl-0 md:pl-10 self-center" data-aos="fade-left" data-aos-duration="600">
-            <h2 class="text-2xl font-bold text-[#AB277A] mb-6 transition-all duration-300 hover:translate-x-1" style="font-family: 'Playfair Display', serif;">
+            <h2 class="text-2xl font-bold text-[#AB277A] mb-6 transition-all duration-300 hover:translate-x-1 font-paytone">
               Adultos
             </h2>
             <p class="text-base text-[#030D55] transition-all duration-300 hover:translate-y-[-2px]">
@@ -112,7 +112,7 @@
         <!-- Adulto Mayor -->
         <div class="flex flex-col md:flex-row items-center justify-between mb-20">
           <div class="md:w-1/2 pr-0 md:pr-10 self-center" data-aos="fade-right" data-aos-duration="600">
-            <h2 class="text-2xl font-bold text-[#AB277A] mb-6 transition-all duration-300 hover:translate-x-1" style="font-family: 'Playfair Display', serif;">
+            <h2 class="text-2xl font-bold text-[#AB277A] mb-6 transition-all duration-300 hover:translate-x-1 font-paytone">
               Adulto Mayor
             </h2>
             <p class="text-base text-[#030D55] transition-all duration-300 hover:translate-y-[-2px]">
@@ -134,7 +134,7 @@
         <!-- Parejas -->
         <div class="flex flex-col md:flex-row-reverse items-center justify-between">
           <div class="md:w-1/2 pl-0 md:pl-10 self-center" data-aos="fade-left" data-aos-duration="600">
-            <h2 class="text-2xl font-bold text-[#AB277A] mb-6 transition-all duration-300 hover:translate-x-1" style="font-family: 'Playfair Display', serif;">
+            <h2 class="text-2xl font-bold text-[#AB277A] mb-6 transition-all duration-300 hover:translate-x-1 font-paytone">
               Parejas
             </h2>
             <p class="text-base text-[#030D55] transition-all duration-300 hover:translate-y-[-2px]">

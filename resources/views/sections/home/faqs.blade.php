@@ -23,7 +23,7 @@
         <!-- FAQ Item 1 -->
         <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;" data-aos="fade-up" data-aos-duration="500" data-aos-delay="50">
           <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
-            <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4" style="font-family: 'Playfair Display', serif;">¿Cómo saber si necesito psicoterapia?</h3>
+            <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4 font-roboto">¿Cómo saber si necesito psicoterapia?</h3>
             <div class="arrow-icon w-5 md:w-6 h-5 md:h-6 flex-shrink-0 flex items-center justify-center transform transition-transform duration-500">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 md:h-6 w-5 md:w-6 text-[#FF3382]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -46,7 +46,7 @@
         <!-- FAQ Item 2 -->
         <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;" data-aos="fade-up" data-aos-duration="500" data-aos-delay="75">
           <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
-            <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4" style="font-family: 'Playfair Display', serif;">Con EMDR, ¿los recuerdos se olvidan?</h3>
+            <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4 font-roboto">Con EMDR, ¿los recuerdos se olvidan?</h3>
             <div class="arrow-icon w-5 md:w-6 h-5 md:h-6 flex-shrink-0 flex items-center justify-center transform transition-transform duration-500">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 md:h-6 w-5 md:w-6 text-[#FF3382]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -63,7 +63,7 @@
         <!-- FAQ Item 3 -->
         <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100">
           <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
-            <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4" style="font-family: 'Playfair Display', serif;">¿Quienes pueden atenderse con EMDR?</h3>
+            <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4 font-roboto">¿Quienes pueden atenderse con EMDR?</h3>
             <div class="arrow-icon w-5 md:w-6 h-5 md:h-6 flex-shrink-0 flex items-center justify-center transform transition-transform duration-500">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 md:h-6 w-5 md:w-6 text-[#FF3382]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -80,7 +80,7 @@
         <!-- FAQ Item 4 -->
         <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;" data-aos="fade-up" data-aos-duration="500" data-aos-delay="125">
           <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
-            <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4" style="font-family: 'Playfair Display', serif;">¿Cuánto dura el tratamiento psicológico EMDR?</h3>
+            <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4 font-roboto">¿Cuánto dura el tratamiento psicológico EMDR?</h3>
             <div class="arrow-icon w-5 md:w-6 h-5 md:h-6 flex-shrink-0 flex items-center justify-center transform transition-transform duration-500">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 md:h-6 w-5 md:w-6 text-[#FF3382]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -98,7 +98,7 @@
         <!-- FAQ Item 5 -->
         <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;" data-aos="fade-up" data-aos-duration="500" data-aos-delay="150">
           <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
-            <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4" style="font-family: 'Playfair Display', serif;">¿Qué duración tienen las sesiones?</h3>
+            <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4 font-roboto">¿Qué duración tienen las sesiones?</h3>
             <div class="arrow-icon w-5 md:w-6 h-5 md:h-6 flex-shrink-0 flex items-center justify-center transform transition-transform duration-500">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 md:h-6 w-5 md:w-6 text-[#FF3382]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -115,7 +115,7 @@
         <!-- FAQ Item 6 -->
         <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;" data-aos="fade-up" data-aos-duration="500" data-aos-delay="175">
           <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
-            <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4" style="font-family: 'Playfair Display', serif;">¿Cada cuánto tiempo se hace una sesión?</h3>
+            <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4 font-roboto">¿Cada cuánto tiempo se hace una sesión?</h3>
             <div class="arrow-icon w-5 md:w-6 h-5 md:h-6 flex-shrink-0 flex items-center justify-center transform transition-transform duration-500">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 md:h-6 w-5 md:w-6 text-[#FF3382]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -135,7 +135,7 @@
         <!-- FAQ Item 7 -->
         <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
           <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
-            <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4" style="font-family: 'Playfair Display', serif;">¿Cómo me puede ayudar EMDR?</h3>
+            <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4 font-roboto">¿Cómo me puede ayudar EMDR?</h3>
             <div class="arrow-icon w-5 md:w-6 h-5 md:h-6 flex-shrink-0 flex items-center justify-center transform transition-transform duration-500">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 md:h-6 w-5 md:w-6 text-[#FF3382]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -172,7 +172,7 @@
         <!-- FAQ Item 8 -->
         <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;" data-aos="fade-up" data-aos-duration="500" data-aos-delay="225">
           <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
-            <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4" style="font-family: 'Playfair Display', serif;">¿A qué personas atendemos?</h3>
+            <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4 font-roboto">¿A qué personas atendemos?</h3>
             <div class="arrow-icon w-5 md:w-6 h-5 md:h-6 flex-shrink-0 flex items-center justify-center transform transition-transform duration-500">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 md:h-6 w-5 md:w-6 text-[#FF3382]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />

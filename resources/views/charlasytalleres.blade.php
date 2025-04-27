@@ -33,7 +33,7 @@
   <div class="container mx-auto px-4 relative z-10 min-h-[80vh] flex flex-col justify-center items-center overflow-hidden">
     <div class="max-w-3xl mx-auto text-center text-white py-20 md:py-24 lg:py-26">
       <h2 class="text-xl md:text-2xl font-500 mb-2" data-aos="fade-up" data-aos-duration="500">Psicología Clínica EMDR</h2>
-      <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 font-playfair" style="font-family: 'Playfair Display', serif;" data-aos="fade-up" data-aos-duration="600" data-aos-delay="50">Nuestras Charlas y talleres</h1>
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 font-paytone" data-aos="fade-up" data-aos-duration="600" data-aos-delay="50">Nuestras Charlas y talleres</h1>
     </div>
   </div>
 
@@ -51,7 +51,7 @@
       <div class="flex flex-col md:flex-row items-center justify-between gap-8">
         <!-- Texto a la izquierda -->
         <div class="md:w-1/2 pr-0 md:pr-8" data-aos="fade-right" data-aos-duration="600">
-          <h2 class="text-4xl font-bold text-[#030D55] mb-8" style="font-family: 'Playfair Display', serif;">
+          <h2 class="text-4xl font-bold text-[#030D55] mb-8 font-paytone">
             Charlas y talleres
           </h2>
           <p class="text-base text-[#030D55] mb-4">
@@ -97,7 +97,7 @@
 
         <!-- Texto y lista a la derecha -->
         <div class="md:w-1/2 pl-0 md:pl-8 order-1 md:order-2" data-aos="fade-left" data-aos-duration="600" data-aos-delay="100">
-          <h2 class="text-3xl font-bold text-[#030D55] mb-6" style="font-family: 'Playfair Display', serif;">
+          <h2 class="text-3xl font-bold text-[#030D55] mb-6 font-paytone">
             Te invitamos a explorar nuestra oferta de talleres y a solicitar el que más te interese.
           </h2>
           
@@ -135,7 +135,7 @@
           <img src="{{ get_theme_file_uri('resources/images/deco2.png') }}" alt="Decoración derecha" class="w-auto h-56 decorative-image">
         </div>
         
-        <h2 class="text-4xl font-bold text-[#030D55] mb-8" style="font-family: 'Playfair Display', serif;" data-aos="fade-up" data-aos-duration="600">
+        <h2 class="text-4xl font-bold text-[#030D55] mb-8 font-paytone" data-aos="fade-up" data-aos-duration="600">
           Coaching psicológico
         </h2>
         

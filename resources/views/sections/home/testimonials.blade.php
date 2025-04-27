@@ -18,7 +18,7 @@
         </div>
         
         <!-- Name -->
-        <h3 class="text-[#AB277A] font-extrabold text-[20px] md:text-[24px] text-center mt-[100px] md:mt-[180px] mb-4" style="font-family: 'Playfair Display', serif;">Lorena López</h3>
+        <h3 class="text-[#AB277A] font-extrabold text-[20px] md:text-[24px] text-center mt-[100px] md:mt-[180px] mb-4" style="font-family: 'Playfair Display', serif;">Lorena</h3>
         
         <!-- Testimonial text -->
         <p class="text-[#181818] text-center text-[14px] md:text-[15px] font-normal font-roboto leading-normal px-2 pb-4">
@@ -36,7 +36,7 @@
         </div>
         
         <!-- Name -->
-        <h3 class="text-[#AB277A] font-extrabold text-[20px] md:text-[24px] text-center mt-[100px] md:mt-[180px] mb-4" style="font-family: 'Playfair Display', serif;">Fernando Torres</h3>
+        <h3 class="text-[#AB277A] font-extrabold text-[20px] md:text-[24px] text-center mt-[100px] md:mt-[180px] mb-4" style="font-family: 'Playfair Display', serif;">Fernando</h3>
         
         <!-- Testimonial text -->
         <p class="text-[#181818] text-center text-[14px] md:text-[15px] font-normal font-roboto leading-normal px-2 pb-4">

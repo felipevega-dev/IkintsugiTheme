@@ -24,7 +24,7 @@ Template Name: Prensa Template
     <!-- Contenido del hero -->
     <div class="container mx-auto px-4 relative z-10 min-h-[400px] md:min-h-[90vh] flex flex-col justify-center items-center">
       <div class="max-w-4xl mx-auto text-center text-white py-32 md:py-32">
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 font-playfair">¡Mereces una vida mejor!</h1>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 font-paytone" style="line-height: 1.1;">¡Mereces una vida mejor!</h1>
         <p class="text-xl md:text-2xl font-500 mb-2">Descubre nuestras intervenciones en medios, donde abordamos temas de EMDR, el tratamiento del trauma, psicología y felicidad</p>
       </div>
     </div>
@@ -40,7 +40,7 @@ Template Name: Prensa Template
   <!-- Sección 1: Noticias destacadas en el carrusel -->
   <section class="bg-white py-12 overflow-hidden">
     <div class="w-full max-w-7xl mx-auto px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-[#030D55] mb-8 text-left font-playfair">Noticias destacadas</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-[#030D55] mb-8 text-left font-paytone" style="line-height: 1.1;">Noticias destacadas</h2>
       
       <!-- Contenedor del carrusel con estilos personalizados -->
       <div class="max-w-[1200px] mx-auto">
@@ -52,7 +52,7 @@ Template Name: Prensa Template
   <!-- Sección 2: Todas las noticias -->
   <section class="bg-gray-50 py-12">
     <div class="container mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold text-[#030D55] mb-8 text-left font-playfair px-4">Todas las noticias</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-[#030D55] mb-8 text-left font-paytone px-4" style="line-height: 1.1;">Todas las noticias</h2>
       
       <!-- Grid de noticias -->
       <div class="news-grid-container">
