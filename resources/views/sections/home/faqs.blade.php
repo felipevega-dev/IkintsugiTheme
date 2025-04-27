@@ -2,7 +2,7 @@
 <section class="py-12 md:py-16 bg-white relative">
   <div class="container mx-auto px-4 relative">
     <!-- Section title -->
-    <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl md:text-[48px] leading-[100%] mb-10 md:mb-16 text-center" style="font-family: 'Playfair Display', serif;" data-aos="fade-up" data-aos-duration="600">
+    <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl md:text-[48px] leading-[100%] mb-10 md:mb-16 text-center font-paytone" data-aos="fade-up" data-aos-duration="600">
       FAQ's
     </h2>
     

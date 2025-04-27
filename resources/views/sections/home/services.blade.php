@@ -4,7 +4,7 @@
   
   <div class="container mx-auto px-4 relative z-10">
     <!-- Section title -->
-    <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl md:text-[48px] leading-tight mb-8 md:mb-12 text-center max-w-[600px] mx-auto" style="font-family: 'Playfair Display', serif;" data-aos="fade-up" data-aos-duration="1000">
+    <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl md:text-[48px] leading-tight mb-8 md:mb-12 text-center max-w-[600px] mx-auto font-paytone" data-aos="fade-up" data-aos-duration="1000">
       Empieza aquí tu viaje de 
       sanación y crecimiento
     </h2>

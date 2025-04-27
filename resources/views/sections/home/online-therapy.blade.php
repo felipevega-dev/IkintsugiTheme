@@ -17,7 +17,7 @@
       <!-- Contenido de texto -->
       <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="600" data-aos-delay="50">
         <div class="p-3 md:p-6 rounded-lg">
-          <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl leading-tight mb-4 md:mb-6 max-w-[600px]" style="font-family: 'Playfair Display', serif;">
+          <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl leading-tight mb-4 md:mb-6 max-w-[600px] font-paytone">
             Obtenga terapia experta hoy para el futuro
           </h2>
           <p class="text-gray-700 font-roboto mb-6 text-[#181818] text-sm md:text-base">
