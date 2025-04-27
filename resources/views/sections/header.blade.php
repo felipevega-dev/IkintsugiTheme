@@ -486,10 +486,10 @@
           <div class="flex-1"></div>
           
           <!-- Logo en móvil -->
-          <div class="flex-1 flex justify-center">
+          <div class="flex-2 flex justify-center">
             <a href="{{ home_url('/') }}">
               <img 
-                src="{{ get_theme_file_uri('resources/images/kintsugi-hero.png') }}" 
+                src="{{ get_theme_file_uri('resources/images/kintsugi-hero-azul.png') }}" 
                 alt="Kintsugi Logo" 
                 class="h-auto w-auto mobile-logo"
               >
