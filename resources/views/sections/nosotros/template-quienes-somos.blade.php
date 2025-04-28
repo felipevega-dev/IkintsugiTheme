@@ -12,7 +12,7 @@
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
         <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right" data-aos-duration="600">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 1.1;">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
             Donde tus<br>cicatrices se<br>vuelven fortaleza
           </h1>
           
@@ -67,7 +67,7 @@
         
         <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="600">
           <div class="max-w-[520px] mx-auto md:mx-0">
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 text-[#030D55] transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 1.1; letter-spacing: 0%;">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 text-[#030D55] transition-all duration-500 hover:text-[#AB277A] font-paytone">
               Quiénes somos
             </h2>
             
@@ -95,7 +95,7 @@
   <section class="py-12 md:py-20 bg-white relative overflow-hidden pt-10 md:pt-14">
     <div class="container mx-auto px-4">
       <div class="text-center mb-8 md:mb-12" data-aos="fade-up" data-aos-duration="600">
-        <h2 class="text-3xl md:text-5xl font-extrabold mb-6 md:mb-8 text-[#030D55] transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 1.1;">
+        <h2 class="text-3xl md:text-5xl font-extrabold mb-6 md:mb-8 text-[#030D55] transition-all duration-500 hover:text-[#AB277A] font-paytone">
           Sobre nosotros
         </h2>
         
@@ -271,7 +271,7 @@
   <!-- ENTRADAS MÁS RECIENTES -->
   <section class="py-12 md:py-20 bg-white">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl md:text-5xl font-extrabold mb-8 md:mb-12 text-center text-[#030D55] transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 1.1;" data-aos="fade-up" data-aos-duration="600">
+      <h2 class="text-3xl md:text-5xl font-extrabold mb-8 md:mb-12 text-center text-[#030D55] transition-all duration-500 hover:text-[#AB277A] font-paytone">
         Nuestro blog
       </h2>
       

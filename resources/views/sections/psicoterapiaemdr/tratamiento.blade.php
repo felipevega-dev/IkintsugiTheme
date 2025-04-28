@@ -12,8 +12,8 @@
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
         <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right" data-aos-duration="600">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 1.1;">
-          Reprocesando el <br>trauma: La <br>metodología EMDR <br>en acción
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
+          Reprocesa y renace con EMDR
           </h1>
           
           <p class="text-4xl mt-14 text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
@@ -73,7 +73,7 @@
           </div>
           
           <div class="text-center px-4" data-aos="fade-up" data-aos-duration="600">
-            <h2 class="text-center text-4xl lg:text-5xl font-bold text-[#030D55] transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; font-weight: 800;">
+            <h2 class="text-center text-4xl lg:text-5xl font-bold text-[#030D55] transition-all duration-500 hover:text-[#AB277A] font-paytone">
               ¿Qué ocurre durante el<br>tratamiento EMDR?
             </h2>
             

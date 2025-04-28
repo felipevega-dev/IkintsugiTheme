@@ -39,9 +39,11 @@
         </div>
         
         <!-- Frase inspiradora -->
-        <p class="text-[#AB277A] text-2xl md:text-3xl text-center md:text-left w-full" style="font-family: 'Hugamour', sans-serif;">
-          #El trauma se puede<br>superar
-        </p>
+        <div class="text-[#AB277A] text-2xl md:text-3xl text-center md:text-left w-full" style="font-family: 'Hugamour', sans-serif;">
+          <p class="mb-0">#El Trauma</p>
+          <p class="mb-0 md:ml-8">Se Puede</p>
+          <p class="mb-0 md:ml-16">Superar</p>
+        </div>
       </div>
       
       <!-- Columna 2: Contacto -->
@@ -54,16 +56,6 @@
             <a href="mailto:hola@ikintsugi.cl" class="text-[#181818] hover:text-[#AB277A] hover:underline transition-all duration-300 text-base" style="font-family: 'Roboto', sans-serif; font-weight: 400;">
               hola@ikintsugi.cl
             </a>
-          </li>
-          <li>
-            <p class="text-[#181818] text-base" style="font-family: 'Roboto', sans-serif; font-weight: 400;">
-              +1 800 555 25 65
-            </p>
-          </li>
-          <li>
-            <p class="text-[#181818] text-base" style="font-family: 'Roboto', sans-serif; font-weight: 400;">
-              +1 800 555 25 65
-            </p>
           </li>
         </ul>
       </div>

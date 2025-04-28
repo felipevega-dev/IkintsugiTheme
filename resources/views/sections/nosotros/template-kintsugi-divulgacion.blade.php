@@ -12,8 +12,8 @@
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
         <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right" data-aos-duration="600">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 1.1;">
-            Comprendernos es el primer paso para sanar
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
+          Conocerte, tu primer paso al bienestar
           </h1>
           <p class="text-4xl mt-14 text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
             #Mereces una vida mejor
@@ -60,7 +60,7 @@
     <div class="container mx-auto px-4">
       <!-- Contenido centrado -->
       <div class="max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-duration="600">
-        <h2 class="text-4xl lg:text-5xl font-bold text-[#030D55] mb-8 transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; font-weight: 800;">
+        <h2 class="text-4xl lg:text-5xl font-bold text-[#030D55] mb-8 transition-all duration-500 hover:text-[#AB277A] font-paytone">
           Divulgación científica de la salud mental
         </h2>
         
@@ -80,7 +80,7 @@
         
         <!-- Sección de redes sociales -->
         <div class="mt-20 mb-10" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
-          <h3 class="text-2xl font-bold text-[#030D55] mb-6 transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif;">
+          <h3 class="text-2xl font-bold text-[#030D55] mb-6 transition-all duration-500 hover:text-[#AB277A] font-paytone">
             Síguenos en nuestras redes sociales
           </h3>
           

@@ -12,7 +12,7 @@
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
         <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right" data-aos-duration="600">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 1.1;">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
             Testimonios que<br>inspiran: La<br>sanación es posible
           </h1>
           
@@ -65,7 +65,7 @@
   <section class="relative py-16 overflow-x-hidden bg-[#030D550D]">
     <div class="container mx-auto px-4 relative z-10">
       <!-- Título principal centrado -->
-      <h2 class="text-4xl md:text-5xl font-bold text-center text-[#030D55] mb-12 transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif;" data-aos="fade-up" data-aos-duration="600">
+      <h2 class="text-4xl md:text-5xl font-bold text-center text-[#030D55] mb-12 transition-all duration-500 hover:text-[#AB277A] font-paytone">
         Trastornos y malestares que<br>atendemos
       </h2>
 
@@ -103,7 +103,7 @@
         <div class="flex flex-col md:flex-row justify-between gap-8">
           <!-- Primera columna: Patologías con base traumática -->
           <div class="bg-white/90 p-6 md:p-8 rounded-3xl shadow-lg md:w-1/2 transition-all duration-500 hover:bg-white hover:shadow-xl hover:-translate-y-2" data-aos="fade-right" data-aos-duration="600">
-            <h3 class="text-xl md:text-2xl font-semibold text-center text-[#AB277A] mb-6 transition-all duration-300 hover:text-[#030D55]" style="font-family: 'Playfair Display', serif;">
+            <h3 class="text-xl md:text-2xl font-semibold text-center text-[#AB277A] mb-6 transition-all duration-300 hover:text-[#030D55] font-paytone">
               Entre las patologías con base traumática que tratamos se encuentran:
             </h3>
             <ul class="list-disc pl-5 text-[#030D55] space-y-2">
@@ -123,7 +123,7 @@
 
           <!-- Segunda columna: Otros traumas o malestares -->
           <div class="bg-white/90 p-6 md:p-8 rounded-3xl shadow-lg md:w-1/2 transition-all duration-500 hover:bg-white hover:shadow-xl hover:-translate-y-2" data-aos="fade-left" data-aos-duration="600">
-            <h3 class="text-xl md:text-2xl font-semibold text-center text-[#AB277A] mb-6 transition-all duration-300 hover:text-[#030D55]" style="font-family: 'Playfair Display', serif;">
+            <h3 class="text-xl md:text-2xl font-semibold text-center text-[#AB277A] mb-6 transition-all duration-300 hover:text-[#030D55] font-paytone">
               Otro tipo de traumas o malestares psicológicos
             </h3>
             <ul class="list-disc pl-5 text-[#030D55] space-y-2">
@@ -152,7 +152,9 @@
       <div class="flex flex-col md:flex-row gap-16 items-center max-w-6xl mx-auto">
         <!-- Texto del testimonio a la izquierda -->
         <div class="md:w-4/9 order-2 md:order-1" data-aos="fade-right" data-aos-duration="600">
-          <h4 class="text-center text-2xl font-extrabold text-[#AB277A] mb-4 transition-all duration-500 hover:text-[#030D55]" style="font-family: 'Playfair Display', serif; line-height: 100%;">Trabajemos en tu disociación   </h4>
+          <h4 class="text-center text-2xl font-extrabold text-[#AB277A] mb-4 transition-all duration-500 hover:text-[#030D55] font-paytone">
+            Trabajemos en tu disociación   
+          </h4>
           <p class="text-center text-base leading-7 text-[#030D55] mb-4 transition-all duration-300 hover:translate-y-[-2px]">
           El video aborda la disociación como respuesta a traumas, explicando sus efectos y cómo la psicoterapia EMDR puede ayudar a reconectar contigo mismo y liderar tu vida con apoyo profesional.
           </p>
@@ -181,7 +183,9 @@
         
         <!-- Texto del testimonio a la derecha -->
         <div class="md:w-3/9" data-aos="fade-left" data-aos-duration="600">
-          <h4 class="text-center md:text-right text-2xl font-extrabold text-[#AB277A] mb-4 transition-all duration-500 hover:text-[#030D55]" style="font-family: 'Playfair Display', serif; line-height: 100%;">Juntas podemos superar el abuso</h4>
+          <h4 class="text-center md:text-right text-2xl font-extrabold text-[#AB277A] mb-4 transition-all duration-500 hover:text-[#030D55] font-paytone">
+            Juntas podemos superar el abuso
+          </h4>
           <p class="text-center text-base leading-7 text-[#030D55] mb-4 transition-all duration-300 hover:translate-y-[-2px]">
           El video aborda el dolor del abuso, ofreciendo apoyo profesional con psicoterapia EMDR para superar el trauma y recuperar bienestar emocional.
           </p>
@@ -195,7 +199,9 @@
       <div class="flex flex-col md:flex-row gap-16 items-center max-w-6xl mx-auto">
         <!-- Texto del testimonio a la izquierda -->
         <div class="md:w-4/9 order-2 md:order-1" data-aos="fade-right" data-aos-duration="600">
-          <h4 class="text-center text-2xl font-extrabold text-[#AB277A] mb-4 transition-all duration-500 hover:text-[#030D55]" style="font-family: 'Playfair Display', serif; line-height: 100%;">La mala suerte en el amor no existe, es trauma. Trabajemos juntos con EMDR.</h4>
+          <h4 class="text-center text-2xl font-extrabold text-[#AB277A] mb-4 transition-all duration-500 hover:text-[#030D55] font-paytone">
+            La mala suerte en el amor no existe, es trauma. Trabajemos juntos con EMDR.
+          </h4>
           <p class="text-center text-base leading-7 text-[#030D55] mb-4 transition-all duration-300 hover:translate-y-[-2px]">
           Superar patrones dañinos en el amor es posible trabajando traumas pasados con psicoterapia EMDR para abrirse a relaciones saludables..
           </p>
@@ -224,7 +230,9 @@
         
         <!-- Texto del testimonio a la derecha -->
         <div class="md:w-3/9" data-aos="fade-left" data-aos-duration="600">
-          <h4 class="text-center md:text-right text-2xl font-extrabold text-[#AB277A] mb-4 transition-all duration-500 hover:text-[#030D55]" style="font-family: 'Playfair Display', serif; line-height: 100%;">Con EMDR, trabajemos juntos en tus miedos y traumas</h4>
+          <h4 class="text-center md:text-right text-2xl font-extrabold text-[#AB277A] mb-4 transition-all duration-500 hover:text-[#030D55] font-paytone">
+            Con EMDR, trabajemos juntos en tus miedos y traumas
+          </h4>
           <p class="text-center text-base leading-7 text-[#030D55] mb-4 transition-all duration-300 hover:translate-y-[-2px]">
           Supera tus miedos y traumas con psicoterapia EMDR, sanando heridas del pasado, aprendiendo herramientas útiles y mejorando tu vida de manera duradera.
           </p>
@@ -238,7 +246,7 @@
       <!-- Contenido centrado con línea vertical -->
       <div class="relative flex flex-col items-center text-center" data-aos="fade-up" data-aos-duration="600">
         
-        <h4 class="text-3xl font-bold mb-6 bg-white px-4 relative z-10 transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif;">
+        <h4 class="text-3xl font-bold mb-6 bg-white px-4 relative z-10 transition-all duration-500 hover:text-[#AB277A] font-paytone">
           Atención de emergencia:
         </h4>
         
