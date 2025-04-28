@@ -18,52 +18,58 @@
         <!-- Iconos sociales con dropdown -->
         <div class="flex justify-center md:justify-start space-x-6 items-center mb-6 w-full">
           <!-- Instagram -->
-          <div class="relative group">
-            <a href="https://www.instagram.com/instituto_kintsugi/" target="_blank" rel="noopener" class="text-[#181818] hover:text-[#AB277A] transition-colors duration-300 block">
-            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-            </svg>
-          </a>
-            <div class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+          <div class="relative group" x-data="{ open: false }" @click.away="open = false">
+            <a href="https://www.instagram.com/instituto_kintsugi/" target="_blank" rel="noopener" 
+               class="text-[#181818] hover:text-[#AB277A] transition-colors duration-300 block md:cursor-pointer"
+               @click.prevent="$event.target.closest('.group').querySelector('.dropdown-menu').classList.toggle('active')">
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+              </svg>
+            </a>
+            <div class="dropdown-menu absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible md:group-hover:opacity-100 md:group-hover:visible transition-all duration-300 z-50">
               <a href="https://www.instagram.com/psicologa_shenhui/" target="_blank" rel="noopener" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#AB277A] hover:text-white">@psicologa_shenhui</a>
               <a href="https://www.instagram.com/psicologo_juliocesar/" target="_blank" rel="noopener" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#AB277A] hover:text-white">@psicologo_juliocesar</a>
             </div>
           </div>
 
           <!-- Facebook -->
-          <div class="relative group">
-            <a href="https://www.facebook.com/Ikintsugi/" target="_blank" rel="noopener" class="text-[#181818] hover:text-[#AB277A] transition-colors duration-300 block">
-            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
-            </svg>
-          </a>
-            <div class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+          <div class="relative group" x-data="{ open: false }" @click.away="open = false">
+            <a href="https://www.facebook.com/Ikintsugi/" target="_blank" rel="noopener" 
+               class="text-[#181818] hover:text-[#AB277A] transition-colors duration-300 block md:cursor-pointer"
+               @click.prevent="$event.target.closest('.group').querySelector('.dropdown-menu').classList.toggle('active')">
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+              </svg>
+            </a>
+            <div class="dropdown-menu absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible md:group-hover:opacity-100 md:group-hover:visible transition-all duration-300 z-50">
               <a href="https://www.facebook.com/profile.php?id=100063555630096" target="_blank" rel="noopener" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#AB277A] hover:text-white">Psicóloga Shénhui</a>
               <a href="https://www.facebook.com/profile.php?id=100063467988484" target="_blank" rel="noopener" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#AB277A] hover:text-white">Psicólogo Julio César</a>
             </div>
           </div>
 
           <!-- LinkedIn -->
-          <div class="relative group">
-            <div class="text-[#181818] hover:text-[#AB277A] transition-colors duration-300 block cursor-pointer">
+          <div class="relative group" x-data="{ open: false }" @click.away="open = false">
+            <div class="text-[#181818] hover:text-[#AB277A] transition-colors duration-300 block cursor-pointer md:cursor-pointer"
+                 @click="$event.preventDefault(); $event.target.closest('.group').querySelector('.dropdown-menu').classList.toggle('active')">
               <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
               </svg>
             </div>
-            <div class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+            <div class="dropdown-menu absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible md:group-hover:opacity-100 md:group-hover:visible transition-all duration-300 z-50">
               <a href="https://www.linkedin.com/newsletters/7085405873988083712/" target="_blank" rel="noopener" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#AB277A] hover:text-white">Newsletter Shénhui</a>
               <a href="https://www.linkedin.com/newsletters/emisor-kintsugi-7039605681020108800/" target="_blank" rel="noopener" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#AB277A] hover:text-white">Newsletter Julio César</a>
             </div>
           </div>
 
           <!-- TikTok -->
-          <div class="relative group">
-            <div class="text-[#181818] hover:text-[#AB277A] transition-colors duration-300 block cursor-pointer">
+          <div class="relative group" x-data="{ open: false }" @click.away="open = false">
+            <div class="text-[#181818] hover:text-[#AB277A] transition-colors duration-300 block cursor-pointer md:cursor-pointer"
+                 @click="$event.preventDefault(); $event.target.closest('.group').querySelector('.dropdown-menu').classList.toggle('active')">
               <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
               </svg>
             </div>
-            <div class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+            <div class="dropdown-menu absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible md:group-hover:opacity-100 md:group-hover:visible transition-all duration-300 z-50">
               <a href="https://www.tiktok.com/@psicologo_juliocesar" target="_blank" rel="noopener" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#AB277A] hover:text-white">@psicologo_juliocesar</a>
               <a href="https://www.tiktok.com/@psicologa_shenhui" target="_blank" rel="noopener" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#AB277A] hover:text-white">@psicologa_shenhui</a>
             </div>
@@ -93,37 +99,36 @@
       </div>
       
       <!-- Columna 2: Instituciones + Menú -->
-      <div class="md:col-span-6">
+      <div class="md:col-span-7">
         <!-- Instituciones Asociadas -->
         <div class="mb-8">
           <h3 class="text-[#AB277A] font-medium mb-4 text-xl text-center md:text-left" style="font-family: 'Roboto', sans-serif;">
             Instituciones Asociadas
           </h3>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 justify-items-center md:justify-items-start">
-            <a href="https://www.emdr-es.org/Terapeutas" target="_blank" rel="noopener" class="transition-opacity duration-300 hover:opacity-80">
-              <img src="{{ get_theme_file_uri('resources/images/logoemdr1.png') }}" alt="Asociación EMDR España" class="w-28 h-auto">
+            <a href="https://www.emdr-es.org/Terapeutas" target="_blank" rel="noopener" class="transition-opacity duration-300 hover:opacity-80 w-32 h-16 flex items-center justify-center">
+              <img src="{{ get_theme_file_uri('resources/images/logoemdr1.png') }}" alt="Asociación EMDR España" class="max-w-full max-h-full object-contain">
             </a>
-            <a href="https://emdrchile.cl/terapeutas/julio-cesar-carrasco-rebolledo/" target="_blank" rel="noopener" class="transition-opacity duration-300 hover:opacity-80">
-              <img src="{{ get_theme_file_uri('resources/images/logoemdr2.png') }}" alt="EMDR Chile" class="w-24 h-auto">
+            <a href="https://emdrchile.cl/terapeutas/julio-cesar-carrasco-rebolledo/" target="_blank" rel="noopener" class="transition-opacity duration-300 hover:opacity-80 w-32 h-16 flex items-center justify-center">
+              <img src="{{ get_theme_file_uri('resources/images/logoemdr2.png') }}" alt="EMDR Chile" class="max-w-full max-h-full object-contain">
             </a>
-            <a href="https://www.happinessstudies.academy/" target="_blank" rel="noopener" class="transition-opacity duration-300 hover:opacity-80">
-              <img src="{{ get_theme_file_uri('resources/images/logo-hsa.avif') }}" alt="Happiness Studies Academy" class="w-28 h-auto">
+            <a href="https://www.happinessstudies.academy/" target="_blank" rel="noopener" class="transition-opacity duration-300 hover:opacity-80 w-32 h-16 flex items-center justify-center">
+              <img src="{{ get_theme_file_uri('resources/images/logo-hsa.avif') }}" alt="Happiness Studies Academy" class="max-w-full max-h-full object-contain">
             </a>
-            <a href="https://www.psicologiadeldeportechile.cl/" target="_blank" rel="noopener" class="transition-opacity duration-300 hover:opacity-80">
-              <img src="{{ get_theme_file_uri('resources/images/logo-psidepchile.avif') }}" alt="Sociedad Chilena de Psicología del Deporte" class="w-24 h-auto">
+            <a href="https://www.psicologiadeldeportechile.cl/" target="_blank" rel="noopener" class="transition-opacity duration-300 hover:opacity-80 w-32 h-16 flex items-center justify-center">
+              <img src="{{ get_theme_file_uri('resources/images/logo-psidepchile.avif') }}" alt="Sociedad Chilena de Psicología del Deporte" class="max-w-full max-h-full object-contain">
             </a>
           </div>
         </div>
 
         <!-- Menú desktop (oculto en móvil) -->
         <div class="hidden md:block">
-          <nav class="grid grid-cols-2 gap-x-8 gap-y-2">
+          <nav class="grid grid-cols-3 gap-x-8 gap-y-3">
             <!-- Primera columna -->
             <div class="space-y-2">
               <a href="{{ home_url('/') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">Inicio</a>
               <a href="{{ home_url('/a-quienes-atendemos') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">¿A quiénes atendemos?</a>
               <a href="{{ home_url('/charlas-y-talleres') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">Charlas y talleres</a>
-              <a href="{{ home_url('/preguntas-frecuentes') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">FAQ'S</a>
             </div>
             <!-- Segunda columna -->
             <div class="space-y-2">
@@ -154,6 +159,9 @@
                   </div>
                 </div>
               </div>
+            </div>
+            <!-- Tercera columna -->
+            <div class="space-y-2">
               <div class="relative group">
                 <a href="{{ home_url('/prensa') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">
                   Prensa y medios
@@ -166,13 +174,14 @@
                 </div>
               </div>
               <a href="{{ home_url('/contacto') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">Contacto</a>
+              <a href="{{ home_url('/preguntas-frecuentes') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">FAQ'S</a>
             </div>
           </nav>
         </div>
       </div>
       
       <!-- Columna 3: Contacto y Privacidad -->
-      <div class="md:col-span-3">
+      <div class="md:col-span-2">
         <div class="space-y-8">
           <!-- Contacto -->
           <div class="text-center md:text-left">
@@ -328,4 +337,52 @@
     color: #D93280;
     font-weight: bold;
   }
+
+  /* Estilos para el dropdown en móvil */
+  @media (max-width: 768px) {
+    .dropdown-menu.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .dropdown-menu {
+      transform: translateY(-10px);
+    }
+  }
 </style>
+
+<script>
+  // Script para manejar los dropdowns en móvil
+  document.addEventListener('DOMContentLoaded', function() {
+    const socialIcons = document.querySelectorAll('.group > a');
+    
+    socialIcons.forEach(icon => {
+      icon.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          const dropdown = this.nextElementSibling;
+          
+          // Cerrar todos los otros dropdowns
+          document.querySelectorAll('.dropdown-menu').forEach(menu => {
+            if (menu !== dropdown) {
+              menu.classList.remove('active');
+            }
+          });
+          
+          // Toggle el dropdown actual
+          dropdown.classList.toggle('active');
+        }
+      });
+    });
+    
+    // Cerrar dropdowns al hacer click fuera
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.group')) {
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+          menu.classList.remove('active');
+        });
+      }
+    });
+  });
+</script>
