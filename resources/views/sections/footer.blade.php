@@ -4,26 +4,26 @@
     <!-- Grid principal -->
     <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-6 relative">
       <!-- Columna 1: Logo, redes y frase -->
-      <div class="flex flex-col md:col-span-3 pl-8 md:pl-12">
+      <div class="flex flex-col items-center md:items-start md:col-span-3 pl-0 md:pl-12">
         <!-- Logo -->
         <div class="mb-6 transition-transform duration-300 hover:scale-105">
           <img src="{{ get_theme_file_uri('resources/images/kintsugi-hero-azul.png') }}" alt="Logo" class="w-40 h-auto">
         </div>
         
         <!-- Redes sociales -->
-        <h3 class="text-[#AB277A] font-medium mb-4 text-xl" style="font-family: 'Roboto', sans-serif;">
+        <h3 class="text-[#AB277A] font-medium mb-4 text-xl text-center md:text-left" style="font-family: 'Roboto', sans-serif;">
           Síguenos
         </h3>
         
         <!-- Iconos sociales con dropdown -->
-        <div class="flex space-x-6 items-center mb-6">
+        <div class="flex justify-center md:justify-start space-x-6 items-center mb-6 w-full">
           <!-- Instagram -->
           <div class="relative group">
             <a href="https://www.instagram.com/instituto_kintsugi/" target="_blank" rel="noopener" class="text-[#181818] hover:text-[#AB277A] transition-colors duration-300 block">
-              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-              </svg>
-            </a>
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+          </a>
             <div class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
               <a href="https://www.instagram.com/psicologa_shenhui/" target="_blank" rel="noopener" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#AB277A] hover:text-white">@psicologa_shenhui</a>
               <a href="https://www.instagram.com/psicologo_juliocesar/" target="_blank" rel="noopener" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#AB277A] hover:text-white">@psicologo_juliocesar</a>
@@ -33,10 +33,10 @@
           <!-- Facebook -->
           <div class="relative group">
             <a href="https://www.facebook.com/Ikintsugi/" target="_blank" rel="noopener" class="text-[#181818] hover:text-[#AB277A] transition-colors duration-300 block">
-              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
-              </svg>
-            </a>
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+            </svg>
+          </a>
             <div class="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
               <a href="https://www.facebook.com/profile.php?id=100063555630096" target="_blank" rel="noopener" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#AB277A] hover:text-white">Psicóloga Shénhui</a>
               <a href="https://www.facebook.com/profile.php?id=100063467988484" target="_blank" rel="noopener" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#AB277A] hover:text-white">Psicólogo Julio César</a>
@@ -83,12 +83,12 @@
             </svg>
           </a>
         </div>
-
+        
         <!-- Frase inspiradora con animación -->
-        <div class="text-[#AB277A] text-2xl md:text-3xl" style="font-family: 'Hugamour', sans-serif;">
+        <div class="text-[#AB277A] text-2xl md:text-3xl text-center md:text-left w-full" style="font-family: 'Hugamour', sans-serif;">
           <p class="mb-0 animate-fade-in-slide" style="animation-delay: 0s;">#El Trauma</p>
-          <p class="mb-0 md:ml-8 animate-fade-in-slide" style="animation-delay: 0.2s;">Se Puede</p>
-          <p class="mb-0 md:ml-16 animate-fade-in-slide" style="animation-delay: 0.4s;">Superar</p>
+          <p class="mb-0 md:ml-8 animate-fade-in-slide mx-auto md:mx-0" style="animation-delay: 0.2s;">Se Puede</p>
+          <p class="mb-0 md:ml-16 animate-fade-in-slide mx-auto md:mx-0" style="animation-delay: 0.4s;">Superar</p>
         </div>
       </div>
       
@@ -115,7 +115,7 @@
           </div>
         </div>
 
-        <!-- Menú desktop -->
+        <!-- Menú desktop (oculto en móvil) -->
         <div class="hidden md:block">
           <nav class="grid grid-cols-2 gap-x-8 gap-y-2">
             <!-- Primera columna -->
@@ -167,20 +167,6 @@
               </div>
               <a href="{{ home_url('/contacto') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">Contacto</a>
             </div>
-          </nav>
-        </div>
-
-        <!-- Menú mobile -->
-        <div class="md:hidden mt-8">
-          <nav class="grid grid-cols-1 gap-4">
-            <a href="{{ home_url('/') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300 text-center">Inicio</a>
-            <a href="{{ home_url('/a-quienes-atendemos') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300 text-center">¿A quiénes atendemos?</a>
-            <a href="{{ home_url('/charlas-y-talleres') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300 text-center">Charlas y talleres</a>
-            <a href="{{ home_url('/preguntas-frecuentes') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300 text-center">FAQ'S</a>
-            <a href="{{ home_url('/psicoterapia-emdr') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300 text-center">Psicoterapia EMDR</a>
-            <a href="{{ home_url('/quienes-somos') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300 text-center">¿Quiénes somos?</a>
-            <a href="{{ home_url('/prensa') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300 text-center">Prensa y medios</a>
-            <a href="{{ home_url('/contacto') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300 text-center">Contacto</a>
           </nav>
         </div>
       </div>
