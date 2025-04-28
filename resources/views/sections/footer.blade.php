@@ -6,8 +6,8 @@
       <!-- Columna 1: Logo, redes y frase -->
       <div class="flex flex-col items-center md:items-start md:col-span-3 pl-0 md:pl-12">
         <!-- Logo -->
-        <div class="mb-6 transition-transform duration-300 hover:scale-105">
-          <img src="{{ get_theme_file_uri('resources/images/kintsugi-hero-azul.png') }}" alt="Logo" class="w-40 h-auto">
+        <div class="mb-6 transition-transform duration-300 hover:scale-110">
+          <img src="{{ get_theme_file_uri('resources/images/kintsugi-hero-azul.png') }}" alt="Logo" class="w-48 md:w-56 h-auto">
         </div>
         
         <!-- Redes sociales -->
@@ -48,9 +48,9 @@
           </div>
 
           <!-- LinkedIn -->
-          <div class="relative group" x-data="{ open: false }" @click.away="open = false">
-            <div class="text-[#181818] hover:text-[#AB277A] transition-colors duration-300 block cursor-pointer md:cursor-pointer"
-                 @click="$event.preventDefault(); $event.target.closest('.group').querySelector('.dropdown-menu').classList.toggle('active')">
+          <div class="relative group">
+            <div class="text-[#181818] hover:text-[#AB277A] transition-colors duration-300 block cursor-pointer"
+                 onclick="toggleDropdown(this)">
               <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
               </svg>
@@ -62,9 +62,9 @@
           </div>
 
           <!-- TikTok -->
-          <div class="relative group" x-data="{ open: false }" @click.away="open = false">
-            <div class="text-[#181818] hover:text-[#AB277A] transition-colors duration-300 block cursor-pointer md:cursor-pointer"
-                 @click="$event.preventDefault(); $event.target.closest('.group').querySelector('.dropdown-menu').classList.toggle('active')">
+          <div class="relative group">
+            <div class="text-[#181818] hover:text-[#AB277A] transition-colors duration-300 block cursor-pointer"
+                 onclick="toggleDropdown(this)">
               <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
               </svg>
@@ -106,16 +106,16 @@
             Instituciones Asociadas
           </h3>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4 justify-items-center md:justify-items-start">
-            <a href="https://www.emdr-es.org/Terapeutas" target="_blank" rel="noopener" class="transition-opacity duration-300 hover:opacity-80 w-32 h-16 flex items-center justify-center">
+            <a href="https://www.emdr-es.org/Terapeutas" target="_blank" rel="noopener" class="transition-all duration-300 hover:scale-110 w-32 h-16 flex items-center justify-center">
               <img src="{{ get_theme_file_uri('resources/images/logoemdr1.png') }}" alt="Asociación EMDR España" class="max-w-full max-h-full object-contain">
             </a>
-            <a href="https://emdrchile.cl/terapeutas/julio-cesar-carrasco-rebolledo/" target="_blank" rel="noopener" class="transition-opacity duration-300 hover:opacity-80 w-32 h-16 flex items-center justify-center">
+            <a href="https://emdrchile.cl/terapeutas/julio-cesar-carrasco-rebolledo/" target="_blank" rel="noopener" class="transition-all duration-300 hover:scale-110 w-32 h-16 flex items-center justify-center">
               <img src="{{ get_theme_file_uri('resources/images/logoemdr2.png') }}" alt="EMDR Chile" class="max-w-full max-h-full object-contain">
             </a>
-            <a href="https://www.happinessstudies.academy/" target="_blank" rel="noopener" class="transition-opacity duration-300 hover:opacity-80 w-32 h-16 flex items-center justify-center">
+            <a href="https://www.happinessstudies.academy/" target="_blank" rel="noopener" class="transition-all duration-300 hover:scale-110 w-40 h-20 flex items-center justify-center">
               <img src="{{ get_theme_file_uri('resources/images/logo-hsa.avif') }}" alt="Happiness Studies Academy" class="max-w-full max-h-full object-contain">
             </a>
-            <a href="https://www.psicologiadeldeportechile.cl/" target="_blank" rel="noopener" class="transition-opacity duration-300 hover:opacity-80 w-32 h-16 flex items-center justify-center">
+            <a href="https://www.psicologiadeldeportechile.cl/" target="_blank" rel="noopener" class="transition-all duration-300 hover:scale-110 w-40 h-20 flex items-center justify-center">
               <img src="{{ get_theme_file_uri('resources/images/logo-psidepchile.avif') }}" alt="Sociedad Chilena de Psicología del Deporte" class="max-w-full max-h-full object-contain">
             </a>
           </div>
@@ -350,39 +350,42 @@
       transform: translateY(-10px);
     }
   }
+
+  /* Mejorar la animación de hover para los logos */
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
 </style>
 
 <script>
-  // Script para manejar los dropdowns en móvil
-  document.addEventListener('DOMContentLoaded', function() {
-    const socialIcons = document.querySelectorAll('.group > a');
+function toggleDropdown(element) {
+  // Solo ejecutar en móvil
+  if (window.innerWidth <= 768) {
+    const dropdown = element.nextElementSibling;
     
-    socialIcons.forEach(icon => {
-      icon.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          const dropdown = this.nextElementSibling;
-          
-          // Cerrar todos los otros dropdowns
-          document.querySelectorAll('.dropdown-menu').forEach(menu => {
-            if (menu !== dropdown) {
-              menu.classList.remove('active');
-            }
-          });
-          
-          // Toggle el dropdown actual
-          dropdown.classList.toggle('active');
-        }
-      });
-    });
-    
-    // Cerrar dropdowns al hacer click fuera
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.group')) {
-        document.querySelectorAll('.dropdown-menu').forEach(menu => {
-          menu.classList.remove('active');
-        });
+    // Cerrar todos los otros dropdowns
+    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+      if (menu !== dropdown) {
+        menu.classList.remove('active');
       }
     });
-  });
+    
+    // Toggle el dropdown actual
+    dropdown.classList.toggle('active');
+    
+    // Prevenir que el evento se propague
+    event.stopPropagation();
+  }
+}
+
+// Cerrar dropdowns al hacer click fuera
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.group')) {
+    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+      menu.classList.remove('active');
+    });
+  }
+});
 </script>
