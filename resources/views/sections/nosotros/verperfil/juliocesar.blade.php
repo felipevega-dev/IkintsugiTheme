@@ -79,8 +79,8 @@
     ];
     
     $titulo_testimonio = "Un testimonio de quien transformó<br>su vida con Julio César";
-    $testimonio_id = "TESTIMONIAL_ID"; // Reemplazar con ID real de YouTube
-    $testimonio_autor = "Lorena López";
+    $testimonio_id = "Ft3oIUaRA5g"; // Reemplazar con ID real de YouTube
+    $testimonio_autor = "Lorena";
     $testimonio_texto = '"Cuando decidí buscar la terapia con Julio, lo hice porque sentía mucha ansiedad todo el tiempo. Mi mente no paraba y me impedía dormir y disfrutar de mi vida. A través del proceso, he aprendido a entender mis emociones y a gestionarlas. Hoy me siento mucho más tranquila."';
     
     $url_reserva = "/reservar-cita";
@@ -88,6 +88,12 @@
   @endphp
   
   <!-- Estilos y animaciones para la página -->
+
+  <style>
+  .page-template-verperfil {
+    padding-top: 0 !important;
+  }
+  </style>
   <style>
     .img-hover-zoom {
       transition: transform 0.5s ease;
@@ -198,7 +204,7 @@
   </style>
   
   <!-- Sección de héroe con fondo y borde curvo -->
-  <div class="bg-[#CCA0E00D] pb-20 relative pt-24">
+  <div class="bg-[#CCA0E00D] relative pb-12 pt-24">
     <div class="container mx-auto px-4 py-12 hero-container">
       <div class="flex flex-col md:flex-row items-center md:items-start gap-8 max-w-6xl mx-auto hero-profile">
         <!-- Imagen con borde redondeado y degradado -->
@@ -210,7 +216,7 @@
         
         <!-- Información del psicólogo -->
         <div class="flex-grow fade-up" data-delay="400">
-          <h1 class="text-5xl md:text-5xl font-bold text-[#030D55] mb-6 text-center md:text-left" style="font-family: 'Playfair Display', serif;">{{ $nombre }}</h1>
+          <h1 class="text-5xl md:text-5xl font-bold text-[#030D55] mb-6 text-center md:text-left font-paytone">{{ $nombre }}</h1>
           
           <ul class="list-none space-y-1 mt-4">
             @foreach($credenciales as $credencial)
@@ -256,16 +262,16 @@
     
     <!-- Sección de video -->
     <div class="mb-16 text-center fade-up" data-delay="300">
-      <h2 class="text-2xl md:text-3xl font-bold text-[#030D55] mb-6 text-center" style="font-family: 'Playfair Display', serif;">Estoy aquí para acompañarte en el<br>proceso de sanar y recuperar tu<br>bienestar emocional.</h2>
+      <h2 class="text-2xl md:text-3xl font-bold text-[#030D55] mb-6 text-center font-paytone">Estoy aquí para acompañarte en el<br>proceso de sanar y recuperar tu<br>bienestar emocional.</h2>
       
-      <div class="mx-auto video-container" style="max-width: 100%; width: 1053px; height: 537px; border-radius: 16px; overflow: hidden; box-shadow: 0px 4px 16px 0px #AB277A;">
-        <iframe class="w-full h-full" src="https://www.youtube.com/embed/t_SvFfMMRzo" title="Presentación {{ $nombre }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="mx-auto video-container relative" style="max-width: 100%; width: 1053px; height: 537px; border-radius: 16px; overflow: hidden; box-shadow: 0px 4px 16px 0px #AB277A;">
+        <div class="w-full h-full" id="main-video-container"></div>
       </div>
     </div>
     
     <!-- Formación Académica y Certificaciones -->
     <div class="mb-16 max-w-5xl mx-auto fade-up" data-delay="400">
-      <h3 class="text-xl font-bold text-[#030D55] mb-6 text-center">Formación Académica y Certificaciones Internacionales</h3>
+      <h3 class="text-xl font-bold text-[#030D55] mb-6 text-center font-paytone">Formación Académica y Certificaciones Internacionales</h3>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="rounded-2xl overflow-hidden formacion-card" style="padding: 1px; background: linear-gradient(180deg, rgba(171, 39, 122, 0.48) 0%, rgba(3, 13, 85, 0.48) 61%);">
@@ -309,68 +315,120 @@
     
     <!-- Especialidades en Terapia EMDR -->
     <div class="mb-16 max-w-5xl mx-auto relative fade-up" data-delay="500">
-      <h3 class="text-xl font-bold text-[#000000] mb-6 text-start">Especialización en Terapia EMDR</h3>
+      <h3 class="text-xl font-bold text-[#000000] mb-6 text-start font-paytone">Especialización en Terapia EMDR</h3>
       
       <div class="mt-10 relative">
         <!-- Línea vertical punteada para conectar los puntos -->
         <div class="hidden md:block absolute left-[9px] top-2 bottom-0 border-l-2 border-dashed border-[#AB277A] opacity-30" style="height: calc(100% - 20px);"></div>
         
         <ul class="space-y-6 relative z-10">
-          <li class="flex items-start">
-            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full"></span>
+          <li class="flex items-start group hover:-translate-y-1 transition-all duration-300">
+            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full shadow-md relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(171,39,122,0.7)] group-hover:scale-110">
+              <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 group-hover:animate-pulse"></span>
+            </span>
             <span>EMDR, Protocolo principal, para Desensibilización y Reprocesamiento por Movimientos Oculares, para las vivencias traumáticas, EMDR Institute USA, EMDRIA.</span>
           </li>
-          <li class="flex items-start">
-            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full"></span>
+          <li class="flex items-start group hover:-translate-y-1 transition-all duration-300">
+            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full shadow-md relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(171,39,122,0.7)] group-hover:scale-110">
+              <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 group-hover:animate-pulse"></span>
+            </span>
             <span>EMD, Protocolo simplicado, Desensibilización por Movimientos Oculares.</span>
           </li>
-          <li class="flex items-start">
-            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full"></span>
+          <li class="flex items-start group hover:-translate-y-1 transition-all duration-300">
+            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full shadow-md relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(171,39,122,0.7)] group-hover:scale-110">
+              <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 group-hover:animate-pulse"></span>
+            </span>
             <span>EMDR 2.0 (Optimización del proceso terapéutico con técnicas innovadoras creadas por Suzy Matthijssen y Ad De Jongh).</span>
           </li>
-          <li class="flex items-start">
-            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full"></span>
+          <li class="flex items-start group hover:-translate-y-1 transition-all duration-300">
+            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full shadow-md relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(171,39,122,0.7)] group-hover:scale-110">
+              <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 group-hover:animate-pulse"></span>
+            </span>
             <span>PESEA, Protocolo EMDR, para Estabilización en Síndrome de Estrés Agudo, por PhD. Ignacio Jarero.</span>
           </li>
-          <li class="flex items-start">
-            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full"></span>
+          <li class="flex items-start group hover:-translate-y-1 transition-all duration-300">
+            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full shadow-md relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(171,39,122,0.7)] group-hover:scale-110">
+              <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 group-hover:animate-pulse"></span>
+            </span>
             <span>PRECI, Protocolo de Terapia EMDR para Incidentes Críticos Recientes y Estrés Traumático Continuado, por PhD. Ignacio Jarero.</span>
           </li>
-          <li class="flex items-start">
-            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full"></span>
+          <li class="flex items-start group hover:-translate-y-1 transition-all duration-300">
+            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full shadow-md relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(171,39,122,0.7)] group-hover:scale-110">
+              <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 group-hover:animate-pulse"></span>
+            </span>
             <span>Protocolo Grupal, para intervenciones en situaciones de crisis o catástrofes, de PhD Ignacio Jarero.</span>
           </li>
-          <li class="flex items-start">
-            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full"></span>
+          <li class="flex items-start group hover:-translate-y-1 transition-all duration-300">
+            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full shadow-md relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(171,39,122,0.7)] group-hover:scale-110">
+              <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 group-hover:animate-pulse"></span>
+            </span>
             <span>GTEP – Protocolo Grupal e Integrativo con Terapia EMDR, por Elan Shapiro Brurit Laub.</span>
           </li>
-          <li class="flex items-start">
-            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full"></span>
+          <li class="flex items-start group hover:-translate-y-1 transition-all duration-300">
+            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full shadow-md relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(171,39,122,0.7)] group-hover:scale-110">
+              <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 group-hover:animate-pulse"></span>
+            </span>
             <span>R-TEP Protocolo avanzado para trauma complejo, por Elan Shapiro y Brurit Laub.</span>
           </li>
-          <li class="flex items-start">
-            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full"></span>
+          <li class="flex items-start group hover:-translate-y-1 transition-all duration-300">
+            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full shadow-md relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(171,39,122,0.7)] group-hover:scale-110">
+              <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 group-hover:animate-pulse"></span>
+            </span>
             <span>Formación avanzada en Disociación Traumática, por PhD. Suzatte Boon.</span>
           </li>
-          <li class="flex items-start">
-            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full"></span>
+          <li class="flex items-start group hover:-translate-y-1 transition-all duration-300">
+            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full shadow-md relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(171,39,122,0.7)] group-hover:scale-110">
+              <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 group-hover:animate-pulse"></span>
+            </span>
             <span>Formación avanzada en el Tratamiento del Trauma Complejo, por Deany Laliotis, LICSW.</span>
           </li>
-          <li class="flex items-start">
-            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full"></span>
+          <li class="flex items-start group hover:-translate-y-1 transition-all duration-300">
+            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full shadow-md relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(171,39,122,0.7)] group-hover:scale-110">
+              <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 group-hover:animate-pulse"></span>
+            </span>
             <span>Formación avanzada en Trastornos de Trauma Complejo y Disociación, por Phd. Onno van der Hart y Phd. Roger Solomon, EMDR Europe.</span>
           </li>
-          <li class="flex items-start">
-            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full"></span>
+          <li class="flex items-start group hover:-translate-y-1 transition-all duration-300">
+            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full shadow-md relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(171,39,122,0.7)] group-hover:scale-110">
+              <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 group-hover:animate-pulse"></span>
+            </span>
             <span>Formación avanzada en EMDR para Víctimas de Violencia de Género, por Ps. Dolores Mosquera, EMDR Chile, EMDRLAC.</span>
           </li>
-          <li class="flex items-start">
-            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full"></span>
+          <li class="flex items-start group hover:-translate-y-1 transition-all duration-300">
+            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full shadow-md relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(171,39,122,0.7)] group-hover:scale-110">
+              <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 group-hover:animate-pulse"></span>
+            </span>
             <span>Formación avanzada en abuso sexual en terapia EMDR, Ps Arun Mansukhani.</span>
           </li>
-          <li class="flex items-start">
-            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full"></span>
+          <li class="flex items-start group hover:-translate-y-1 transition-all duration-300">
+            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full shadow-md relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(171,39,122,0.7)] group-hover:scale-110">
+              <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 group-hover:animate-pulse"></span>
+            </span>
             <span>Protocolo en Trastornos Somáticos en Terapia EMDR, Ps. Silvia Grauvy, EMDR Argentina.</span>
+          </li>
+          <li class="flex items-start group hover:-translate-y-1 transition-all duration-300">
+            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full shadow-md relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(171,39,122,0.7)] group-hover:scale-110">
+              <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 group-hover:animate-pulse"></span>
+            </span>
+            <span>Flash, Protocolo en intervención temprana, EMDR por PhD. Esly Regina Carvalho.</span>
+          </li>
+          <li class="flex items-start group hover:-translate-y-1 transition-all duration-300">
+            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full shadow-md relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(171,39,122,0.7)] group-hover:scale-110">
+              <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 group-hover:animate-pulse"></span>
+            </span>
+            <span>Formación avanzada en Estrategias para Trastornos Somáticos, por Ps. Santiago Jácome, EMDR Iberoamérica.</span>
+          </li>
+          <li class="flex items-start group hover:-translate-y-1 transition-all duration-300">
+            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full shadow-md relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(171,39,122,0.7)] group-hover:scale-110">
+              <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 group-hover:animate-pulse"></span>
+            </span>
+            <span>Written Exposure Therapy for PTSD, PhD. Debra Kaysen.</span>
+          </li>
+          <li class="flex items-start group hover:-translate-y-1 transition-all duration-300">
+            <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full shadow-md relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(171,39,122,0.7)] group-hover:scale-110">
+              <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 group-hover:animate-pulse"></span>
+            </span>
+            <span>Formación avanzada en el Trastorno Somático con Terapia EMDR, por Ps. Natalia Seijo.</span>
           </li>
         </ul>
       </div>
@@ -392,19 +450,19 @@
     </div>
     
     <div class="container mx-auto px-4 py-12 testimonial-container">
-      <h3 class="text-4xl font-bold text-[#030D55] mb-15 text-center fade-up" data-delay="200" style="font-family: 'Playfair Display', serif;">Un testimonio de quien transformó<br>su vida con Julio César</h3>
+      <h3 class="text-4xl font-bold text-[#030D55] mb-15 text-center fade-up font-paytone" data-delay="200">Un testimonio de quien transformó<br>su vida con Julio César</h3>
       
       <div class="flex flex-col md:flex-row gap-16 items-center max-w-6xl mx-auto testimonial-section">
         <!-- Texto del testimonio a la izquierda -->
         <div class="md:w-4/8 testimonial-text fade-up" data-delay="300">
-          <h4 class="text-center text-2xl font-extrabold text-[#AB277A] mb-4" style="font-family: 'Playfair Display', serif; line-height: 100%;">Lorena López</h4>
+          <h4 class="text-center text-2xl font-extrabold text-[#AB277A] mb-4 font-paytone">Lorena</h4>
           <p class="text-base leading-7" style="font-family: 'Roboto', sans-serif;">"Después de años en terapias largas y sin resultados, la terapia con Julio César fue un antes y un después para mí. En pocas sesiones vi cambios concretos, sin revivir traumas. Sentí que forjé mucho de mi interior y que, por fin, tenía una alternativa real al sufrimiento."</p>
         </div>
         
         <!-- Video a la derecha -->
         <div class="md:w-5/9 testimonial-video fade-up" data-delay="400">
           <div style="border-radius: 16px; overflow: hidden; box-shadow: 0px 4px 16px 0px #AB277A; border: 4px solid white;">
-            <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/Ft3oIUaRA5g" title="Testimonio de {{ $testimonio_autor }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="w-full aspect-video relative" id="testimonial-video-container"></div>
           </div>
         </div>
       </div>
@@ -504,6 +562,40 @@
       // Run initially and on resize
       adjustMobileSpacing();
       window.addEventListener('resize', adjustMobileSpacing);
+      
+      // Cargar videos de YouTube
+      const testimonialVideoContainer = document.getElementById('testimonial-video-container');
+      if (testimonialVideoContainer) {
+        const iframe = document.createElement('iframe');
+        iframe.setAttribute('src', 'https://www.youtube.com/embed/Ft3oIUaRA5g');
+        iframe.setAttribute('title', 'Testimonio de Lorena');
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.classList.add('w-full', 'h-full');
+        iframe.style.position = 'absolute';
+        iframe.style.top = '0';
+        iframe.style.left = '0';
+        testimonialVideoContainer.appendChild(iframe);
+      }
+    });
+  </script>
+
+  <script>
+    // Carga segura del iframe de YouTube para evitar problemas de scroll en móvil
+    document.addEventListener('DOMContentLoaded', function() {
+      const videoContainer = document.getElementById('main-video-container');
+      const iframe = document.createElement('iframe');
+      iframe.setAttribute('src', 'https://www.youtube.com/embed/t_SvFfMMRzo');
+      iframe.setAttribute('title', 'Presentación {{ $nombre }}');
+      iframe.setAttribute('frameborder', '0');
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.classList.add('w-full', 'h-full');
+      iframe.style.position = 'absolute';
+      iframe.style.top = '0';
+      iframe.style.left = '0';
+      videoContainer.appendChild(iframe);
     });
   </script>
 @endsection

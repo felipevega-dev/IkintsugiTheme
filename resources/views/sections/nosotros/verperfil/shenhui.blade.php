@@ -75,15 +75,20 @@
       "Formación avanzada en el Trastorno Somático con Terapia EMDR, por Ps. Natalia Seijo."
     ];
     
-    $titulo_testimonio = "Un testimonio de quien transformó<br>su vida con Shénhui";
-    $testimonio_id = "8NmFpjcz-QU"; // ID del video de testimonio de Shenhui
-    $testimonio_autor = "Fernando Torres";
+    $titulo_testimonio = "Un testimonio de quien transformó su vida con Shénhui";
+    $testimonio_id = "S9de95EBTXI"; // ID del video de testimonio de Shenhui
+    $testimonio_autor = "Fernando";
     $testimonio_texto = '"Después de años en terapias largas y sin resultados, la terapia con Shénhui fue un antes y un después para mí. En pocas sesiones vi cambios concretos, sin revivir traumas. Sentí que forjé mucho de mi interior y que, por fin, tenía una alternativa real al sufrimiento."';
     
     $url_reserva = "/reservar-cita";
     $texto_boton = "Reservar Cita";
   @endphp
   
+  <style>
+  .page-template-verperfil {
+    padding-top: 0 !important;
+  }
+  </style>
   <!-- Estilos y animaciones para la página -->
   <style>
     .img-hover-zoom {
@@ -195,7 +200,7 @@
   </style>
   
   <!-- Sección de héroe con fondo y borde curvo -->
-  <div class="bg-[#CCA0E00D] pb-20 relative pt-24">
+  <div class="bg-[#CCA0E00D] pb-12 relative pt-24">
     <div class="container mx-auto px-4 py-12 hero-container">
       <div class="flex flex-col md:flex-row items-center md:items-start gap-8 max-w-6xl mx-auto hero-profile">
         <!-- Imagen con borde redondeado y degradado -->
@@ -207,7 +212,7 @@
         
         <!-- Información del psicólogo -->
         <div class="flex-grow fade-up" data-delay="400">
-          <h1 class="text-5xl md:text-5xl font-bold text-[#030D55] mb-6 text-center md:text-left" style="font-family: 'Playfair Display', serif;">{{ $nombre }}</h1>
+          <h1 class="text-5xl md:text-5xl font-bold text-[#030D55] mb-6 text-center md:text-left font-paytone">{{ $nombre }}</h1>
           
           <ul class="list-none space-y-1 mt-4">
             @foreach($credenciales as $credencial)
@@ -253,16 +258,16 @@
     
     <!-- Sección de video -->
     <div class="mb-16 text-center fade-up" data-delay="300">
-      <h2 class="text-2xl md:text-3xl font-bold text-[#030D55] mb-6 text-center" style="font-family: 'Playfair Display', serif;">{{ $titulo_video }}</h2>
+      <h2 class="text-2xl md:text-3xl font-bold text-[#030D55] mb-6 text-center font-paytone">{{ $titulo_video }}</h2>
       
-      <div class="mx-auto video-container" style="max-width: 100%; width: 1053px; height: 537px; border-radius: 16px; overflow: hidden; box-shadow: 0px 4px 16px 0px #AB277A;">
-        <iframe class="w-full h-full" src="https://www.youtube.com/embed/{{ $video_id }}" title="Presentación {{ $nombre }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="mx-auto video-container relative" style="max-width: 100%; width: 1053px; height: 537px; border-radius: 16px; overflow: hidden; box-shadow: 0px 4px 16px 0px #AB277A;">
+        <div class="w-full h-full" id="main-video-container"></div>
       </div>
     </div>
     
     <!-- Formación Académica y Certificaciones -->
     <div class="mb-16 max-w-5xl mx-auto fade-up" data-delay="400">
-      <h3 class="text-xl font-bold text-[#030D55] mb-6 text-center">{{ $titulo_formacion }}</h3>
+      <h3 class="text-xl font-bold text-[#030D55] mb-6 text-center font-paytone">{{ $titulo_formacion }}</h3>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         @foreach($formacion as $item)
@@ -280,7 +285,7 @@
     
     <!-- Especialidades en Terapia EMDR -->
     <div class="mb-16 max-w-5xl mx-auto relative fade-up" data-delay="500">
-      <h3 class="text-xl font-bold text-[#000000] mb-6 text-start">{{ $titulo_especialidades }}</h3>
+      <h3 class="text-xl font-bold text-[#000000] mb-6 text-start font-paytone">{{ $titulo_especialidades }}</h3>
       
       <div class="mt-10 relative">
         <!-- Línea vertical punteada para conectar los puntos -->
@@ -288,8 +293,10 @@
         
         <ul class="space-y-6 relative z-10">
           @foreach($especialidades as $especialidad)
-            <li class="flex items-start">
-              <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full"></span>
+            <li class="flex items-start group hover:-translate-y-1 transition-all duration-300">
+              <span class="flex-shrink-0 w-[20px] h-[20px] mt-1 mr-3 bg-[#AB277A] rounded-full shadow-md relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_0_15px_rgba(171,39,122,0.7)] group-hover:scale-110">
+                <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-30 group-hover:animate-pulse"></span>
+              </span>
               <span>{{ $especialidad }}</span>
             </li>
           @endforeach
@@ -313,19 +320,19 @@
     </div>
     
     <div class="container mx-auto px-4 py-12 testimonial-container">
-      <h3 class="text-4xl font-bold text-[#030D55] mb-15 text-center fade-up" data-delay="200" style="font-family: 'Playfair Display', serif;">{{ $titulo_testimonio }}</h3>
+      <h3 class="text-4xl font-bold text-[#030D55] mb-15 text-center fade-up font-paytone" data-delay="200">{{ $titulo_testimonio }}</h3>
       
       <div class="flex flex-col md:flex-row gap-16 items-center max-w-6xl mx-auto testimonial-section">
         <!-- Texto del testimonio a la izquierda -->
         <div class="md:w-4/8 testimonial-text fade-up" data-delay="300">
-          <h4 class="text-center text-2xl font-extrabold text-[#AB277A] mb-4" style="font-family: 'Playfair Display', serif; line-height: 100%;">{{ $testimonio_autor }}</h4>
+          <h4 class="text-center text-2xl font-extrabold text-[#AB277A] mb-4 font-paytone">{{ $testimonio_autor }}</h4>
           <p class="text-base leading-7" style="font-family: 'Roboto', sans-serif;">{{ $testimonio_texto }}</p>
         </div>
         
         <!-- Video a la derecha -->
         <div class="md:w-5/9 testimonial-video fade-up" data-delay="400">
           <div style="border-radius: 16px; overflow: hidden; box-shadow: 0px 4px 16px 0px #AB277A; border: 4px solid white;">
-            <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/{{ $testimonio_id }}" title="Testimonio de {{ $testimonio_autor }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="w-full aspect-video relative" id="testimonial-video-container"></div>
           </div>
         </div>
       </div>
@@ -378,53 +385,36 @@
       handleScrollAnimation();
       window.addEventListener('scroll', handleScrollAnimation);
       
-      // Adjust spacing for mobile
-      function adjustMobileSpacing() {
-        if (window.innerWidth <= 768) {
-          // Fix additional spacing issues
-          const testimonialContainer = document.querySelector('.testimonial-container');
-          if (testimonialContainer) {
-            testimonialContainer.style.paddingTop = '1rem';
-            testimonialContainer.style.paddingBottom = '1rem';
-          }
-          
-          // Adjust hero container spacing
-          const heroContainer = document.querySelector('.hero-container');
-          if (heroContainer) {
-            heroContainer.style.paddingTop = '0.5rem';
-            heroContainer.style.paddingBottom = '0.5rem';
-          }
-          
-          // Fix margin bottom for description sections
-          document.querySelectorAll('.mb-16').forEach(el => {
-            el.style.marginBottom = '1rem';
-          });
-          
-          // Adjust credentials list spacing
-          const credentialsList = document.querySelector('.list-none.space-y-1');
-          if (credentialsList) {
-            credentialsList.style.marginTop = '0.5rem';
-          }
-          
-          // Better center social icons on mobile
-          const socialIconsContainer = document.querySelector('.social-icons-container');
-          if (socialIconsContainer) {
-            socialIconsContainer.style.justifyContent = 'center';
-            socialIconsContainer.style.gap = '1.5rem';
-            
-            // Make icons larger
-            const socialIcons = document.querySelectorAll('.social-icon svg');
-            socialIcons.forEach(icon => {
-              icon.style.width = '30px';
-              icon.style.height = '30px';
-            });
-          }
-        }
+      // Cargar videos de YouTube de forma segura para evitar problemas de scroll en móvil
+      const mainVideoContainer = document.getElementById('main-video-container');
+      if (mainVideoContainer) {
+        const iframe = document.createElement('iframe');
+        iframe.setAttribute('src', 'https://www.youtube.com/embed/{{ $video_id }}');
+        iframe.setAttribute('title', 'Presentación {{ $nombre }}');
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.classList.add('w-full', 'h-full');
+        iframe.style.position = 'absolute';
+        iframe.style.top = '0';
+        iframe.style.left = '0';
+        mainVideoContainer.appendChild(iframe);
       }
       
-      // Run initially and on resize
-      adjustMobileSpacing();
-      window.addEventListener('resize', adjustMobileSpacing);
+      const testimonialVideoContainer = document.getElementById('testimonial-video-container');
+      if (testimonialVideoContainer) {
+        const iframe = document.createElement('iframe');
+        iframe.setAttribute('src', 'https://www.youtube.com/embed/{{ $testimonio_id }}');
+        iframe.setAttribute('title', 'Testimonio de {{ $testimonio_autor }}');
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.classList.add('w-full', 'h-full');
+        iframe.style.position = 'absolute';
+        iframe.style.top = '0';
+        iframe.style.left = '0';
+        testimonialVideoContainer.appendChild(iframe);
+      }
     });
   </script>
 @endsection

@@ -18,7 +18,7 @@
           </h1>
           
           <p class="text-2xl md:text-4xl text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
-            #El trauma se puede superar
+            #Mereces una vida mejor
           </p>
         </div>
         
@@ -54,39 +54,60 @@
   </section>
 
   <!-- QUIENES SOMOS SECTION (antes en quienes-somos.blade.php) -->
-  <section class="bg-white relative overflow-hidden py-8 md:py-16">
+  <section class="bg-white relative overflow-hidden">
     <div class="container mx-auto px-4">
+      <!-- Título y primeros dos párrafos centrados arriba -->
+      <div class="max-w-[1150px] mx-auto mb-10" data-aos="fade-up" data-aos-duration="600">
+        <h2 class="text-2xl md:text-4xl lg:text-4xl font-extrabold mb-4 md:mb-6 text-[#030D55] transition-all duration-500 hover:text-[#AB277A] font-paytone text-center">
+          Quiénes somos
+        </h2>
+        
+        <div class="space-y-3 md:space-y-4">
+          <p class="text-base md:text-lg text-[#181818] font-normal transition-all duration-300 hover:translate-y-[-2px]" style="font-family: 'Roboto', sans-serif; line-height: 1.6; @media (min-width: 768px) { line-height: 1.7; }">
+            El Instituto Kintsugi es una organización dedicada a la promoción y prevención de la salud mental, a través de la psicoeducación y el tratamiento del trauma emocional. 
+          </p>
+          
+          <p class="text-base md:text-lg text-[#181818] font-normal transition-all duration-300 hover:translate-y-[-2px]" style="font-family: 'Roboto', sans-serif; line-height: 1.6; @media (min-width: 768px) { line-height: 1.7; }">
+            Nuestro nombre se inspira en el arte japonés de reparar las piezas rotas con oro, simbolizando la belleza y la fortaleza que se encuentra en cada cicatriz. Somos un equipo de profesionales especializados en el tratamiento del trauma y en la terapia EMDR, un enfoque basado en neurociencia que permite procesar los recuerdos traumáticos y reducir sus efectos negativos, ayudándote a superar la adversidad y a desarrollar una vida plena.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Contenido principal: imagen a la izquierda y texto a la derecha -->
       <div class="flex flex-col md:flex-row items-center gap-6 md:gap-12 lg:gap-16">
         <div class="md:w-1/2 relative mb-6 md:mb-0" data-aos="fade-right" data-aos-duration="600">
-          <div class="relative z-10 max-w-[450px] mx-auto md:mx-0">
+          <div class="relative z-10 max-w-[600px] mx-auto md:mx-0">
             <div class="rounded-2xl overflow-hidden transition-all duration-500">
               <img
-                src="{{ get_theme_file_uri('resources/images/quienesomos.png') }}"
+                src="{{ get_theme_file_uri('resources/images/julioyshen3.png') }}"
                 alt="Quiénes Somos"
-                class="w-full h-auto object-cover transition-all duration-500 hover:scale-105"
+                class="w-full h-auto min-h-[400px] md:min-h-[500px] object-cover object-center transition-all duration-500 hover:scale-105"
               >
             </div>
           </div>
         </div>
         
         <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="600">
-          <div class="max-w-[520px] mx-auto md:mx-0">
-            <h2 class="text-2xl md:text-4xl lg:text-4xl font-extrabold mb-4 md:mb-6 text-[#030D55] transition-all duration-500 hover:text-[#AB277A] font-paytone">
-              Quiénes somos
-            </h2>
-            
-            <div class="space-y-3 md:space-y-4">
+          <div class="max-w-[520px] mx-auto md:mx-0">            
+            <div class="space-y-3 md:space-y-4">              
               <p class="text-base md:text-lg text-[#181818] font-normal transition-all duration-300 hover:translate-y-[-2px]" style="font-family: 'Roboto', sans-serif; line-height: 1.6; @media (min-width: 768px) { line-height: 1.7; }">
-                En Instituto Kintsugi, nos dedicamos apasionadamente a mejorar tu bienestar mental y emocional, ofreciéndote un camino hacia la curación y el autodescubrimiento, inspirado en la filosofía japonesa del Kintsugi.
+                Acompañamos a adolescentes, adultos, parejas y adultos mayores que enfrentan dificultades emocionales derivadas de experiencias traumáticas. Si has vivido maltrato laboral, bullying o has sido víctima de agresiones como un portonazo o encerrona, estamos aquí para ayudarte.
               </p>
               
               <p class="text-base md:text-lg text-[#181818] font-normal transition-all duration-300 hover:translate-y-[-2px]" style="font-family: 'Roboto', sans-serif; line-height: 1.6; @media (min-width: 768px) { line-height: 1.7; }">
-                Así como esta técnica transforma objetos rotos en arte más valioso al resaltar sus grietas con oro, creemos que tus experiencias difíciles pueden convertirse en tu mayor fortaleza con el apoyo adecuado.
+                Nuestro compromiso es brindarte un espacio seguro y empático en el que puedas recuperar tu equilibrio emocional y retomar una vida plena. Combinamos un profundo entendimiento del impacto del trauma en la mente y el cuerpo con herramientas terapéuticas de eficacia comprobada.
               </p>
               
-              <p class="text-base md:text-lg text-[#181818] transition-all duration-300 hover:translate-y-[-2px]" style="font-family: 'Roboto', sans-serif; line-height: 1.6; @media (min-width: 768px) { line-height: 1.7; }">
-                <span class="font-normal">Nuestro equipo especializado integra terapias basadas en evidencia científica, como EMDR, en un ambiente seguro y comprensivo donde puedes sanar tus heridas del pasado y construir un presente más pleno. </span>
-                <span class="font-semibold">En Instituto Kintsugi, transformamos cicatrices en fortalezas que iluminan tu camino hacia una vida más auténtica y significativa.</span>
+              <p class="text-base md:text-lg text-[#181818] font-normal transition-all duration-300 hover:translate-y-[-2px]" style="font-family: 'Roboto', sans-serif; line-height: 1.6; @media (min-width: 768px) { line-height: 1.7; }">
+                Nuestro enfoque EMDR es de tercera generación, basado en evidencia científica y avalado por las más importantes organizaciones de salud mundial, lo que nos permite adaptar estrategias de intervención temprana en momentos de crisis y ajustar cada tratamiento a tus necesidades individuales.
+              </p>
+              
+              <p class="text-base md:text-lg text-[#181818] font-normal transition-all duration-300 hover:translate-y-[-2px]" style="font-family: 'Roboto', sans-serif; line-height: 1.6; @media (min-width: 768px) { line-height: 1.7; }">
+                Trabajemos juntos en el proceso de transformar esos recuerdos perturbadores en caminos hacia la resiliencia y el bienestar. Juntos recuperaremos el control de tus emociones y avanzaremos hacia una vida renovada.
+              </p>
+              
+              <p class="text-2xl text-center md:text-4xl md:text-left text-[#AB277A] font-medium md:font-semibold my-6 md:my-8 transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
+                Mereces una vida mejor.
               </p>
             </div>
           </div>
@@ -94,6 +115,21 @@
       </div>
     </div>
   </section> 
+
+  <!-- Video de presentación -->
+  <section class="bg-white relative overflow-hidden py-4 md:py-12">
+    <div class="container mx-auto px-4">
+      <div class="mx-auto aspect-video md:max-w-[850px]" style="max-width: 90%; border-radius: 16px; overflow: hidden; box-shadow: 0px 4px 16px 0px rgba(171, 39, 122, 0.5);" data-aos="fade-up" data-aos-duration="800">
+        <div class="relative w-full h-0 pb-[56.25%]">
+          <!-- Borde con gradiente -->
+          <div class="absolute inset-0 p-1 rounded-2xl" style="background: linear-gradient(90deg, #FF3382 0%, rgba(90, 9, 137, 0.8) 100%);">
+            <!-- Video -->
+            <iframe class="absolute top-0 left-0 w-full h-full rounded-xl" src="https://www.youtube.com/embed/MWUOwbLgzuU" title="Presentación Instituto Kintsugi" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- SOBRE NOSOTROS SECTION (antes en sobre-nosotros.blade.php) -->
   <section class="py-8 md:py-20 bg-white relative overflow-hidden">
@@ -103,13 +139,13 @@
           Sobre nosotros
         </h2>
         
-        <div class="mx-auto max-w-2xl mb-6 md:mb-14">
+        <div class="mx-auto max-w-5xl mb-6 md:mb-14">
           <p class="text-base md:text-lg text-center mb-3 md:mb-6 text-[#181818] transition-all duration-300 hover:translate-y-[-2px]" style="font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 1.6; @media (min-width: 768px) { line-height: 1.7; }">
-            Somos un equipo especializado en salud mental y terapia EMDR, avalada científicamente, enfocándonos en ayudarte a superar adversidades como maltrato, bullying o situaciones de violencia, adaptando cada tratamiento a ti.
+          Somos un equipo de psicólogos especializados en salud mental y Psicoterapia EMDR, de 3era generación, basada en evidencia científica. Nos enfocamos en ayudarte a superar las adversidades como maltrato, bullying o situaciones de violencia y más, adaptando cada tratamiento a tu persona.
           </p>
           
           <p class="text-base md:text-lg text-center text-[#181818] transition-all duration-300 hover:translate-y-[-2px]" style="font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 1.6; @media (min-width: 768px) { line-height: 1.7; }">
-            Nuestro compromiso: brindarte un espacio seguro donde puedas recuperar tu equilibrio y construir una vida plena.
+          <b>Nuestro compromiso:</b> brindarte un espacio seguro donde puedas recuperar tu equilibrio y construir una vida plena.
           </p>
         </div>
       </div>
@@ -120,8 +156,10 @@
         <div class="w-auto mb-6 md:mb-0" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
           <!-- Foto circular con botón -->
           <div class="flex flex-col items-center relative">
-            <div class="w-[180px] h-[180px] md:w-[250px] md:h-[250px] rounded-full overflow-hidden transition-transform duration-500 hover:scale-105 shadow-lg hover:shadow-xl">
-              <img src="{{ get_theme_file_uri('resources/images/julio.png') }}" alt="Julio César" class="w-full h-full object-cover transition-all duration-700 hover:saturate-150">
+            <div class="relative overflow-hidden transition-transform duration-500 hover:scale-105" style="width: min(280px, 90vw); height: min(280px, 90vw);">
+              <div class="w-full h-full flex items-center justify-center">
+                <img src="{{ get_theme_file_uri('resources/images/julio.png') }}" alt="Julio César" class="w-auto h-auto max-w-full max-h-full">
+              </div>
             </div>
             <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
               <div class="p-[2px] rounded-2xl bg-gradient-to-b from-[rgba(171,39,122,0.48)] to-[rgba(3,13,85,0.48)]">
@@ -134,20 +172,53 @@
           
           <!-- Nombre y credenciales -->
           <div class="text-left mt-6 md:mt-8">
-            <h3 class="font-medium text-[#FF3382] text-lg md:text-xl mb-3 transition-transform duration-300 hover:translate-x-1">
-              @Psicologo_JulioCesar
+            <h3 class="font-medium text-[#FF3382] text-lg md:text-xl mb-3 transition-transform duration-300 hover:translate-x-1 flex items-center">
+              <a href="https://www.instagram.com/psicologo_juliocesar/" target="_blank" rel="noopener noreferrer" class="hover:underline flex items-center">
+                @Psicologo_JulioCesar 
+                <svg class="w-5 h-5 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                  <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                </svg>
+              </a>
             </h3>
             
             <!-- Información sin puntos -->
-            <ul class="list-none text-left text-sm md:text-base space-y-0.5 max-w-[300px]">
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1">Psicólogo Clínico</li>
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1">Máster en Psicoterapia EMDR</li>
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1">Hipnosis Clínica</li>
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1">Diplomado en Gerontología</li>
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1">Con experiencia en el trabajo con adolescentes, adultos, adultos mayores y parejas.</li>
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1">Cofundador del Instituto Kintsugi</li>
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1">Co-conductor y coordinador del podcast @EmisorKintsugi, donde participa en entrevistas y debates sobre temas de salud mental.</li>
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1">Miembro Asociación de EMDR Chile y España</li>
+            <ul class="list-none text-left text-sm md:text-base space-y-2 max-w-[300px]">
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>Psicólogo Clínico</span>
+              </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>Máster en Psicoterapia EMDR</span>
+              </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>Hipnosis Clínica</span>
+              </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>Diplomado en Gerontología</span>
+              </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>Con experiencia en el trabajo con adolescentes, adultos, adultos mayores y parejas.</span>
+              </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>Cofundador del Instituto Kintsugi</span>
+              </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>Co-conductor y coordinador del podcast @EmisorKintsugi, donde participa en entrevistas y debates sobre temas de salud mental.</span>
+              </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>Miembro Asociación de EMDR Chile</span>
+              </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>Miembro Asociación de EMDR España</span>
+              </li>
             </ul>
           </div>
         </div>
@@ -156,10 +227,12 @@
         <div class="w-auto" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
           <!-- Foto circular con botón -->
           <div class="flex flex-col items-center relative">
-            <div class="w-[180px] h-[205px] md:w-[250px] md:h-[275px] rounded-full overflow-hidden transition-transform duration-500 hover:scale-105 shadow-lg hover:shadow-xl">
-              <img src="{{ get_theme_file_uri('resources/images/shenhui.png') }}" alt="Shenhui" class="w-full h-full object-cover transition-all duration-700 hover:saturate-150">
+            <div class="relative overflow-hidden transition-transform duration-500 hover:scale-105" style="width: min(280px, 90vw); height: min(280px, 90vw);">
+              <div class="w-full h-full flex items-center justify-center">
+                <img src="{{ get_theme_file_uri('resources/images/shenhui.png') }}" alt="Shenhui" class="w-auto h-auto max-w-full max-h-full">
+              </div>
             </div>
-            <div class="absolute -bottom-[-4px] left-1/2 transform -translate-x-1/2">
+            <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
               <div class="p-[2px] rounded-2xl bg-gradient-to-b from-[rgba(171,39,122,0.48)] to-[rgba(3,13,85,0.48)]">
                 <a href="{{ site_url('/shenhui') }}" class="inline-block text-center text-[13px] md:text-[14px] font-medium py-1 px-6 md:px-8 bg-white text-[#030D55] rounded-2xl transition-all duration-300 hover:bg-gradient-to-b from-[rgba(171,39,122,0.48)] to-[rgba(3,13,85,0.48)] hover:text-white">
                   Ver perfil
@@ -170,23 +243,65 @@
           
           <!-- Nombre y credenciales -->
           <div class="text-left mt-6 md:mt-8">
-            <h3 class="font-medium text-[#FF3382] text-lg md:text-xl mb-3 transition-transform duration-300 hover:translate-x-1">
-              @Psicologa_Shenhui
+            <h3 class="font-medium text-[#FF3382] text-lg md:text-xl mb-3 transition-transform duration-300 hover:translate-x-1 flex items-center">
+              <a href="https://www.instagram.com/psicologa_shenhui/" target="_blank" rel="noopener noreferrer" class="hover:underline flex items-center">
+                @Psicologa_Shenhui
+                <svg class="w-5 h-5 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                  <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                </svg>
+              </a>
             </h3>
             
             <!-- Información sin puntos -->
-            <ul class="list-none text-left text-sm md:text-base space-y-0.5 max-w-[300px]">
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1">Psicóloga Clínica EMDR</li>
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1">Máster en Psicoterapia EMDR</li>
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1">Happiness Trainer</li>
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1">Hipnosis Clínica</li>
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1">Emotional Freedom Techniques (EFT)</li>
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1">PAR/IJVE para trauma, apego y disociación</li>
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1">Instructora de QIGONG</li>
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1">Co-fundadora del Instituto Kintsugi</li>
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1">Co-conductora de @EmisorKintsugi, podcast de divulgación científica de salud mental.</li>
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1">Psicoterapia para adultos, adulto mayor y parejas</li>
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1">Miembro Asociación de EMDR Chile y España</li>
+            <ul class="list-none text-left text-sm md:text-base space-y-2 max-w-[300px]">
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>Psicóloga Clínica EMDR</span>
+              </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>Máster en Psicoterapia EMDR</span>
+              </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>Happiness Trainer</span>
+              </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>Hipnosis Clínica</span>
+              </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>Emotional Freedom Techniques (EFT)</span>
+              </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>PARCUVE para trauma, apego y disociación</span>
+              </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>Instructora de QiGONG</span>
+              </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>Co-fundadora del Instituto Kintsugi</span>
+              </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>Co-conductora de @EmisorKintsugi, podcast de divulgación científica donde comparte consejos, información y reflexiones sobre salud mental, neurociencia, traumas y felicidad.</span>
+              </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>Psicoterapia para adultos, adulto mayor y parejas</span>
+              </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>Miembro Asociación de EMDR Chile</span>
+              </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
+                <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
+                <span>Miembro Asociación de EMDR España</span>
+              </li>
             </ul>
           </div>
         </div>
