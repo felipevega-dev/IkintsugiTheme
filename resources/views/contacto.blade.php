@@ -57,8 +57,20 @@
           Contáctanos
       </h2>
       
-      <!-- Contact Container -->
-      <div class="flex flex-col md:flex-row items-center md:items-start justify-center gap-6 md:gap-12 lg:gap-16 max-w-6xl mx-auto">
+      <!-- Toggle Switch -->
+      <div class="flex justify-center items-center mb-8">
+        <div class="bg-gray-200 rounded-full p-1 flex w-max mx-auto">
+          <button id="toggle-charlas" class="py-2 px-6 rounded-full bg-[#AB277A] text-white font-medium transition-all duration-300">
+            Para charlas y talleres
+          </button>
+          <button id="toggle-psicologica" class="py-2 px-6 rounded-full text-gray-700 font-medium transition-all duration-300">
+            Para atención psicológica
+          </button>
+        </div>
+      </div>
+      
+      <!-- Contact Container - Charlas y Talleres -->
+      <div id="contact-charlas" class="flex flex-col md:flex-row items-center md:items-start justify-center gap-6 md:gap-12 lg:gap-16 max-w-6xl mx-auto">
         <!-- Left Image -->
         <div class="relative w-full max-w-[375px]" data-aos="fade-right" data-aos-duration="600">
           <div class="transition-all duration-500 hover:scale-105 hover:shadow-xl">
@@ -73,15 +85,30 @@
         
         <!-- Right Form - Contact Form 7 -->
         <div class="w-full max-w-[600px]" data-aos="fade-left" data-aos-duration="600">
+          <div class="text-center mb-6">
+            <p class="text-lg text-gray-700 font-medium">Para charlas y talleres</p>
+            <p class="text-gray-600">Completa el formulario o envianos un mail a: <a href="mailto:hola@ikintsugi.cl" class="text-[#D93280] hover:underline hover:text-[#AB277A] transition-all duration-300">hola@ikintsugi.cl</a></p>
+          </div>
+          
           <div class="contact-form-container transition-all duration-300 hover:shadow-lg p-5 rounded-lg">
             @php
             // Asegúrate de reemplazar '123' con el ID real de tu formulario
             echo do_shortcode('[contact-form-7 id="7942127" title="Contact form (style 4) (Traducido a español)"]');
             @endphp
           </div>
-        
-          <div class="text-center mt-6 transition-all duration-300 hover:translate-y-[-2px]">
-            <p class="text-gray-600">O contáctanos vía email: <a href="mailto:hola@ikintsugi.cl" class="text-[#D93280] hover:underline hover:text-[#AB277A] transition-all duration-300">hola@ikintsugi.cl</a></p>
+        </div>
+      </div>
+      
+      <!-- Contact Container - Atención Psicológica (hidden by default) -->
+      <div id="contact-psicologica" class="hidden flex-col md:flex-row items-center justify-center gap-6 md:gap-12 lg:gap-16 max-w-6xl mx-auto">
+        <div class="text-center w-full max-w-[600px]" data-aos="fade" data-aos-duration="600">
+          <div class="bg-white rounded-[16px] p-8 shadow-lg transition-all duration-500 hover:shadow-xl">
+            <h3 class="text-2xl font-bold text-[#030D55] mb-4">Para atención psicológica</h3>
+            <p class="text-lg mb-6">Reserva en el WhatsApp</p>
+            <!-- Aquí irá el contenido del WhatsApp que enviarás después -->
+            <div class="whatsapp-content py-4">
+              <p class="text-gray-600 mb-4">El contenido de WhatsApp se agregará próximamente</p>
+            </div>
           </div>
         </div>
       </div>
@@ -158,5 +185,44 @@
         transition: all 0.3s;
       }
     </style>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const toggleCharlas = document.getElementById('toggle-charlas');
+        const togglePsicologica = document.getElementById('toggle-psicologica');
+        const contactCharlas = document.getElementById('contact-charlas');
+        const contactPsicologica = document.getElementById('contact-psicologica');
+        
+        toggleCharlas.addEventListener('click', function() {
+          // Activate charlas button
+          toggleCharlas.classList.add('bg-[#AB277A]', 'text-white');
+          toggleCharlas.classList.remove('text-gray-700');
+          // Deactivate psicologica button
+          togglePsicologica.classList.remove('bg-[#AB277A]', 'text-white');
+          togglePsicologica.classList.add('text-gray-700');
+          
+          // Show charlas content, hide psicologica content
+          contactCharlas.classList.remove('hidden');
+          contactCharlas.classList.add('flex');
+          contactPsicologica.classList.add('hidden');
+          contactPsicologica.classList.remove('flex');
+        });
+        
+        togglePsicologica.addEventListener('click', function() {
+          // Activate psicologica button
+          togglePsicologica.classList.add('bg-[#AB277A]', 'text-white');
+          togglePsicologica.classList.remove('text-gray-700');
+          // Deactivate charlas button
+          toggleCharlas.classList.remove('bg-[#AB277A]', 'text-white');
+          toggleCharlas.classList.add('text-gray-700');
+          
+          // Show psicologica content, hide charlas content
+          contactPsicologica.classList.remove('hidden');
+          contactPsicologica.classList.add('flex');
+          contactCharlas.classList.add('hidden');
+          contactCharlas.classList.remove('flex');
+        });
+      });
+    </script>
 </section>
 @endsection

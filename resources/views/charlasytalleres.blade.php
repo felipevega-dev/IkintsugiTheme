@@ -67,7 +67,7 @@
           <div class="relative">
             <div class="relative z-10 organic-image-container">
               <img 
-                src="{{ get_theme_file_uri('resources/images/charlas1.png') }}" 
+                src="{{ get_theme_file_uri('resources/images/charlas.png') }}" 
                 alt="Charlas y talleres" 
                 class="w-full rounded-[40px] md:rounded-[100px] h-auto"
               >

@@ -20,7 +20,7 @@
         <div class="lg:w-1/2 mb-12 lg:mb-12" data-aos="fade-right" data-aos-duration="600">
           <span class="text-[#AB277A] text-sm md:text-base uppercase tracking-wider font-medium mb-4 block">Preguntas frecuentes</span>
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-6 md:mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone" style="line-height: 1.1;">
-            Nosotros te<br>ayudamos a resolver<br>todas tus dudas
+            Te ayudamos a <br> resolver tus dudas
           </h1>
           <p class="text-2xl md:text-4xl text-[#AB277A] mt-6 transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
             #El trauma se puede superar
@@ -47,7 +47,7 @@
               
               <!-- Imagen actual -->
               <img 
-                src="{{ get_theme_file_uri('resources/images/quienensatendemos1.png') }}" 
+                src="{{ get_theme_file_uri('resources/images/dudas.png') }}" 
                 alt="Personas que atendemos" 
                 class="relative z-10 w-full h-auto rounded-lg transition-transform duration-500 hover:scale-105"
               >
