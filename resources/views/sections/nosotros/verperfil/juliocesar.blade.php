@@ -78,7 +78,7 @@
       "Protocolo de procesos adaptativos acelerados (R-TEP)"
     ];
     
-    $titulo_testimonio = "Un testimonio de quien transformó<br>su vida con Julio César";
+    $titulo_testimonio = "Testimonios de quienes transformaron su vida";
     $testimonio_id = "Ft3oIUaRA5g"; // Reemplazar con ID real de YouTube
     $testimonio_autor = "Lorena";
     $testimonio_texto = '"Cuando decidí buscar la terapia con Julio, lo hice porque sentía mucha ansiedad todo el tiempo. Mi mente no paraba y me impedía dormir y disfrutar de mi vida. A través del proceso, he aprendido a entender mis emociones y a gestionarlas. Hoy me siento mucho más tranquila."';

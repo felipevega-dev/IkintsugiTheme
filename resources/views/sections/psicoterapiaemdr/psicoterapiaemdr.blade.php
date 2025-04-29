@@ -101,7 +101,7 @@
         <!-- Texto explicativo -->
         <div class="w-full lg:w-1/2 mb-8 lg:mb-0 pr-0 lg:pr-6 order-1" data-aos="fade-right" data-aos-duration="600">
           <h2 class="text-2xl md:text-4xl lg:text-4xl text-[#030D55] mb-6 md:mb-8 transition-all duration-500 hover:text-[#AB277A] font-paytone">
-            <strong>¿En que se basa?</strong>
+            <strong>¿En qué se basa?</strong>
           </h2>
           
           <div class="prose prose-lg max-w-none">

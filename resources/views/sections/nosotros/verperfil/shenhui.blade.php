@@ -7,7 +7,7 @@
 @section('content')
   @php
     // Datos del psicólogo
-    $nombre = "Shénhui Lin";
+    $nombre = "Shénhui Lín";
     $foto = get_theme_file_uri('resources/images/shenperfil.png');
     $credenciales = [
       "Psicóloga Clínica EMDR",
@@ -72,10 +72,14 @@
       "Formación avanzada en Trastornos de Trauma Complejo y Disociación, por Phd. Onno van der Hart y Phd. Roger Solomon, EMDR Europe.",
       "Written Exposure Therapy for PTSD, PhD. Debra Kaysen.",
       "Formación avanzada en Estrategias para Trastornos Somáticos, por Ps. Santiago Jácome, EMDR Iberoamérica.",
-      "Formación avanzada en el Trastorno Somático con Terapia EMDR, por Ps. Natalia Seijo."
+      "Formación avanzada en el Trastorno Somático con Terapia EMDR, por Ps. Natalia Seijo.",
+      "Formación avanzada en EMDR para Víctimas de Violencia de Género, por Ps. Dolores Mosquera, EMDR Chile, EMDRLAC.",
+      "Formación avanzada en abuso sexual en terapia EMDR, por Ps. Arun Mansukhani.",
+      "Protocolo en Trastornos Somáticos en Terapia EMDR, Ps. Silvia Grauvy, EMDR Argentina.",
+      "Flash, Protocolo en intervención temprana, EMDR por PhD. Esly Regina Carvalho.",
     ];
     
-    $titulo_testimonio = "Un testimonio de quien transformó su vida con Shénhui";
+    $titulo_testimonio = "Testimonios de quienes transformaron su vida";
     $testimonio_id = "S9de95EBTXI"; // ID del video de testimonio de Shenhui
     $testimonio_autor = "Fernando";
     $testimonio_texto = '"Después de años en terapias largas y sin resultados, la terapia con Shénhui fue un antes y un después para mí. En pocas sesiones vi cambios concretos, sin revivir traumas. Sentí que forjé mucho de mi interior y que, por fin, tenía una alternativa real al sufrimiento."';
@@ -267,7 +271,7 @@
     
     <!-- Formación Académica y Certificaciones -->
     <div class="mb-16 max-w-5xl mx-auto fade-up" data-delay="400">
-      <h3 class="text-xl font-bold text-[#030D55] mb-6 text-center font-paytone">{{ $titulo_formacion }}</h3>
+      <h3 class="text-2xl font-bold text-[#030D55] mb-6 text-center font-paytone">{{ $titulo_formacion }}</h3>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         @foreach($formacion as $item)
@@ -285,7 +289,7 @@
     
     <!-- Especialidades en Terapia EMDR -->
     <div class="mb-16 max-w-5xl mx-auto relative fade-up" data-delay="500">
-      <h3 class="text-xl font-bold text-[#000000] mb-6 text-start font-paytone">{{ $titulo_especialidades }}</h3>
+      <h3 class="text-2xl font-bold text-[#000000] mb-6 text-start font-paytone">{{ $titulo_especialidades }}</h3>
       
       <div class="mt-10 relative">
         <!-- Línea vertical punteada para conectar los puntos -->
@@ -320,7 +324,7 @@
     </div>
     
     <div class="container mx-auto px-4 py-12 testimonial-container">
-      <h3 class="text-4xl font-bold text-[#030D55] mb-15 text-center fade-up font-paytone" data-delay="200">{{ $titulo_testimonio }}</h3>
+      <h3 class="text-3xl font-bold text-[#030D55] mb-15 text-center fade-up font-paytone" data-delay="200">{{ $titulo_testimonio }}</h3>
       
       <div class="flex flex-col md:flex-row gap-16 items-center max-w-6xl mx-auto testimonial-section">
         <!-- Texto del testimonio a la izquierda -->

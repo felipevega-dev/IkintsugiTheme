@@ -65,16 +65,16 @@
       <!-- Contenido centrado -->
       <div class="max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-duration="600">
         <h2 class="text-2xl md:text-4xl lg:text-4xl font-bold text-[#030D55] mb-8 transition-all duration-500 hover:text-[#AB277A] font-paytone">
-          El testimonio de quienes <br> transformaron sus vidas
+          Testimonios de quienes <br> transformaron sus vidas
         </h2>
         
         <div class="prose prose-lg mx-auto">
           <p class="font-normal text-base leading-7 text-center transition-all duration-300 hover:translate-y-[-2px]">
-            Queremos compartir contigo la experiencia de dos pacientes que, con gran generosidad, han querido relatar su proceso en Psicoterapia EMDR. Su testimonio busca ayudar a quienes aún tienen dudas o temores, brindando una visión realista y cercana de este enfoque terapéutico.
+          Queremos compartir contigo la experiencia de pacientes que, con gran generosidad, han querido relatar su proceso en Psicoterapia EMDR. Su testimonio busca ayudar a quienes aún tienen dudas o temores, brindando una visión realista y cercana de este enfoque terapéutico.
           </p>
           
           <p class="font-normal text-base leading-7 mt-4 text-center transition-all duration-300 hover:translate-y-[-2px]">
-            Agradecemos profundamente a Lorena y Fernando por su tremenda generosidad, disposición y gratitud para compartir su camino hacia la reparación de sus heridas de vida. Su testimonio es un regalo para quienes buscan bienestar, transformación y aún no saben qué ruta seguir.
+          Queremos compartir contigo la experiencia de pacientes que, con gran generosidad, han querido relatar su proceso en Psicoterapia EMDR. Su testimonio busca ayudar a quienes aún tienen dudas o temores, brindando una visión realista y cercana de este enfoque terapéutico.
           </p>
         </div>
       </div>
@@ -110,7 +110,7 @@
         <!-- Video a la izquierda -->
         <div class="md:w-5/9" data-aos="fade-right" data-aos-duration="600">
           <div style="border-radius: 16px; overflow: hidden; box-shadow: 0px 4px 16px 0px #AB277A; border: 4px solid white;" class="transition-transform duration-500 hover:scale-105">
-            <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/8NmFpjcz-QU" title="Testimonio de Fernando Torres" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/S9de95EBTXI" title="Testimonio de Fernando Torres" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         </div>
         

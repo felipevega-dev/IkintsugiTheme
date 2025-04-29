@@ -57,7 +57,7 @@
   <section class="bg-white relative overflow-hidden">
     <div class="container mx-auto px-4">
       <!-- Título y primeros dos párrafos centrados arriba -->
-      <div class="max-w-[1150px] mx-auto mb-10" data-aos="fade-up" data-aos-duration="600">
+      <div class="max-w-[1300px] mx-auto mb-6 md:mb-8" data-aos="fade-up" data-aos-duration="600">
         <h2 class="text-2xl md:text-4xl lg:text-4xl font-extrabold mb-4 md:mb-6 text-[#030D55] transition-all duration-500 hover:text-[#AB277A] font-paytone text-center">
           Quiénes somos
         </h2>
@@ -74,21 +74,21 @@
       </div>
       
       <!-- Contenido principal: imagen a la izquierda y texto a la derecha -->
-      <div class="flex flex-col md:flex-row items-center gap-6 md:gap-12 lg:gap-16">
-        <div class="md:w-1/2 relative mb-6 md:mb-0" data-aos="fade-right" data-aos-duration="600">
-          <div class="relative z-10 max-w-[600px] mx-auto md:mx-0">
-            <div class="rounded-2xl overflow-hidden transition-all duration-500">
+      <div class="flex flex-col md:flex-row items-center xl:items-start lg:justify-center gap-6 md:gap-8 xl:gap-16">
+        <div class="md:w-1/2 xl:w-auto relative mb-6 md:mb-0 flex justify-center md:justify-start" data-aos="fade-right" data-aos-duration="600">
+          <div class="relative z-10 max-w-[600px] w-full md:w-auto">
+            <div class="rounded-2xl overflow-hidden transition-all duration-500 md:max-w-[600px] xl:max-w-[550px]">
               <img
                 src="{{ get_theme_file_uri('resources/images/julioyshen3.png') }}"
                 alt="Quiénes Somos"
-                class="w-full h-auto min-h-[400px] md:min-h-[500px] object-cover object-center transition-all duration-500 hover:scale-105"
+                class="w-full h-auto md:min-h-[450px] xl:min-h-[520px] object-cover object-center transition-all duration-500 hover:scale-105"
               >
             </div>
           </div>
         </div>
         
-        <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="600">
-          <div class="max-w-[520px] mx-auto md:mx-0">            
+        <div class="md:w-1/2 xl:w-auto max-w-full xl:max-w-[650px]" data-aos="fade-left" data-aos-duration="600">
+          <div class="mx-auto md:mx-0">            
             <div class="space-y-3 md:space-y-4">              
               <p class="text-base md:text-lg text-[#181818] font-normal transition-all duration-300 hover:translate-y-[-2px]" style="font-family: 'Roboto', sans-serif; line-height: 1.6; @media (min-width: 768px) { line-height: 1.7; }">
                 Acompañamos a adolescentes, adultos, parejas y adultos mayores que enfrentan dificultades emocionales derivadas de experiencias traumáticas. Si has vivido maltrato laboral, bullying o has sido víctima de agresiones como un portonazo o encerrona, estamos aquí para ayudarte.
