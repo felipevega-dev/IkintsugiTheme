@@ -8,15 +8,15 @@
   <!-- Hero Section con fondo blanco y figura morada alrededor de la foto -->
   <section class="relative bg-white overflow-hidden">
     <!-- Contenido del hero -->
-    <div class="container mx-auto px-4 py-20 lg:py-28 relative z-10 mt-15">
+    <div class="container mx-auto px-4 py-12 lg:py-28 relative z-10">
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
-        <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right" data-aos-duration="600">
+        <div class="lg:w-1/2 mb-8 lg:mb-12" data-aos="fade-right" data-aos-duration="600">
           <span class="text-[#AB277A] text-sm md:text-base uppercase tracking-wider font-medium mb-2 block">Evidencia científica</span>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-4 md:mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
           Avalado por guías clínicas de salud mental
           </h1>
-          <p class="text-4xl mt-14 text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
+          <p class="text-2xl md:text-4xl text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
             #Mereces una vida mejor
           </p>
         </div>
@@ -59,14 +59,14 @@
   <!-- Sección: Reconocimiento en guías clínicas de salud -->
   <section class="py-4 bg-[#030D550D]">
       <!-- Timeline con puntos -->
-      <div class="mt-10 max-w-6xl mx-auto pl-4">
+      <div class="mt-8 max-w-6xl mx-auto pl-4">
         <!-- 2013 -->
         <div class="flex" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
-          <div class="mr-6 flex flex-col items-center">
+          <div class="mr-4 md:mr-6 flex flex-col items-center">
             <div class="w-6 h-6 rounded-full bg-[#AB277A] shadow-lg shadow-pink-500/50 animate-pulse"></div>
             <div class="w-0.5 h-full mt-1" style="border-left: 1px dashed #C29FDA; height: 200px;"></div>
           </div>
-          <div class="max-w-5xl pb-8">
+          <div class="max-w-5xl pb-6 md:pb-8">
             <h3 class="text-lg md:text-xl font-semibold text-[#AB277A] mb-2 transition-all duration-300 hover:translate-x-1">2013</h3>
             <p class="text-base transition-all duration-300 hover:translate-y-[-2px]">La terapia EMDR está avalada por la Organización Mundial de la Salud y las Guías Clínicas Internacionales para el tratamiento del trauma.</p>
             <p class="text-base mt-2 transition-all duration-300 hover:translate-y-[-2px]">Directrices para el tratamiento de afecciones específicamente relacionadas con el estrés. Ginebra, OMS.</p>

@@ -8,15 +8,15 @@
   <!-- Hero Section con fondo blanco y figura morada alrededor de la foto -->
   <section class="relative bg-white overflow-x-hidden">
     <!-- Contenido del hero -->
-    <div class="container mx-auto px-4 py-20 lg:py-28 relative z-10 mt-15">
+    <div class="container mx-auto px-4 py-12 lg:py-28 relative z-10">
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
-        <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right" data-aos-duration="600">
+        <div class="lg:w-1/2 mb-8 lg:mb-12" data-aos="fade-right" data-aos-duration="600">
           <span class="text-[#AB277A] text-sm md:text-base uppercase tracking-wider font-medium mb-2 block">A quiénes atendemos</span>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-4 md:mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
           Alivio y plenitud para ti
           </h1>
-          <p class="text-4xl mt-14 text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
+          <p class="text-2xl md:text-4xl text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
             #Mereces una vida mejor
           </p>
         </div>
@@ -57,19 +57,19 @@
   </section>
 
   <!-- Sección Principal -->
-  <section class="bg-white py-12 overflow-x-hidden">
+  <section class="bg-white py-8 md:py-12 overflow-x-hidden">
     <div class="container mx-auto px-4">
       <!-- Título Principal -->
-      <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center text-[#030D55] mb-16 transition-all duration-500 hover:text-[#AB277A] font-paytone">
+      <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center text-[#030D55] mb-8 md:mb-16 transition-all duration-500 hover:text-[#AB277A] font-paytone">
         ¿A qué personas atendemos?
       </h2>
 
       <!-- Contenedor principal -->
       <div class="max-w-6xl mx-auto">
         <!-- Adolescentes -->
-        <div class="flex flex-col md:flex-row items-center justify-between mb-20">
-          <div class="md:w-1/2 pr-0 md:pr-10 self-center" data-aos="fade-right" data-aos-duration="600">
-            <h2 class="text-2xl font-bold text-[#AB277A] mb-6 transition-all duration-300 hover:translate-x-1 font-paytone">
+        <div class="flex flex-col md:flex-row items-center justify-between mb-12 md:mb-20">
+          <div class="md:w-1/2 pr-0 md:pr-10 self-center mb-6 md:mb-0" data-aos="fade-right" data-aos-duration="600">
+            <h2 class="text-2xl font-bold text-[#AB277A] mb-4 md:mb-6 transition-all duration-300 hover:translate-x-1 font-paytone">
               Adolescentes
             </h2>
             <p class="text-base text-[#030D55] transition-all duration-300 hover:translate-y-[-2px]">

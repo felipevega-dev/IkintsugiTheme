@@ -8,15 +8,15 @@
   <!-- Hero Section con fondo blanco y figura morada alrededor de la foto -->
   <section class="relative bg-white overflow-x-hidden">
     <!-- Contenido del hero -->
-    <div class="container mx-auto px-4 py-20 lg:py-28 relative z-10 mt-15">
+    <div class="container mx-auto px-4 py-12 lg:py-28 relative z-10">
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
-        <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right" data-aos-duration="600">
+        <div class="lg:w-1/2 mb-8 lg:mb-12" data-aos="fade-right" data-aos-duration="600">
           <span class="text-[#AB277A] text-sm md:text-base uppercase tracking-wider font-medium mb-2 block">Qué significa Kintsugi</span>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-4 md:mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
             Tu historia es más poderosa que tus cicatrices
           </h1>
-          <p class="text-4xl mt-14 text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
+          <p class="text-2xl md:text-4xl text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
             #El trauma se puede superar
           </p>
         </div>
@@ -57,12 +57,12 @@
   </section>
   
   <!-- Segunda sección con fondo lavanda claro -->
-  <section class="bg-[#CCA0E00D] py-10 lg:py-16 overflow-x-hidden">
+  <section class="bg-[#CCA0E00D] py-8 lg:py-16 overflow-x-hidden">
     <div class="container mx-auto px-4">
-      <div class="flex flex-col lg:flex-row items-center gap-8">
+      <div class="flex flex-col lg:flex-row items-center gap-6 md:gap-8">
         <!-- Texto explicativo -->
-        <div class="lg:w-1/2 mb-8 lg:mb-0 pr-0 lg:pr-6" data-aos="fade-right" data-aos-duration="600">
-          <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-[#030D55] mb-8 transition-all duration-500 hover:text-[#AB277A] font-paytone">
+        <div class="lg:w-1/2 mb-6 lg:mb-0 pr-0 lg:pr-6" data-aos="fade-right" data-aos-duration="600">
+          <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-[#030D55] mb-4 md:mb-8 transition-all duration-500 hover:text-[#AB277A] font-paytone">
             ¿Qué significa Kintsugi?
           </h2>
           

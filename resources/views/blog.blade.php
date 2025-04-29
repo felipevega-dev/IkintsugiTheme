@@ -23,8 +23,8 @@
   </div>
         
   <!-- Contenido del hero -->
-  <div class="container mx-auto px-4 relative z-10 min-h-[400px] md:min-h-[600px] flex flex-col justify-center items-center">
-    <div class="max-w-4xl mx-auto text-center text-white py-32 md:py-32">
+  <div class="container mx-auto px-4 relative z-10 min-h-[450px] sm:min-h-[500px] md:min-h-[80vh] flex flex-col justify-center items-center">
+    <div class="max-w-4xl mx-auto text-center text-white py-16 md:py-16">
       <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 font-paytone" style="line-height: 1.1;" data-aos="fade-up" data-aos-duration="600">¡Mereces una vida mejor!</h1>
       <p class="text-xl md:text-2xl font-500 mb-2" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">En este blog encontrarás los mejores artículos y noticias que te inspirarán a cuidar de tu salud emocional y a vivir con plenitud.
 ¡Descubre, aprende y comparte con quienes te rodean! Además, te invitamos a suscribirte para recibir nuestras últimas novedades y recursos directamente en tu correo.</p>

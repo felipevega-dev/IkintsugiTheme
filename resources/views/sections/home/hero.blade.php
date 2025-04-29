@@ -17,17 +17,17 @@
   </div>
 
   <!-- Contenido del hero -->
-  <div class="container mx-auto px-4 relative z-10 min-h-[90vh] md:min-h-[100vh] flex flex-col justify-center items-center">
-    <div class="w-full max-w-5xl mx-auto text-center text-white py-24 md:py-40 lg:py-52">
+  <div class="container mx-auto px-4 relative z-10 min-h-[500px] sm:min-h-[550px] md:min-h-[100vh] flex flex-col justify-end items-center pb-32">
+    <div class="w-full max-w-5xl mx-auto text-center text-white">
       <h2 class="text-base md:text-xl font-normal mb-3 font-roboto tracking-wider uppercase opacity-90" data-aos="fade-up" data-aos-duration="500">Psicología Clínica EMDR</h2>
-      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-10 md:mb-12 font-paytone tracking-tight leading-[1.1] px-4 md:px-0" data-aos="fade-up" data-aos-duration="600" data-aos-delay="50">
+      <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-10 md:mb-12 font-paytone tracking-tight leading-[1.1] px-4 md:px-0" data-aos="fade-up" data-aos-duration="600" data-aos-delay="50">
         El Trauma<br>
         se puede superar
       </h1>
       <a href="/reservar-cita" class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 
-                    text-white px-8 md:px-10 py-3 md:py-4 rounded-full transition-all 
+                    text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full transition-all 
                     duration-300 transform hover:scale-105 shadow-md hover:shadow-lg 
-                    font-roboto text-lg md:text-xl tracking-wide font-medium service-button" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100">
+                    font-roboto text-base md:text-lg tracking-wide font-medium service-button" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100">
         Reservar Cita
       </a>
     </div>

@@ -10,7 +10,7 @@ Template Name: Prensa Template
 </style>
 <div class="kintsugi-theme-wrapper">
   <!-- Hero Section -->
-  <section class="relative bg-[#362766] overflow-hidden pt-10 md:pt-22">
+  <section class="relative bg-[#362766] overflow-hidden pt-24 md:pt-32">
     <!-- Imagen de fondo con overlay -->
     <div class="absolute inset-0 z-0">
       <div class="absolute inset-0 bg-[#362766] opacity-70 z-10"></div>
@@ -22,8 +22,8 @@ Template Name: Prensa Template
     </div>
     
     <!-- Contenido del hero -->
-    <div class="container mx-auto px-4 relative z-10 min-h-[400px] md:min-h-[90vh] flex flex-col justify-center items-center">
-      <div class="max-w-4xl mx-auto text-center text-white py-32 md:py-32">
+    <div class="container mx-auto px-4 relative z-10 min-h-[450px] sm:min-h-[500px] md:min-h-[80vh] flex flex-col justify-center items-center">
+      <div class="max-w-4xl mx-auto text-center text-white py-16 md:py-16">
         <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 font-paytone" style="line-height: 1.1;">¡Mereces una vida mejor!</h1>
         <p class="text-xl md:text-2xl font-500 mb-2">Descubre nuestras intervenciones en medios, donde abordamos temas de EMDR, el tratamiento del trauma, psicología y felicidad</p>
       </div>

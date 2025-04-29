@@ -8,16 +8,16 @@
   <!-- Hero Section con fondo blanco y figura morada alrededor de la foto -->
   <section class="relative bg-white overflow-hidden">
     <!-- Contenido del hero -->
-    <div class="container mx-auto px-4 py-20 lg:py-28 relative z-10 mt-15">
+    <div class="container mx-auto px-4 py-12 lg:py-28 relative z-10">
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
-        <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right" data-aos-duration="600">
+        <div class="lg:w-1/2 mb-8 lg:mb-12" data-aos="fade-right" data-aos-duration="600">
           <span class="text-[#AB277A] text-sm md:text-base uppercase tracking-wider font-medium mb-2 block">Qué ocurre durante el tratamiento EMDR</span>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-4 md:mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
           Reprocesa y renace con EMDR
           </h1>
           
-          <p class="text-4xl mt-14 text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
+          <p class="text-2xl md:text-4xl text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
           #El trauma se puede superar
           </p>
         </div>
@@ -74,7 +74,7 @@
           </div>
           
           <div class="text-center px-4" data-aos="fade-up" data-aos-duration="600">
-            <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-[#030D55] transition-all duration-500 hover:text-[#AB277A] font-paytone">
+            <h2 class="text-2xl md:text-4xl lg:text-4xl font-bold text-[#030D55] transition-all duration-500 hover:text-[#AB277A] font-paytone">
               ¿Qué ocurre durante el<br>tratamiento EMDR?
             </h2>
             

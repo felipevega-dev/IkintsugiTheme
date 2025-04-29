@@ -83,8 +83,8 @@
   </div>
         
   <!-- Contenido del hero -->
-  <div class="container mx-auto px-4 relative z-10 min-h-[400px] sm:min-h-[450px] md:min-h-[80vh] flex flex-col justify-center items-center">
-    <div class="max-w-4xl mx-auto text-center text-white py-12 sm:py-16 md:py-32">
+  <div class="container mx-auto px-4 relative z-10 min-h-[450px] sm:min-h-[500px] md:min-h-[80vh] flex flex-col justify-center items-center">
+    <div class="max-w-4xl mx-auto text-center text-white py-16 md:py-16">
       <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-8 font-paytone" data-aos="fade-up" data-aos-duration="1200">Conéctate con nosotros donde quieras</h1>
       <p class="text-lg sm:text-xl md:text-2xl font-roboto mb-8 px-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">Encuentra contenido exclusivo, episodios de nuestro podcast, videos, reflexiones y más en nuestras plataformas. ¡Acompáñanos en este camino de bienestar y transformación!</p>
     </div>

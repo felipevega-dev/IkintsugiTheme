@@ -12,7 +12,7 @@
 </style>
 
 <!-- Hero Section -->
-<section class="relative bg-[#362766] overflow-hidden pt-32 max-w-full">
+<section class="relative bg-[#362766] overflow-hidden pt-24 md:pt-32">
   <!-- Video de fondo con overlay -->
   <div class="absolute inset-0 z-0">
     <div class="absolute inset-0 bg-[#362766] opacity-70 z-10"></div>
@@ -30,8 +30,8 @@
   </div>
         
   <!-- Contenido del hero -->
-  <div class="container mx-auto px-4 relative z-10 min-h-[80vh] flex flex-col justify-center items-center overflow-hidden">
-    <div class="max-w-3xl mx-auto text-center text-white py-20 md:py-24 lg:py-26">
+  <div class="container mx-auto px-4 relative z-10 min-h-[450px] sm:min-h-[500px] md:min-h-[80vh] flex flex-col justify-center items-center overflow-hidden">
+    <div class="max-w-3xl mx-auto text-center text-white py-16 md:py-16">
       <h2 class="text-xl md:text-2xl font-500 mb-2" data-aos="fade-up" data-aos-duration="500">Psicología Clínica EMDR</h2>
       <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 font-paytone" data-aos="fade-up" data-aos-duration="600" data-aos-delay="50">Nuestras Charlas y talleres</h1>
     </div>

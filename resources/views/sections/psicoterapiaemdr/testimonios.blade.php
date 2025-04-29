@@ -8,15 +8,15 @@
   <!-- Hero Section con fondo blanco y figura morada alrededor de la foto -->
   <section class="relative bg-white overflow-x-hidden">
     <!-- Contenido del hero -->
-    <div class="container mx-auto px-4 py-20 lg:py-28 relative z-10 mt-15">
+    <div class="container mx-auto px-4 py-12 lg:py-28 relative z-10">
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
-        <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right" data-aos-duration="600">
+        <div class="lg:w-1/2 mb-8 lg:mb-12" data-aos="fade-right" data-aos-duration="600">
           <span class="text-[#AB277A] text-sm md:text-base uppercase tracking-wider font-medium mb-2 block">Testimonios EMDR</span>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone" style="line-height: 1.1;">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-4 md:mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone" style="line-height: 1.1;">
            Testimonios reales: sanar es posible
           </h1>
-          <p class="text-4xl mt-14 text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', serif; font-weight: 400;">
+          <p class="text-2xl md:text-4xl text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
             #El trauma se puede superar
           </p>
         </div>
@@ -61,7 +61,7 @@
     <div class="container mx-auto px-4">
       <!-- Contenido centrado -->
       <div class="max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-duration="600">
-        <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-[#030D55] mb-8 transition-all duration-500 hover:text-[#AB277A] font-paytone">
+        <h2 class="text-2xl md:text-4xl lg:text-4xl font-bold text-[#030D55] mb-8 transition-all duration-500 hover:text-[#AB277A] font-paytone">
           El testimonio de quienes <br> transformaron sus vidas
         </h2>
         
@@ -84,7 +84,9 @@
       <div class="flex flex-col md:flex-row gap-16 items-center max-w-6xl mx-auto">
         <!-- Texto del testimonio a la izquierda -->
         <div class="md:w-4/9 order-2 md:order-1" data-aos="fade-right" data-aos-duration="600">
-          <h4 class="text-center text-2xl font-extrabold text-[#AB277A] mb-4 transition-all duration-500 hover:text-[#030D55] font-paytone">Lorena López</h4>
+          <h4 class="text-xl md:text-2xl font-extrabold text-[#AB277A] mb-4 transition-all duration-500 hover:text-[#030D55] font-paytone">
+            Lorena
+          </h4>
           <p class="text-base leading-7 transition-all duration-300 hover:translate-y-[-2px]" style="font-family: 'Roboto', sans-serif;">"Después de años en terapias largas y sin resultados, la terapia con Julio César fue un antes y un después para mí. En pocas sesiones vi cambios concretos, sin revivir traumas. Sentí que limpié mucho de mi interior y que, por fin, tenía una alternativa real al sufrimiento."</p>
         </div>
         
@@ -110,8 +112,10 @@
         </div>
         
         <!-- Texto del testimonio a la derecha -->
-        <div class="md:w-4/9" data-aos="fade-left" data-aos-duration="600">
-          <h4 class="text-center md:text-right text-2xl font-extrabold text-[#AB277A] mb-4 transition-all duration-500 hover:text-[#030D55] font-paytone">Fernando Torres</h4>
+        <div class="md:w-3/9" data-aos="fade-left" data-aos-duration="600">
+          <h4 class="text-xl md:text-2xl font-extrabold text-[#AB277A] mb-4 transition-all duration-500 hover:text-[#030D55] font-paytone">
+            Fernando
+          </h4>
           <p class="text-base leading-7 transition-all duration-300 hover:translate-y-[-2px]" style="font-family: 'Roboto', sans-serif;">"Mi proceso de terapia con Shénhui fue transformador. Desde el primer momento, ella me acompañó con mucha calidez, guiándome con firmeza pero siempre con amabilidad, tanto en los días buenos como en los más difíciles."</p>
         </div>
       </div>

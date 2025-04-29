@@ -8,16 +8,16 @@
   <!-- Hero Section con fondo blanco y figura morada alrededor de la foto -->
   <section class="relative bg-white overflow-hidden">
     <!-- Contenido del hero -->
-    <div class="container mx-auto px-4 py-20 lg:py-28 relative z-10 mt-15">
+    <div class="container mx-auto px-4 py-12 lg:py-28 relative z-10">
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
-        <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right" data-aos-duration="600">
+        <div class="lg:w-1/2 mb-8 lg:mb-12" data-aos="fade-right" data-aos-duration="600">
           <span class="text-[#AB277A] text-sm md:text-base uppercase tracking-wider font-medium mb-2 block">Quienes somos</span>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-4 md:mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
             Donde tus<br>cicatrices se<br>vuelven fortaleza
           </h1>
           
-          <p class="text-4xl mt-14 text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
+          <p class="text-2xl md:text-4xl text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
             #El trauma se puede superar
           </p>
         </div>
@@ -54,8 +54,8 @@
   <section class="bg-white relative overflow-hidden py-8 md:py-16">
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row items-center gap-6 md:gap-12 lg:gap-16">
-        <div class="md:w-1/2 relative" data-aos="fade-right" data-aos-duration="600">
-          <div class="relative z-10 max-w-[450px] mx-auto md:mx-0 mb-3 md:mb-0">
+        <div class="md:w-1/2 relative mb-6 md:mb-0" data-aos="fade-right" data-aos-duration="600">
+          <div class="relative z-10 max-w-[450px] mx-auto md:mx-0">
             <div class="rounded-2xl overflow-hidden transition-all duration-500">
               <img
                 src="{{ get_theme_file_uri('resources/images/quienesomos.png') }}"
@@ -68,7 +68,7 @@
         
         <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="600">
           <div class="max-w-[520px] mx-auto md:mx-0">
-            <h2 class="text-2xl md:text-4xl lg:text-4xl font-extrabold mb-6 text-[#030D55] transition-all duration-500 hover:text-[#AB277A] font-paytone">
+            <h2 class="text-2xl md:text-4xl lg:text-4xl font-extrabold mb-4 md:mb-6 text-[#030D55] transition-all duration-500 hover:text-[#AB277A] font-paytone">
               Quiénes somos
             </h2>
             
@@ -93,15 +93,15 @@
   </section> 
 
   <!-- SOBRE NOSOTROS SECTION (antes en sobre-nosotros.blade.php) -->
-  <section class="py-12 md:py-20 bg-white relative overflow-hidden pt-10 md:pt-14">
+  <section class="py-8 md:py-20 bg-white relative overflow-hidden">
     <div class="container mx-auto px-4">
-      <div class="text-center mb-8 md:mb-12" data-aos="fade-up" data-aos-duration="600">
-        <h2 class="text-2xl md:text-4xl lg:text-4xl font-extrabold mb-6 md:mb-8 text-[#030D55] transition-all duration-500 hover:text-[#AB277A] font-paytone">
+      <div class="text-center mb-6 md:mb-12" data-aos="fade-up" data-aos-duration="600">
+        <h2 class="text-2xl md:text-4xl lg:text-4xl font-extrabold mb-4 md:mb-8 text-[#030D55] transition-all duration-500 hover:text-[#AB277A] font-paytone">
           Sobre nosotros
         </h2>
         
-        <div class="mx-auto max-w-2xl mb-8 md:mb-14">
-          <p class="text-base md:text-lg text-center mb-4 md:mb-6 text-[#181818] transition-all duration-300 hover:translate-y-[-2px]" style="font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 1.6; @media (min-width: 768px) { line-height: 1.7; }">
+        <div class="mx-auto max-w-2xl mb-6 md:mb-14">
+          <p class="text-base md:text-lg text-center mb-3 md:mb-6 text-[#181818] transition-all duration-300 hover:translate-y-[-2px]" style="font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 1.6; @media (min-width: 768px) { line-height: 1.7; }">
             Somos un equipo especializado en salud mental y terapia EMDR, avalada científicamente, enfocándonos en ayudarte a superar adversidades como maltrato, bullying o situaciones de violencia, adaptando cada tratamiento a ti.
           </p>
           
@@ -112,12 +112,12 @@
       </div>
       
       <!-- Equipo -->
-      <div class="flex flex-wrap justify-center gap-8 md:gap-16 lg:gap-32 mx-auto">
+      <div class="flex flex-wrap justify-center gap-6 md:gap-16 lg:gap-32 mx-auto">
         <!-- Terapeuta 1 -->
-        <div class="w-auto" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
+        <div class="w-auto mb-6 md:mb-0" data-aos="fade-up" data-aos-duration="600" data-aos-delay="100">
           <!-- Foto circular con botón -->
           <div class="flex flex-col items-center relative">
-            <div class="w-[200px] h-[200px] md:w-[250px] md:h-[250px] rounded-full overflow-hidden transition-transform duration-500 hover:scale-105 shadow-lg hover:shadow-xl">
+            <div class="w-[180px] h-[180px] md:w-[250px] md:h-[250px] rounded-full overflow-hidden transition-transform duration-500 hover:scale-105 shadow-lg hover:shadow-xl">
               <img src="{{ get_theme_file_uri('resources/images/julio.png') }}" alt="Julio César" class="w-full h-full object-cover transition-all duration-700 hover:saturate-150">
             </div>
             <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
@@ -130,7 +130,7 @@
           </div>
           
           <!-- Nombre y credenciales -->
-          <div class="text-left mt-8">
+          <div class="text-left mt-6 md:mt-8">
             <h3 class="font-medium text-[#FF3382] text-lg md:text-xl mb-3 transition-transform duration-300 hover:translate-x-1">
               @Psicologo_JulioCesar
             </h3>
@@ -153,7 +153,7 @@
         <div class="w-auto" data-aos="fade-up" data-aos-duration="600" data-aos-delay="200">
           <!-- Foto circular con botón -->
           <div class="flex flex-col items-center relative">
-            <div class="w-[200px] h-[225px] md:w-[250px] md:h-[275px] rounded-full overflow-hidden transition-transform duration-500 hover:scale-105 shadow-lg hover:shadow-xl">
+            <div class="w-[180px] h-[205px] md:w-[250px] md:h-[275px] rounded-full overflow-hidden transition-transform duration-500 hover:scale-105 shadow-lg hover:shadow-xl">
               <img src="{{ get_theme_file_uri('resources/images/shenhui.png') }}" alt="Shenhui" class="w-full h-full object-cover transition-all duration-700 hover:saturate-150">
             </div>
             <div class="absolute -bottom-[-4px] left-1/2 transform -translate-x-1/2">
@@ -166,7 +166,7 @@
           </div>
           
           <!-- Nombre y credenciales -->
-          <div class="text-left mt-3">
+          <div class="text-left mt-6 md:mt-8">
             <h3 class="font-medium text-[#FF3382] text-lg md:text-xl mb-3 transition-transform duration-300 hover:translate-x-1">
               @Psicologa_Shenhui
             </h3>
