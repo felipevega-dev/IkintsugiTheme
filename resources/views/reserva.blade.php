@@ -12,7 +12,8 @@
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
         <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right" data-aos-duration="600">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 1.1;">
+          <span class="text-[#AB277A] text-sm md:text-base uppercase tracking-wider font-medium mb-2 block">Reserva tu cita</span>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
             Reserva tu<br>cita con nosotros
           </h1>
           <p class="text-4xl mt-14 text-[#AB277A] transition-all duration-300 hover:translate-x-2" style="font-family: 'Hugamour', sans-serif;">
@@ -50,8 +51,8 @@
 
   <section class="reserva-section">
     <div class="reserva-container">
-      <h2>Reserva tu cita con nosotros</h2>
-      <p>Selecciona el profesional y el horario que más te acomode.</p>
+      <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-[#030D55] mb-8 text-center transition-all duration-500 hover:text-[#AB277A] font-paytone">Reserva tu cita con nosotros</h2>
+      <p class="text-base md:text-lg text-center mb-8">Selecciona el profesional y el horario que más te acomode.</p>
       <div>
         {!! do_shortcode('[bookly-staff-form my-form]') !!}
       </div>

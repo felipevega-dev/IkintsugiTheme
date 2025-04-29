@@ -12,6 +12,7 @@
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
         <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right" data-aos-duration="600">
+          <span class="text-[#AB277A] text-sm md:text-base uppercase tracking-wider font-medium mb-2 block">Testimonios EMDR</span>
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone" style="line-height: 1.1;">
            Testimonios reales: sanar es posible
           </h1>
@@ -60,7 +61,7 @@
     <div class="container mx-auto px-4">
       <!-- Contenido centrado -->
       <div class="max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-duration="600">
-        <h2 class="text-4xl lg:text-5xl font-bold text-[#030D55] mb-8 transition-all duration-500 hover:text-[#AB277A] font-paytone" style="font-weight: 800;">
+        <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-[#030D55] mb-8 transition-all duration-500 hover:text-[#AB277A] font-paytone">
           El testimonio de quienes <br> transformaron sus vidas
         </h2>
         

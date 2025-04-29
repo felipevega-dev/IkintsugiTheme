@@ -19,8 +19,9 @@
           <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(171, 39, 122, 0.32) 0%, rgba(3, 13, 85, 0.32) 61%);"></div>
           <!-- Service title -->
           <div class="absolute bottom-0 left-0 w-full p-4 md:p-6">
-            <h3 class="text-white font-roboto font-bold text-xl md:text-2xl mb-1 md:mb-2">Atención Médica</h3>
-            <p class="text-white font-roboto text-sm md:text-base">Brindamos acompañamiento terapéutico profesional para tu bienestar emocional y mental.</p>
+            <h3 class="text-white font-roboto font-bold text-xl md:text-2xl mb-1 md:mb-2">Atención Psicológica</h3>
+            <p class="text-white font-roboto text-sm md:text-base">Te ayudamos a superar tus vivencias traumáticas en pro de tu bienestar emocional y mental
+            </p>
           </div>
         </div>
       </a>
@@ -48,7 +49,8 @@
           <!-- Service title -->
           <div class="absolute bottom-0 left-0 w-full p-4 md:p-6">
             <h3 class="text-white font-roboto font-bold text-xl md:text-2xl mb-1 md:mb-2">Personas que atendemos</h3>
-            <p class="text-white font-roboto text-sm md:text-base">Acompañamos a niños, adolescentes, adultos, parejas y familias en su camino hacia el bienestar personal.</p>
+            <p class="text-white font-roboto text-sm md:text-base">Psicoterapia EMDR para adolescentes, adultos, adultos mayores y parejas en su camino hacia el bienestar emocional
+            </p>
           </div>
         </div>
       </a>

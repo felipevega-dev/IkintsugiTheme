@@ -12,6 +12,7 @@
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
         <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right" data-aos-duration="600">
+          <span class="text-[#AB277A] text-sm md:text-base uppercase tracking-wider font-medium mb-2 block">A quiénes atendemos</span>
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
           Alivio y plenitud para ti
           </h1>
@@ -59,9 +60,9 @@
   <section class="bg-white py-12 overflow-x-hidden">
     <div class="container mx-auto px-4">
       <!-- Título Principal -->
-      <h1 class="text-4xl md:text-5xl font-bold text-center text-[#030D55] mb-16 transition-all duration-500 hover:text-[#AB277A] font-paytone">
+      <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center text-[#030D55] mb-16 transition-all duration-500 hover:text-[#AB277A] font-paytone">
         ¿A qué personas atendemos?
-      </h1>
+      </h2>
 
       <!-- Contenedor principal -->
       <div class="max-w-6xl mx-auto">

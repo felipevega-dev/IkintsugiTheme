@@ -3,7 +3,7 @@
   <div class="container mx-auto px-4 pt-10">
     <!-- Section title -->
     <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl md:text-[48px] leading-tight mb-32 md:mb-56 text-center font-paytone" data-aos="fade-up" data-aos-duration="600">
-      Nuestros testimonios
+    Testimonios
     </h2>
     
     <!-- Testimonials Grid -->

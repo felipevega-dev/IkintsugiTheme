@@ -12,6 +12,7 @@
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
         <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right" data-aos-duration="600">
+          <span class="text-[#AB277A] text-sm md:text-base uppercase tracking-wider font-medium mb-2 block">Evidencia científica</span>
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
           Avalado por guías clínicas de salud mental
           </h1>
@@ -66,7 +67,7 @@
             <div class="w-0.5 h-full mt-1" style="border-left: 1px dashed #C29FDA; height: 200px;"></div>
           </div>
           <div class="max-w-5xl pb-8">
-            <h3 class="text-lg font-semibold text-[#AB277A] mb-2 transition-all duration-300 hover:translate-x-1">2013</h3>
+            <h3 class="text-lg md:text-xl font-semibold text-[#AB277A] mb-2 transition-all duration-300 hover:translate-x-1">2013</h3>
             <p class="text-base transition-all duration-300 hover:translate-y-[-2px]">La terapia EMDR está avalada por la Organización Mundial de la Salud y las Guías Clínicas Internacionales para el tratamiento del trauma.</p>
             <p class="text-base mt-2 transition-all duration-300 hover:translate-y-[-2px]">Directrices para el tratamiento de afecciones específicamente relacionadas con el estrés. Ginebra, OMS.</p>
             <p class="text-base mt-2 italic transition-all duration-300 hover:translate-y-[-2px]">"La terapia cognitivo conductual centrada en el trauma y la terapia EMDR son las únicas psicoterapias recomendadas para niños, adolescentes y adultos con trastorno de estrés postraumático. Al igual que la terapia cognitivo conductual centrada en el trauma y la terapia EMDR tiene como objetivo reducir la angustia subjetiva y fortalecer las cogniciones adaptativas relacionadas con el evento traumático. A diferencia de la terapia cognitivo conductual centrada en el trauma, la terapia EMDR no implica (a) descripciones detalladas del evento, (b) cuestionamiento directo de creencias, (c) exposición prolongada o (d) tareas para hacer en casa".</p>

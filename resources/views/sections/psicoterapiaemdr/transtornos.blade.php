@@ -12,6 +12,7 @@
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
         <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right" data-aos-duration="600">
+          <span class="text-[#AB277A] text-sm md:text-base uppercase tracking-wider font-medium mb-2 block">Trastornos y malestares que atendemos</span>
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
             Testimonios que<br>inspiran: La<br>sanación es posible
           </h1>
@@ -65,7 +66,7 @@
   <section class="relative py-16 overflow-x-hidden bg-[#030D550D]">
     <div class="container mx-auto px-4 relative z-10">
       <!-- Título principal centrado -->
-      <h2 class="text-4xl md:text-5xl font-bold text-center text-[#030D55] mb-12 transition-all duration-500 hover:text-[#AB277A] font-paytone">
+      <h2 class="text-2xl md:text-4xl lg:text-4xl font-bold text-center text-[#030D55] mb-12 transition-all duration-500 hover:text-[#AB277A] font-paytone">
         Trastornos y malestares que<br>atendemos
       </h2>
 

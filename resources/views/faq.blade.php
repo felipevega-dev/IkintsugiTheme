@@ -18,6 +18,7 @@
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
         <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right" data-aos-duration="600">
+          <span class="text-[#AB277A] text-sm md:text-base uppercase tracking-wider font-medium mb-2 block">Preguntas frecuentes</span>
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone" style="line-height: 1.1;">
             Nosotros te<br>ayudamos a resolver<br>todas tus dudas
           </h1>
@@ -58,7 +59,7 @@
 <section class="bg-white relative mb-20">
   <div class="container mx-auto px-4 relative">
     <!-- Section title -->
-    <h2 class="text-[#030D55] font-extrabold text-3xl md:text-5xl md:text-[48px] leading-[100%] mb-10 md:mb-16 text-center font-paytone">
+    <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-[#030D55] mb-10 md:mb-16 text-center font-paytone">
       FAQ's
     </h2>
     
@@ -115,8 +116,26 @@
             </p>
           </div>
         </div>
-        
+
         <!-- FAQ Item 3 -->
+        <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;" data-aos="fade-up" data-aos-duration="500" data-aos-delay="75">
+          <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
+            <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4 font-roboto">¿La atención se puede reembolsar en la Isapre?</h3>
+            <div class="arrow-icon w-5 md:w-6 h-5 md:h-6 flex-shrink-0 flex items-center justify-center transform transition-transform duration-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 md:h-6 w-5 md:w-6 text-[#FF3382]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </button>
+          <div class="faq-answer hidden bg-[#FFF3FF8F] p-3 md:p-4 transition-all duration-700 ease-out" style="max-height: 0; overflow: hidden;">
+            <p class="font-roboto font-normal text-sm md:text-[16px] leading-6 md:leading-[28px] text-[#181818]">
+              Si, con la boleta podrás reembolsar cada una de las sesiones en la Isapre y/o seguro médico.</p>
+            <p class="font-roboto font-normal text-sm md:text-[16px] leading-6 md:leading-[28px] text-[#181818] mt-4">El monto a reembolsar dependerá del plan que usted tenga en la Isapre y/o del seguro médico. Por favor, consulte directamente con su prestador.
+            </p>
+          </div>
+        </div>
+        
+        <!-- FAQ Item 4 -->
         <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;">
           <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
             <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4 font-roboto">¿Quienes pueden atenderse con EMDR?</h3>
@@ -131,9 +150,9 @@
             El tratamiento con EMDR puede ser aplicado desde niños a adultos sin restricción de edad. En Kintsugi atendemos desde los 14 años hacia arriba.
             </p>
           </div>
-        </div>
+        </div>  
         
-        <!-- FAQ Item 4 -->
+        <!-- FAQ Item 5 -->
         <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;">
           <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
             <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4 font-roboto">¿Cuánto dura el tratamiento psicológico EMDR?</h3>
@@ -150,7 +169,7 @@
           </div>
         </div>
         
-        <!-- FAQ Item 5 -->
+        <!-- FAQ Item 6 -->
         <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;">
           <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
             <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4 font-roboto">¿Qué duración tienen las sesiones?</h3>
@@ -167,7 +186,7 @@
           </div>
         </div>
         
-        <!-- FAQ Item 6 -->
+        <!-- FAQ Item 7 -->
         <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;">
           <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
             <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4 font-roboto">¿Cada cuánto tiempo se hace una sesión?</h3>
@@ -187,7 +206,7 @@
           </div>
         </div>
         
-        <!-- FAQ Item 7 -->
+        <!-- FAQ Item 8 -->
         <div class="faq-item overflow-hidden w-full faq-gradient-border" style="max-width: 625px;">
           <button class="faq-question w-full flex justify-between items-center p-3 md:p-4 text-left bg-white hover:bg-gray-50 transition-colors duration-200" onclick="toggleFaq(this)">
             <h3 class="text-[#030D55] font-bold text-xl md:text-[24px] leading-[100%] pr-4 font-roboto">¿Cómo me puede ayudar EMDR?</h3>

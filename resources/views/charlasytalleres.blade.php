@@ -23,7 +23,7 @@
       loop 
       playsinline
     >
-      <source src="{{ get_theme_file_uri('resources/videos/background.mp4') }}" type="video/mp4">
+      <source src="{{ get_theme_file_uri('resources/videos/Kintsugi.mp4') }}" type="video/mp4">
       <!-- Fallback para navegadores que no soportan video -->
       <img src="{{ get_theme_file_uri('resources/images/hero-fallback.jpg') }}" alt="Background" class="w-full h-full object-cover">
     </video>

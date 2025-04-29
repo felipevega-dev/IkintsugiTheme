@@ -12,6 +12,7 @@
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
         <div class="lg:w-1/2 mb-12 lg:mb-0" data-aos="fade-right" data-aos-duration="600">
+          <span class="text-[#AB277A] text-sm md:text-base uppercase tracking-wider font-medium mb-2 block">Quienes somos</span>
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
             Donde tus<br>cicatrices se<br>vuelven fortaleza
           </h1>
@@ -67,7 +68,7 @@
         
         <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="600">
           <div class="max-w-[520px] mx-auto md:mx-0">
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-6 text-[#030D55] transition-all duration-500 hover:text-[#AB277A] font-paytone">
+            <h2 class="text-2xl md:text-4xl lg:text-4xl font-extrabold mb-6 text-[#030D55] transition-all duration-500 hover:text-[#AB277A] font-paytone">
               Quiénes somos
             </h2>
             
@@ -95,7 +96,7 @@
   <section class="py-12 md:py-20 bg-white relative overflow-hidden pt-10 md:pt-14">
     <div class="container mx-auto px-4">
       <div class="text-center mb-8 md:mb-12" data-aos="fade-up" data-aos-duration="600">
-        <h2 class="text-3xl md:text-5xl font-extrabold mb-6 md:mb-8 text-[#030D55] transition-all duration-500 hover:text-[#AB277A] font-paytone">
+        <h2 class="text-2xl md:text-4xl lg:text-4xl font-extrabold mb-6 md:mb-8 text-[#030D55] transition-all duration-500 hover:text-[#AB277A] font-paytone">
           Sobre nosotros
         </h2>
         
@@ -213,7 +214,7 @@
       <div class="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-8 relative">
         <!-- Misión -->
         <div class="bg-white/80 rounded-[16px] p-[20px] md:p-[24px] shadow-lg relative z-10 transition-all duration-500 hover:bg-white hover:shadow-xl hover:-translate-y-2 w-full max-w-[350px] md:max-w-[395px] mb-12 md:mb-0" style="min-height: 300px; @media (min-width: 768px) { min-height: 376px; }" data-aos="fade-right" data-aos-duration="600">
-          <h3 class="text-[20px] md:text-[24px] font-bold mb-3 md:mb-4 text-[#030D55] text-center transition-all duration-300 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 100%; letter-spacing: 0%;">
+          <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-[#030D55] text-center transition-all duration-300 hover:text-[#AB277A]">
             Nuestra misión
           </h3>
           <p class="text-base md:text-lg text-[#181818] transition-all duration-300 hover:translate-y-[-2px]" style="font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 1.6; @media (min-width: 768px) { line-height: 1.7; }">
@@ -249,7 +250,7 @@
             </div>
           </div>
           
-          <h3 class="text-[20px] md:text-[24px] font-bold mb-3 md:mb-4 text-[#030D55] text-center transition-all duration-300 hover:text-[#AB277A]" style="font-family: 'Playfair Display', serif; line-height: 100%; letter-spacing: 0%;">
+          <h3 class="text-[20px] md:text-[24px] font-bold mb-3 md:mb-4 text-[#030D55] text-center transition-all duration-300 hover:text-[#AB277A]">
             Nuestros valores
           </h3>
           <p class="mb-2 md:mb-4 text-base md:text-lg text-[#181818] transition-all duration-300 hover:translate-y-[-2px]" style="font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 1.6; @media (min-width: 768px) { line-height: 1.7; }">
@@ -271,7 +272,7 @@
   <!-- ENTRADAS MÁS RECIENTES -->
   <section class="py-12 md:py-20 bg-white">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl md:text-5xl font-extrabold mb-8 md:mb-12 text-center text-[#030D55] transition-all duration-500 hover:text-[#AB277A] font-paytone">
+      <h2 class="text-2xl md:text-4xl lg:text-4xl mb-8 md:mb-12 text-center text-[#030D55] transition-all duration-500 hover:text-[#AB277A] font-paytone">
         Nuestro blog
       </h2>
       
