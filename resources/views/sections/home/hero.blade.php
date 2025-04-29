@@ -17,8 +17,8 @@
   </div>
 
   <!-- Contenido del hero -->
-  <div class="container mx-auto px-4 relative z-10 min-h-[500px] sm:min-h-[550px] md:min-h-[100vh] flex flex-col justify-end items-center pb-32">
-    <div class="w-full max-w-5xl mx-auto text-center text-white">
+  <div class="container mx-auto px-4 relative z-10 min-h-[500px] sm:min-h-[550px] md:min-h-[100vh] flex flex-col justify-center items-center">
+    <div class="w-full max-w-5xl mx-auto text-center text-white mt-16 md:mt-20 lg:mt-24">
       <h2 class="text-base md:text-xl font-normal mb-3 font-roboto tracking-wider uppercase opacity-90" data-aos="fade-up" data-aos-duration="500">Psicología Clínica EMDR</h2>
       <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-10 md:mb-12 font-paytone tracking-tight leading-[1.1] px-4 md:px-0" data-aos="fade-up" data-aos-duration="600" data-aos-delay="50">
         El Trauma<br>

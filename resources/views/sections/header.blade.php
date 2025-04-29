@@ -122,10 +122,11 @@
     
     /* Logo en móvil */
     .mobile-logo {
-      height: 30px;
+      height: 50px;
       width: auto;
       display: block;
       margin: 0 auto;
+      filter: brightness(0) saturate(100%) invert(11%) sepia(82%) saturate(3422%) hue-rotate(210deg) brightness(96%) contrast(101%);
     }
     
     /* Animación para los submenús móviles */
@@ -295,6 +296,7 @@
               src="{{ get_theme_file_uri('resources/images/kintsugi-hero-azul.png') }}" 
               alt="Kintsugi Logo" 
               class="h-16 w-auto"
+              style="filter: brightness(0) saturate(100%) invert(11%) sepia(82%) saturate(3422%) hue-rotate(210deg) brightness(96%) contrast(101%);"
             >
           </a>
         </div>
