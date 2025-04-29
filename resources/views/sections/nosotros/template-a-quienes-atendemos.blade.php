@@ -105,7 +105,7 @@
             <!-- Forma orgánica con puntos -->
             <div class="relative transition-all duration-500 hover:scale-105">
               <img 
-                src="{{ get_theme_file_uri('resources/images/quienensatendemos3.png') }}" 
+                src="{{ get_theme_file_uri('resources/images/quienensatendemosadulto.png') }}" 
                 alt="Adultos" 
                 class="w-full h-auto object-cover rounded-[100px] relative z-10 transition-transform duration-700 hover:scale-[1.02]"
               >

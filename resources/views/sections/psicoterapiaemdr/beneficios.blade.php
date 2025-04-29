@@ -271,7 +271,7 @@
   
   <!-- Segunda sección con fondo blanco-->
   <section class="bg-white py-10 lg:py-16 overflow-x-hidden">
-    <div class="container mx-auto px-4 max-w-7xl">
+    <div class="container mx-auto px-4 max-w-8xl">
       <div class="flex flex-col lg:flex-row items-center gap-4">
         <!-- Imagen a la izquierda -->
         <div class="lg:w-1/2 flex justify-center lg:justify-start relative order-2 lg:order-1" data-aos="fade-right" data-aos-duration="600">
@@ -287,12 +287,12 @@
         <!-- Texto explicativo -->
         <div class="lg:w-1/2 mb-8 lg:mb-0 pr-0 lg:pr-6 order-1 lg:order-2" data-aos="fade-left" data-aos-duration="600">
           <h2 class="text-2xl md:text-4xl lg:text-4xl font-bold text-[#030D55] mb-8 transition-all duration-500 hover:text-[#AB277A] font-paytone">
-            ¿Qué haremos?
+            ¿Qué haremos con la psicoterapia EMDR?
           </h2>
           
           <div class="prose prose-lg">
             <p class="font-normal text-base leading-7 transition-all duration-300 hover:translate-y-[-2px]">
-              Nuestro trabajo conjunto se basa en tu compromiso, paciencia, constancia y participación hacia una vida mejor. El proceso terapéutico incluye:
+            Nuestro trabajo en conjunto se basa en tu compromiso, paciencia, constancia y participación hacia una vida mejor. El proceso terapéutico incluye:
             </p>
             
             <ul class="mt-4 space-y-3">
@@ -307,6 +307,10 @@
               </li>
               <li class="font-normal text-base leading-7 transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="250">
                 <strong>Desarrollo de recursos:</strong> Evaluaremos tus mecanismos de regulación emocional, tus relaciones interpersonales y estrategias de defensa, para implementar herramientas y recursos que te permitan vivir de manera más equilibrada y satisfactoria.
+              </li>
+              <li class="font-normal text-base leading-7 transition-all duration-300 hover:translate-x-1" data-aos="fade-up" data-aos-duration="400" data-aos-delay="250">
+                <strong>Meta terapéutica:</strong> A través del re-procesamiento adaptativo de las memorias traumáticas, buscamos disminuir la intensidad de los síntomas (ansiedad, pesadillas, evitación, hipervigilancia) y promover la integración cognitiva, emocional y corporal de tus experiencias. El objetivo es que recuperes el control de tu vida, fortalezcas tu resiliencia y alcances una calidad de vida plena, con mayor seguridad interna y capacidad de disfrutar de tus relaciones y actividades cotidianas.
+
               </li>
             </ul>
           </div>

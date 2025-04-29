@@ -136,11 +136,6 @@
             </ol>
           </div>
         </div>
-        
-        <!-- Información final -->
-        <div class="ml-12 mt-2 opacity-0 animate-fade-in" style="animation-delay: 2600ms; animation-fill-mode: forwards;" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
-          <p class="text-base transition-all duration-300 hover:translate-y-[-2px]">El tratamiento psicológico con EMDR puede ser desde 5 sesiones para un trauma simple y hasta más de un año para problemas complejos.</p>
-        </div>
       </div>
       
       <style>

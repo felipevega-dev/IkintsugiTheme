@@ -1,3 +1,10 @@
+<style>
+  /* Logo en móvil */
+  .footer-logo {
+      filter: brightness(0) saturate(100%) invert(11%) sepia(82%) saturate(3422%) hue-rotate(210deg) brightness(96%) contrast(101%);
+    }
+</style>
+
 <!-- Footer Superior -->
 <footer class="relative bg-gradient-to-r from-[rgba(223,152,163,0.6)] to-[rgba(204,160,224,0.6)] overflow-hidden py-12">
   <div class="container mx-auto relative px-4" style="max-width: 1512px;">
@@ -7,7 +14,7 @@
       <div class="flex flex-col items-center md:items-start md:col-span-3 pl-0 md:pl-12">
         <!-- Logo -->
         <div class="mb-6 transition-transform duration-300 hover:scale-110">
-          <img src="{{ get_theme_file_uri('resources/images/kintsugi-hero-azul.png') }}" alt="Logo" class="w-48 md:w-56 h-auto">
+          <img src="{{ get_theme_file_uri('resources/images/kintsugi-hero-azul.png') }}" alt="Logo" class="w-48 md:w-56 h-auto footer-logo">
         </div>
         
         <!-- Redes sociales -->
