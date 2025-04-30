@@ -294,7 +294,7 @@
             <img 
               src="{{ get_theme_file_uri('resources/images/logo-azul2.png') }}" 
               alt="Kintsugi Logo" 
-              class="h-18 w-auto""
+              class="h-18 w-auto"
             >
           </a>
         </div>
@@ -312,110 +312,6 @@
               Inicio
             </a>
             
-            <a href="{{ home_url('/a-quienes-atendemos') }}" 
-               class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
-                      {{ (strpos($current_url, 'a-quienes-atendemos') !== false) 
-                         ? 'border-[#D93280] font-bold text-[#D93280]' 
-                         : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
-                      transition-all duration-300">
-              ¿A quiénes atendemos?
-            </a>
-            
-            <a href="{{ home_url('/charlas-y-talleres') }}" 
-               class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
-                      {{ (strpos($current_url, 'charlas-y-talleres') !== false) 
-                         ? 'border-[#D93280] font-bold text-[#D93280]' 
-                         : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
-                      transition-all duration-300">
-              charlas y talleres
-            </a>
-            
-            <a href="{{ home_url('/preguntas-frecuentes') }}" 
-               class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
-                      {{ (strpos($current_url, 'preguntas-frecuentes') !== false) 
-                         ? 'border-[#D93280] font-bold text-[#D93280]' 
-                         : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
-                      transition-all duration-300">
-              FAQ'S
-            </a>
-          </nav>
-          
-          <!-- Segunda fila de navegación -->
-          <nav class="flex justify-center items-center space-x-8 bottom-row">
-            <!-- Menú desplegable para "Prensa y social media" -->
-            <div class="relative hover:cursor-pointer group">
-              <a href="{{ home_url('/prensa') }}" 
-                 class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap flex items-center
-                        {{ (strpos($current_url, 'prensa') !== false || 
-                            strpos($current_url, 'blog') !== false || 
-                            strpos($current_url, 'canales-oficiales') !== false) 
-                           ? 'border-[#D93280] font-bold text-[#D93280]' 
-                           : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
-                        transition-all duration-300">
-                Prensa y medios
-                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </a>
-              <!-- Submenú Prensa y social media -->
-              <div class="top-row submenu-container">
-                <div class="horizontal-submenu">
-                  <a href="{{ home_url('/blog') }}" 
-                    class="horizontal-submenu-item {{ (strpos($current_url, 'blog') !== false) ? 'active' : '' }}">
-                    Blog
-                  </a>
-                  <a href="{{ home_url('/canales-oficiales') }}" 
-                    class="horizontal-submenu-item {{ (strpos($current_url, 'canales-oficiales') !== false) ? 'active' : '' }}">
-                    Canales Oficiales
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Menú desplegable para "Psicoterapia EMDR" -->
-            <div class="relative hover:cursor-pointer group">
-              <a href="{{ home_url('/psicoterapia-emdr') }}" 
-                 class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap flex items-center
-                        {{ (strpos($current_url, 'psicoterapia-emdr') !== false || 
-                            strpos($current_url, 'testimonios') !== false || 
-                            strpos($current_url, 'beneficios-emdr') !== false || 
-                            strpos($current_url, 'tratamiento-emdr') !== false ||
-                            strpos($current_url, 'que-esperar') !== false ||
-                            strpos($current_url, 'transtornos-y-malestares') !== false) 
-                           ? 'border-[#D93280] font-bold text-[#D93280]' 
-                           : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
-                        transition-all duration-300">
-                Psicoterapia EMDR
-                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </a>
-              <!-- Submenú EMDR -->
-              <div class="bottom-row submenu-container">
-                <div class="horizontal-submenu">
-                  <a href="{{ home_url('/testimonios') }}" 
-                     class="horizontal-submenu-item {{ (strpos($current_url, 'testimonios') !== false) ? 'active' : '' }}">
-                    Testimonios
-                  </a>
-                  <a href="{{ home_url('/beneficios-emdr') }}" 
-                     class="horizontal-submenu-item {{ (strpos($current_url, 'beneficios-emdr') !== false) ? 'active' : '' }}">
-                    Beneficios del EMDR
-                  </a>
-                  <a href="{{ home_url('/tratamiento-emdr') }}" 
-                     class="horizontal-submenu-item {{ (strpos($current_url, 'tratamiento-emdr') !== false) ? 'active' : '' }}">
-                    ¿Qué ocurre durante el tratamiento EMDR?
-                  </a>
-                  <a href="{{ home_url('/que-esperar') }}" 
-                     class="horizontal-submenu-item {{ (strpos($current_url, 'que-esperar') !== false) ? 'active' : '' }}">
-                    ¿Que esperar de la Psicoterapia?
-                  </a>
-                  <a href="{{ home_url('/transtornos-y-malestares') }}" 
-                     class="horizontal-submenu-item {{ (strpos($current_url, 'transtornos-y-malestares') !== false) ? 'active' : '' }}">
-                    Transtornos y malestares
-                  </a>
-                </div>
-              </div>
-            </div>
             <!-- Menú desplegable para "Quiénes somos" -->
             <div class="relative hover:cursor-pointer group">
               <a href="{{ home_url('/quienes-somos') }}" 
@@ -451,6 +347,109 @@
                   <a href="{{ home_url('/evidencia-cientifica') }}" 
                     class="horizontal-submenu-item {{ (strpos($current_url, 'evidencia-cientifica') !== false) ? 'active' : '' }}">
                     Evidencia Científica
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Menú desplegable para "Psicoterapia EMDR" -->
+            <div class="relative hover:cursor-pointer group">
+              <a href="{{ home_url('/psicoterapia-emdr') }}" 
+                 class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap flex items-center
+                        {{ (strpos($current_url, 'psicoterapia-emdr') !== false && !strpos($current_url, 'testimonios') && !strpos($current_url, 'beneficios-emdr') && !strpos($current_url, 'tratamiento-emdr') && !strpos($current_url, 'que-esperar') && !strpos($current_url, 'evidencia-cientifica')) ? 'border-[#D93280] font-bold text-[#D93280]' 
+                           : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
+                        transition-all duration-300">
+                Psicoterapia EMDR
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </a>
+              <!-- Submenú EMDR -->
+              <div class="bottom-row submenu-container">
+                <div class="horizontal-submenu">
+                  <a href="{{ home_url('/psicoterapia-emdr') }}" 
+                     class="horizontal-submenu-item {{ (strpos($current_url, 'psicoterapia-emdr') !== false && !strpos($current_url, 'testimonios') && !strpos($current_url, 'beneficios-emdr') && !strpos($current_url, 'tratamiento-emdr') && !strpos($current_url, 'que-esperar') && !strpos($current_url, 'evidencia-cientifica')) ? 'active' : '' }}">
+                    ¿Qué es Psicoterapia EMDR?
+                  </a>
+                  <a href="{{ home_url('/testimonios') }}" 
+                     class="horizontal-submenu-item {{ (strpos($current_url, 'testimonios') !== false) ? 'active' : '' }}">
+                    Testimonios
+                  </a>
+                  <a href="{{ home_url('/beneficios-emdr') }}" 
+                     class="horizontal-submenu-item {{ (strpos($current_url, 'beneficios-emdr') !== false) ? 'active' : '' }}">
+                    ¿Cómo me puede ayudar el EMDR?
+                  </a>
+                  <a href="{{ home_url('/tratamiento-emdr') }}" 
+                     class="horizontal-submenu-item {{ (strpos($current_url, 'tratamiento-emdr') !== false) ? 'active' : '' }}">
+                    ¿Qué ocurre durante el tratamiento EMDR?
+                  </a>
+                  <a href="{{ home_url('/que-esperar') }}" 
+                     class="horizontal-submenu-item {{ (strpos($current_url, 'que-esperar') !== false) ? 'active' : '' }}">
+                    ¿Qué esperar del tratamiento con EMDR?
+                  </a>
+                  <a href="{{ home_url('/evidencia-cientifica') }}" 
+                     class="horizontal-submenu-item {{ (strpos($current_url, 'evidencia-cientifica') !== false) ? 'active' : '' }}">
+                    Evidencia científica
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            <a href="{{ home_url('/a-quienes-atendemos') }}" 
+               class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
+                      {{ (strpos($current_url, 'a-quienes-atendemos') !== false) 
+                         ? 'border-[#D93280] font-bold text-[#D93280]' 
+                         : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
+                      transition-all duration-300">
+              ¿A quiénes atendemos?
+            </a>
+          </nav>
+          
+          <!-- Segunda fila de navegación -->
+          <nav class="flex justify-center items-center space-x-8 bottom-row">
+            <a href="{{ home_url('/charlas-y-talleres') }}" 
+               class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
+                      {{ (strpos($current_url, 'charlas-y-talleres') !== false) 
+                         ? 'border-[#D93280] font-bold text-[#D93280]' 
+                         : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
+                      transition-all duration-300">
+              charlas y talleres
+            </a>
+            
+            <a href="{{ home_url('/preguntas-frecuentes') }}" 
+               class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
+                      {{ (strpos($current_url, 'preguntas-frecuentes') !== false) 
+                         ? 'border-[#D93280] font-bold text-[#D93280]' 
+                         : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
+                      transition-all duration-300">
+              FAQ'S
+            </a>
+            
+            <!-- Menú desplegable para "Prensa y social media" -->
+            <div class="relative hover:cursor-pointer group">
+              <a href="{{ home_url('/prensa') }}" 
+                 class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap flex items-center
+                        {{ (strpos($current_url, 'prensa') !== false || 
+                            strpos($current_url, 'blog') !== false || 
+                            strpos($current_url, 'canales-oficiales') !== false) 
+                           ? 'border-[#D93280] font-bold text-[#D93280]' 
+                           : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
+                        transition-all duration-300">
+                Prensa y medios
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </a>
+              <!-- Submenú Prensa y social media -->
+              <div class="top-row submenu-container">
+                <div class="horizontal-submenu">
+                  <a href="{{ home_url('/blog') }}" 
+                    class="horizontal-submenu-item {{ (strpos($current_url, 'blog') !== false) ? 'active' : '' }}">
+                    Blog
+                  </a>
+                  <a href="{{ home_url('/canales-oficiales') }}" 
+                    class="horizontal-submenu-item {{ (strpos($current_url, 'canales-oficiales') !== false) ? 'active' : '' }}">
+                    Canales Oficiales
                   </a>
                 </div>
               </div>
@@ -545,6 +544,7 @@
                   transition-colors duration-300">
           Inicio
         </a>
+                  
                   <!-- Menú desplegable para Quiénes somos -->
                   <div class="border-b border-gray-100">
                     <div class="flex justify-between items-center py-3 cursor-pointer" id="quienes-somos-toggle">
@@ -583,11 +583,6 @@
                               {{ (strpos($current_url, 'divulgacion-cientifica') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
                 Divulgación Científica
               </a>
-              <a href="{{ home_url('/evidencia-cientifica') }}" 
-                        class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
-                              {{ (strpos($current_url, 'evidencia-cientifica') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
-                Evidencia Científica
-              </a>
             </div>
           </div>
                   
@@ -596,13 +591,7 @@
                     <div class="flex justify-between items-center py-3 cursor-pointer" id="emdr-toggle">
           <a href="{{ home_url('/psicoterapia-emdr') }}" 
                         class="text-gray-900 font-roboto
-                              {{ (strpos($current_url, 'psicoterapia-emdr') !== false || 
-                                strpos($current_url, 'testimonios') !== false || 
-                                strpos($current_url, 'beneficios-emdr') !== false || 
-                                strpos($current_url, 'tratamiento-emdr') !== false ||
-                                strpos($current_url, 'que-esperar') !== false ||
-                                strpos($current_url, 'transtornos-y-malestares') !== false) 
-                                ? 'menu-active-highlight' 
+                              {{ (strpos($current_url, 'psicoterapia-emdr') !== false && !strpos($current_url, 'testimonios') && !strpos($current_url, 'beneficios-emdr') && !strpos($current_url, 'tratamiento-emdr') && !strpos($current_url, 'que-esperar') && !strpos($current_url, 'evidencia-cientifica')) ? 'menu-active-highlight' 
                                 : 'hover:text-[#D93280]' }}">
                         Psicoterapia EMDR
                       </a>
@@ -615,32 +604,37 @@
                     
                     <!-- Submenú (inicialmente oculto) -->
                     <div class="mobile-submenu bg-gray-50 rounded-lg" id="emdr-submenu">
-              <a href="{{ home_url('/testimonios') }}" 
+                      <a href="{{ home_url('/psicoterapia-emdr') }}" 
+                        class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                              {{ (strpos($current_url, 'psicoterapia-emdr') !== false && !strpos($current_url, 'testimonios') && !strpos($current_url, 'beneficios-emdr') && !strpos($current_url, 'tratamiento-emdr') && !strpos($current_url, 'que-esperar') && !strpos($current_url, 'evidencia-cientifica')) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+                        ¿Qué es Psicoterapia EMDR?
+                      </a>
+                      <a href="{{ home_url('/testimonios') }}" 
                         class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
                               {{ (strpos($current_url, 'testimonios') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
-                Testimonios
-              </a>
-              <a href="{{ home_url('/beneficios-emdr') }}" 
+                        Testimonios
+                      </a>
+                      <a href="{{ home_url('/beneficios-emdr') }}" 
                         class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
                               {{ (strpos($current_url, 'beneficios-emdr') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
-                Beneficios del EMDR
-              </a>
-              <a href="{{ home_url('/tratamiento-emdr') }}" 
+                        ¿Cómo me puede ayudar el EMDR?
+                      </a>
+                      <a href="{{ home_url('/tratamiento-emdr') }}" 
                         class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
                               {{ (strpos($current_url, 'tratamiento-emdr') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
-                ¿Qué ocurre durante el tratamiento EMDR?
-              </a>
+                        ¿Qué ocurre durante el tratamiento EMDR?
+                      </a>
                       <a href="{{ home_url('/que-esperar') }}" 
                         class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
                               {{ (strpos($current_url, 'que-esperar') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
-                        ¿Que esperar de la Psicoterapia?
+                        ¿Qué esperar del tratamiento con EMDR?
                       </a>
-                      <a href="{{ home_url('/transtornos-y-malestares') }}" 
+                      <a href="{{ home_url('/evidencia-cientifica') }}" 
                         class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
-                              {{ (strpos($current_url, 'transtornos-y-malestares') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
-                        Transtornos y malestares
+                              {{ (strpos($current_url, 'evidencia-cientifica') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+                        Evidencia científica
                       </a>
-            </div>
+                    </div>
           </div>
                   
         <a href="{{ home_url('/a-quienes-atendemos') }}" 
