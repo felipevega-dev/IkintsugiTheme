@@ -327,13 +327,26 @@
       </div>
     </div>
     
+    <!-- Título de la sección con efecto decorativo - ajustado para móvil -->
+    <div class="container mx-auto px-4 text-center relative z-20 mb-6 md:mb-12 pt-10 md:pt-0">
+      <h2 class="text-3xl md:text-5xl font-bold text-white inline-block relative font-paytone" data-aos="fade-up" data-aos-duration="800">
+        <span class="relative z-10 drop-shadow-lg">Nuestra Misión y Valores</span>
+        <!-- Efecto decorativo debajo del texto -->
+        <div class="absolute bottom-0 left-0 right-0 h-3 bg-[#F5B3F3] opacity-60 -skew-x-12 transform translate-y-2 z-0"></div>
+      </h2>
+      <div class="flex justify-center mt-2 md:mt-4">
+        <div class="h-1 w-24 md:w-32 bg-white opacity-70 rounded"></div>
+      </div>
+    </div>
+    
     <!-- Contenido -->
-    <div class="container mx-auto px-4 relative z-20 mt-14 md:mt-24">
+    <div class="container mx-auto px-4 relative z-20 mt-8 md:mt-16">
       <div class="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-8 relative">
         <!-- Misión -->
-        <div class="bg-white/80 rounded-[16px] p-[20px] md:p-[24px] shadow-lg relative z-10 transition-all duration-500 hover:bg-white hover:shadow-xl hover:-translate-y-2 w-full max-w-[350px] md:max-w-[395px] mb-12 md:mb-0" style="min-height: 300px; @media (min-width: 768px) { min-height: 376px; }" data-aos="fade-right" data-aos-duration="600">
-          <h3 class="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-[#030D55] text-center transition-all duration-300 hover:text-[#AB277A]">
+        <div class="bg-white/90 backdrop-blur-sm rounded-[16px] p-[24px] md:p-[30px] shadow-lg relative z-10 transition-all duration-500 hover:bg-white hover:shadow-xl hover:-translate-y-2 w-full max-w-[350px] md:max-w-[395px] mb-12 md:mb-0" style="min-height: 300px; @media (min-width: 768px) { min-height: 376px; }" data-aos="fade-right" data-aos-duration="600">
+          <h3 class="text-xl md:text-2xl font-bold mb-4 md:mb-5 text-[#030D55] text-center transition-all duration-300 hover:text-[#AB277A]">
             Nuestra misión
+            <div class="h-1 w-12 bg-[#AB277A] mx-auto mt-2"></div>
           </h3>
           <p class="text-base md:text-lg text-[#181818] transition-all duration-300 hover:translate-y-[-2px]" style="font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 1.6; @media (min-width: 768px) { line-height: 1.7; }">
             Estamos comprometidos en promover, difundir y brindar soluciones desde la Psicoterapia EMDR a problemáticas de la salud mental. Estamos enfocados en mejorar la calidad de vida de las personas, familias, grupos, comunidades e instituciones a través de la entrega de herramientas e intervenciones eficaces, basadas en evidencia científica, que permitan facilitar el desarrollo subjetivo y social de nuestros pacientes.
@@ -351,14 +364,15 @@
         
         <!-- Logo central -->
         <div class="relative flex items-center justify-center mx-4 md:mx-6 z-20 mb-12 md:mb-0" data-aos="fade-up" data-aos-duration="800">
-          <!-- Logo blanco -->
+          <!-- Logo con resplandor -->
           <div class="relative z-10 transition-all duration-500 hover:scale-110">
+            <div class="absolute inset-0 rounded-full bg-white opacity-20 blur-md -z-10"></div>
             <img src="{{ get_theme_file_uri('resources/images/logoblanco.png') }}" alt="Ikintsugi Logo" style="width: 180px; height: 45px; @media (min-width: 768px) { width: 226px; height: 56px; }">
           </div>
         </div>
         
         <!-- Valores -->
-        <div class="bg-white/80 rounded-[16px] p-[20px] md:p-[24px] shadow-lg relative z-10 transition-all duration-500 hover:bg-white hover:shadow-xl hover:-translate-y-2 w-full max-w-[350px] md:max-w-[395px]" style="min-height: 300px; @media (min-width: 768px) { min-height: 376px; }" data-aos="fade-left" data-aos-duration="600">
+        <div class="bg-white/90 backdrop-blur-sm rounded-[16px] p-[24px] md:p-[30px] shadow-lg relative z-10 transition-all duration-500 hover:bg-white hover:shadow-xl hover:-translate-y-2 w-full max-w-[350px] md:max-w-[395px]" style="min-height: 300px; @media (min-width: 768px) { min-height: 376px; }" data-aos="fade-left" data-aos-duration="600">
           <!-- Línea conectora hacia el logo con puntitos (visible solo en desktop) -->
           <div class="hidden md:flex absolute left-[-47px] top-1/2 items-center z-30">
             <div class="flex items-center space-x-1 flex-row-reverse">
@@ -368,10 +382,11 @@
             </div>
           </div>
           
-          <h3 class="text-[20px] md:text-[24px] font-bold mb-3 md:mb-4 text-[#030D55] text-center transition-all duration-300 hover:text-[#AB277A]">
+          <h3 class="text-[20px] md:text-[24px] font-bold mb-4 md:mb-5 text-[#030D55] text-center transition-all duration-300 hover:text-[#AB277A]">
             Nuestros valores
+            <div class="h-1 w-12 bg-[#AB277A] mx-auto mt-2"></div>
           </h3>
-          <p class="mb-2 md:mb-4 text-base md:text-lg text-[#181818] transition-all duration-300 hover:translate-y-[-2px]" style="font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 1.6; @media (min-width: 768px) { line-height: 1.7; }">
+          <p class="mb-3 md:mb-5 text-base md:text-lg text-[#181818] transition-all duration-300 hover:translate-y-[-2px]" style="font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 1.6; @media (min-width: 768px) { line-height: 1.7; }">
             Como miembros de la Iniciativa Kintsugi creemos en la reparación del ser humano inspirada en los siguientes valores:
           </p>
           <ul class="space-y-1 md:space-y-2 text-base md:text-lg text-[#181818]" style="font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 1.6; @media (min-width: 768px) { line-height: 1.7; }">
@@ -385,7 +400,7 @@
         </div>
       </div>
     </div>
-  </section> 
+  </section>
 
   <!-- ENTRADAS MÁS RECIENTES -->
   <section class="py-12 md:py-20 bg-white">
