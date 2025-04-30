@@ -126,7 +126,6 @@
       width: auto;
       display: block;
       margin: 0 auto;
-      filter: brightness(0) saturate(100%) invert(11%) sepia(82%) saturate(3422%) hue-rotate(210deg) brightness(96%) contrast(101%);
     }
     
     /* Animación para los submenús móviles */
@@ -293,10 +292,9 @@
         <div class="pl-8">
           <a class="flex items-center" href="{{ home_url('/') }}">
             <img 
-              src="{{ get_theme_file_uri('resources/images/kintsugi-hero-azul.png') }}" 
+              src="{{ get_theme_file_uri('resources/images/logo-azul2.png') }}" 
               alt="Kintsugi Logo" 
-              class="h-16 w-auto"
-              style="filter: brightness(0) saturate(100%) invert(11%) sepia(82%) saturate(3422%) hue-rotate(210deg) brightness(96%) contrast(101%);"
+              class="h-18 w-auto""
             >
           </a>
         </div>
@@ -329,7 +327,7 @@
                          ? 'border-[#D93280] font-bold text-[#D93280]' 
                          : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
                       transition-all duration-300">
-              Charlas y talleres
+              charlas y talleres
             </a>
             
             <a href="{{ home_url('/preguntas-frecuentes') }}" 
@@ -491,7 +489,7 @@
           <div class="flex-2 flex justify-center">
             <a href="{{ home_url('/') }}">
               <img 
-                src="{{ get_theme_file_uri('resources/images/kintsugi-hero-azul.png') }}" 
+                src="{{ get_theme_file_uri('resources/images/logo-azul2.png') }}" 
                 alt="Kintsugi Logo" 
                 class="h-auto w-auto mobile-logo"
               >
