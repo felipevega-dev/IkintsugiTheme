@@ -644,14 +644,34 @@
               </div>
             </div>
             
-            <a href="{{ home_url('/a-quienes-atendemos') }}" 
-               class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
-                      {{ (strpos($current_url, 'a-quienes-atendemos') !== false) 
-                         ? 'border-[#D93280] font-bold text-[#D93280]' 
-                         : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
-                      transition-all duration-300">
-              ¿A quiénes atendemos?
-            </a>
+            <!-- Menú desplegable para "¿A quiénes atendemos?" -->
+            <div class="relative hover:cursor-pointer group">
+              <a href="{{ home_url('/a-quienes-atendemos') }}" 
+                 class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap flex items-center
+                        {{ (strpos($current_url, 'a-quienes-atendemos') !== false || 
+                            strpos($current_url, 'transtornos-y-malestares') !== false) 
+                           ? 'border-[#D93280] font-bold text-[#D93280]' 
+                           : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
+                        transition-all duration-300">
+                ¿A quiénes atendemos?
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </a>
+              <!-- Submenú -->
+              <div class="bottom-row submenu-container">
+                <div class="vertical-submenu">
+                  <a href="{{ home_url('/a-quienes-atendemos') }}" 
+                     class="vertical-submenu-item {{ (strpos($current_url, 'a-quienes-atendemos') !== false && !strpos($current_url, 'transtornos-y-malestares')) ? 'active' : '' }}">
+                    ¿A qué personas atendemos?
+                  </a>
+                  <a href="{{ home_url('/transtornos-y-malestares') }}" 
+                     class="vertical-submenu-item {{ (strpos($current_url, 'transtornos-y-malestares') !== false) ? 'active' : '' }}">
+                    Transtornos y malestares que atendemos
+                  </a>
+                </div>
+              </div>
+            </div>
           </nav>
           
           <!-- Segunda fila de navegación -->
@@ -911,22 +931,46 @@
                     </div>
           </div>
                   
-        <a href="{{ home_url('/a-quienes-atendemos') }}" 
-                    class="block py-3 border-b border-gray-100 text-gray-900 font-roboto
-                  {{ (strpos($current_url, 'a-quienes-atendemos') !== false) 
-                            ? 'menu-active-highlight' 
-                     : 'hover:text-[#D93280]' }} 
-                  transition-colors duration-300">
-          ¿A quiénes atendemos?
-        </a>
-                  
+        <!-- Menú desplegable para "A quiénes atendemos" -->
+        <div class="border-b border-gray-100">
+          <div class="flex justify-between items-center py-3 cursor-pointer" id="atendemos-toggle">
+            <a href="{{ home_url('/a-quienes-atendemos') }}" 
+              class="text-gray-900 font-roboto
+                    {{ (strpos($current_url, 'a-quienes-atendemos') !== false || 
+                        strpos($current_url, 'transtornos-y-malestares') !== false) 
+                      ? 'menu-active-highlight' 
+                      : 'hover:text-[#D93280]' }}">
+              ¿A quiénes atendemos?
+            </a>
+            <button class="text-[#D93280] bg-[#FBD5E8] bg-opacity-50 p-1 rounded-full transition-transform duration-300" id="atendemos-icon">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+          </div>
+          
+          <!-- Submenú (inicialmente oculto) -->
+          <div class="mobile-submenu bg-gray-50 rounded-lg" id="atendemos-submenu">
+            <a href="{{ home_url('/a-quienes-atendemos') }}" 
+              class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                    {{ (strpos($current_url, 'a-quienes-atendemos') !== false && !strpos($current_url, 'transtornos-y-malestares')) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+              ¿A qué personas atendemos?
+            </a>
+            <a href="{{ home_url('/transtornos-y-malestares') }}" 
+              class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                    {{ (strpos($current_url, 'transtornos-y-malestares') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+              Transtornos y malestares que atendemos
+            </a>
+          </div>
+        </div>
+        
         <a href="{{ home_url('/charlas-y-talleres') }}" 
                     class="block py-3 border-b border-gray-100 text-gray-900 font-roboto
                   {{ (strpos($current_url, 'charlas-y-talleres') !== false) 
                             ? 'menu-active-highlight' 
                      : 'hover:text-[#D93280]' }} 
                   transition-colors duration-300">
-          Charlas y talleres
+          charlas y talleres
         </a>
                   
         <a href="{{ home_url('/preguntas-frecuentes') }}" 
@@ -1069,6 +1113,11 @@
     const prensaToggle = document.getElementById('prensa-toggle');
     const prensaIcon = document.getElementById('prensa-icon');
     const prensaSubmenu = document.getElementById('prensa-submenu');
+    
+    // Elementos para el submenú de "A quiénes atendemos"
+    const atendemosToggle = document.getElementById('atendemos-toggle');
+    const atendemosIcon = document.getElementById('atendemos-icon');
+    const atendemosSubmenu = document.getElementById('atendemos-submenu');
     
     // Función para manejar el scroll y añadir efectos al header
     function handleScroll() {
@@ -1253,6 +1302,10 @@
       
       if (prensaToggle && prensaIcon && prensaSubmenu) {
         toggleSubmenu(prensaToggle, prensaIcon, prensaSubmenu);
+      }
+      
+      if (atendemosToggle && atendemosIcon && atendemosSubmenu) {
+        toggleSubmenu(atendemosToggle, atendemosIcon, atendemosSubmenu);
       }
       
       // Cerrar el menú móvil al hacer clic en un enlace (para mejor experiencia de usuario)
