@@ -101,13 +101,74 @@
       
       <!-- Contact Container - Atención Psicológica (hidden by default) -->
       <div id="contact-psicologica" class="hidden flex-col md:flex-row items-center justify-center gap-6 md:gap-12 lg:gap-16 max-w-6xl mx-auto">
-        <div class="text-center w-full max-w-[600px]" data-aos="fade" data-aos-duration="600">
+        <!-- Left Image - Same as in charlas section -->
+        <div class="relative w-full max-w-[375px]" data-aos="fade-right" data-aos-duration="600">
+          <div class="transition-all duration-500 hover:scale-105 hover:shadow-xl">
+            <img 
+              src="{{ get_theme_file_uri('resources/images/contacto2.jpg') }}" 
+              alt="Psicólogos Instituto Kintsugi" 
+              class="w-full h-[458px] object-cover rounded-[16px]"
+              style="box-shadow: 0px 4px 16px 0px #AB277A;"
+            >
+          </div>
+        </div>
+        
+        <!-- Right Content - WhatsApp -->
+        <div class="text-center w-full max-w-[600px]" data-aos="fade-left" data-aos-duration="600">
           <div class="bg-white rounded-[16px] p-8 shadow-lg transition-all duration-500 hover:shadow-xl">
             <h3 class="text-2xl font-bold text-[#030D55] mb-4">Para atención psicológica</h3>
             <p class="text-lg mb-6">Reserva en el WhatsApp</p>
-            <!-- Aquí irá el contenido del WhatsApp que enviarás después -->
-            <div class="whatsapp-content py-4">
-              <p class="text-gray-600 mb-4">El contenido de WhatsApp se agregará próximamente</p>
+            
+            <!-- WhatsApp Content -->
+            <div class="whatsapp-content py-4 bg-[#25D366]/10 rounded-xl p-4">
+              <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+                <div class="flex items-center mb-2">
+                  <div class="bg-[#25D366] rounded-full p-2 mr-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                  </div>
+                  <h4 class="text-lg font-semibold">Consultas y Reservas de Horas</h4>
+                </div>
+                <p class="text-gray-600 text-left">¡Hola! Haga clic en uno de nuestros profesionales a continuación para chatear en WhatsApp</p>
+              </div>
+              
+              <p class="text-gray-500 text-sm mb-2">El equipo suele responder en unos minutos.</p>
+              
+              <!-- Profesionales -->
+              <div class="space-y-3">
+                <!-- Profesional 1 -->
+                <div class="flex items-center justify-between bg-white rounded-lg p-3 shadow-sm hover:shadow-md transition-all duration-300">
+                  <div class="flex items-center">
+                    <img src="{{ get_theme_file_uri('resources/images/julio.enc') }}" alt="Julio César" class="w-12 h-12 rounded-full mr-3 object-cover">
+                    <div class="text-left">
+                      <h5 class="font-semibold">Julio César</h5>
+                      <p class="text-sm text-gray-600">Psicólogo Clínico</p>
+                    </div>
+                  </div>
+                  <a href="https://wa.me/56937166362" target="_blank" class="bg-[#25D366] p-2 rounded-full text-white hover:bg-[#20b956] transition-all duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                  </a>
+                </div>
+                
+                <!-- Profesional 2 -->
+                <div class="flex items-center justify-between bg-white rounded-lg p-3 shadow-sm hover:shadow-md transition-all duration-300">
+                  <div class="flex items-center">
+                    <img src="{{ get_theme_file_uri('resources/images/shen.jpg') }}" alt="Shénhui Lin" class="w-12 h-12 rounded-full mr-3 object-cover">
+                    <div class="text-left">
+                      <h5 class="font-semibold">Shénhui Lín</h5>
+                      <p class="text-sm text-gray-600">Psicóloga Clínica</p>
+                    </div>
+                  </div>
+                  <a href="https://wa.me/56956345078" target="_blank" class="bg-[#25D366] p-2 rounded-full text-white hover:bg-[#20b956] transition-all duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -193,15 +254,33 @@
         const contactCharlas = document.getElementById('contact-charlas');
         const contactPsicologica = document.getElementById('contact-psicologica');
         
-        toggleCharlas.addEventListener('click', function() {
-          // Activate charlas button
-          toggleCharlas.classList.add('bg-[#AB277A]', 'text-white');
+        // Remove any existing background classes and set initial state
+        function updateToggleStyles() {
+          // Setup charlas toggle (active by default)
+          toggleCharlas.classList.remove('bg-transparent');
+          toggleCharlas.classList.add('bg-[#AB277A]');
+          toggleCharlas.classList.add('text-white');
           toggleCharlas.classList.remove('text-gray-700');
-          // Deactivate psicologica button
-          togglePsicologica.classList.remove('bg-[#AB277A]', 'text-white');
-          togglePsicologica.classList.add('text-gray-700');
           
-          // Show charlas content, hide psicologica content
+          // Setup psicologica toggle (inactive by default)
+          togglePsicologica.classList.remove('bg-[#AB277A]');
+          togglePsicologica.classList.add('bg-transparent');
+          togglePsicologica.classList.remove('text-white');
+          togglePsicologica.classList.add('text-gray-700');
+        }
+        
+        // Set initial styles
+        updateToggleStyles();
+        
+        toggleCharlas.addEventListener('click', function() {
+          // Update toggle button styles
+          toggleCharlas.classList.add('bg-[#AB277A]', 'text-white');
+          toggleCharlas.classList.remove('bg-transparent', 'text-gray-700');
+          
+          togglePsicologica.classList.remove('bg-[#AB277A]', 'text-white');
+          togglePsicologica.classList.add('bg-transparent', 'text-gray-700');
+          
+          // Toggle content
           contactCharlas.classList.remove('hidden');
           contactCharlas.classList.add('flex');
           contactPsicologica.classList.add('hidden');
@@ -209,14 +288,14 @@
         });
         
         togglePsicologica.addEventListener('click', function() {
-          // Activate psicologica button
+          // Update toggle button styles
           togglePsicologica.classList.add('bg-[#AB277A]', 'text-white');
-          togglePsicologica.classList.remove('text-gray-700');
-          // Deactivate charlas button
-          toggleCharlas.classList.remove('bg-[#AB277A]', 'text-white');
-          toggleCharlas.classList.add('text-gray-700');
+          togglePsicologica.classList.remove('bg-transparent', 'text-gray-700');
           
-          // Show psicologica content, hide charlas content
+          toggleCharlas.classList.remove('bg-[#AB277A]', 'text-white');
+          toggleCharlas.classList.add('bg-transparent', 'text-gray-700');
+          
+          // Toggle content
           contactPsicologica.classList.remove('hidden');
           contactPsicologica.classList.add('flex');
           contactCharlas.classList.add('hidden');
