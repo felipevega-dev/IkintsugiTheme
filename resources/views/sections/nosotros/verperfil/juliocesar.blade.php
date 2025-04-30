@@ -239,6 +239,16 @@
                 <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
               </svg>
             </a>
+            <a href="https://www.facebook.com/PsJulioCesarCarrasco" target="_blank" class="text-[#FF3382] social-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 3H4a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h8.615v-6.96h-2.338v-2.725h2.338v-2c0-2.325 1.42-3.592 3.5-3.592.699-.002 1.399.034 2.095.107v2.42h-1.435c-1.128 0-1.348.538-1.348 1.325v1.735h2.697l-.35 2.725h-2.348V21H20a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z"></path>
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/newsletters/emisor-kintsugi-7039605681020108800/" target="_blank" class="text-[#FF3382] social-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path>
+              </svg>
+            </a>
           </div>
         </div>
       </div>
@@ -450,7 +460,7 @@
     </div>
     
     <div class="container mx-auto px-4 py-12 testimonial-container">
-      <h3 class="text-4xl font-bold text-[#030D55] mb-15 text-center fade-up font-paytone" data-delay="200">Un testimonio de quien transformó<br>su vida con Julio César</h3>
+      <h3 class="text-4xl font-bold text-[#030D55] mb-15 text-center fade-up font-paytone" data-delay="200">Testimonios de quienes transformaron su vida</h3>
       
       <div class="flex flex-col md:flex-row gap-16 items-center max-w-6xl mx-auto testimonial-section">
         <!-- Texto del testimonio a la izquierda -->

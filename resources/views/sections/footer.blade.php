@@ -49,8 +49,8 @@
               </svg>
             </a>
             <div class="dropdown-menu absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible md:group-hover:opacity-100 md:group-hover:visible transition-all duration-300 z-50">
-              <a href="https://www.facebook.com/profile.php?id=100063555630096" target="_blank" rel="noopener" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#AB277A] hover:text-white">Psicóloga Shénhui</a>
-              <a href="https://www.facebook.com/profile.php?id=100063467988484" target="_blank" rel="noopener" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#AB277A] hover:text-white">Psicólogo Julio César</a>
+              <a href="https://www.facebook.com/psicologashenhui/" target="_blank" rel="noopener" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#AB277A] hover:text-white">Psicóloga Shénhui</a>
+              <a href="https://www.facebook.com/PsJulioCesarCarrasco" target="_blank" rel="noopener" class="block px-4 py-2 text-sm text-gray-700 hover:bg-[#AB277A] hover:text-white">Psicólogo Julio César</a>
             </div>
           </div>
 

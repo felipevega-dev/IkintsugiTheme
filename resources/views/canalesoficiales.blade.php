@@ -230,25 +230,29 @@
       <div class="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg transform transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-duration="800">
         <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-8">
           <div class="w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0">
-            <div class="w-full h-full rounded-full bg-[#8961C440] p-1">
-              <img 
-                src="{{ get_theme_file_uri('resources/images/julio.png') }}" 
-                alt="Julio César" 
-                class="w-full h-full object-cover rounded-full"
-              >
-            </div>
+            <img 
+              src="{{ get_theme_file_uri('resources/images/julio.png') }}" 
+              alt="Julio César" 
+              class="w-full h-full object-cover rounded-full"
+            >
           </div>
           <div class="flex flex-col items-center sm:items-start gap-4 sm:gap-6">
             <div class="text-center sm:text-left">
               <h3 class="text-xl sm:text-2xl font-bold text-[#030D55] font-paytone">Julio César</h3>
               <p class="text-[#D93280] font-roboto">@psicologo_juliocesar</p>
             </div>
-            <div class="flex gap-4">
-              <a href="https://www.instagram.com/psicologo_juliocesar/" target="_blank" class="w-10 h-10 bg-[#D93280] rounded-lg flex items-center justify-center text-white transition-transform hover:scale-110">
+            <div class="flex flex-wrap gap-4">
+              <a href="https://www.instagram.com/psicologo_juliocesar/" target="_blank" class="w-10 h-10 bg-[#D93280] rounded-lg flex items-center justify-center text-white transition-transform hover:scale-110" title="Instagram">
                 <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
               </a>
-              <a href="#" target="_blank" class="w-10 h-10 bg-[#D93280] rounded-lg flex items-center justify-center text-white transition-transform hover:scale-110">
+              <a href="https://www.facebook.com/PsJulioCesarCarrasco" target="_blank" class="w-10 h-10 bg-[#D93280] rounded-lg flex items-center justify-center text-white transition-transform hover:scale-110" title="Facebook">
                 <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+              </a>
+              <a href="https://www.tiktok.com/@psicologo_juliocesar" target="_blank" class="w-10 h-10 bg-[#D93280] rounded-lg flex items-center justify-center text-white transition-transform hover:scale-110" title="TikTok">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/newsletters/emisor-kintsugi-7039605681020108800/" target="_blank" class="w-10 h-10 bg-[#D93280] rounded-lg flex items-center justify-center text-white transition-transform hover:scale-110" title="LinkedIn">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
               </a>
             </div>
           </div>
@@ -259,28 +263,77 @@
       <div class="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg transform transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
         <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-8">
           <div class="w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0">
-            <div class="w-full h-full rounded-full bg-[#F5B3F380] p-1">
-              <img 
-                src="{{ get_theme_file_uri('resources/images/shenhui.png') }}" 
-                alt="Shenhui" 
-                class="w-full h-full object-cover rounded-full"
-              >
-            </div>
+            <img 
+              src="{{ get_theme_file_uri('resources/images/shenhui.png') }}" 
+              alt="Shenhui" 
+              class="w-full h-full object-cover rounded-full"
+            >
           </div>
           <div class="flex flex-col items-center sm:items-start gap-4 sm:gap-6">
             <div class="text-center sm:text-left">
               <h3 class="text-xl sm:text-2xl font-bold text-[#030D55] font-paytone">Shenhui</h3>
               <p class="text-[#D93280] font-roboto">@psicologa_shenhui</p>
             </div>
-            <div class="flex gap-4">
-              <a href="https://www.instagram.com/psicologa_shenhui/" target="_blank" class="w-10 h-10 bg-[#D93280] rounded-lg flex items-center justify-center text-white transition-transform hover:scale-110">
+            <div class="flex flex-wrap gap-4">
+              <a href="https://www.instagram.com/psicologa_shenhui/" target="_blank" class="w-10 h-10 bg-[#D93280] rounded-lg flex items-center justify-center text-white transition-transform hover:scale-110" title="Instagram">
                 <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
               </a>
-              <a href="#" target="_blank" class="w-10 h-10 bg-[#D93280] rounded-lg flex items-center justify-center text-white transition-transform hover:scale-110">
+              <a href="https://www.facebook.com/psicologa.shenhui" target="_blank" class="w-10 h-10 bg-[#D93280] rounded-lg flex items-center justify-center text-white transition-transform hover:scale-110" title="Facebook">
                 <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+              </a>
+              <a href="https://www.tiktok.com/@psicologa_shenhui" target="_blank" class="w-10 h-10 bg-[#D93280] rounded-lg flex items-center justify-center text-white transition-transform hover:scale-110" title="TikTok">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/newsletters/7085405873988083712/" target="_blank" class="w-10 h-10 bg-[#D93280] rounded-lg flex items-center justify-center text-white transition-transform hover:scale-110" title="LinkedIn">
+                <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
               </a>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Canales oficiales de iKintsugi -->
+    <div class="mt-16 text-center" data-aos="fade-up" data-aos-duration="1000">
+      <h3 class="text-2xl sm:text-3xl font-bold text-[#030D55] mb-8 font-paytone">Redes sociales de iKintsugi</h3>
+      
+      <div class="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg inline-block mx-auto">
+        <div class="flex flex-wrap justify-center gap-6">
+          <a href="https://www.facebook.com/IKintsugiChile" target="_blank" class="group flex flex-col items-center" title="Facebook iKintsugi">
+            <div class="w-14 h-14 rounded-full bg-[#1877F2] flex items-center justify-center text-white transform transition-all duration-300 group-hover:scale-110">
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+              </svg>
+            </div>
+            <span class="mt-2 text-[#030D55] font-medium">Facebook</span>
+          </a>
+
+          <a href="https://open.spotify.com/show/08J06mjqK1UxNgXPTVlMkJ" target="_blank" class="group flex flex-col items-center" title="Spotify Emisor Kintsugi">
+            <div class="w-14 h-14 rounded-full bg-[#1DB954] flex items-center justify-center text-white transform transition-all duration-300 group-hover:scale-110">
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+              </svg>
+            </div>
+            <span class="mt-2 text-[#030D55] font-medium">Spotify</span>
+          </a>
+
+          <a href="https://www.youtube.com/@emisorkintsugi" target="_blank" class="group flex flex-col items-center" title="YouTube Emisor Kintsugi">
+            <div class="w-14 h-14 rounded-full bg-[#FF0000] flex items-center justify-center text-white transform transition-all duration-300 group-hover:scale-110">
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+              </svg>
+            </div>
+            <span class="mt-2 text-[#030D55] font-medium">YouTube</span>
+          </a>
+
+          <a href="https://www.instagram.com/ikintsugi.cl/" target="_blank" class="group flex flex-col items-center" title="Instagram iKintsugi">
+            <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-[#FFDC80] via-[#F56040] to-[#C13584] flex items-center justify-center text-white transform transition-all duration-300 group-hover:scale-110">
+              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+              </svg>
+            </div>
+            <span class="mt-2 text-[#030D55] font-medium">Instagram</span>
+          </a>
         </div>
       </div>
     </div>
