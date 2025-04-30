@@ -212,6 +212,239 @@
         margin: 0 auto;
       }
     }
+
+    /* Estilos para submenús verticales */
+    .vertical-submenu {
+      display: flex;
+      flex-direction: column;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(217, 50, 128, 0.15);
+      background: white;
+      border: 2px solid transparent;
+      background-image: linear-gradient(white, white), linear-gradient(to right, #D93280, #AB277A);
+      background-origin: border-box;
+      background-clip: content-box, border-box;
+      overflow: hidden;
+      min-width: 220px;
+      position: relative;
+      z-index: 100;
+    }
+    
+    .vertical-submenu-item {
+      white-space: nowrap;
+      padding: 14px 22px;
+      font-weight: 500;
+      font-size: 15px;
+      color: #030D55;
+      transition: all 0.2s ease;
+      position: relative;
+      border-bottom: 1px solid rgba(3, 13, 85, 0.1);
+    }
+    
+    .vertical-submenu-item:last-child {
+      border-bottom: none;
+    }
+    
+    .vertical-submenu-item:hover {
+      background-color: #FBD5E8;
+      color: #D93280;
+      font-weight: bold;
+    }
+    
+    .vertical-submenu-item.active {
+      background-color: #FBD5E8;
+      color: #D93280;
+      font-weight: bold;
+    }
+
+    /* Para el submenu anidado de expertos */
+    .nested-submenu-trigger {
+      position: relative !important;
+      display: block !important;
+    }
+    
+    .nested-experts-menu {
+      position: absolute !important;
+      left: 100% !important;
+      top: 0 !important;
+      min-width: 230px !important;
+      background-color: white !important;
+      border-radius: 12px !important;
+      box-shadow: 0 4px 15px rgba(217, 50, 128, 0.25) !important;
+      border: 2px solid transparent !important;
+      background-image: linear-gradient(white, white), linear-gradient(to right, #D93280, #AB277A) !important;
+      background-origin: border-box !important;
+      background-clip: content-box, border-box !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      transition: all 0.3s ease !important;
+      transform: translateX(-10px) !important;
+      z-index: 200 !important;
+      pointer-events: none !important;
+    }
+    
+    .nested-submenu-trigger:hover .nested-experts-menu {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateX(0) !important;
+      pointer-events: auto !important;
+    }
+    
+    /* Ensure experts menu stays visible when hovering directly over it */
+    .nested-experts-menu:hover {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateX(0) !important;
+      pointer-events: auto !important;
+    }
+    
+    .expert-submenu-item {
+      display: block;
+      padding: 14px 20px;
+      color: #030D55;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(3, 13, 85, 0.1);
+      transition: all 0.2s ease;
+    }
+    
+    .expert-submenu-item:last-child {
+      border-bottom: none;
+    }
+    
+    .expert-submenu-item:hover {
+      background-color: #FBD5E8;
+      color: #D93280;
+      font-weight: bold;
+    }
+    
+    /* Flecha indicadora para submenu anidado */
+    .submenu-arrow {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      color: #030D55;
+      opacity: 0.6;
+      transition: all 0.2s ease;
+    }
+    
+    .nested-submenu-trigger:hover .submenu-arrow {
+      color: #D93280;
+      opacity: 1;
+      transform: translateY(-50%) translateX(3px);
+    }
+    
+    /* Fix for nested menu with the new structure */
+    .vertical-submenu-item.nested-submenu-trigger {
+      padding: 0 !important;
+    }
+    
+    .vertical-submenu-item.nested-submenu-trigger > a {
+      display: block;
+      padding: 14px 22px;
+      color: inherit;
+      font-weight: inherit;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .vertical-submenu-item.nested-submenu-trigger:hover > a {
+      background-color: #FBD5E8;
+      color: #D93280;
+      font-weight: bold;
+    }
+    
+    .vertical-submenu-item.nested-submenu-trigger.active > a {
+      background-color: #FBD5E8;
+      color: #D93280;
+      font-weight: bold;
+    }
+
+    /* Styles for accordion-style experts submenu */
+    .accordion-submenu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+      opacity: 0;
+      margin: 0;
+      width: 100%;
+      border-left: 2px solid rgba(217, 50, 128, 0.1);
+      margin-left: 20px;
+      background-color: white;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+    
+    .accordion-submenu.active {
+      max-height: 120px; /* Enough for both experts */
+      opacity: 1;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    
+    .expert-toggle-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #030D55;
+      transition: all 0.2s ease;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      background: white;
+      border: 1px solid #e5e7eb;
+      opacity: 0.8;
+    }
+    
+    .expert-toggle-button:hover {
+      opacity: 1;
+      color: #D93280;
+      border-color: #FBD5E8;
+      background-color: white;
+    }
+    
+    .expert-toggle-button.active {
+      opacity: 1;
+      transform: translateY(-50%) rotate(180deg);
+      color: #D93280;
+      border-color: #FBD5E8;
+    }
+    
+    .expert-item {
+      display: block;
+      padding: 10px 15px;
+      font-size: 14px;
+      color: #030D55;
+      background-color: #FFFFFF;
+      transition: all 0.2s ease;
+      border-bottom: 1px solid rgba(3, 13, 85, 0.05);
+    }
+    
+    .expert-item:last-child {
+      border-bottom: none;
+    }
+    
+    .expert-item:hover {
+      background-color: #FBD5E8;
+      color: #D93280;
+      font-weight: bold;
+    }
+    
+    /* Adjust styles for vertical submenu items to accommodate the button */
+    .vertical-submenu-item {
+      position: relative;
+    }
+    
+    .quienes-somos-item {
+      padding-right: 40px !important; /* Make room for the button */
+    }
   </style>
   <div class="container mx-auto px-4">
     @php
@@ -320,33 +553,49 @@
                             strpos($current_url, 'que-significa-kintsugi') !== false || 
                             strpos($current_url, 'que-nos-inspira') !== false || 
                             strpos($current_url, 'divulgacion-cientifica') !== false || 
-                            strpos($current_url, 'evidencia-cientifica') !== false) 
+                            strpos($current_url, 'mision-valores') !== false) 
                            ? 'border-[#D93280] font-bold text-[#D93280]' 
                            : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
                       transition-all duration-300">
-                ¿Quiénes somos?
+                Nosotros
                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </a>
               <!-- Submenú -->
               <div class="top-row submenu-container">
-                <div class="horizontal-submenu">
+                <div class="vertical-submenu">
+                  <div class="vertical-submenu-item {{ (strpos($current_url, 'quienes-somos') !== false && !strpos($current_url, 'que-significa-kintsugi') && !strpos($current_url, 'que-nos-inspira') && !strpos($current_url, 'divulgacion-cientifica') && !strpos($current_url, 'mision-valores')) ? 'active' : '' }} quienes-somos-item">
+                    <a href="{{ home_url('/quienes-somos') }}" class="block w-full">
+                      ¿Quiénes somos?
+                    </a>
+                    <button class="expert-toggle-button" id="expert-toggle">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                    </button>
+                    
+                    <!-- Accordion submenu for experts -->
+                    <div class="accordion-submenu" id="accordion-experts">
+                      <a href="{{ home_url('/shenhui/') }}" class="expert-item">
+                        Shénhui Lín
+                      </a>
+                      <a href="{{ home_url('/julio-cesar/') }}" class="expert-item">
+                        Julio César Carrasco
+                      </a>
+                    </div>
+                  </div>
                   <a href="{{ home_url('/que-significa-kintsugi') }}" 
-                    class="horizontal-submenu-item {{ (strpos($current_url, 'que-significa-kintsugi') !== false) ? 'active' : '' }}">
-                    Qué significa Kintsugi
+                    class="vertical-submenu-item {{ (strpos($current_url, 'que-significa-kintsugi') !== false) ? 'active' : '' }}">
+                    ¿Qué significa Kintsugi?
                   </a>
                   <a href="{{ home_url('/que-nos-inspira') }}" 
-                    class="horizontal-submenu-item {{ (strpos($current_url, 'que-nos-inspira') !== false) ? 'active' : '' }}">
-                    Qué nos inspira
+                    class="vertical-submenu-item {{ (strpos($current_url, 'que-nos-inspira') !== false) ? 'active' : '' }}">
+                    ¿Qué nos inspira?
                   </a>
                   <a href="{{ home_url('/divulgacion-cientifica') }}" 
-                    class="horizontal-submenu-item {{ (strpos($current_url, 'divulgacion-cientifica') !== false) ? 'active' : '' }}">
+                    class="vertical-submenu-item {{ (strpos($current_url, 'divulgacion-cientifica') !== false) ? 'active' : '' }}">
                     Divulgación Científica
-                  </a>
-                  <a href="{{ home_url('/evidencia-cientifica') }}" 
-                    class="horizontal-submenu-item {{ (strpos($current_url, 'evidencia-cientifica') !== false) ? 'active' : '' }}">
-                    Evidencia Científica
                   </a>
                 </div>
               </div>
@@ -366,29 +615,29 @@
               </a>
               <!-- Submenú EMDR -->
               <div class="bottom-row submenu-container">
-                <div class="horizontal-submenu">
+                <div class="vertical-submenu">
                   <a href="{{ home_url('/psicoterapia-emdr') }}" 
-                     class="horizontal-submenu-item {{ (strpos($current_url, 'psicoterapia-emdr') !== false && !strpos($current_url, 'testimonios') && !strpos($current_url, 'beneficios-emdr') && !strpos($current_url, 'tratamiento-emdr') && !strpos($current_url, 'que-esperar') && !strpos($current_url, 'evidencia-cientifica')) ? 'active' : '' }}">
+                     class="vertical-submenu-item {{ (strpos($current_url, 'psicoterapia-emdr') !== false && !strpos($current_url, 'testimonios') && !strpos($current_url, 'beneficios-emdr') && !strpos($current_url, 'tratamiento-emdr') && !strpos($current_url, 'que-esperar') && !strpos($current_url, 'evidencia-cientifica')) ? 'active' : '' }}">
                     ¿Qué es Psicoterapia EMDR?
                   </a>
                   <a href="{{ home_url('/testimonios') }}" 
-                     class="horizontal-submenu-item {{ (strpos($current_url, 'testimonios') !== false) ? 'active' : '' }}">
+                     class="vertical-submenu-item {{ (strpos($current_url, 'testimonios') !== false) ? 'active' : '' }}">
                     Testimonios
                   </a>
                   <a href="{{ home_url('/beneficios-emdr') }}" 
-                     class="horizontal-submenu-item {{ (strpos($current_url, 'beneficios-emdr') !== false) ? 'active' : '' }}">
+                     class="vertical-submenu-item {{ (strpos($current_url, 'beneficios-emdr') !== false) ? 'active' : '' }}">
                     ¿Cómo me puede ayudar el EMDR?
                   </a>
                   <a href="{{ home_url('/tratamiento-emdr') }}" 
-                     class="horizontal-submenu-item {{ (strpos($current_url, 'tratamiento-emdr') !== false) ? 'active' : '' }}">
+                     class="vertical-submenu-item {{ (strpos($current_url, 'tratamiento-emdr') !== false) ? 'active' : '' }}">
                     ¿Qué ocurre durante el tratamiento EMDR?
                   </a>
                   <a href="{{ home_url('/que-esperar') }}" 
-                     class="horizontal-submenu-item {{ (strpos($current_url, 'que-esperar') !== false) ? 'active' : '' }}">
+                     class="vertical-submenu-item {{ (strpos($current_url, 'que-esperar') !== false) ? 'active' : '' }}">
                     ¿Qué esperar del tratamiento con EMDR?
                   </a>
                   <a href="{{ home_url('/evidencia-cientifica') }}" 
-                     class="horizontal-submenu-item {{ (strpos($current_url, 'evidencia-cientifica') !== false) ? 'active' : '' }}">
+                     class="vertical-submenu-item {{ (strpos($current_url, 'evidencia-cientifica') !== false) ? 'active' : '' }}">
                     Evidencia científica
                   </a>
                 </div>
@@ -442,13 +691,13 @@
               </a>
               <!-- Submenú Prensa y social media -->
               <div class="top-row submenu-container">
-                <div class="horizontal-submenu">
+                <div class="vertical-submenu">
                   <a href="{{ home_url('/blog') }}" 
-                    class="horizontal-submenu-item {{ (strpos($current_url, 'blog') !== false) ? 'active' : '' }}">
+                    class="vertical-submenu-item {{ (strpos($current_url, 'blog') !== false) ? 'active' : '' }}">
                     Blog
                   </a>
                   <a href="{{ home_url('/canales-oficiales') }}" 
-                    class="horizontal-submenu-item {{ (strpos($current_url, 'canales-oficiales') !== false) ? 'active' : '' }}">
+                    class="vertical-submenu-item {{ (strpos($current_url, 'canales-oficiales') !== false) ? 'active' : '' }}">
                     Canales Oficiales
                   </a>
                 </div>
@@ -554,10 +803,10 @@
                         strpos($current_url, 'que-significa-kintsugi') !== false || 
                         strpos($current_url, 'que-nos-inspira') !== false || 
                         strpos($current_url, 'divulgacion-cientifica') !== false || 
-                        strpos($current_url, 'evidencia-cientifica') !== false) 
+                        strpos($current_url, 'mision-valores') !== false) 
                                 ? 'menu-active-highlight' 
                                 : 'hover:text-[#D93280]' }}">
-                        ¿Quiénes somos?
+                        Nosotros
                       </a>
                       <button class="text-[#D93280] bg-[#FBD5E8] bg-opacity-50 p-1 rounded-full transition-transform duration-300" id="quienes-somos-icon">
                         <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -568,23 +817,48 @@
                     
                     <!-- Submenú (inicialmente oculto) -->
                     <div class="mobile-submenu bg-gray-50 rounded-lg" id="quienes-somos-submenu">
-              <a href="{{ home_url('/que-significa-kintsugi') }}" 
+                      <a href="{{ home_url('/quienes-somos') }}" 
+                        class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                              {{ (strpos($current_url, 'quienes-somos') !== false && !strpos($current_url, 'que-significa-kintsugi') && !strpos($current_url, 'que-nos-inspira') && !strpos($current_url, 'divulgacion-cientifica') && !strpos($current_url, 'mision-valores')) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+                        ¿Quiénes somos?
+                      </a>
+                      
+                      <!-- Submenú de expertos -->
+                      <div class="pl-6 border-l-2 border-[#FBD5E8] ml-4 my-1">
+                        <a href="{{ home_url('/shenhui/') }}" 
+                          class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                                {{ (strpos($current_url, 'shenhui') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+                          Shénhui Lín
+                        </a>
+                        <a href="{{ home_url('/julio-cesar/') }}" 
+                          class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                                {{ (strpos($current_url, 'julio-cesar') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+                          Julio César Carrasco
+                        </a>
+                      </div>
+                      
+                      <a href="{{ home_url('/que-significa-kintsugi') }}" 
                         class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
                               {{ (strpos($current_url, 'que-significa-kintsugi') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
-                Qué significa Kintsugi
-              </a>
-              <a href="{{ home_url('/que-nos-inspira') }}" 
+                        ¿Qué significa Kintsugi?
+                      </a>
+                      <a href="{{ home_url('/que-nos-inspira') }}" 
                         class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
                               {{ (strpos($current_url, 'que-nos-inspira') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
-                Qué nos inspira
-              </a>
-              <a href="{{ home_url('/divulgacion-cientifica') }}" 
+                        ¿Qué nos inspira?
+                      </a>
+                      <a href="{{ home_url('/mision-valores') }}" 
+                        class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
+                              {{ (strpos($current_url, 'mision-valores') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+                        Nuestra Misión y Valores
+                      </a>
+                      <a href="{{ home_url('/divulgacion-cientifica') }}" 
                         class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
                               {{ (strpos($current_url, 'divulgacion-cientifica') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
-                Divulgación Científica
-              </a>
-            </div>
-          </div>
+                        Divulgación Científica
+                      </a>
+                    </div>
+                  </div>
                   
                   <!-- Menú desplegable para EMDR -->
                   <div class="border-b border-gray-100">
@@ -743,6 +1017,34 @@
     const menuButton = document.getElementById('mobile-menu-button');
     const menuClose = document.getElementById('mobile-menu-close');
     const mobileMenu = document.getElementById('mobile-menu');
+    
+    // Handle experts accordion toggle
+    const expertToggle = document.getElementById('expert-toggle');
+    const accordionExperts = document.getElementById('accordion-experts');
+    
+    if (expertToggle && accordionExperts) {
+      expertToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Toggle active class on button and accordion
+        this.classList.toggle('active');
+        accordionExperts.classList.toggle('active');
+      });
+      
+      // Close accordion when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!expertToggle.contains(e.target) && !accordionExperts.contains(e.target)) {
+          expertToggle.classList.remove('active');
+          accordionExperts.classList.remove('active');
+        }
+      });
+      
+      // Stop propagation of clicks inside the accordion
+      accordionExperts.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+    }
     
     // Detectar si estamos en pantalla pequeña o grande
     const isMobile = window.innerWidth < 1024;
