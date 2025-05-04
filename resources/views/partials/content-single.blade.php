@@ -11,17 +11,17 @@ if (!$post_id) return;
   <div class="absolute inset-0 z-0">
     <div class="absolute inset-0 bg-[#362766] opacity-70 z-10"></div>
     @if(has_post_thumbnail())
-      <img src="{{ get_the_post_thumbnail_url() }}" alt="{{ get_the_title() }}" class="absolute inset-0 w-full h-full object-cover object-top">
+      <img src="{{ get_the_post_thumbnail_url() }}" alt="{{ get_the_title() }}" class="absolute inset-0 w-full h-full object-cover object-[center_top]">
     @else
-      <img src="{{ get_theme_file_uri('resources/images/blog-default.jpg') }}" alt="{{ get_the_title() }}" class="absolute inset-0 w-full h-full object-cover object-top">
+      <img src="{{ get_theme_file_uri('resources/images/blog-default.jpg') }}" alt="{{ get_the_title() }}" class="absolute inset-0 w-full h-full object-cover object-[center_top]">
     @endif
-    <div class="absolute inset-0 bg-gradient-to-t from-[#362766] via-[#362766]/60 to-transparent z-20"></div>
+    <div class="absolute inset-0 z-20" style="background: linear-gradient(0deg, rgba(171,39,122,0.48) 0%, rgba(3,13,85,0.48) 61%);"></div>
   </div>
   
   <!-- Título del post -->
   <div class="container mx-auto px-4 relative z-10 min-h-[500px] flex flex-col justify-center items-start pb-48">
     <div class="mt-40">
-      <span class="text-white text-sm mb-2">{{ get_the_date() }}</span>
+      <span class="text-white text-xs md:text-sm py-2 px-3 md:px-4 rounded-full inline-block mb-3" style="background: #030D55B8;">{{ get_the_date() }}</span>
       <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white max-w-4xl leading-tight" style="font-family: 'Playfair Display', serif;">{{ get_the_title() }}</h1>
     </div>
   </div>
