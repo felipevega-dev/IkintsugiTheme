@@ -105,13 +105,13 @@
       
     <!-- Filtros por categoría y año -->
       <div class="flex flex-wrap justify-start gap-2 mb-8" data-aos="fade-up" data-aos-duration="600">
-      <a href="?cat=all" class="px-4 py-2 bg-[#AB277A] text-white rounded-lg text-sm font-medium">Todas</a>
+      <a href="{{ get_permalink() }}" class="px-4 py-2 {{ empty($_GET['cat']) && empty($_GET['year']) ? 'bg-[#AB277A] text-white' : 'bg-white text-[#030D55]' }} rounded-lg text-sm font-medium {{ !empty($_GET['cat']) || !empty($_GET['year']) ? 'border border-gray-200 hover:bg-gray-100' : '' }}">Todas</a>
       @php
       $categories = get_categories();
       @endphp
       
       @foreach($categories as $category)
-        <a href="?cat={{ $category->term_id }}" class="px-4 py-2 bg-white text-[#030D55] rounded-lg text-sm font-medium border border-gray-200 hover:bg-gray-100">
+        <a href="{{ add_query_arg('cat', $category->term_id, remove_query_arg('year')) }}" class="px-4 py-2 {{ isset($_GET['cat']) && $_GET['cat'] == $category->term_id ? 'bg-[#AB277A] text-white' : 'bg-white text-[#030D55]' }} rounded-lg text-sm font-medium {{ !isset($_GET['cat']) || $_GET['cat'] != $category->term_id ? 'border border-gray-200 hover:bg-gray-100' : '' }}">
           {{ $category->name }}
         </a>
       @endforeach
@@ -140,7 +140,7 @@
       @endphp
       
       @foreach($years as $year)
-        <a href="?year={{ $year }}" class="px-4 py-2 bg-white text-[#030D55] rounded-lg text-sm font-medium border border-gray-200 hover:bg-gray-100">
+        <a href="{{ add_query_arg('year', $year, remove_query_arg('cat')) }}" class="px-4 py-2 {{ isset($_GET['year']) && $_GET['year'] == $year ? 'bg-[#AB277A] text-white' : 'bg-white text-[#030D55]' }} rounded-lg text-sm font-medium {{ !isset($_GET['year']) || $_GET['year'] != $year ? 'border border-gray-200 hover:bg-gray-100' : '' }}">
           {{ $year }}
         </a>
       @endforeach
@@ -150,7 +150,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
       @php
       $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-      $category = isset($_GET['cat']) && $_GET['cat'] != 'all' ? $_GET['cat'] : '';
+      $category = isset($_GET['cat']) ? $_GET['cat'] : '';
       $year = isset($_GET['year']) ? $_GET['year'] : '';
       
       // Obtén los IDs de los posts recientes para excluirlos
@@ -238,7 +238,7 @@
     </div>
     
     <!-- Botón "Cargar más" -->
-    <div class="text-center mt-8" data-aos="fade-up" data-aos-duration="600">
+    <div class="text-center mt-8 hidden" data-aos="fade-up" data-aos-duration="600">
       @if($blog_posts->max_num_pages > 1 && $paged < $blog_posts->max_num_pages)
         <a href="{{ add_query_arg('paged', $paged + 1) }}" class="inline-block px-8 py-3 bg-[#AB277A] text-white rounded-full text-lg font-medium hover:bg-opacity-90 transition-all duration-300 transform hover:scale-105">
           Cargar más blogs
@@ -247,7 +247,7 @@
     </div>
     
     <!-- Paginación (alternativa al botón "Cargar más") -->
-    <div class="text-center mt-8 hidden">
+    <div class="text-center mt-8" data-aos="fade-up" data-aos-duration="600">
       @php
       $total_pages = $blog_posts->max_num_pages;
       
@@ -257,19 +257,41 @@
           echo '<div class="inline-flex gap-2">';
           
           if ($current_page > 1) {
-              echo '<a href="' . get_pagenum_link($current_page - 1) . '" class="px-4 py-2 bg-white text-[#030D55] rounded-lg text-sm font-medium border border-gray-200 hover:bg-gray-100">Anterior</a>';
+              $prev_link = add_query_arg('paged', $current_page - 1);
+              echo '<a href="' . $prev_link . '" class="px-4 py-2 bg-white text-[#030D55] rounded-lg text-sm font-medium border border-gray-200 hover:bg-gray-100">Anterior</a>';
           }
           
-          for ($i = 1; $i <= $total_pages; $i++) {
-              if ($i == $current_page) {
-                  echo '<span class="px-4 py-2 bg-[#AB277A] text-white rounded-lg text-sm font-medium">' . $i . '</span>';
-              } else {
-                  echo '<a href="' . get_pagenum_link($i) . '" class="px-4 py-2 bg-white text-[#030D55] rounded-lg text-sm font-medium border border-gray-200 hover:bg-gray-100">' . $i . '</a>';
+          $start_page = max(1, $current_page - 2);
+          $end_page = min($total_pages, $current_page + 2);
+          
+          if ($start_page > 1) {
+              $first_link = add_query_arg('paged', 1);
+              echo '<a href="' . $first_link . '" class="px-4 py-2 bg-white text-[#030D55] rounded-lg text-sm font-medium border border-gray-200 hover:bg-gray-100">1</a>';
+              if ($start_page > 2) {
+                  echo '<span class="px-2 py-2 text-gray-500">...</span>';
               }
           }
           
+          for ($i = $start_page; $i <= $end_page; $i++) {
+              if ($i == $current_page) {
+                  echo '<span class="px-4 py-2 bg-[#AB277A] text-white rounded-lg text-sm font-medium">' . $i . '</span>';
+              } else {
+                  $page_link = add_query_arg('paged', $i);
+                  echo '<a href="' . $page_link . '" class="px-4 py-2 bg-white text-[#030D55] rounded-lg text-sm font-medium border border-gray-200 hover:bg-gray-100">' . $i . '</a>';
+              }
+          }
+          
+          if ($end_page < $total_pages) {
+              if ($end_page < $total_pages - 1) {
+                  echo '<span class="px-2 py-2 text-gray-500">...</span>';
+              }
+              $last_link = add_query_arg('paged', $total_pages);
+              echo '<a href="' . $last_link . '" class="px-4 py-2 bg-white text-[#030D55] rounded-lg text-sm font-medium border border-gray-200 hover:bg-gray-100">' . $total_pages . '</a>';
+          }
+          
           if ($current_page < $total_pages) {
-              echo '<a href="' . get_pagenum_link($current_page + 1) . '" class="px-4 py-2 bg-white text-[#030D55] rounded-lg text-sm font-medium border border-gray-200 hover:bg-gray-100">Siguiente</a>';
+              $next_link = add_query_arg('paged', $current_page + 1);
+              echo '<a href="' . $next_link . '" class="px-4 py-2 bg-white text-[#030D55] rounded-lg text-sm font-medium border border-gray-200 hover:bg-gray-100">Siguiente</a>';
           }
           
           echo '</div>';

@@ -15,12 +15,13 @@ if (!$post_id) return;
     @else
       <img src="{{ get_theme_file_uri('resources/images/blog-default.jpg') }}" alt="{{ get_the_title() }}" class="absolute inset-0 w-full h-full object-cover object-top">
     @endif
+    <div class="absolute inset-0 bg-gradient-to-t from-[#362766] via-[#362766]/60 to-transparent z-20"></div>
   </div>
   
   <!-- Título del post -->
   <div class="container mx-auto px-4 relative z-10 min-h-[400px] md:min-h-[500px] flex flex-col justify-end items-start pb-16">
     <span class="text-white text-sm mb-2">{{ get_the_date() }}</span>
-    <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white max-w-4xl" style="font-family: 'Playfair Display', serif;">{{ get_the_title() }}</h1>
+    <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white max-w-4xl leading-tight" style="font-family: 'Playfair Display', serif;">{{ get_the_title() }}</h1>
   </div>
 
   <!-- Curvatura inferior -->
@@ -38,15 +39,14 @@ if (!$post_id) return;
       <!-- Columna izquierda para la suscripción y datos del autor -->
       <div class="w-full md:w-1/3">
         <div class="bg-gray-50 rounded-lg p-6 sticky top-32">
-          <div class="flex items-center mb-6">
-            <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
-              <img src="{{ get_avatar_url(get_the_author_meta('ID')) }}" alt="{{ get_the_author() }}" class="w-full h-full object-cover">
-            </div>
-            <div>
-              <h3 class="text-lg font-bold text-[#030D55]">{{ get_the_author() }}</h3>
-              <p class="text-sm text-gray-600">{{ get_the_author_meta('description') ?: 'Especialista en salud mental' }}</p>
-            </div>
+          <!-- Imagen de los profesionales -->
+          <div class="mb-6">
+            <img src="{{ get_theme_file_uri('resources/images/julioyshen2.png') }}" alt="Profesionales" class="w-full h-auto rounded-lg" onerror="this.src='{{ get_avatar_url(get_the_author_meta('ID')) }}'">
           </div>
+          
+          <!-- Texto de mantente al día -->
+          <h3 class="text-[#AB277A] text-lg font-bold mb-3 leading-tight">Mantente al día con las últimas investigaciones, tendencias y reflexiones en salud mental, psicoterapia y bienestar.</h3>
+          <p class="text-sm text-gray-600 mb-6 border-l-4 border-[#AB277A] pl-3">{{ get_the_author_meta('description') ?: 'Especialista en salud mental' }}</p>
           
           <!-- Formulario de suscripción -->
           <div class="bg-white rounded-lg p-5 shadow-sm">
