@@ -6,7 +6,7 @@ if (!$post_id) return;
 @endphp
 
 <!-- Hero Section -->
-<section class="relative bg-[#362766] overflow-hidden pt-24 md:pt-32">
+<section class="relative bg-[#362766] overflow-hidden pt-24 md:pt-28">
   <!-- Imagen de fondo con overlay -->
   <div class="absolute inset-0 z-0">
     <div class="absolute inset-0 bg-[#362766] opacity-70 z-10"></div>
@@ -19,9 +19,11 @@ if (!$post_id) return;
   </div>
   
   <!-- Título del post -->
-  <div class="container mx-auto px-4 relative z-10 min-h-[400px] md:min-h-[500px] flex flex-col justify-end items-start pb-16">
-    <span class="text-white text-sm mb-2">{{ get_the_date() }}</span>
-    <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white max-w-4xl leading-tight" style="font-family: 'Playfair Display', serif;">{{ get_the_title() }}</h1>
+  <div class="container mx-auto px-4 relative z-10 min-h-[500px] flex flex-col justify-center items-start pb-48">
+    <div class="mt-40">
+      <span class="text-white text-sm mb-2">{{ get_the_date() }}</span>
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white max-w-4xl leading-tight" style="font-family: 'Playfair Display', serif;">{{ get_the_title() }}</h1>
+    </div>
   </div>
 
   <!-- Curvatura inferior -->
@@ -33,36 +35,38 @@ if (!$post_id) return;
 </section>
 
 <!-- Contenido del post -->
-<section class="py-12 bg-white">
+<section class="py-10 bg-white">
   <div class="container mx-auto px-4">
-    <div class="flex flex-col md:flex-row gap-8">
+    <div class="flex flex-col md:flex-row gap-6 md:gap-10">
       <!-- Columna izquierda para la suscripción y datos del autor -->
-      <div class="w-full md:w-1/3">
-        <div class="bg-gray-50 rounded-lg p-6 sticky top-32">
+      <div class="w-full md:w-2/4 lg:w-2/5">
+        <div class="bg-gray-50 rounded-3xl p-5 sticky top-32 mx-auto md:mx-0 max-w-sm shadow-md border border-gray-100">
           <!-- Imagen de los profesionales -->
-          <div class="mb-6">
-            <img src="{{ get_theme_file_uri('resources/images/julioyshen2.png') }}" alt="Profesionales" class="w-full h-auto rounded-lg" onerror="this.src='{{ get_avatar_url(get_the_author_meta('ID')) }}'">
+          <div class="mb-4 rounded-2xl overflow-hidden">
+            <img src="{{ get_theme_file_uri('resources/images/julioyshen2.png') }}" alt="Profesionales" class="w-full h-auto" onerror="this.src='{{ get_avatar_url(get_the_author_meta('ID')) }}'">
           </div>
           
           <!-- Texto de mantente al día -->
-          <h3 class="text-[#AB277A] text-lg font-bold mb-3 leading-tight">Mantente al día con las últimas investigaciones, tendencias y reflexiones en salud mental, psicoterapia y bienestar.</h3>
-          <p class="text-sm text-gray-600 mb-6 border-l-4 border-[#AB277A] pl-3">{{ get_the_author_meta('description') ?: 'Especialista en salud mental' }}</p>
+          <h3 class="text-[#AB277A] text-base font-bold mb-3 leading-tight">Mantente al día con las últimas investigaciones, tendencias y reflexiones en salud mental, psicoterapia y bienestar.</h3>
+          <div class="border-l-4 border-[#AB277A] pl-3 mb-5">
+            <p class="text-xs text-gray-600">{{ get_the_author_meta('description') ?: 'Especialista en salud mental' }}</p>
+          </div>
           
           <!-- Formulario de suscripción -->
-          <div class="bg-white rounded-lg p-5 shadow-sm">
-            <h4 class="text-md font-bold text-[#030D55] mb-4">Suscríbete al blog</h4>
-            <p class="text-sm text-gray-600 mb-4">Recibe las últimas publicaciones en tu correo.</p>
+          <div class="bg-white rounded-xl p-4 shadow-sm">
+            <h4 class="text-sm font-bold text-[#030D55] mb-3">Suscríbete al blog</h4>
+            <p class="text-xs text-gray-600 mb-3">Recibe las últimas publicaciones en tu correo.</p>
             <form>
-              <input type="email" placeholder="Tu correo electrónico" class="w-full mb-3 px-4 py-2 border border-gray-200 rounded-lg text-sm">
-              <button class="w-full py-2 px-4 bg-gradient-to-r from-[#D93280] to-[#5A0989] text-white rounded-lg text-sm font-medium">Suscribirme</button>
+              <input type="email" placeholder="Tu correo electrónico" class="w-full mb-3 px-4 py-3 border border-gray-200 rounded-lg text-xs">
+              <button class="w-full py-3 px-4 bg-gradient-to-r from-[#D93280] to-[#5A0989] text-white rounded-lg text-xs font-medium hover:opacity-90 transition-opacity">Suscribirme</button>
             </form>
           </div>
         </div>
       </div>
       
       <!-- Columna derecha para el contenido -->
-      <div class="w-full md:w-2/3">
-        <div class="prose max-w-none">
+      <div class="w-full md:w-3/4 lg:w-4/5">
+        <div class="prose max-w-none md:pl-4">
           @php
           the_content();
           @endphp
