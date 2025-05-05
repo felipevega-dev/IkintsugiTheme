@@ -80,7 +80,7 @@
               <!-- Content overlay at bottom -->
               <div class="absolute bottom-0 left-0 right-0 p-3 md:p-4" style="padding-top: 20px; padding-right: 12px; padding-bottom: 20px; padding-left: 12px; @media (min-width: 768px) { padding-top: 24px; padding-right: 16px; padding-bottom: 24px; padding-left: 16px; }">
                 <div class="w-full flex flex-col gap-2 md:gap-4">
-                  <h3 class="text-xl md:text-2xl font-bold text-white" style="font-family: 'Playfair Display', serif; font-weight: 700; line-height: 100%; letter-spacing: 0%;">
+                  <h3 class="text-xl md:text-2xl font-bold text-white font-paytone" style="font-weight: 700; line-height: 100%; letter-spacing: 0%;">
                     {{ get_the_title() }}
                   </h3>
                   <p class="text-sm md:text-base text-white" style="font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 1.4; @media (min-width: 768px) { line-height: 1.7; }">
@@ -222,7 +222,7 @@
               <!-- Content overlay at bottom -->
               <div class="absolute bottom-0 left-0 right-0 p-3 md:p-4">
                 <div class="w-full flex flex-col gap-2">
-                  <h3 class="text-lg md:text-xl font-bold text-white" style="font-family: 'Playfair Display', serif; line-height: 100%;">
+                  <h3 class="text-lg md:text-xl font-bold text-white font-paytone" style="line-height: 100%;">
                     {{ get_the_title() }}
                   </h3>
                   <p class="text-xs md:text-sm text-white line-clamp-2" style="font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 1.4;">

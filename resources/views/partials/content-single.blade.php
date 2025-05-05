@@ -28,7 +28,7 @@ if (!$post_id) return;
   <div class="container mx-auto px-4 relative z-10 min-h-[500px] flex flex-col justify-center items-start pb-48">
     <div class="mt-40">
       <span class="text-white text-xs md:text-sm py-2 px-3 md:px-4 rounded-full inline-block mb-3" style="background: #030D55B8;">{{ get_the_date() }}</span>
-      <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white max-w-4xl leading-tight" style="font-family: 'Playfair Display', serif;">{{ get_the_title() }}</h1>
+      <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white max-w-4xl leading-tight font-paytone">{{ get_the_title() }}</h1>
       <a href="{{ home_url('/blog/') }}" class="inline-flex items-center mt-4 text-white hover:text-gray-200 transition-colors">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -118,7 +118,7 @@ if (!$post_id) return;
 <section class="py-10 bg-gray-50">
   <div class="container mx-auto px-4">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-2xl font-bold text-[#030D55] mb-6" style="font-family: 'Playfair Display', serif;">
+      <h2 class="text-2xl font-bold text-[#030D55] mb-6 font-paytone">
         Comentarios
       </h2>
       
@@ -143,7 +143,7 @@ if (!empty($cat_ids)):
 <!-- Artículos relacionados -->
 <section class="py-12 bg-gray-50">
   <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-[#030D55] mb-10" style="font-family: 'Playfair Display', serif;">
+    <h2 class="text-3xl font-bold text-[#030D55] mb-10 font-paytone">
       Artículos relacionados
     </h2>
     

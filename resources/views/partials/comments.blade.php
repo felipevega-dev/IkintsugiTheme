@@ -13,7 +13,7 @@ if (post_password_required() || (!have_comments() && !comments_open())) {
 <div class="comments-area">
   <?php if (have_comments()) : ?>
     <div class="mb-8">
-      <h3 class="text-xl font-semibold text-[#030D55] mb-6">
+      <h3 class="text-xl font-semibold text-[#AB277A] mb-6 font-paytone">
         <?php
         $comment_count = get_comments_number();
         if ($comment_count === '1') {
@@ -145,7 +145,7 @@ if (post_password_required() || (!have_comments() && !comments_open())) {
           'class_container'    => 'comment-respond',
           'class_form'         => 'comment-form bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100',
           'title_reply'        => esc_html__('Deja un comentario', 'sage'),
-          'title_reply_before' => '<h3 id="reply-title" class="comment-reply-title text-xl font-semibold text-[#030D55] mb-5">',
+          'title_reply_before' => '<h3 id="reply-title" class="comment-reply-title text-xl font-semibold text-[#030D55] mb-5 font-paytone">',
           'title_reply_after'  => '</h3>',
           'logged_in_as'       => '',
           'class_submit'       => 'transition-all duration-300 bg-gradient-to-r from-[#D93280] to-[#5A0989] hover:from-[#AB277A] hover:to-[#4A0979] text-white px-6 py-3 rounded-xl text-sm font-medium shadow-sm hover:shadow focus:outline-none focus:ring-2 focus:ring-[#AB277A] focus:ring-opacity-50',
