@@ -495,6 +495,27 @@
     </div>
   </div>
 
+  <!-- Sección de comentarios -->
+  <section class="py-10 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold text-[#030D55] mb-6 font-paytone">
+          Comentarios
+        </h2>
+        
+        @if(comments_open())
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            @php
+              comments_template();
+            @endphp
+          </div>
+        @else
+          <p class="text-gray-600 italic">Los comentarios están cerrados para este perfil.</p>
+        @endif
+      </div>
+    </div>
+  </section>
+
   <!-- Script para manejar las animaciones de scroll -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {

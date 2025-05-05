@@ -87,3 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// Import comment management functionality
+import './comment-management.js';
