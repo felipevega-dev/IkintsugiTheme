@@ -1102,6 +1102,9 @@ function ikintsugi_update_user_profile() {
         return;
     }
     
+    // Registrar en el log para depuración
+    error_log('Inicio de actualización de perfil para el usuario: ' . get_current_user_id());
+    
     $user_id = get_current_user_id();
     $current_user = get_user_by('id', $user_id);
     
@@ -1148,6 +1151,9 @@ function ikintsugi_update_user_profile() {
     
     // Procesar imagen de perfil si se ha subido
     if (!empty($_FILES['profile_image']['name'])) {
+        // Registrar en el log para depuración
+        error_log('Procesando imagen de perfil: ' . $_FILES['profile_image']['name']);
+        
         // Verificar que el archivo es una imagen
         $file_type = wp_check_filetype($_FILES['profile_image']['name']);
         $valid_image_types = ['jpg', 'jpeg', 'png', 'gif'];
@@ -1160,36 +1166,43 @@ function ikintsugi_update_user_profile() {
         // Manejar la subida del archivo
         require_once(ABSPATH . 'wp-admin/includes/file.php');
         require_once(ABSPATH . 'wp-admin/includes/image.php');
+        require_once(ABSPATH . 'wp-admin/includes/media.php');
         
-        $upload = wp_handle_upload($_FILES['profile_image'], ['test_form' => false]);
+        // Añadir filtro para forzar el tipo de subida como imagen
+        add_filter('upload_mimes', function($mimes) {
+            // Asegurarse de que los tipos de imagen están permitidos
+            $mimes['jpg|jpeg|jpe'] = 'image/jpeg';
+            $mimes['png'] = 'image/png';
+            $mimes['gif'] = 'image/gif';
+            return $mimes;
+        });
         
-        if (isset($upload['error'])) {
-            wp_send_json_error(['message' => $upload['error']]);
+        // Usar la función nativa de WordPress para manejar la subida completa 
+        $attachment_id = media_handle_upload('profile_image', 0);
+        
+        if (is_wp_error($attachment_id)) {
+            error_log('Error al subir imagen: ' . $attachment_id->get_error_message());
+            wp_send_json_error(['message' => $attachment_id->get_error_message()]);
             return;
         }
         
-        if (isset($upload['file'])) {
-            $attachment_id = wp_insert_attachment(
-                [
-                    'post_mime_type' => $upload['type'],
-                    'post_title' => sanitize_file_name($_FILES['profile_image']['name']),
-                    'post_content' => '',
-                    'post_status' => 'inherit'
-                ],
-                $upload['file']
-            );
-            
-            if (!is_wp_error($attachment_id)) {
-                // Generar metadatos para el adjunto
-                $attachment_data = wp_generate_attachment_metadata($attachment_id, $upload['file']);
-                wp_update_attachment_metadata($attachment_id, $attachment_data);
-                
-                // Asignar como avatar del usuario
-                update_user_meta($user_id, 'wp_user_avatar', $attachment_id);
-                
-                // Eliminar cualquier avatar temporal
-                delete_user_meta($user_id, '_wp_user_avatar_temp');
-            }
+        error_log('Imagen subida correctamente. ID: ' . $attachment_id);
+        
+        // Asignar como avatar del usuario utilizando diferentes métodos para mayor compatibilidad
+        update_user_meta($user_id, 'wp_user_avatar', $attachment_id);
+        
+        // Si estamos usando Simple Local Avatars plugin
+        update_user_meta($user_id, 'local_avatar', $attachment_id);
+        
+        // Para compatibilidad con otros plugins de avatar
+        update_user_meta($user_id, '_user_avatar', $attachment_id);
+        update_user_meta($user_id, 'user_avatar', $attachment_id);
+        
+        // Guardar la URL de la imagen directamente como alternativa
+        $image_url = wp_get_attachment_url($attachment_id);
+        if ($image_url) {
+            update_user_meta($user_id, 'custom_avatar_url', $image_url);
+            error_log('URL de imagen guardada: ' . $image_url);
         }
     }
     
@@ -1237,6 +1250,7 @@ function ikintsugi_update_user_profile() {
         }
     }
     
+    error_log('Perfil actualizado correctamente para el usuario: ' . $user_id);
     wp_send_json_success(['message' => 'Perfil actualizado correctamente']);
 }
 add_action('wp_ajax_update_user_profile', 'ikintsugi_update_user_profile');
@@ -1286,3 +1300,68 @@ function ikintsugi_update_user_password() {
     wp_send_json_success(['message' => 'Contraseña actualizada correctamente']);
 }
 add_action('wp_ajax_update_user_password', 'ikintsugi_update_user_password');
+
+// Función para mostrar avatares personalizados
+function ikintsugi_custom_avatar($avatar, $id_or_email, $size, $default, $alt) {
+    $user = false;
+    
+    if (is_numeric($id_or_email)) {
+        $user_id = (int) $id_or_email;
+        $user = get_user_by('id', $user_id);
+    } elseif (is_string($id_or_email)) {
+        $user = get_user_by('email', $id_or_email);
+    } elseif ($id_or_email instanceof WP_User) {
+        $user = $id_or_email;
+    } elseif ($id_or_email instanceof WP_Post) {
+        $user = get_user_by('id', $id_or_email->post_author);
+    } elseif ($id_or_email instanceof WP_Comment) {
+        if (!empty($id_or_email->user_id)) {
+            $user = get_user_by('id', $id_or_email->user_id);
+        } elseif (!empty($id_or_email->comment_author_email)) {
+            $user = get_user_by('email', $id_or_email->comment_author_email);
+        }
+    }
+    
+    if (!$user) {
+        return $avatar;
+    }
+    
+    // Comprobar si el usuario tiene un avatar personalizado
+    $attachment_id = get_user_meta($user->ID, 'wp_user_avatar', true);
+    
+    // Si no encontramos con ese meta, intentar con otros
+    if (!$attachment_id) {
+        $attachment_id = get_user_meta($user->ID, 'local_avatar', true);
+    }
+    
+    if (!$attachment_id) {
+        $attachment_id = get_user_meta($user->ID, '_user_avatar', true);
+    }
+    
+    if (!$attachment_id) {
+        $attachment_id = get_user_meta($user->ID, 'user_avatar', true);
+    }
+    
+    // Si tenemos la URL directa, usarla como último recurso
+    $custom_url = get_user_meta($user->ID, 'custom_avatar_url', true);
+    
+    if ($attachment_id) {
+        // Intentar obtener la imagen en el tamaño correcto
+        $img_url = wp_get_attachment_image_url($attachment_id, [$size, $size]);
+        
+        if (!$img_url) {
+            // Intentar con la URL completa si no tenemos el tamaño específico
+            $img_url = wp_get_attachment_url($attachment_id);
+        }
+        
+        if ($img_url) {
+            $avatar = "<img alt='{$alt}' src='{$img_url}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' loading='lazy' />";
+        }
+    } elseif ($custom_url) {
+        // Usar la URL directa como último recurso
+        $avatar = "<img alt='{$alt}' src='{$custom_url}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' loading='lazy' />";
+    }
+    
+    return $avatar;
+}
+add_filter('get_avatar', 'ikintsugi_custom_avatar', 10, 5);

@@ -98,13 +98,13 @@
             </div>
             
             <div class="p-6">
-              <form id="profile-form" class="space-y-6">
+              <form id="profile-form" class="space-y-6" enctype="multipart/form-data">
                 <?php wp_nonce_field('update_user_profile', 'profile_nonce'); ?>
                 
                 <!-- Avatar upload section -->
                 <div class="flex flex-col items-center mb-4">
                   <div class="relative mb-4 group">
-                    <div class="h-24 w-24 rounded-full border-4 border-[#AB277A] shadow-sm overflow-hidden">
+                    <div class="h-24 w-24 rounded-full border-4 border-[#AB277A] shadow-sm overflow-hidden cursor-pointer">
                       <?php echo get_avatar($current_user->ID, 96, '', '', ['class' => 'w-full h-full object-cover']); ?>
                       <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 flex items-center justify-center transition-all duration-300 opacity-0 group-hover:opacity-100">
                         <span class="text-white text-xs font-medium">Cambiar foto</span>
@@ -112,7 +112,7 @@
                     </div>
                     <input type="file" id="profile_image" name="profile_image" class="hidden" accept="image/*">
                   </div>
-                  <button type="button" id="profile-image-button" class="text-sm text-[#AB277A] hover:text-[#D93280] transition-colors">
+                  <button type="button" id="profile-image-button" class="px-3 py-1 bg-[#FBD5E8] text-[#D93280] rounded-lg text-sm font-medium hover:bg-[#D93280] hover:text-white transition-all">
                     Cambiar foto de perfil
                   </button>
                 </div>
@@ -282,11 +282,11 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   // Modal de notificación
-  const notificationModal = document.getElementById('notification-modal');
-  const notificationTitle = document.getElementById('notification-title');
-  const notificationMessage = document.getElementById('notification-message');
-  const notificationButton = document.getElementById('notification-button');
-  const notificationHeader = document.getElementById('notification-header');
+  let notificationModal = document.getElementById('notification-modal');
+  let notificationTitle = document.getElementById('notification-title');
+  let notificationMessage = document.getElementById('notification-message');
+  let notificationButton = document.getElementById('notification-button');
+  let notificationHeader = document.getElementById('notification-header');
   
   // Función para mostrar notificaciones
   function showNotification(title, message, type = 'success') {
@@ -337,8 +337,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // Manejo de carga de imagen de perfil
-  const profileImageButton = document.getElementById('profile-image-button');
-  const profileImageInput = document.getElementById('profile_image');
+  let profileImageButton = document.getElementById('profile-image-button');
+  let profileImageInput = document.getElementById('profile_image');
   
   if (profileImageButton && profileImageInput) {
     profileImageButton.addEventListener('click', function() {
@@ -371,22 +371,29 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // Formulario de actualización de perfil
-  const profileForm = document.getElementById('profile-form');
-  const profileSaveButton = document.getElementById('profile-save-button');
-  const profileSpinner = document.querySelector('.profile-spinner');
-  const profileSubmitText = document.querySelector('.profile-submit-text');
+  let profileForm = document.getElementById('profile-form');
+  let profileSaveButton = document.getElementById('profile-save-button');
+  let profileSpinner = document.querySelector('.profile-spinner');
+  let profileSubmitText = document.querySelector('.profile-submit-text');
   
   if (profileForm) {
     profileForm.addEventListener('submit', function(e) {
       e.preventDefault();
       
-      // Mostrar spinner
+      // Mostrar spinner y cambiar texto
       profileSpinner.classList.remove('hidden');
-      profileSubmitText.classList.add('opacity-0');
+      profileSubmitText.textContent = 'Guardando...';
       profileSaveButton.disabled = true;
       
       const formData = new FormData(this);
       formData.append('action', 'update_user_profile');
+      
+      // Depuración para verificar que el archivo se esté incluyendo correctamente
+      const fileInput = document.getElementById('profile_image');
+      if (fileInput && fileInput.files.length > 0) {
+        console.log('Archivo seleccionado:', fileInput.files[0].name);
+        // El FormData ya incluye el archivo automáticamente ya que es parte del formulario
+      }
       
       fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
         method: 'POST',
@@ -395,23 +402,28 @@ document.addEventListener('DOMContentLoaded', function() {
       })
       .then(response => response.json())
       .then(data => {
-        // Ocultar spinner
+        // Ocultar spinner y restaurar texto
         profileSpinner.classList.add('hidden');
-        profileSubmitText.classList.remove('opacity-0');
+        profileSubmitText.textContent = 'Guardar Cambios';
         profileSaveButton.disabled = false;
         
         if (data.success) {
           // Mostrar mensaje de éxito
           showNotification('¡Éxito!', 'Perfil actualizado correctamente', 'success');
+          
+          // Recargar la página después de un breve retraso para mostrar los cambios
+          setTimeout(function() {
+            window.location.reload();
+          }, 1500);
         } else {
           // Mostrar mensaje de error
           showNotification('Error', data.data.message || 'Error al actualizar el perfil', 'error');
         }
       })
       .catch(error => {
-        // Ocultar spinner
+        // Ocultar spinner y restaurar texto
         profileSpinner.classList.add('hidden');
-        profileSubmitText.classList.remove('opacity-0');
+        profileSubmitText.textContent = 'Guardar Cambios';
         profileSaveButton.disabled = false;
         
         console.error('Error:', error);
@@ -421,10 +433,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // Formulario de cambio de contraseña
-  const passwordForm = document.getElementById('password-form');
-  const passwordSaveButton = document.getElementById('password-save-button');
-  const passwordSpinner = document.querySelector('.password-spinner');
-  const passwordSubmitText = document.querySelector('.password-submit-text');
+  let passwordForm = document.getElementById('password-form');
+  let passwordSaveButton = document.getElementById('password-save-button');
+  let passwordSpinner = document.querySelector('.password-spinner');
+  let passwordSubmitText = document.querySelector('.password-submit-text');
   
   if (passwordForm) {
     passwordForm.addEventListener('submit', function(e) {
@@ -439,9 +451,9 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
       
-      // Mostrar spinner
+      // Mostrar spinner y cambiar texto
       passwordSpinner.classList.remove('hidden');
-      passwordSubmitText.classList.add('opacity-0');
+      passwordSubmitText.textContent = 'Guardando...';
       passwordSaveButton.disabled = true;
       
       const formData = new FormData(this);
@@ -454,9 +466,9 @@ document.addEventListener('DOMContentLoaded', function() {
       })
       .then(response => response.json())
       .then(data => {
-        // Ocultar spinner
+        // Ocultar spinner y restaurar texto
         passwordSpinner.classList.add('hidden');
-        passwordSubmitText.classList.remove('opacity-0');
+        passwordSubmitText.textContent = 'Cambiar Contraseña';
         passwordSaveButton.disabled = false;
         
         if (data.success) {
@@ -484,9 +496,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       })
       .catch(error => {
-        // Ocultar spinner
+        // Ocultar spinner y restaurar texto
         passwordSpinner.classList.add('hidden');
-        passwordSubmitText.classList.remove('opacity-0');
+        passwordSubmitText.textContent = 'Cambiar Contraseña';
         passwordSaveButton.disabled = false;
         
         console.error('Error:', error);
@@ -541,13 +553,9 @@ document.addEventListener('DOMContentLoaded', function() {
     cursor: not-allowed;
   }
   
-  /* Transición para ocultar el texto del botón cuando se muestra el spinner */
+  /* Eliminar transiciones para el texto del botón */
   .profile-submit-text, .password-submit-text {
-    transition: opacity 0.2s;
-  }
-  
-  .opacity-0 {
-    opacity: 0;
+    transition: none;
   }
 </style>
 @endsection 
