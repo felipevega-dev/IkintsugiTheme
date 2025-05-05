@@ -42,9 +42,18 @@ function setupCommentEditing() {
     button.addEventListener('click', function(e) {
       e.preventDefault();
       
-      // Get the comment ID from the button's data attribute
+      // Check if this comment is already being edited
       const commentId = this.dataset.commentId;
       const commentContainer = document.getElementById(`comment-${commentId}`);
+      
+      // If an edit form already exists, don't create another one
+      if (commentContainer.querySelector('.edit-comment-form')) {
+        return;
+      }
+      
+      // Temporarily hide the edit button while editing
+      this.style.display = 'none';
+      
       const commentContent = commentContainer.querySelector('.comment-content');
       
       // Get text without HTML formatting
@@ -70,6 +79,8 @@ function setupCommentEditing() {
       
       // Setup cancel button
       form.querySelector('.cancel-edit-button').addEventListener('click', () => {
+        // Show the edit button again
+        button.style.display = '';
         commentContent.style.display = '';
         form.remove();
       });
@@ -112,10 +123,11 @@ function setupCommentEditing() {
             // Show success message
             messageContainer.innerHTML = '<div class="p-2 text-green-800 bg-green-50 text-sm rounded-lg">Comentario actualizado correctamente</div>';
             
-            // Remove form after delay
+            // Remove form after delay and show edit button again
             setTimeout(() => {
               commentContent.style.display = '';
               form.remove();
+              button.style.display = '';
             }, 1500);
           } else {
             // Show error
