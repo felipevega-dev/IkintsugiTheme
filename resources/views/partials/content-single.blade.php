@@ -5,6 +5,12 @@ $post_id = get_the_ID();
 if (!$post_id) return;
 @endphp
 
+<style>
+  .single-post {
+    padding-top: 0 !important;
+  }
+</style>
+
 <!-- Hero Section -->
 <section class="relative bg-[#362766] overflow-hidden pt-24 md:pt-28">
   <!-- Imagen de fondo con overlay -->
@@ -23,6 +29,12 @@ if (!$post_id) return;
     <div class="mt-40">
       <span class="text-white text-xs md:text-sm py-2 px-3 md:px-4 rounded-full inline-block mb-3" style="background: #030D55B8;">{{ get_the_date() }}</span>
       <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white max-w-4xl leading-tight" style="font-family: 'Playfair Display', serif;">{{ get_the_title() }}</h1>
+      <a href="{{ home_url('/blog/') }}" class="inline-flex items-center mt-4 text-white hover:text-gray-200 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        Volver al blog
+      </a>
     </div>
   </div>
 
@@ -56,9 +68,13 @@ if (!$post_id) return;
           <div class="bg-white rounded-xl p-4 shadow-sm">
             <h4 class="text-sm font-bold text-[#030D55] mb-3">Suscríbete al blog</h4>
             <p class="text-xs text-gray-600 mb-3">Recibe las últimas publicaciones en tu correo.</p>
-            <form>
-              <input type="email" placeholder="Tu correo electrónico" class="w-full mb-3 px-4 py-3 border border-gray-200 rounded-lg text-xs">
-              <button class="w-full py-3 px-4 bg-gradient-to-r from-[#D93280] to-[#5A0989] text-white rounded-lg text-xs font-medium hover:opacity-90 transition-opacity">Suscribirme</button>
+            <form method="post" action="{{ home_url('/wp-admin/admin-post.php') }}">
+              <input type="hidden" name="action" value="suscribir_blog">
+              <input type="email" name="suscriptor_email" placeholder="Tu correo electrónico" class="w-full mb-3 px-4 py-3 border border-gray-200 rounded-lg text-xs" required>
+              <button type="submit" class="w-full py-3 px-4 bg-gradient-to-r from-[#D93280] to-[#5A0989] text-white rounded-lg text-xs font-medium hover:opacity-90 transition-opacity">Suscribirme</button>
+              <?php if (isset($_GET['suscrito']) && $_GET['suscrito'] == 'ok'): ?>
+                <p class="text-xs text-green-600 mt-2">¡Gracias por suscribirte!</p>
+              <?php endif; ?>
             </form>
           </div>
         </div>
