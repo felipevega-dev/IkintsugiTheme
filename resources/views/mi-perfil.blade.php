@@ -5,8 +5,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="py-28 bg-gray-50">
-  <div class="container mx-auto px-4 mt-28">
+
+<style>
+  .page-template-mi-perfil {
+    padding-top: 0 !important;
+  }
+</style>
+<div class="py-8 md:py-16 lg:py-28 bg-gray-50">
+  <div class="container mx-auto px-4 mt-16 md:mt-20 lg:mt-28">
     <!-- Verificar que el usuario esté logueado -->
     @if(is_user_logged_in())
       @php
@@ -31,54 +37,54 @@
         </div>
       </div>
       
-      <div class="mb-8">
-        <h1 class="text-3xl font-bold text-[#030D55] mb-2 font-paytone">Mi Perfil</h1>
-        <p class="text-gray-600">Administra tu información personal y visualiza tus reservas.</p>
+      <div class="mb-4 md:mb-6 lg:mb-8">
+        <h1 class="text-2xl md:text-3xl font-bold text-[#030D55] mb-1 md:mb-2 font-paytone">Mi Perfil</h1>
+        <p class="text-gray-600 text-sm md:text-base">Administra tu información personal y visualiza tus reservas.</p>
       </div>
       
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
         <!-- Menú de navegación lateral -->
         <div class="col-span-1">
-          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden sticky top-28">
-            <div class="p-6 bg-gradient-to-r from-[#D93280] to-[#5A0989]">
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden sticky top-16 md:top-20 lg:top-28">
+            <div class="p-3 md:p-4 lg:p-6 bg-gradient-to-r from-[#D93280] to-[#5A0989]">
               <div class="flex items-center">
-                <div class="mr-4 rounded-full border-2 border-white shadow-sm overflow-hidden h-16 w-16">
+                <div class="mr-3 md:mr-4 rounded-full border-2 border-white shadow-sm overflow-hidden h-12 w-12 md:h-16 md:w-16">
                   <?php echo get_avatar($current_user->ID, 64); ?>
                 </div>
                 <div>
-                  <h2 class="text-xl font-bold text-white font-paytone">{{ $current_user->display_name }}</h2>
-                  <p class="text-white/80 text-sm">{{ $current_user->user_email }}</p>
+                  <h2 class="text-base md:text-xl font-bold text-white font-paytone">{{ $current_user->display_name }}</h2>
+                  <p class="text-white/80 text-xs md:text-sm">{{ $current_user->user_email }}</p>
                 </div>
               </div>
             </div>
             
-            <div class="p-4">
+            <div class="p-2 md:p-3 lg:p-4">
               <nav>
-                <a href="#informacion-personal" class="flex items-center py-3 px-4 rounded-xl mb-2 text-[#030D55] font-medium transition-colors duration-200 bg-gray-50 hover:bg-[#FBD5E8] hover:text-[#D93280]">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <a href="#informacion-personal" class="flex items-center py-2 md:py-3 px-3 md:px-4 rounded-lg md:rounded-xl mb-1 md:mb-2 text-[#030D55] text-sm md:text-base font-medium transition-colors duration-200 bg-gray-50 hover:bg-[#FBD5E8] hover:text-[#D93280]">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5 mr-2 md:mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                   Información Personal
                 </a>
                 
-                <a href="#mis-reservas" class="flex items-center py-3 px-4 rounded-xl mb-2 text-[#030D55] font-medium transition-colors duration-200 hover:bg-[#FBD5E8] hover:text-[#D93280]">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <a href="#mis-reservas" class="flex items-center py-2 md:py-3 px-3 md:px-4 rounded-lg md:rounded-xl mb-1 md:mb-2 text-[#030D55] text-sm md:text-base font-medium transition-colors duration-200 hover:bg-[#FBD5E8] hover:text-[#D93280]">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5 mr-2 md:mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                   Mis Reservas
                 </a>
                 
-                <a href="#cambiar-contrasena" class="flex items-center py-3 px-4 rounded-xl mb-2 text-[#030D55] font-medium transition-colors duration-200 hover:bg-[#FBD5E8] hover:text-[#D93280]">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <a href="#cambiar-contrasena" class="flex items-center py-2 md:py-3 px-3 md:px-4 rounded-lg md:rounded-xl mb-1 md:mb-2 text-[#030D55] text-sm md:text-base font-medium transition-colors duration-200 hover:bg-[#FBD5E8] hover:text-[#D93280]">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5 mr-2 md:mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                   </svg>
                   Cambiar Contraseña
                 </a>
                 
-                <div class="border-t border-gray-100 my-4"></div>
+                <div class="border-t border-gray-100 my-2 md:my-4"></div>
                 
-                <a href="{{ wp_logout_url(home_url()) }}" class="flex items-center py-3 px-4 rounded-xl text-red-600 font-medium transition-colors duration-200 hover:bg-red-50">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <a href="{{ wp_logout_url(home_url()) }}" class="flex items-center py-2 md:py-3 px-3 md:px-4 rounded-lg md:rounded-xl text-red-600 text-sm md:text-base font-medium transition-colors duration-200 hover:bg-red-50">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-5 md:w-5 mr-2 md:mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                   </svg>
                   Cerrar Sesión
@@ -91,13 +97,13 @@
         <!-- Contenido principal -->
         <div class="col-span-1 lg:col-span-2">
           <!-- Sección de información personal -->
-          <div id="informacion-personal" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-8">
-            <div class="p-6 border-b border-gray-100">
-              <h2 class="text-xl font-bold text-[#030D55]">Información Personal</h2>
-              <p class="text-gray-600 text-sm mt-1">Actualiza tu información de perfil</p>
+          <div id="informacion-personal" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4 md:mb-6 lg:mb-8">
+            <div class="p-4 md:p-6 border-b border-gray-100">
+              <h2 class="text-lg md:text-xl font-bold text-[#030D55]">Información Personal</h2>
+              <p class="text-gray-600 text-xs md:text-sm mt-1">Actualiza tu información de perfil</p>
             </div>
             
-            <div class="p-6">
+            <div class="p-4 md:p-6">
               <form id="profile-form" class="space-y-6" enctype="multipart/form-data">
                 <?php wp_nonce_field('update_user_profile', 'profile_nonce'); ?>
                 
@@ -161,13 +167,13 @@
           </div>
           
           <!-- Sección de mis reservas -->
-          <div id="mis-reservas" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-8">
-            <div class="p-6 border-b border-gray-100">
-              <h2 class="text-xl font-bold text-[#030D55]">Mis Reservas</h2>
-              <p class="text-gray-600 text-sm mt-1">Historial de tus citas y reservas</p>
+          <div id="mis-reservas" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4 md:mb-6 lg:mb-8">
+            <div class="p-4 md:p-6 border-b border-gray-100">
+              <h2 class="text-lg md:text-xl font-bold text-[#030D55]">Mis Reservas</h2>
+              <p class="text-gray-600 text-xs md:text-sm mt-1">Historial de tus citas y reservas</p>
             </div>
             
-            <div class="p-6">
+            <div class="p-4 md:p-6">
               <!-- Integración con Bookly si está activado -->
               @if(function_exists('bookly_print_customer_cabinet'))
                 <?php 
@@ -189,12 +195,12 @@
           
           <!-- Sección de cambiar contraseña -->
           <div id="cambiar-contrasena" class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-            <div class="p-6 border-b border-gray-100">
-              <h2 class="text-xl font-bold text-[#030D55]">Cambiar Contraseña</h2>
-              <p class="text-gray-600 text-sm mt-1">Actualiza tu contraseña de acceso</p>
+            <div class="p-4 md:p-6 border-b border-gray-100">
+              <h2 class="text-lg md:text-xl font-bold text-[#030D55]">Cambiar Contraseña</h2>
+              <p class="text-gray-600 text-xs md:text-sm mt-1">Actualiza tu contraseña de acceso</p>
             </div>
             
-            <div class="p-6">
+            <div class="p-4 md:p-6">
               <form id="password-form" class="space-y-6">
                 <?php wp_nonce_field('update_user_password', 'password_nonce'); ?>
                 
