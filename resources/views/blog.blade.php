@@ -20,7 +20,7 @@
       src="{{ get_theme_file_uri('resources/images/prensa.png') }}" 
       class="absolute inset-0 w-full h-full object-cover object-top" 
     >
-    <div class="absolute inset-0 z-20" style="background: linear-gradient(0deg, rgba(171,39,122,0.48) 0%, rgba(3,13,85,0.48) 61%);"></div>
+    <div class="absolute inset-0 z-20" style="background: linear-gradient(180deg, rgba(171,39,122,0.48) 0%, rgba(3,13,85,0.48) 61%);"></div>
   </div>
         
   <!-- Contenido del hero -->

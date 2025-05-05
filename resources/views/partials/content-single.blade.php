@@ -21,7 +21,7 @@ if (!$post_id) return;
     @else
       <img src="{{ get_theme_file_uri('resources/images/blog-default.jpg') }}" alt="{{ get_the_title() }}" class="absolute inset-0 w-full h-full object-cover object-[center_top]">
     @endif
-    <div class="absolute inset-0 z-20" style="background: linear-gradient(0deg, rgba(171,39,122,0.48) 0%, rgba(3,13,85,0.48) 61%);"></div>
+    <div class="absolute inset-0 z-20" style="background: linear-gradient(180deg, rgba(171,39,122,0.48) 0%, rgba(3,13,85,0.48) 61%);"></div>
   </div>
   
   <!-- Título del post -->
@@ -110,6 +110,27 @@ if (!$post_id) return;
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sección de comentarios -->
+<section class="py-10 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-[#030D55] mb-6" style="font-family: 'Playfair Display', serif;">
+        Comentarios
+      </h2>
+      
+      @if(comments_open() || get_comments_number())
+        <div class="bg-white rounded-xl p-6 shadow-sm">
+          @php
+            comments_template();
+          @endphp
+        </div>
+      @else
+        <p class="text-gray-600 italic">Los comentarios están cerrados para esta entrada.</p>
+      @endif
     </div>
   </div>
 </section>

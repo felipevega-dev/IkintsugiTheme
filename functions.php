@@ -330,3 +330,107 @@ function mostrar_pagina_suscriptores_blog() {
     <?php
 }
 
+/**
+ * Modify the permalink structure for posts to use blog/post-name instead of /post-name
+ */
+add_filter('post_link', 'custom_blog_permalink', 10, 3);
+add_filter('post_type_link', 'custom_blog_permalink', 10, 3);
+
+function custom_blog_permalink($permalink, $post, $leavename) {
+    // Solo afectar a posts del tipo 'post' (entradas de blog)
+    if ($post->post_type !== 'post') {
+        return $permalink;
+    }
+    
+    // Asegúrate de que la URL comience con /blog/
+    if (strpos($permalink, '/blog/') === false) {
+        $permalink = str_replace(home_url(), home_url('/blog'), $permalink);
+    }
+    
+    return $permalink;
+}
+
+// Asegurar que las URLs /blog/nombre-post se redirijan al post correcto
+add_action('init', 'custom_blog_rewrite_rules');
+
+function custom_blog_rewrite_rules() {
+    // Aseguramos que /blog/nombre-post se redirija correctamente
+    add_rewrite_rule(
+        '^blog/([^/]+)/?$',
+        'index.php?name=$matches[1]',
+        'top'
+    );
+    
+    // Añadir también una regla para la paginación del blog
+    add_rewrite_rule(
+        '^blog/page/([0-9]+)/?$',
+        'index.php?pagename=blog&paged=$matches[1]',
+        'top'
+    );
+}
+
+// Registrar función para flush de reglas en activación del tema
+add_action('after_switch_theme', 'ikintsugi_theme_activation');
+
+function ikintsugi_theme_activation() {
+    // Registrar las reglas de reescritura
+    custom_blog_rewrite_rules();
+    
+    // Hacer flush de las reglas de reescritura
+    flush_rewrite_rules();
+}
+
+// También podemos añadir un botón en el panel de administración para forzar el flush
+add_action('admin_init', 'ikintsugi_add_rewrite_flush_button');
+
+function ikintsugi_add_rewrite_flush_button() {
+    // Solo mostrar para administradores
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+    
+    // Procesar la acción de flush
+    if (isset($_GET['ikintsugi_flush_rewrites']) && $_GET['ikintsugi_flush_rewrites'] == 'do') {
+        // Registrar las reglas
+        custom_blog_rewrite_rules();
+        
+        // Hacer flush
+        flush_rewrite_rules();
+        
+        // Redireccionar para evitar problemas con recarga
+        wp_redirect(admin_url('options-permalink.php?flushed=true'));
+        exit;
+    }
+    
+    // Añadir aviso con botón en la página de permalinks
+    if (isset($_GET['page']) && $_GET['page'] == 'options-permalink.php' || isset($_SERVER['PHP_SELF']) && strpos($_SERVER['PHP_SELF'], 'options-permalink.php') !== false) {
+        add_action('admin_notices', 'ikintsugi_show_flush_button');
+    }
+    
+    // Mostrar mensaje de éxito si se ha hecho flush
+    if (isset($_GET['flushed']) && $_GET['flushed'] == 'true') {
+        add_action('admin_notices', 'ikintsugi_show_flush_success');
+    }
+}
+
+function ikintsugi_show_flush_button() {
+    ?>
+    <div class="notice notice-info">
+        <p>
+            <strong>Ikintsugi Theme:</strong> Si tienes problemas con las URLs del blog, puedes 
+            <a href="<?php echo admin_url('options-permalink.php?ikintsugi_flush_rewrites=do'); ?>" class="button button-secondary">
+                Actualizar reglas de reescritura
+            </a>
+        </p>
+    </div>
+    <?php
+}
+
+function ikintsugi_show_flush_success() {
+    ?>
+    <div class="notice notice-success is-dismissible">
+        <p><strong>¡Éxito!</strong> Las reglas de reescritura han sido actualizadas.</p>
+    </div>
+    <?php
+}
+
