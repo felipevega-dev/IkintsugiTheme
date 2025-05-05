@@ -147,7 +147,7 @@ function setupCommentEditing() {
 function setupCommentDeletion() {
   // Create and append delete modal to the document once
   const deleteModal = document.createElement('div');
-  deleteModal.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden';
+  deleteModal.className = 'fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 hidden';
   deleteModal.id = 'delete-comment-modal';
   deleteModal.innerHTML = `
     <div class="bg-white rounded-xl shadow-xl max-w-md w-full mx-4 overflow-hidden">
@@ -261,10 +261,5 @@ function setupCommentDeletion() {
     });
   });
   
-  // Close modal when clicking outside
-  deleteModal.addEventListener('click', function(e) {
-    if (e.target === this) {
-      this.classList.add('hidden');
-    }
-  });
+  // No need for background click handler since there's no background overlay
 } 

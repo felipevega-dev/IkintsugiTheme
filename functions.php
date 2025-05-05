@@ -1092,3 +1092,197 @@ function ikintsugi_page_templates($templates) {
 }
 add_filter('template_include', 'ikintsugi_page_templates');
 
+// Función AJAX para actualizar el perfil de usuario
+function ikintsugi_update_user_profile() {
+    // Verificar nonce y permisos
+    check_ajax_referer('update_user_profile', 'profile_nonce');
+    
+    if (!is_user_logged_in()) {
+        wp_send_json_error(['message' => 'Debes iniciar sesión']);
+        return;
+    }
+    
+    $user_id = get_current_user_id();
+    $current_user = get_user_by('id', $user_id);
+    
+    // Datos básicos de usuario
+    $first_name = isset($_POST['first_name']) ? sanitize_text_field($_POST['first_name']) : '';
+    $last_name = isset($_POST['last_name']) ? sanitize_text_field($_POST['last_name']) : '';
+    $user_email = isset($_POST['email']) ? sanitize_email($_POST['email']) : '';
+    $phone = isset($_POST['phone']) ? sanitize_text_field($_POST['phone']) : '';
+    $bio = isset($_POST['bio']) ? sanitize_textarea_field($_POST['bio']) : '';
+    
+    // Verificar que el email no esté en uso por otro usuario
+    if ($current_user->user_email !== $user_email && email_exists($user_email)) {
+        wp_send_json_error(['message' => 'El email ya está en uso por otro usuario']);
+        return;
+    }
+    
+    // Actualizar datos básicos
+    $args = [
+        'ID' => $user_id,
+        'first_name' => $first_name,
+        'last_name' => $last_name,
+        'display_name' => trim($first_name . ' ' . $last_name)
+    ];
+    
+    // Actualizar email solo si es diferente
+    if ($current_user->user_email !== $user_email) {
+        $args['user_email'] = $user_email;
+    }
+    
+    // Actualizar usuario
+    $user_id = wp_update_user($args);
+    
+    if (is_wp_error($user_id)) {
+        wp_send_json_error(['message' => $user_id->get_error_message()]);
+        return;
+    }
+    
+    // Actualizar metadatos adicionales
+    update_user_meta($user_id, 'phone', $phone);
+    update_user_meta($user_id, 'description', $bio);
+    
+    // Guardar el teléfono también en otro campo para compatibilidad
+    update_user_meta($user_id, 'billing_phone', $phone); // WooCommerce compatible
+    
+    // Procesar imagen de perfil si se ha subido
+    if (!empty($_FILES['profile_image']['name'])) {
+        // Verificar que el archivo es una imagen
+        $file_type = wp_check_filetype($_FILES['profile_image']['name']);
+        $valid_image_types = ['jpg', 'jpeg', 'png', 'gif'];
+        
+        if (!$file_type['ext'] || !in_array($file_type['ext'], $valid_image_types)) {
+            wp_send_json_error(['message' => 'Por favor, sube un archivo de imagen válido (JPG, PNG o GIF)']);
+            return;
+        }
+        
+        // Manejar la subida del archivo
+        require_once(ABSPATH . 'wp-admin/includes/file.php');
+        require_once(ABSPATH . 'wp-admin/includes/image.php');
+        
+        $upload = wp_handle_upload($_FILES['profile_image'], ['test_form' => false]);
+        
+        if (isset($upload['error'])) {
+            wp_send_json_error(['message' => $upload['error']]);
+            return;
+        }
+        
+        if (isset($upload['file'])) {
+            $attachment_id = wp_insert_attachment(
+                [
+                    'post_mime_type' => $upload['type'],
+                    'post_title' => sanitize_file_name($_FILES['profile_image']['name']),
+                    'post_content' => '',
+                    'post_status' => 'inherit'
+                ],
+                $upload['file']
+            );
+            
+            if (!is_wp_error($attachment_id)) {
+                // Generar metadatos para el adjunto
+                $attachment_data = wp_generate_attachment_metadata($attachment_id, $upload['file']);
+                wp_update_attachment_metadata($attachment_id, $attachment_data);
+                
+                // Asignar como avatar del usuario
+                update_user_meta($user_id, 'wp_user_avatar', $attachment_id);
+                
+                // Eliminar cualquier avatar temporal
+                delete_user_meta($user_id, '_wp_user_avatar_temp');
+            }
+        }
+    }
+    
+    // Si está integrado con Bookly, actualizar también los datos ahí
+    if (function_exists('bookly_customer_save_in_database')) {
+        $bookly_customer_id = get_user_meta($user_id, 'bookly_customer_id', true);
+        if ($bookly_customer_id) {
+            // Actualizar información del cliente en Bookly
+            global $wpdb;
+            $table_name = $wpdb->prefix . 'bookly_customers';
+            
+            $wpdb->update(
+                $table_name,
+                array(
+                    'full_name' => trim($first_name . ' ' . $last_name),
+                    'first_name' => $first_name,
+                    'last_name' => $last_name,
+                    'phone' => $phone,
+                    'email' => $user_email
+                ),
+                array('id' => $bookly_customer_id)
+            );
+        } else {
+            // El usuario no tiene cliente Bookly asignado, crear uno nuevo
+            global $wpdb;
+            $table_name = $wpdb->prefix . 'bookly_customers';
+            
+            $result = $wpdb->insert(
+                $table_name,
+                array(
+                    'wp_user_id' => $user_id,
+                    'full_name' => trim($first_name . ' ' . $last_name),
+                    'first_name' => $first_name,
+                    'last_name' => $last_name,
+                    'phone' => $phone,
+                    'email' => $user_email,
+                    'created_at' => current_time('mysql')
+                )
+            );
+            
+            if ($result) {
+                $bookly_customer_id = $wpdb->insert_id;
+                update_user_meta($user_id, 'bookly_customer_id', $bookly_customer_id);
+            }
+        }
+    }
+    
+    wp_send_json_success(['message' => 'Perfil actualizado correctamente']);
+}
+add_action('wp_ajax_update_user_profile', 'ikintsugi_update_user_profile');
+
+// Función AJAX para actualizar la contraseña de usuario
+function ikintsugi_update_user_password() {
+    // Verificar nonce y permisos
+    check_ajax_referer('update_user_password', 'password_nonce');
+    
+    if (!is_user_logged_in()) {
+        wp_send_json_error(['message' => 'Debes iniciar sesión']);
+        return;
+    }
+    
+    $user_id = get_current_user_id();
+    $current_user = get_user_by('id', $user_id);
+    
+    // Obtener datos de formulario
+    $current_password = isset($_POST['current_password']) ? $_POST['current_password'] : '';
+    $new_password = isset($_POST['new_password']) ? $_POST['new_password'] : '';
+    $confirm_password = isset($_POST['confirm_password']) ? $_POST['confirm_password'] : '';
+    
+    // Verificar que las contraseñas coincidan
+    if ($new_password !== $confirm_password) {
+        wp_send_json_error(['message' => 'Las contraseñas no coinciden']);
+        return;
+    }
+    
+    // Verificar la contraseña actual
+    if (!wp_check_password($current_password, $current_user->user_pass, $user_id)) {
+        wp_send_json_error(['message' => 'La contraseña actual es incorrecta']);
+        return;
+    }
+    
+    // Verificar complejidad de la contraseña
+    if (strlen($new_password) < 8) {
+        wp_send_json_error(['message' => 'La contraseña debe tener al menos 8 caracteres']);
+        return;
+    }
+    
+    // Actualizar contraseña
+    wp_set_password($new_password, $user_id);
+    
+    // Mantener la sesión activa
+    wp_set_auth_cookie($user_id, true);
+    
+    wp_send_json_success(['message' => 'Contraseña actualizada correctamente']);
+}
+add_action('wp_ajax_update_user_password', 'ikintsugi_update_user_password');

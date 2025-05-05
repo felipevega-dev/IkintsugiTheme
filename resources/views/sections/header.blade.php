@@ -736,7 +736,48 @@
         </div>
         
         <!-- Botón "Reservar Cita" (columna derecha) -->
-        <div class="flex justify-end pr-8">
+        <div class="flex justify-end pr-8 items-center">
+          <!-- User Profile Menu (only shows when logged in) -->
+          @if(is_user_logged_in())
+          <div class="relative group mr-4">
+            <button class="flex items-center text-[#030D55] hover:text-[#D93280] transition-all duration-300">
+              <div class="mr-2 rounded-full border-2 border-[#AB277A] shadow-sm overflow-hidden h-8 w-8">
+                <?php echo get_avatar(get_current_user_id(), 32); ?>
+              </div>
+              <span class="font-roboto">
+                <?php echo wp_get_current_user()->display_name; ?>
+              </span>
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            
+            <!-- User dropdown menu -->
+            <div class="top-row submenu-container">
+              <div class="vertical-submenu">
+                <a href="{{ home_url('/mi-perfil') }}" class="vertical-submenu-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  Mi Perfil
+                </a>
+                <a href="{{ home_url('/mis-reservas') }}" class="vertical-submenu-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  Mis Reservas
+                </a>
+                <a href="{{ wp_logout_url(home_url()) }}" class="vertical-submenu-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                  </svg>
+                  Cerrar Sesión
+                </a>
+              </div>
+            </div>
+          </div>
+          @endif
+          
           <a href="{{ home_url('/reservar-cita') }}" 
              class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 
                     text-white px-6 py-2 rounded-full font-medium transition-all 
@@ -801,6 +842,31 @@
                   Reservar Cita
                 </a>
               </div>
+              
+              <!-- User profile section (only if logged in) -->
+              @if(is_user_logged_in())
+              <div class="mb-6 bg-gray-50 rounded-xl p-4 flex items-center">
+                <div class="mr-3 rounded-full border-2 border-[#AB277A] shadow-sm overflow-hidden h-12 w-12">
+                  <?php echo get_avatar(get_current_user_id(), 48); ?>
+                </div>
+                <div>
+                  <p class="text-gray-900 font-medium">
+                    <?php echo wp_get_current_user()->display_name; ?>
+                  </p>
+                  <div class="flex space-x-3 mt-2">
+                    <a href="{{ home_url('/mi-perfil') }}" class="text-xs text-[#AB277A] hover:text-[#D93280] transition-colors">
+                      Mi Perfil
+                    </a>
+                    <a href="{{ home_url('/mis-reservas') }}" class="text-xs text-[#AB277A] hover:text-[#D93280] transition-colors">
+                      Mis Reservas
+                    </a>
+                    <a href="{{ wp_logout_url(home_url()) }}" class="text-xs text-[#AB277A] hover:text-[#D93280] transition-colors">
+                      Cerrar Sesión
+                    </a>
+                  </div>
+                </div>
+              </div>
+              @endif
               
               <nav class="mt-2 max-h-[70vh] overflow-y-auto">
                 <div class="space-y-1">
