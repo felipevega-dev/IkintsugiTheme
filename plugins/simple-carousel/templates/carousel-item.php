@@ -56,18 +56,18 @@ if (!isset($items)) $items = [];
             ?>
                 <div class="simple-carousel-slide image-slide">
                     <?php if ($link_url): ?>
-                        <a href="<?php echo esc_url($link_url); ?>" target="_blank">
+                    <a href="<?php echo esc_url($link_url); ?>" target="_blank" style="display:block;text-decoration:none;color:inherit;">
                     <?php endif; ?>
                         <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($item->post_title); ?>">
+                        <div class="simple-carousel-caption">
+                            <h3><?php echo esc_html($item->post_title); ?></h3>
+                            <?php if (!empty($item->post_content)): ?>
+                                <p><?php echo esc_html($item->post_content); ?></p>
+                            <?php endif; ?>
+                        </div>
                     <?php if ($link_url): ?>
-                        </a>
+                    </a>
                     <?php endif; ?>
-                    <div class="simple-carousel-caption">
-                        <h3><?php echo esc_html($item->post_title); ?></h3>
-                        <?php if (!empty($item->post_content)): ?>
-                            <p><?php echo esc_html($item->post_content); ?></p>
-                        <?php endif; ?>
-                    </div>
                 </div>
             <?php } ?>
         <?php endforeach; ?>
