@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: Simple Carousel Test
- * Description: Un carrusel simple para probar compatibilidad con Sage
- * Version: 1.0.0
- * Author: Test
+ * Plugin Name: Carrousel Noticias
+ * Description: Carrusel de noticias hecho para Ikintsugi
+ * Version: 1.2.4
+ * Author: Felipe Vega
  */
 
 if (!defined('WPINC')) die;
@@ -11,7 +11,10 @@ if (!defined('WPINC')) die;
 define('SIMPLE_CAROUSEL_PATH', plugin_dir_path(__FILE__));
 define('SIMPLE_CAROUSEL_URL', plugin_dir_url(__FILE__));
 
-// Includes
+// Incluir primero la clase admin para marcar que está cargada
+require_once SIMPLE_CAROUSEL_PATH . 'admin/class-admin.php';
+
+// Resto de includes
 require_once SIMPLE_CAROUSEL_PATH . 'includes/class-simple-carousel.php';
 require_once SIMPLE_CAROUSEL_PATH . 'includes/class-simple-carousel-grid.php';
 require_once SIMPLE_CAROUSEL_PATH . 'includes/ajax-handlers.php';
@@ -42,6 +45,10 @@ add_action('admin_enqueue_scripts', function($hook) {
     }
 });
 
-// Inicialización de clases
+// Inicializar admin primero
+$simple_carousel_admin = new Simple_Carousel_Admin();
+$simple_carousel_admin->init();
+
+// Inicialización de clases de frontend
 new Simple_Carousel();
 new Simple_Carousel_Grid();

@@ -1,32 +1,76 @@
 jQuery(document).ready(function($) {
-    // Initialize sortable for carousel items
-    $('.carousel-items-grid').sortable({
-        items: '.carousel-item-card',
-        handle: '.carousel-item-image',
-        cursor: 'move',
-        opacity: 0.7,
-        revert: true,
-        update: function(event, ui) {
-            const items = [];
-            $('.carousel-item-card').each(function() {
-                items.push($(this).data('id'));
+    console.log('SimpleCarousel admin script loaded');
+    
+    // Debug de jQuery UI
+    if (typeof $.ui === 'undefined') {
+        console.error('jQuery UI no está cargado correctamente');
+    } else {
+        console.log('jQuery UI cargado correctamente');
+    }
+    
+    // Inicialización simple de sortable
+    if ($('.simple-carousel-items-sortable').length) {
+        console.log('Inicializando sortable...');
+        
+        $('.simple-carousel-items-sortable').sortable({
+            items: '.carousel-item',
+            handle: '.sort-handle',
+            cursor: 'move',
+            opacity: 0.7,
+            tolerance: 'pointer',
+            update: function(event, ui) {
+                console.log('Orden actualizado');
+                ui.item.effect('highlight', {}, 1000);
+            }
+        });
+        
+        // Guardar orden al hacer clic
+        $('#save-carousel-order').on('click', function() {
+            saveOrder();
+        });
+        
+        function saveOrder() {
+            var items = [];
+            $('.carousel-item').each(function(index) {
+                items.push({
+                    id: $(this).data('id'),
+                    position: index
+                });
             });
-
-            $.ajax({
-                url: simpleCarousel.ajaxurl,
-                type: 'POST',
-                data: {
+            
+            console.log('Items a guardar:', items);
+            
+            $('#save-carousel-order').prop('disabled', true).text('Guardando...');
+            
+            $.post(
+                ajaxurl,
+                {
                     action: 'update_carousel_order',
                     items: items,
-                    nonce: simpleCarousel.nonce
+                    nonce: simpleCarouselAdmin.nonce
                 },
-                success: function(response) {
+                function(response) {
+                    console.log('Respuesta AJAX:', response);
+                    $('#save-carousel-order').prop('disabled', false).text('Guardar Orden');
+                    
                     if (response.success) {
-                        // Optional: Show success message
+                        $('#carousel-order-success').fadeIn().delay(1500).fadeOut();
+                    } else {
+                        alert('Error al guardar');
                     }
                 }
+            ).fail(function() {
+                alert('Error de conexión');
+                $('#save-carousel-order').prop('disabled', false).text('Guardar Orden');
             });
         }
+    }
+    
+    // Manejar cambios en el tipo de item del carrusel
+    $('input[name="carousel_item_type"]').on('change', function() {
+        const type = $(this).val();
+        $('#video-fields').toggle(type === 'video');
+        $('#link-fields').toggle(type === 'image');
     });
 
     // Confirm delete action
@@ -34,13 +78,6 @@ jQuery(document).ready(function($) {
         if (!confirm('Are you sure you want to delete this item?')) {
             e.preventDefault();
         }
-    });
-
-    // Manejar cambios en el tipo de item del carrusel
-    $('input[name="carousel_item_type"]').on('change', function() {
-        const type = $(this).val();
-        $('#video-fields').toggle(type === 'video');
-        $('#link-fields').toggle(type === 'image');
     });
 
     // Manejar la subida de imágenes destacadas
@@ -105,45 +142,4 @@ jQuery(document).ready(function($) {
             }
         }
     });
-
-    // Ordenamiento de items
-    if ($('.simple-carousel-items-sortable').length) {
-        $('.simple-carousel-items-sortable').sortable({
-            handle: '.sort-handle',
-            update: function(event, ui) {
-                const items = [];
-                $('.simple-carousel-items-sortable .carousel-item').each(function(index) {
-                    items.push({
-                        id: $(this).data('id'),
-                        position: index
-                    });
-                });
-
-                $.ajax({
-                    url: ajaxurl,
-                    type: 'POST',
-                    data: {
-                        action: 'update_carousel_order',
-                        items: items,
-                        nonce: simpleCarouselAdmin.nonce
-                    },
-                    success: function(response) {
-                        if (response.success) {
-                            // Mostrar mensaje de éxito
-                            const notice = $('<div class="notice notice-success is-dismissible"><p>Orden actualizado correctamente.</p></div>')
-                                .hide()
-                                .insertBefore('.simple-carousel-items-sortable')
-                                .slideDown();
-                            
-                            setTimeout(function() {
-                                notice.slideUp(function() {
-                                    $(this).remove();
-                                });
-                            }, 3000);
-                        }
-                    }
-                });
-            }
-        });
-    }
 }); 

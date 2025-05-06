@@ -9,6 +9,10 @@
 class Simple_Carousel_Admin {
     
     public function __construct() {
+        // Marcar que la clase admin está inicializada
+        if (!defined('SIMPLE_CAROUSEL_ADMIN_LOADED')) {
+            define('SIMPLE_CAROUSEL_ADMIN_LOADED', true);
+        }
     }
 
     public function init() {
@@ -29,13 +33,19 @@ class Simple_Carousel_Admin {
 
         // Adjust current admin menu
         add_action('admin_menu', array($this, 'adjust_current_admin_menu'), 999);
+
+        // Add AJAX handler
+        add_action('wp_ajax_update_carousel_order', array($this, 'ajax_update_carousel_order'));
+        
+        // Verificar y crear directorios de imágenes
+        $this->check_image_directory();
     }
 
     public function add_admin_menu() {
         // Add main menu
         add_menu_page(
-            __('Simple Carousel', 'simple-carousel'),
-            __('Simple Carousel', 'simple-carousel'),
+            __('Carrousel Noticias', 'simple-carousel'),
+            __('Carousel', 'simple-carousel'),
             'manage_options',
             'simple-carousel',
             array($this, 'display_admin_page'),
@@ -104,26 +114,46 @@ class Simple_Carousel_Admin {
         global $post_type;
         
         $screen = get_current_screen();
-        if ($hook === 'toplevel_page_simple-carousel' || 
-            $hook === 'simple-carousel_page_simple-carousel-settings' ||
-            $post_type === 'carousel_item') {
+        
+        // Debug info
+        error_log("Hook: $hook, Screen ID: " . ($screen ? $screen->id : 'null'));
+        
+        // Scripts for specific screens
+        if (strpos($hook, 'simple-carousel') !== false || 
+            $post_type === 'carousel_item' || 
+            $hook === 'toplevel_page_simple-carousel') {
             
-            // Styles
+            // Primero jQuery Core
+            wp_enqueue_script('jquery');
+            
+            // Después jQuery UI Core y componentes
+            wp_enqueue_script('jquery-ui-core');
+            wp_enqueue_script('jquery-ui-sortable');
+            wp_enqueue_script('jquery-effects-core');
+            wp_enqueue_script('jquery-effects-highlight');
+            
+            // CSS del plugin
             wp_enqueue_style(
                 'simple-carousel-admin',
                 plugin_dir_url(__FILE__) . 'css/admin.css',
                 array(),
-                '1.0.0'
+                '1.0.3'
             );
             
-            // Scripts
+            // JavaScript del plugin (depende de jQuery UI)
             wp_enqueue_script(
                 'simple-carousel-admin',
                 plugin_dir_url(__FILE__) . 'js/admin.js',
-                array('jquery', 'jquery-ui-sortable'),
-                '1.0.0',
+                array('jquery', 'jquery-ui-sortable', 'jquery-effects-highlight'),
+                '1.0.4',
                 true
             );
+            
+            // Localización para AJAX
+            wp_localize_script('simple-carousel-admin', 'simpleCarouselAdmin', array(
+                'ajaxurl' => admin_url('admin-ajax.php'),
+                'nonce' => wp_create_nonce('simple-carousel-admin')
+            ));
             
             // Inline styles
             wp_add_inline_style('simple-carousel-admin', '
@@ -131,54 +161,6 @@ class Simple_Carousel_Admin {
                 #adminmenu li.menu-top.toplevel_page_simple-carousel.current,
                 #adminmenu li.menu-top.toplevel_page_simple-carousel.wp-has-current-submenu {
                     background: linear-gradient(90deg, #362766 0%, #030D55 100%) !important;
-                }
-                
-                /* Estilos para las páginas de edición */
-                .post-type-carousel_item #titlediv .inside,
-                .post-type-carousel_item #postexcerpt {
-                    border-left: 4px solid #362766;
-                    padding-left: 12px;
-                }
-                
-                .post-type-carousel_item .postbox.simple-carousel-metabox {
-                    border-top: 3px solid #030D55;
-                }
-                
-                /* Estilos para la interfaz de administración */
-                .toplevel_page_simple-carousel #wpcontent,
-                .simple-carousel_page_simple-carousel-settings #wpcontent {
-                    padding-left: 0;
-                }
-                
-                .simple-carousel-admin-header {
-                    background: linear-gradient(90deg, #362766 0%, #030D55 100%);
-                    padding: 30px 20px;
-                    margin-bottom: 30px;
-                    color: white;
-                }
-                
-                .simple-carousel-admin-header h1 {
-                    color: white;
-                    font-size: 24px;
-                    margin: 0;
-                }
-                
-                .simple-carousel-admin-header p {
-                    margin: 5px 0 0 0;
-                    opacity: 0.9;
-                    font-size: 14px;
-                }
-                
-                .simple-carousel-admin-content {
-                    padding: 0 20px;
-                }
-                
-                .simple-carousel-admin-card {
-                    background: white;
-                    border-radius: 8px;
-                    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-                    padding: 20px;
-                    margin-bottom: 20px;
                 }
             ');
         }
@@ -262,6 +244,91 @@ class Simple_Carousel_Admin {
 
         if (isset($_POST['link_url'])) {
             update_post_meta($post_id, '_link_url', esc_url_raw($_POST['link_url']));
+        }
+    }
+
+    public function ajax_update_carousel_order() {
+        // Verificación de seguridad
+        check_ajax_referer('simple-carousel-admin', 'nonce');
+        
+        // Verificación de permisos
+        if (!current_user_can('edit_posts')) {
+            wp_send_json_error(array(
+                'message' => 'No tienes permisos para realizar esta acción.',
+                'code' => 'insufficient_permissions'
+            ));
+            return;
+        }
+        
+        // Recibir y validar datos
+        $items = isset($_POST['items']) ? $_POST['items'] : [];
+        
+        error_log('Recibidos items: ' . print_r($items, true));
+        
+        if (empty($items)) {
+            wp_send_json_error(array(
+                'message' => 'No se recibieron datos válidos.',
+                'code' => 'invalid_data'
+            ));
+            return;
+        }
+        
+        // Asegurar que items es un array
+        if (!is_array($items)) {
+            wp_send_json_error(array(
+                'message' => 'Formato de datos incorrecto.',
+                'code' => 'invalid_data_format'
+            ));
+            return;
+        }
+        
+        $updated = array();
+        
+        // Procesar los items
+        foreach ($items as $item) {
+            $id = isset($item['id']) ? intval($item['id']) : 0;
+            $position = isset($item['position']) ? intval($item['position']) : 0;
+            
+            if ($id > 0) {
+                wp_update_post(array(
+                    'ID' => $id,
+                    'menu_order' => $position
+                ));
+                $updated[] = $id;
+            }
+        }
+        
+        // Devolver éxito
+        wp_send_json_success(array(
+            'message' => 'Orden actualizado correctamente.',
+            'items_updated' => $updated,
+            'items_count' => count($updated)
+        ));
+    }
+
+    /**
+     * Verifica y crea el directorio de imágenes si no existe
+     */
+    public function check_image_directory() {
+        $images_dir = SIMPLE_CAROUSEL_PATH . 'images';
+        if (!file_exists($images_dir)) {
+            mkdir($images_dir, 0755, true);
+        }
+        
+        // Crear placeholders si no existen
+        $placeholders = array(
+            'image-placeholder.jpg' => 'https://via.placeholder.com/150x100/eeeeee/888888?text=Imagen',
+            'video-placeholder.jpg' => 'https://via.placeholder.com/150x100/111111/ffffff?text=Video'
+        );
+        
+        foreach ($placeholders as $name => $url) {
+            $file_path = $images_dir . '/' . $name;
+            if (!file_exists($file_path)) {
+                $image_data = @file_get_contents($url);
+                if ($image_data) {
+                    file_put_contents($file_path, $image_data);
+                }
+            }
         }
     }
 } 

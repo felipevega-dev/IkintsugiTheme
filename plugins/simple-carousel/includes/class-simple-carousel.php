@@ -4,7 +4,11 @@ if (!defined('WPINC')) die;
 class Simple_Carousel {
     public function __construct() {
         add_action('init', [$this, 'init']);
-        add_action('admin_menu', [$this, 'add_admin_menu']);
+        
+        // Solo registrar el menú si no estamos usando la nueva clase de admin
+        if (!class_exists('Simple_Carousel_Admin') || !defined('SIMPLE_CAROUSEL_ADMIN_LOADED')) {
+            add_action('admin_menu', [$this, 'add_admin_menu']);
+        }
     }
 
     public function init() {
