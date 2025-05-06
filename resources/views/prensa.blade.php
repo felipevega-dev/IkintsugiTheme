@@ -7,6 +7,11 @@ Template Name: Prensa Template
   .page-template-prensa {
     padding-top: 0 !important;
   }
+  /* Estilo para asegurar espacio para los indicadores */
+  .simple-carousel-container {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
 </style>
 <div class="kintsugi-theme-wrapper">
   <!-- Hero Section -->
@@ -43,7 +48,7 @@ Template Name: Prensa Template
       <h2 class="text-3xl md:text-4xl font-bold text-[#030D55] mb-8 text-left font-paytone" style="line-height: 1.1;">Noticias destacadas</h2>
       
       <!-- Contenedor del carrusel con estilos personalizados -->
-      <div class="max-w-[1200px] mx-auto">
+      <div class="max-w-[1200px] mx-auto simple-carousel-container">
         {!! do_shortcode('[simple_carousel]') !!}
       </div>
     </div>

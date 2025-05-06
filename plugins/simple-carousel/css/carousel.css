@@ -4,7 +4,7 @@
     max-width: 1200px;
     margin: 0 auto;
     overflow: hidden;
-    aspect-ratio: 21/9;
+    padding-bottom: 45px;
 }
 .simple-carousel-wrapper {
     display: flex;
@@ -35,9 +35,17 @@
 
 /* -------- INDICADORES -------- */
 .simple-carousel-indicators {
-    position: absolute; bottom: 20px; left: 50%;
+    position: absolute;
+    left: 50%;
     transform: translateX(-50%);
-    display: flex; gap: 8px; z-index: 3;
+    display: flex;
+    gap: 8px;
+    z-index: 3;
+    bottom: 5px;
+    background: rgb(161 13 135 / 70%);
+    padding: 6px 12px;
+    border-radius: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 .simple-carousel-indicator {
     width: 10px; height: 10px; border-radius: 50%;
@@ -80,10 +88,32 @@
         flex: 0 0 calc(50% - 10px);
         max-width: calc(50% - 10px);
     }
+    .simple-carousel-indicators {
+        bottom: 10px;
+        background: rgb(161 13 135 / 70%);
+    }
+    .simple-carousel-wrapper {
+        gap: 12px;
+    }
+    .simple-carousel {
+        padding-bottom: 32px; /* Espacio para los indicadores en tablet/mobile */
+    }
 }
 @media (max-width: 600px) {
     .simple-carousel-slide {
         flex: 0 0 100%;
         max-width: 100%;
+    }
+    .simple-carousel-indicators {
+        bottom: 0px;
+        background: rgb(161 13 135 / 90%);
+        padding: 4px 8px;
+    }
+    .simple-carousel-wrapper {
+        gap: 6px;
+        padding-bottom: 24px; /* para que no tape los indicadores */
+    }
+    .simple-carousel {
+        padding-bottom: 15px; /* Un poco más en mobile si quieres */
     }
 }

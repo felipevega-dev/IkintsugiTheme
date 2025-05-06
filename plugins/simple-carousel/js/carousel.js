@@ -4,30 +4,25 @@ class SimpleCarousel {
         this.wrapper = element.querySelector('.simple-carousel-wrapper');
         this.originalSlides = Array.from(element.querySelectorAll('.simple-carousel-slide'));
 
-        // --- DUPLICA SLIDES SI HAY MENOS DE 3 ---
+        // Si hay menos de 3 slides, NO clonar para infinito (rompe el loop)
         if (this.originalSlides.length < 3) {
-            const needed = 3 - this.originalSlides.length;
-            for (let i = 0; i < needed; i++) {
-                const clone = this.originalSlides[i % this.originalSlides.length].cloneNode(true);
-                this.wrapper.appendChild(clone);
-                this.originalSlides.push(clone);
+            this.visibleSlides = this.originalSlides.length;
+        } else {
+            this.visibleSlides = 3;
+            // --- CLONAR SLIDES PARA INFINITO ---
+            // Clona los últimos N al principio y los primeros N al final
+            for (let i = 0; i < this.visibleSlides; i++) {
+                const firstClone = this.originalSlides[i].cloneNode(true);
+                firstClone.classList.add('is-clone');
+                this.wrapper.appendChild(firstClone);
+
+                const lastClone = this.originalSlides[this.originalSlides.length - 1 - i].cloneNode(true);
+                lastClone.classList.add('is-clone');
+                this.wrapper.insertBefore(lastClone, this.wrapper.firstChild);
             }
         }
 
-        this.visibleSlides = 3;
         this.slideCount = this.originalSlides.length;
-
-        // --- CLONAR SLIDES PARA INFINITO ---
-        // Clona los últimos N al principio y los primeros N al final
-        for (let i = 0; i < this.visibleSlides; i++) {
-            const firstClone = this.originalSlides[i].cloneNode(true);
-            firstClone.classList.add('is-clone');
-            this.wrapper.appendChild(firstClone);
-
-            const lastClone = this.originalSlides[this.slideCount - 1 - i].cloneNode(true);
-            lastClone.classList.add('is-clone');
-            this.wrapper.insertBefore(lastClone, this.wrapper.firstChild);
-        }
 
         // --- ACTUALIZAR SLIDES Y VARIABLES ---
         this.slides = Array.from(this.wrapper.querySelectorAll('.simple-carousel-slide'));
@@ -51,6 +46,13 @@ class SimpleCarousel {
             this.carousel.appendChild(this.dotsContainer);
         }
         this.dotsContainer.innerHTML = '';
+        
+        // Solo mostrar puntos si hay más de 1 slide original
+        if (this.originalSlides.length <= 1) {
+            this.dotsContainer.style.display = 'none';
+            return;
+        }
+        
         for (let i = 0; i < this.slideCount; i++) {
             const dot = document.createElement('div');
             dot.className = 'simple-carousel-indicator';
@@ -81,6 +83,7 @@ class SimpleCarousel {
     }
 
     setAutoplay() {
+        if (this.slideCount <= 1) return; // No autoplay si solo hay 1 slide
         this.autoPlayInterval = setInterval(() => this.next(), 7000);
         this.wrapper.addEventListener('mouseenter', () => clearInterval(this.autoPlayInterval));
         this.wrapper.addEventListener('mouseleave', () => this.setAutoplay());

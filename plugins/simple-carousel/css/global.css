@@ -31,11 +31,6 @@
       z-index: 2;
   }
   
-
-.simple-carousel-slide {
-      aspect-ratio: 21/9;
-}
-
   /* Unifica slides y grid visualmente */
 .simple-carousel-slide,
 .carousel-grid-item {
