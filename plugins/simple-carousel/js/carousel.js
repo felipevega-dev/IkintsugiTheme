@@ -103,7 +103,11 @@ class SimpleCarousel {
     }
 
     update(skipTransition = false) {
-        const slideWidth = this.slides[0].offsetWidth + 20;
+        // Get actual gap from computed style
+        const computedStyle = window.getComputedStyle(this.wrapper);
+        const gap = parseInt(computedStyle.gap) || 20; // Default to 20 if not set
+        
+        const slideWidth = this.slides[0].offsetWidth + gap;
         if (skipTransition) {
             this.wrapper.style.transition = 'none';
         } else {
@@ -147,7 +151,12 @@ class SimpleCarousel {
         if (!this.locked) return;
         let clientX = (e.type === 'touchmove') ? e.touches[0].clientX : e.clientX;
         this.deltaX = clientX - this.startX;
-        this.wrapper.style.transform = `translateX(${-this.currentIndex * (this.slides[0].offsetWidth + 20) + this.deltaX}px)`;
+        
+        // Get actual gap from computed style
+        const computedStyle = window.getComputedStyle(this.wrapper);
+        const gap = parseInt(computedStyle.gap) || 20; // Default to 20 if not set
+        
+        this.wrapper.style.transform = `translateX(${-this.currentIndex * (this.slides[0].offsetWidth + gap) + this.deltaX}px)`;
     }
     onDragEnd(e) {
         if (!this.locked) return;

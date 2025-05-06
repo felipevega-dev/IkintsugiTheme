@@ -55,7 +55,7 @@ Template Name: Prensa Template
   </section>
 
   <!-- Sección 2: Todas las noticias -->
-  <section class="bg-gray-50 py-12">
+  <section class="bg-gray-50 mb-15">
     <div class="container mx-auto">
       <h2 class="text-3xl md:text-4xl font-bold text-[#030D55] mb-8 text-left font-paytone px-4" style="line-height: 1.1;">Todas las noticias</h2>
       
