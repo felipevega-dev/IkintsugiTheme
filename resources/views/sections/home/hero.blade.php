@@ -9,6 +9,7 @@
       muted 
       loop 
       playsinline
+      poster="{{ get_theme_file_uri('resources/videos/kintsugi-thumbnail.png') }}"
     >
       <source src="{{ get_theme_file_uri('resources/videos/kintsugi.mp4') }}" type="video/mp4">
     </video>
