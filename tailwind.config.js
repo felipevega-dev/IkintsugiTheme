@@ -72,7 +72,14 @@ export default {
             semibold: 600,
             bold: 700,
             extrabold: 800,
-          }
+          },
+          screens: {
+            'sm': '640px',
+            'md': '768px',
+            'lg': '1024px',
+            'xl': '1280px',
+            '2xl': '1536px',
+          },
         },
       },
       plugins: [],

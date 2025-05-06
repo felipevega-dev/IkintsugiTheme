@@ -529,12 +529,12 @@
       <!-- Versión desktop: 3 columnas -->
       <div class="hidden lg:grid grid-cols-3 items-center">
         <!-- Logo (columna izquierda) -->
-        <div class="pl-8">
+        <div class="pl-6 xl:pl-8"> <!-- Ajustado el padding pero no tan reducido -->
           <a class="flex items-center" href="{{ home_url('/') }}">
             <img 
               src="{{ get_theme_file_uri('resources/images/logo-azul2.png') }}" 
               alt="Kintsugi Logo" 
-              class="h-18 w-auto"
+              class="h-14 xl:h-16 2xl:h-18 w-auto"
             >
           </a>
         </div>
@@ -542,9 +542,9 @@
         <!-- Menú de navegación en dos filas centradas (columna central) -->
         <div class="flex flex-col items-center justify-center">
           <!-- Primera fila de navegación -->
-          <nav class="flex justify-center items-center space-x-8 mb-2 top-row">
+          <nav class="flex justify-center items-center space-x-5 lg:space-x-6 xl:space-x-8 mb-2 top-row">
             <a href="{{ home_url('/') }}" 
-               class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
+               class="font-roboto text-sm lg:text-base px-1 lg:px-2 py-1 border-b-2 whitespace-nowrap
                       {{ ($current_url == home_url('/')) 
                          ? 'border-[#D93280] font-bold text-[#D93280]' 
                          : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
@@ -555,7 +555,7 @@
             <!-- Menú desplegable para "Quiénes somos" -->
             <div class="relative hover:cursor-pointer group">
               <a href="{{ home_url('/quienes-somos') }}" 
-                 class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap flex items-center
+                 class="font-roboto text-sm lg:text-base px-1 lg:px-2 py-1 border-b-2 whitespace-nowrap flex items-center
                         {{ (strpos($current_url, 'quienes-somos') !== false || 
                             strpos($current_url, 'que-significa-kintsugi') !== false || 
                             strpos($current_url, 'que-nos-inspira') !== false || 
@@ -611,7 +611,7 @@
             <!-- Menú desplegable para "Psicoterapia EMDR" -->
             <div class="relative hover:cursor-pointer group">
               <a href="{{ home_url('/psicoterapia-emdr') }}" 
-                 class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap flex items-center
+                 class="font-roboto text-sm lg:text-base px-1 lg:px-2 py-1 border-b-2 whitespace-nowrap flex items-center
                         {{ (strpos($current_url, 'psicoterapia-emdr') !== false && !strpos($current_url, 'testimonios') && !strpos($current_url, 'beneficios-emdr') && !strpos($current_url, 'tratamiento-emdr') && !strpos($current_url, 'que-esperar') && !strpos($current_url, 'evidencia-cientifica') && !$is_single_post) 
                            ? 'border-[#D93280] font-bold text-[#D93280]' 
                            : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
@@ -655,7 +655,7 @@
             <!-- Menú desplegable para "¿A quiénes atendemos?" -->
             <div class="relative hover:cursor-pointer group">
               <a href="{{ home_url('/a-quienes-atendemos') }}" 
-                 class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap flex items-center
+                 class="font-roboto text-sm lg:text-base px-1 lg:px-2 py-1 border-b-2 whitespace-nowrap flex items-center
                         {{ (strpos($current_url, 'a-quienes-atendemos') !== false || 
                             strpos($current_url, 'transtornos-y-malestares') !== false) 
                            ? 'border-[#D93280] font-bold text-[#D93280]' 
@@ -683,9 +683,9 @@
           </nav>
           
           <!-- Segunda fila de navegación -->
-          <nav class="flex justify-center items-center space-x-8 bottom-row">
+          <nav class="flex justify-center items-center space-x-4 lg:space-x-6 xl:space-x-8 bottom-row">
             <a href="{{ home_url('/charlas-y-talleres') }}" 
-               class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
+               class="font-roboto text-sm lg:text-base px-1 lg:px-2 py-1 border-b-2 whitespace-nowrap
                       {{ (strpos($current_url, 'charlas-y-talleres') !== false) 
                          ? 'border-[#D93280] font-bold text-[#D93280]' 
                          : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
@@ -694,7 +694,7 @@
             </a>
             
             <a href="{{ home_url('/preguntas-frecuentes') }}" 
-               class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
+               class="font-roboto text-sm lg:text-base px-1 lg:px-2 py-1 border-b-2 whitespace-nowrap
                       {{ (strpos($current_url, 'preguntas-frecuentes') !== false) 
                          ? 'border-[#D93280] font-bold text-[#D93280]' 
                          : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
@@ -705,7 +705,7 @@
             <!-- Menú desplegable para "Prensa y social media" -->
             <div class="relative hover:cursor-pointer group">
               <a href="{{ home_url('/prensa') }}" 
-                 class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap flex items-center
+                 class="font-roboto text-sm lg:text-base px-1 lg:px-2 py-1 border-b-2 whitespace-nowrap flex items-center
                         {{ (strpos($current_url, 'prensa') !== false || 
                             strpos($current_url, 'blog') !== false || 
                             strpos($current_url, 'canales-oficiales') !== false) 
@@ -733,7 +733,7 @@
             </div>
             
             <a href="{{ home_url('/contacto') }}" 
-               class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap
+               class="font-roboto text-sm lg:text-base px-1 lg:px-2 py-1 border-b-2 whitespace-nowrap
                       {{ (strpos($current_url, 'contacto') !== false) 
                          ? 'border-[#D93280] font-bold text-[#D93280]' 
                          : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
@@ -744,17 +744,19 @@
         </div>
         
         <!-- Botón "Reservar Cita" (columna derecha) -->
-        <div class="flex justify-end pr-8 items-center">
+        <div class="flex justify-end pr-4 xl:pr-6 2xl:pr-8 items-center">
           <!-- User Profile Menu (only shows when logged in) -->
           @if(is_user_logged_in())
-          <div class="relative group mr-4">
+          <div class="relative group mr-3 xl:mr-4">
             <button class="flex items-center text-[#030D55] hover:text-[#D93280] transition-all duration-300">
-              <div class="mr-2 rounded-full border-2 border-[#AB277A] shadow-sm overflow-hidden h-8 w-8">
+              <div class="rounded-full border-2 border-[#AB277A] shadow-sm overflow-hidden h-8 w-8">
                 <?php echo get_avatar(get_current_user_id(), 32); ?>
               </div>
-              <span class="font-roboto">
+              <!-- Nombre visible solo en pantallas más grandes de 1535px -->
+              <span class="font-roboto hidden 2xl:inline ml-2">
                 <?php echo wp_get_current_user()->display_name; ?>
               </span>
+              <!-- Flecha siempre visible para indicar que hay menú desplegable -->
               <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
@@ -788,9 +790,9 @@
           
           <a href="{{ home_url('/reservar-cita') }}" 
              class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 
-                    text-white px-6 py-2 rounded-full font-medium transition-all 
+                    text-white px-4 lg:px-5 xl:px-6 py-2 rounded-full font-medium transition-all 
                     duration-300 transform hover:scale-105 shadow-md hover:shadow-lg 
-                    font-roboto">
+                    text-sm lg:text-base font-roboto">
             Reservar Cita
           </a>
         </div>
