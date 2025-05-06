@@ -120,6 +120,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
     });
+    
+    // Prevenir que los enlaces de productos hagan algo al hacer clic
+    const productLinks = document.querySelectorAll('.product-name a, .product-thumbnail a');
+    productLinks.forEach(link => {
+      // Primero, obtener el texto y mantenerlo
+      const text = link.textContent;
+      
+      // Opción 1: Reemplazar el enlace por el texto
+      const parent = link.parentNode;
+      if (parent) {
+        parent.innerHTML = text;
+      }
+      
+      // Opción 2: Si la opción 1 no funciona, prevenir el comportamiento de clic
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        return false;
+      });
+      
+      // Opción 3: También cambiar el href a javascript:void(0)
+      link.setAttribute('href', 'javascript:void(0)');
+      link.style.cursor = 'default';
+      link.style.textDecoration = 'none';
+    });
   };
   
   // Ejecutar las funciones
@@ -389,6 +413,14 @@ document.addEventListener('DOMContentLoaded', function() {
   background-color: #FEF2F2;
   border-color: #EF4444;
   color: #B91C1C;
+}
+
+/* Estilos específicos para los enlaces de productos */
+.woocommerce-cart table.cart .product-name a,
+.woocommerce-cart table.cart .product-thumbnail a {
+  pointer-events: none !important;
+  cursor: default !important;
+  text-decoration: none !important;
 }
 </style>
 @endsection

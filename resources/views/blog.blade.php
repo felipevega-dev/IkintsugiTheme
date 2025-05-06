@@ -83,7 +83,7 @@
                   <h3 class="text-xl md:text-2xl font-bold text-white font-paytone" style="font-weight: 700; line-height: 100%; letter-spacing: 0%;">
                     {{ get_the_title() }}
                   </h3>
-                  <p class="text-sm md:text-base text-white" style="font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 1.4; @media (min-width: 768px) { line-height: 1.7; }">
+                  <p class="text-sm md:text-base text-white line-clamp-3" style="font-family: 'Roboto', sans-serif; font-weight: 400; line-height: 1.4; @media (min-width: 768px) { line-height: 1.7; }">
                     {{ get_the_excerpt() }}
                   </p>
           </div>
@@ -141,7 +141,7 @@
       @endphp
       
       @foreach($years as $year)
-        <a href="{{ add_query_arg('year', $year, remove_query_arg('cat')) }}" class="px-4 py-2 {{ isset($_GET['year']) && $_GET['year'] == $year ? 'bg-[#AB277A] text-white' : 'bg-white text-[#030D55]' }} rounded-lg text-sm font-medium {{ !isset($_GET['year']) || $_GET['year'] != $year ? 'border border-gray-200 hover:bg-gray-100' : '' }}">
+        <a href="{{ add_query_arg('year', $year, get_permalink()) }}" class="px-4 py-2 {{ isset($_GET['year']) && $_GET['year'] == $year ? 'bg-[#AB277A] text-white' : 'bg-white text-[#030D55]' }} rounded-lg text-sm font-medium {{ !isset($_GET['year']) || $_GET['year'] != $year ? 'border border-gray-200 hover:bg-gray-100' : '' }}">
           {{ $year }}
         </a>
       @endforeach
