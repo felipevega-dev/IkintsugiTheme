@@ -469,10 +469,17 @@
       ];
       
       $has_white_hero = false;
-      foreach ($white_hero_pages as $page) {
-        if (strpos($current_url, $page) !== false) {
-          $has_white_hero = true;
-          break;
+      
+      // Comprobar si estamos en una entrada individual de blog
+      $is_single_post = is_single();
+      
+      // Solo aplicar la detección de páginas de hero blanco si NO estamos en una entrada individual
+      if (!$is_single_post) {
+        foreach ($white_hero_pages as $page) {
+          if (strpos($current_url, $page) !== false) {
+            $has_white_hero = true;
+            break;
+          }
         }
       }
       
@@ -605,7 +612,8 @@
             <div class="relative hover:cursor-pointer group">
               <a href="{{ home_url('/psicoterapia-emdr') }}" 
                  class="font-roboto text-base px-2 py-1 border-b-2 whitespace-nowrap flex items-center
-                        {{ (strpos($current_url, 'psicoterapia-emdr') !== false && !strpos($current_url, 'testimonios') && !strpos($current_url, 'beneficios-emdr') && !strpos($current_url, 'tratamiento-emdr') && !strpos($current_url, 'que-esperar') && !strpos($current_url, 'evidencia-cientifica')) ? 'border-[#D93280] font-bold text-[#D93280]' 
+                        {{ (strpos($current_url, 'psicoterapia-emdr') !== false && !strpos($current_url, 'testimonios') && !strpos($current_url, 'beneficios-emdr') && !strpos($current_url, 'tratamiento-emdr') && !strpos($current_url, 'que-esperar') && !strpos($current_url, 'evidencia-cientifica') && !$is_single_post) 
+                           ? 'border-[#D93280] font-bold text-[#D93280]' 
                            : 'border-transparent hover:border-[#D93280] text-gray-900 hover:text-[#D93280]' }} 
                         transition-all duration-300">
                 Psicoterapia EMDR
@@ -617,7 +625,7 @@
               <div class="bottom-row submenu-container">
                 <div class="vertical-submenu">
                   <a href="{{ home_url('/psicoterapia-emdr') }}" 
-                     class="vertical-submenu-item {{ (strpos($current_url, 'psicoterapia-emdr') !== false && !strpos($current_url, 'testimonios') && !strpos($current_url, 'beneficios-emdr') && !strpos($current_url, 'tratamiento-emdr') && !strpos($current_url, 'que-esperar') && !strpos($current_url, 'evidencia-cientifica')) ? 'active' : '' }}">
+                     class="vertical-submenu-item {{ (strpos($current_url, 'psicoterapia-emdr') !== false && !strpos($current_url, 'testimonios') && !strpos($current_url, 'beneficios-emdr') && !strpos($current_url, 'tratamiento-emdr') && !strpos($current_url, 'que-esperar') && !strpos($current_url, 'evidencia-cientifica') && !$is_single_post) ? 'active' : '' }}">
                     ¿Qué es Psicoterapia EMDR?
                   </a>
                   <a href="{{ home_url('/testimonios') }}" 
@@ -951,7 +959,7 @@
                     <div class="flex justify-between items-center py-3 cursor-pointer" id="emdr-toggle">
           <a href="{{ home_url('/psicoterapia-emdr') }}" 
                         class="text-gray-900 font-roboto
-                              {{ (strpos($current_url, 'psicoterapia-emdr') !== false && !strpos($current_url, 'testimonios') && !strpos($current_url, 'beneficios-emdr') && !strpos($current_url, 'tratamiento-emdr') && !strpos($current_url, 'que-esperar') && !strpos($current_url, 'evidencia-cientifica')) ? 'menu-active-highlight' 
+                              {{ (strpos($current_url, 'psicoterapia-emdr') !== false && !strpos($current_url, 'testimonios') && !strpos($current_url, 'beneficios-emdr') && !strpos($current_url, 'tratamiento-emdr') && !strpos($current_url, 'que-esperar') && !strpos($current_url, 'evidencia-cientifica') && !$is_single_post) ? 'menu-active-highlight' 
                                 : 'hover:text-[#D93280]' }}">
                         Psicoterapia EMDR
                       </a>
@@ -966,7 +974,7 @@
                     <div class="mobile-submenu bg-gray-50 rounded-lg" id="emdr-submenu">
                       <a href="{{ home_url('/psicoterapia-emdr') }}" 
                         class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
-                              {{ (strpos($current_url, 'psicoterapia-emdr') !== false && !strpos($current_url, 'testimonios') && !strpos($current_url, 'beneficios-emdr') && !strpos($current_url, 'tratamiento-emdr') && !strpos($current_url, 'que-esperar') && !strpos($current_url, 'evidencia-cientifica')) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
+                              {{ (strpos($current_url, 'psicoterapia-emdr') !== false && !strpos($current_url, 'testimonios') && !strpos($current_url, 'beneficios-emdr') && !strpos($current_url, 'tratamiento-emdr') && !strpos($current_url, 'que-esperar') && !strpos($current_url, 'evidencia-cientifica') && !$is_single_post) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
                         ¿Qué es Psicoterapia EMDR?
                       </a>
                       <a href="{{ home_url('/testimonios') }}" 
