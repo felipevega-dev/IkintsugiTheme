@@ -150,18 +150,39 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   };
   
+  // Ocultar el título del resumen de pedido y ajustar espacios
+  const fixOrderSummaryDisplay = function() {
+    // Ocultar el título para evitar el espacio en blanco
+    const orderReviewHeading = document.querySelector('#order_review_heading, h3:contains("Tu pedido")');
+    if (orderReviewHeading) {
+      orderReviewHeading.style.display = 'none';
+    }
+    
+    // Ajustar espacios en el resumen de pedido
+    const orderReview = document.querySelector('#order_review');
+    if (orderReview) {
+      orderReview.style.marginTop = '0';
+      orderReview.style.paddingTop = '0';
+    }
+  };
+  
   // Ejecutar las funciones
   fixHeaderLogo();
   fixReturnButton();
+  fixOrderSummaryDisplay();
   
   // Esperar un poco más para el resumen del pedido (puede cargarse después)
-  setTimeout(fixOrderReview, 1000);
+  setTimeout(function() {
+    fixOrderReview();
+    fixOrderSummaryDisplay();
+  }, 1000);
   
   // Ejecutar nuevamente después de que se cargue completamente la página
   window.addEventListener('load', function() {
     fixHeaderLogo();
     fixReturnButton();
     fixOrderReview();
+    fixOrderSummaryDisplay();
   });
   
   // En caso de que haya componentes dinámicos, intentar cada 1 segundo durante 5 segundos
@@ -169,6 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const interval = setInterval(function() {
     fixHeaderLogo();
     fixReturnButton();
+    fixOrderSummaryDisplay();
     if (attempts === 2) fixOrderReview(); // Intentar arreglar el resumen en el segundo intento
     attempts++;
     if (attempts >= 5) {
@@ -213,10 +235,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Ajustes para pantallas desktop */
 @media (min-width: 1024px) {
-  body.woocommerce-checkout .main {
-    margin-top: 40px;
-  }
-  
   body.woocommerce-checkout .header-container {
     background-color: rgba(255, 255, 255, 0.95) !important;
   }
@@ -268,6 +286,132 @@ document.addEventListener('DOMContentLoaded', function() {
   .woocommerce-checkout #order_review_heading {
     margin-top: 0;
   }
+}
+
+/* Ocultar título de resumen y eliminar espacios */
+#order_review_heading {
+  display: none !important;
+}
+
+#order_review {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Estilos para formularios de checkout */
+form.checkout input[type="text"],
+form.checkout input[type="tel"],
+form.checkout input[type="email"],
+form.checkout input[type="password"],
+form.checkout select,
+form.checkout textarea,
+.woocommerce-input-wrapper input[type="text"],
+.woocommerce-input-wrapper input[type="tel"],
+.woocommerce-input-wrapper input[type="email"],
+.woocommerce-input-wrapper input[type="password"],
+.woocommerce-input-wrapper select,
+.woocommerce-input-wrapper textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background-color: #f9fafb;
+  transition: all 0.3s ease;
+}
+
+form.checkout input[type="text"]:focus,
+form.checkout input[type="tel"]:focus,
+form.checkout input[type="email"]:focus,
+form.checkout input[type="password"]:focus,
+form.checkout select:focus,
+form.checkout textarea:focus,
+.woocommerce-input-wrapper input[type="text"]:focus,
+.woocommerce-input-wrapper input[type="tel"]:focus,
+.woocommerce-input-wrapper input[type="email"]:focus,
+.woocommerce-input-wrapper input[type="password"]:focus,
+.woocommerce-input-wrapper select:focus,
+.woocommerce-input-wrapper textarea:focus {
+  outline: none;
+  border-color: #D93280;
+  box-shadow: 0 0 0 2px rgba(217, 50, 128, 0.2);
+  background-color: white;
+}
+
+.woocommerce-checkout label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: #030D55;
+}
+
+/* Estilo para el botón de finalizar compra */
+#place_order,
+.checkout-button,
+.woocommerce button.button.alt {
+  background: linear-gradient(to right, #D93280, #5A0989) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 0.5rem !important;
+  border: none !important;
+  transition: all 0.3s ease !important;
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin-top: 1rem !important;
+}
+
+#place_order:hover,
+.checkout-button:hover,
+.woocommerce button.button.alt:hover {
+  background: linear-gradient(to right, #AB277A, #4A0979) !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Mejorar tabla de resumen del pedido */
+.woocommerce-checkout-review-order-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.woocommerce-checkout-review-order-table th,
+.woocommerce-checkout-review-order-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.woocommerce-checkout-review-order-table thead {
+  background-color: #f3f4f6;
+}
+
+.woocommerce-checkout-review-order-table thead th {
+  font-weight: 600;
+  color: #030D55;
+}
+
+.woocommerce-checkout-review-order-table tfoot {
+  background-color: #f9fafb;
+}
+
+.woocommerce-checkout-review-order-table tfoot th {
+  font-weight: 500;
+  text-align: left;
+}
+
+.woocommerce-checkout-review-order-table tfoot tr:last-child {
+  border-top: 2px solid #D93280;
+}
+
+.woocommerce-checkout-review-order-table tfoot tr:last-child th,
+.woocommerce-checkout-review-order-table tfoot tr:last-child td {
+  font-weight: 700;
+  color: #D93280;
+  font-size: 1.1rem;
 }
 </style>
 @endsection
