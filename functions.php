@@ -1366,6 +1366,71 @@ function ikintsugi_custom_avatar($avatar, $id_or_email, $size, $default, $alt) {
 }
 add_filter('get_avatar', 'ikintsugi_custom_avatar', 10, 5);
 
+/**
+ * Vincular automáticamente pedidos por email al usuario que inicia sesión
+ */
+function ikintsugi_link_orders_on_login($user_login, $user) {
+    if (!function_exists('wc_get_orders')) {
+        return; // Asegurarse de que WooCommerce está activo
+    }
+    
+    // Obtener email del usuario
+    $user_email = $user->user_email;
+    
+    // Buscar pedidos con ese email que no estén vinculados al usuario
+    $args = array(
+        'billing_email' => $user_email,
+        'customer_id'   => 0, // Pedidos sin usuario vinculado
+        'limit'         => -1,
+        'return'        => 'ids',
+    );
+    
+    $order_ids = wc_get_orders($args);
+    
+    if (!empty($order_ids)) {
+        foreach ($order_ids as $order_id) {
+            $order = wc_get_order($order_id);
+            if ($order) {
+                // Vincular el pedido al usuario
+                $order->set_customer_id($user->ID);
+                $order->save();
+            }
+        }
+    }
+}
+add_action('wp_login', 'ikintsugi_link_orders_on_login', 10, 2);
+
+/**
+ * Vincular automáticamente pedidos al usuario cuando se completa una compra
+ */
+function ikintsugi_link_order_on_checkout($order_id) {
+    if (!function_exists('wc_get_order')) {
+        return; // Asegurarse de que WooCommerce está activo
+    }
+    
+    // Obtener el pedido
+    $order = wc_get_order($order_id);
+    if (!$order) {
+        return;
+    }
+    
+    // Obtener el email del pedido
+    $billing_email = $order->get_billing_email();
+    
+    // Si no hay usuario asignado pero el email corresponde a un usuario registrado
+    if ($order->get_customer_id() == 0 && $billing_email) {
+        $user = get_user_by('email', $billing_email);
+        
+        if ($user) {
+            // Vincular el pedido al usuario
+            $order->set_customer_id($user->ID);
+            $order->save();
+        }
+    }
+}
+add_action('woocommerce_checkout_order_processed', 'ikintsugi_link_order_on_checkout', 10, 1);
+add_action('woocommerce_order_status_changed', 'ikintsugi_link_order_on_checkout', 10, 1);
+
 // Modificar los enlaces de logout en todo el sitio
 add_filter('logout_url', function($logout_url, $redirect) {
     // Crear un endpoint personalizado para logout
