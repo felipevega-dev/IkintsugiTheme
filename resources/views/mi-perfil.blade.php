@@ -23,18 +23,38 @@
   /* WooCommerce order details styling */
   .woocommerce .woocommerce-customer-details address,
   .woocommerce .woocommerce-order-details {
-    padding: 1rem;
+    padding: 1.5rem !important;
+    border-radius: 0.75rem !important;
+    border: none !important;
+    margin-bottom: 1.5rem !important;
+    background-color: white !important;
+    width: 100% !important;
+    position: relative !important;
+  }
+  
+  /* Gradient border for order details */
+  .woocommerce .woocommerce-order-details::before,
+  .woocommerce .woocommerce-customer-details address::before {
+    content: "";
+    position: absolute;
+    inset: 0;
     border-radius: 0.75rem;
-    border: 1px solid #e5e7eb;
-    margin-bottom: 1.5rem;
+    padding: 2px;
+    background: linear-gradient(to right, #D93280, #5A0989);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
   }
 
   .woocommerce .woocommerce-order-details h2,
   .woocommerce .woocommerce-customer-details h2 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #030D55;
-    margin-bottom: 1rem;
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    color: #030D55 !important;
+    margin-bottom: 1rem !important;
+    padding-bottom: 0.75rem !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05) !important;
   }
 
   .woocommerce-order-details__title,
@@ -43,26 +63,316 @@
     font-weight: 700 !important;
     color: #030D55 !important;
     margin-bottom: 1rem !important;
+    padding-bottom: 0.75rem !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05) !important;
   }
 
+  /* Table styling */
   .woocommerce table.shop_table {
-    border-radius: 0.75rem !important;
+    border-radius: 0.5rem !important;
     border: 1px solid #e5e7eb !important;
+    width: 100% !important;
+    margin-bottom: 1.5rem !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    overflow: hidden !important;
+    table-layout: fixed !important;
   }
 
   .woocommerce table.shop_table th {
     font-weight: 600 !important;
-    padding: 0.75rem !important;
+    padding: 0.75rem 1rem !important;
     background-color: #f9fafb !important;
+    color: #4B5563 !important;
+    text-transform: uppercase !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.05em !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    text-align: left !important;
+    vertical-align: middle !important;
   }
 
   .woocommerce table.shop_table td {
-    padding: 0.75rem !important;
+    padding: 1rem !important;
     border-top: 1px solid #e5e7eb !important;
+    color: #374151 !important;
+    vertical-align: middle !important;
+    text-align: left !important;
   }
-
+  
+  /* Set specific widths for table columns in order details */
+  .woocommerce-table--order-details .product-name {
+    width: 50% !important;
+  }
+  
+  .woocommerce-table--order-details .product-total {
+    width: 20% !important;
+    text-align: right !important;
+  }
+  
+  .woocommerce-table--order-details tfoot th {
+    text-align: left !important;
+  }
+  
+  .woocommerce-table--order-details tfoot td {
+    text-align: right !important;
+  }
+  
+  /* Fix for custom order table */
+  .custom-order-details table {
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    table-layout: fixed !important;
+  }
+  
+  .custom-order-details table th,
+  .custom-order-details table td {
+    padding: 0.75rem 1rem !important;
+    text-align: left !important;
+    vertical-align: middle !important;
+    line-height: 1.5 !important;
+  }
+  
+  .custom-order-details table th:last-child,
+  .custom-order-details table td:last-child {
+    text-align: right !important;
+  }
+  
+  /* Ensure proper spacing between rows */
+  .custom-order-details table tbody tr {
+    border-bottom: 1px solid #f3f4f6 !important;
+  }
+  
+  .custom-order-details table tbody tr:last-child {
+    border-bottom: none !important;
+  }
+  
+  /* Ensure data doesn't overflow cells */
+  .woocommerce table.shop_table td,
+  .woocommerce table.shop_table th,
+  .custom-order-details table td,
+  .custom-order-details table th {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+  
+  /* Fix alignment issues for address columns */
+  .woocommerce-customer-details .woocommerce-column {
+    padding: 0 1rem !important;
+  }
+  
+  .woocommerce-order-details__title,
+  .woocommerce-column__title {
+    padding-left: 0 !important;
+  }
+  
+  /* Fix any additional WooCommerce table classes that could cause misalignment */
+  .woocommerce table.shop_table_responsive tr td::before,
+  .woocommerce-page table.shop_table_responsive tr td::before {
+    float: none !important;
+    display: block !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  /* Fix for desktop screens specifically */
+  @media (min-width: 768px) {
+    .woocommerce table.shop_table_responsive tr td,
+    .woocommerce-page table.shop_table_responsive tr td {
+      display: table-cell !important;
+      text-align: left !important;
+    }
+    
+    .woocommerce table.shop_table_responsive tr td:last-child,
+    .woocommerce-page table.shop_table_responsive tr td:last-child,
+    .woocommerce table.shop_table_responsive tr th:last-child,
+    .woocommerce-page table.shop_table_responsive tr th:last-child {
+      text-align: right !important;
+    }
+    
+    .woocommerce table.shop_table_responsive tr td::before,
+    .woocommerce-page table.shop_table_responsive tr td::before {
+      display: none !important;
+    }
+  }
+  
   .woocommerce-order-details .order-again {
     display: none !important;
+  }
+  
+  /* Order details container */
+  .order-details-container {
+    background: white;
+    border-radius: 1rem;
+    position: relative;
+    padding: 2px;
+    background: linear-gradient(to right, #D93280, #5A0989);
+    margin-bottom: 2rem;
+  }
+  
+  .order-details-container-inner {
+    background-color: white;
+    border-radius: calc(1rem - 2px);
+    padding: 1.5rem;
+  }
+  
+  /* Order info section */
+  .order-info {
+    padding: 1rem;
+    background-color: #F3F4F6;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .order-info mark {
+    background-color: #FEE2E2;
+    color: #991B1B;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: 500;
+  }
+  
+  /* Status badges */
+  .order-status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  .order-status.processing {
+    background-color: #DBEAFE;
+    color: #1E40AF;
+  }
+  
+  .order-status.completed {
+    background-color: #D1FAE5;
+    color: #065F46;
+  }
+  
+  .order-status.on-hold {
+    background-color: #FEF3C7;
+    color: #92400E;
+  }
+  
+  /* Responsive fixes */
+  @media (max-width: 768px) {
+    .woocommerce table.shop_table_responsive tr td::before, 
+    .woocommerce-page table.shop_table_responsive tr td::before {
+      font-weight: 600 !important;
+      color: #4B5563 !important;
+    }
+    
+    .woocommerce table.shop_table_responsive tr, 
+    .woocommerce-page table.shop_table_responsive tr {
+      margin-bottom: 0.5rem !important;
+    }
+    
+    .woocommerce table.shop_table_responsive tr td, 
+    .woocommerce-page table.shop_table_responsive tr td {
+      padding: 0.75rem !important;
+      background-color: transparent !important;
+    }
+  }
+  
+  /* Custom order details design */
+  .custom-order-details {
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+    background-image: linear-gradient(to right, #D93280, #5A0989);
+    padding: 2px;
+  }
+  
+  .custom-order-details-inner {
+    background-color: white;
+    border-radius: calc(1rem - 2px);
+    overflow: hidden;
+    padding: 1.5rem;
+  }
+  
+  .custom-order-header {
+    border-bottom: 1px solid #E5E7EB;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .custom-order-header h3 {
+    font-weight: 700;
+    color: #030D55;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .custom-order-item {
+    display: flex;
+    padding: 1rem 0;
+    border-bottom: 1px solid #F3F4F6;
+  }
+  
+  .custom-order-item:last-child {
+    border-bottom: none;
+  }
+  
+  .custom-order-item-details {
+    flex: 1;
+  }
+  
+  .custom-order-meta {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .custom-order-meta-item {
+    background-color: #F9FAFB;
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .custom-order-meta-label {
+    color: #6B7280;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .custom-order-meta-value {
+    font-weight: 600;
+    color: #111827;
+  }
+  
+  .custom-order-totals {
+    margin-top: 1.5rem;
+    border-top: 1px solid #E5E7EB;
+    padding-top: 1.5rem;
+  }
+  
+  .custom-order-total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+  
+  .custom-order-total-label {
+    color: #6B7280;
+  }
+  
+  .custom-order-total-value {
+    font-weight: 600;
+    color: #111827;
+  }
+  
+  .custom-order-grand-total {
+    font-weight: 700;
+    color: #030D55;
+    font-size: 1.125rem;
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid #E5E7EB;
   }
 </style>
 <div class="py-8 md:py-16 lg:py-28 bg-gray-50">
@@ -119,8 +429,8 @@
           </div>
         </div>
         
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-8">
-          <div class="p-4 md:p-6">
+        <div class="custom-order-details">
+          <div class="custom-order-details-inner">
             <?php 
               // Display order details using WooCommerce's template
               if (function_exists('wc_get_order')) {
@@ -128,6 +438,24 @@
                 
                 // Check if order exists and belongs to current user
                 if ($order && $order->get_customer_id() == get_current_user_id()) {
+                  // Order status info with custom styling
+                  $status = $order->get_status();
+                  $status_name = wc_get_order_status_name($status);
+                  $date_created = $order->get_date_created()->date_i18n(get_option('date_format') . ' ' . get_option('time_format'));
+                  
+                  echo '<div class="custom-order-header">';
+                  echo '<h3>Pedido #' . $order_id . '</h3>';
+                  echo '<div class="flex flex-wrap items-center gap-2 text-sm">';
+                  echo '<p class="text-gray-600">Realizado el ' . $date_created . '</p>';
+                  echo '<span class="px-2 py-1 text-xs font-medium rounded-full ';
+                  if($status == 'completed') echo 'bg-green-100 text-green-800';
+                  elseif($status == 'processing') echo 'bg-blue-100 text-blue-800';
+                  elseif($status == 'on-hold') echo 'bg-yellow-100 text-yellow-800';
+                  else echo 'bg-gray-100 text-gray-800';
+                  echo '">' . $status_name . '</span>';
+                  echo '</div>';
+                  echo '</div>';
+                  
                   // Display order details either by WooCommerce template or custom implementation
                   if (function_exists('wc_get_template')) {
                     // Try to use WooCommerce template
@@ -139,37 +467,61 @@
                     // Custom fallback order details display
                     echo '<div class="divide-y divide-gray-200">';
                     
-                    // Order header
-                    echo '<div class="pb-4">';
-                    echo '<h3 class="text-lg font-bold text-gray-900 mb-2">Pedido #' . $order_id . '</h3>';
-                    echo '<p class="text-sm text-gray-500">Realizado el ' . $order->get_date_created()->date_i18n(get_option('date_format') . ' ' . get_option('time_format')) . '</p>';
-                    echo '<p class="text-sm text-gray-500 mt-1">Estado: <span class="font-medium">' . wc_get_order_status_name($order->get_status()) . '</span></p>';
-                    echo '</div>';
-                    
                     // Order items
                     echo '<div class="py-4">';
                     echo '<h4 class="text-md font-semibold text-gray-900 mb-3">Productos</h4>';
-                    echo '<ul class="divide-y divide-gray-100">';
+                    
+                    echo '<div class="overflow-x-auto">';
+                    echo '<table class="min-w-full divide-y divide-gray-200 border border-gray-200 rounded-lg">';
+                    echo '<thead class="bg-gray-50">';
+                    echo '<tr>';
+                    echo '<th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Producto</th>';
+                    echo '<th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cantidad</th>';
+                    echo '<th scope="col" class="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Precio</th>';
+                    echo '</tr>';
+                    echo '</thead>';
+                    echo '<tbody class="bg-white divide-y divide-gray-200">';
                     
                     foreach ($order->get_items() as $item_id => $item) {
                       $product = $item->get_product();
                       $image = $product ? $product->get_image(array(60, 60)) : '';
                       
-                      echo '<li class="py-3 flex items-start">';
-                      echo '<div class="flex-shrink-0 mr-3">' . $image . '</div>';
-                      echo '<div class="flex-1">';
-                      echo '<p class="font-medium text-gray-900">' . $item->get_name() . ' × ' . $item->get_quantity() . '</p>';
-                      echo '<p class="text-sm text-gray-500 mt-1">' . $order->get_formatted_line_subtotal($item) . '</p>';
+                      echo '<tr class="hover:bg-gray-50">';
+                      echo '<td class="px-4 py-3">';
+                      echo '<div class="flex items-center">';
+                      echo '<div class="flex-shrink-0 h-10 w-10 mr-3">' . $image . '</div>';
+                      echo '<div>';
+                      echo '<p class="font-medium text-gray-900">' . $item->get_name() . '</p>';
+                      
+                      // Display item meta data
+                      $item_data = $item->get_formatted_meta_data();
+                      if (!empty($item_data)) {
+                        echo '<div class="text-sm text-gray-500 mt-1">';
+                        foreach ($item_data as $meta) {
+                          if (isset($meta->display_key) && isset($meta->display_value)) {
+                            echo '<span>' . $meta->display_key . ': ' . $meta->display_value . '</span><br>';
+                          }
+                        }
+                        echo '</div>';
+                      }
+                      
                       echo '</div>';
-                      echo '</li>';
+                      echo '</div>';
+                      echo '</td>';
+                      echo '<td class="px-4 py-3 text-sm text-gray-500">' . $item->get_quantity() . '</td>';
+                      echo '<td class="px-4 py-3 text-sm text-gray-500 text-right">' . $order->get_formatted_line_subtotal($item) . '</td>';
+                      echo '</tr>';
                     }
                     
-                    echo '</ul>';
+                    echo '</tbody>';
+                    echo '</table>';
+                    echo '</div>';
                     echo '</div>';
                     
                     // Order totals
                     echo '<div class="py-4">';
                     echo '<h4 class="text-md font-semibold text-gray-900 mb-3">Resumen del pedido</h4>';
+                    echo '<div class="bg-gray-50 p-4 rounded-lg">';
                     echo '<div class="space-y-2">';
                     
                     // Subtotal
@@ -195,13 +547,48 @@
                     }
                     
                     // Total
-                    echo '<div class="flex justify-between pt-2 border-t border-gray-100">';
+                    echo '<div class="flex justify-between pt-2 border-t border-gray-200">';
                     echo '<span class="text-gray-900 font-bold">Total:</span>';
                     echo '<span class="text-gray-900 font-bold">' . $order->get_formatted_order_total() . '</span>';
                     echo '</div>';
                     
                     echo '</div>';
                     echo '</div>';
+                    echo '</div>';
+                    
+                    // Address information if available
+                    if ($order->has_shipping_address() || $order->has_billing_address()) {
+                      echo '<div class="py-4">';
+                      echo '<h4 class="text-md font-semibold text-gray-900 mb-3">Información de contacto</h4>';
+                      echo '<div class="grid grid-cols-1 md:grid-cols-2 gap-4">';
+                      
+                      // Billing address
+                      if ($order->has_billing_address()) {
+                        echo '<div class="bg-gray-50 p-4 rounded-lg">';
+                        echo '<h5 class="font-medium text-gray-900 mb-2">Dirección de facturación</h5>';
+                        echo '<address class="not-italic text-sm text-gray-500">';
+                        echo $order->get_formatted_billing_address();
+                        echo '<br>Email: ' . $order->get_billing_email();
+                        if ($order->get_billing_phone()) {
+                          echo '<br>Teléfono: ' . $order->get_billing_phone();
+                        }
+                        echo '</address>';
+                        echo '</div>';
+                      }
+                      
+                      // Shipping address
+                      if ($order->has_shipping_address()) {
+                        echo '<div class="bg-gray-50 p-4 rounded-lg">';
+                        echo '<h5 class="font-medium text-gray-900 mb-2">Dirección de envío</h5>';
+                        echo '<address class="not-italic text-sm text-gray-500">';
+                        echo $order->get_formatted_shipping_address();
+                        echo '</address>';
+                        echo '</div>';
+                      }
+                      
+                      echo '</div>';
+                      echo '</div>';
+                    }
                     
                     echo '</div>';
                   }
@@ -787,6 +1174,117 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+  
+  // Enhance WooCommerce order details styling
+  if (document.querySelector('.woocommerce-order-details')) {
+    // Add gradient border to WooCommerce elements if they don't have custom styles
+    if (!document.querySelector('.custom-order-details')) {
+      const orderDetails = document.querySelectorAll('.woocommerce-order-details, .woocommerce-customer-details');
+      orderDetails.forEach(el => {
+        // Wrap with gradient border
+        const wrapper = document.createElement('div');
+        wrapper.className = 'custom-order-details mb-6';
+        el.parentNode.insertBefore(wrapper, el);
+        wrapper.appendChild(el);
+        
+        // Add inner container
+        const inner = document.createElement('div');
+        inner.className = 'custom-order-details-inner';
+        wrapper.parentNode.insertBefore(inner, wrapper);
+        inner.appendChild(wrapper);
+      });
+    }
+    
+    // Enhance status display
+    const orderInfo = document.querySelector('.woocommerce-order-details');
+    if (orderInfo) {
+      const statusText = orderInfo.querySelector('mark');
+      if (statusText) {
+        const status = statusText.textContent.toLowerCase();
+        statusText.className = 'order-status';
+        
+        // Add status-specific class
+        if (status.includes('procesando') || status.includes('processing')) {
+          statusText.classList.add('processing');
+        } else if (status.includes('completado') || status.includes('completed')) {
+          statusText.classList.add('completed');
+        } else if (status.includes('espera') || status.includes('hold')) {
+          statusText.classList.add('on-hold');
+        }
+      }
+    }
+    
+    // Enhance tables
+    const tables = document.querySelectorAll('.woocommerce-table, .shop_table');
+    tables.forEach(table => {
+      table.classList.add('w-full', 'border', 'border-gray-200', 'rounded-lg', 'overflow-hidden');
+      
+      // Fix table layout for desktop
+      if (window.innerWidth >= 768) {
+        table.style.tableLayout = 'fixed';
+        
+        // Set column widths appropriately
+        const headerRow = table.querySelector('thead tr');
+        if (headerRow) {
+          const headers = headerRow.querySelectorAll('th');
+          if (headers.length > 0) {
+            // Product column gets more space
+            if (headers[0].classList.contains('product-name')) {
+              headers[0].style.width = '60%';
+            }
+            
+            // Set last column (totals) to be right-aligned
+            const lastHeader = headers[headers.length - 1];
+            if (lastHeader) {
+              lastHeader.style.textAlign = 'right';
+            }
+          }
+        }
+        
+        // Fix alignment for data cells
+        const cells = table.querySelectorAll('tbody td, tfoot td');
+        cells.forEach(cell => {
+          // Right-align price columns
+          if (cell.classList.contains('product-total') || 
+              cell.classList.contains('woocommerce-Price-amount') ||
+              cell.innerHTML.includes('woocommerce-Price-amount')) {
+            cell.style.textAlign = 'right';
+          }
+        });
+        
+        // Specifically align footer cells
+        const footerCells = table.querySelectorAll('tfoot td');
+        footerCells.forEach(cell => {
+          cell.style.textAlign = 'right';
+        });
+      }
+    });
+    
+    // Make all rows in order details visible and properly formatted
+    const orderRows = document.querySelectorAll('.woocommerce-table tr, .shop_table tr');
+    orderRows.forEach(row => {
+      row.style.display = 'table-row';
+      
+      // Make sure each cell is visible
+      const cells = row.querySelectorAll('td, th');
+      cells.forEach(cell => {
+        cell.style.display = 'table-cell';
+        cell.style.verticalAlign = 'middle';
+      });
+    });
+    
+    // Make all address blocks more attractive
+    const addresses = document.querySelectorAll('.woocommerce-customer-details address');
+    addresses.forEach(address => {
+      address.classList.add('bg-gray-50', 'p-4', 'rounded-lg', 'not-italic');
+    });
+    
+    // Fix the order info section if it exists
+    const orderInfoSection = document.querySelector('.order-info');
+    if (orderInfoSection) {
+      orderInfoSection.classList.add('bg-gray-50', 'p-4', 'rounded-lg', 'mb-6', 'text-sm');
+    }
+  }
 });
 </script>
 
