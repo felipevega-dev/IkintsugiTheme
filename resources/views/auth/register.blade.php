@@ -5,47 +5,47 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="py-28 bg-gray-50">
-  <div class="container mx-auto px-4  mt-28">
+<div class="lg:pt-34 md:pt-28">
+  <div class="container mx-auto px-4 py-12 md:py-16">
     <div class="max-w-md mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
-      <div class="bg-gradient-to-r from-[#D93280] to-[#5A0989] py-6 px-8">
+      <div class="bg-gradient-to-r from-[#D93280] to-[#5A0989] py-4 md:py-6 px-6 md:px-8">
         <h1 class="text-2xl font-bold text-white font-paytone">Crear cuenta</h1>
         <p class="text-white/80 text-sm mt-2">Regístrate para poder comentar en nuestro blog</p>
       </div>
       
-      <div class="py-8 px-8">
-        <div id="register-messages" class="mb-6 hidden">
-          <div class="p-4 rounded-xl bg-red-50 text-red-800 text-sm"></div>
+      <div class="py-6 md:py-8 px-5 md:px-8">
+        <div id="register-messages" class="mb-5 md:mb-6 hidden">
+          <div class="p-3 md:p-4 rounded-xl bg-red-50 text-red-800 text-sm"></div>
         </div>
         
-        <form id="register-form" class="space-y-5">
+        <form id="register-form" class="space-y-4 md:space-y-5">
           <?php wp_nonce_field('ikintsugi_register_nonce', 'register_nonce'); ?>
           
           <div>
             <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Nombre de usuario <span class="text-red-600">*</span></label>
-            <input type="text" id="username" name="username" class="w-full px-4 py-3 rounded-xl border-gray-300 shadow-sm focus:border-[#AB277A] focus:ring focus:ring-[#AB277A] focus:ring-opacity-30 transition-all" required>
+            <input type="text" id="username" name="username" class="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border-gray-300 shadow-sm focus:border-[#AB277A] focus:ring focus:ring-[#AB277A] focus:ring-opacity-30 transition-all" required>
             <p class="text-xs text-gray-500 mt-1">El nombre que usarás para iniciar sesión y que se mostrará en tus comentarios.</p>
           </div>
           
           <div>
             <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Correo electrónico <span class="text-red-600">*</span></label>
-            <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-xl border-gray-300 shadow-sm focus:border-[#AB277A] focus:ring focus:ring-[#AB277A] focus:ring-opacity-30 transition-all" required>
+            <input type="email" id="email" name="email" class="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border-gray-300 shadow-sm focus:border-[#AB277A] focus:ring focus:ring-[#AB277A] focus:ring-opacity-30 transition-all" required>
             <p class="text-xs text-gray-500 mt-1">Tu correo electrónico no se mostrará públicamente.</p>
           </div>
           
           <div>
             <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Contraseña <span class="text-red-600">*</span></label>
-            <input type="password" id="password" name="password" class="w-full px-4 py-3 rounded-xl border-gray-300 shadow-sm focus:border-[#AB277A] focus:ring focus:ring-[#AB277A] focus:ring-opacity-30 transition-all" required>
+            <input type="password" id="password" name="password" class="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border-gray-300 shadow-sm focus:border-[#AB277A] focus:ring focus:ring-[#AB277A] focus:ring-opacity-30 transition-all" required>
             <p class="text-xs text-gray-500 mt-1">Usa al menos 8 caracteres con letras y números.</p>
           </div>
           
           <div>
             <label for="password_confirm" class="block text-sm font-medium text-gray-700 mb-1">Confirmar contraseña <span class="text-red-600">*</span></label>
-            <input type="password" id="password_confirm" name="password_confirm" class="w-full px-4 py-3 rounded-xl border-gray-300 shadow-sm focus:border-[#AB277A] focus:ring focus:ring-[#AB277A] focus:ring-opacity-30 transition-all" required>
+            <input type="password" id="password_confirm" name="password_confirm" class="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border-gray-300 shadow-sm focus:border-[#AB277A] focus:ring focus:ring-[#AB277A] focus:ring-opacity-30 transition-all" required>
           </div>
           
           <div class="mt-2">
-            <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-gradient-to-r from-[#D93280] to-[#5A0989] hover:from-[#AB277A] hover:to-[#4A0979] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#AB277A] transition-all transform hover:scale-[1.02] duration-200">
+            <button type="submit" class="w-full flex justify-center py-2.5 md:py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-gradient-to-r from-[#D93280] to-[#5A0989] hover:from-[#AB277A] hover:to-[#4A0979] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#AB277A] transition-all transform hover:scale-[1.02] duration-200">
               <span class="register-btn-text">Crear cuenta</span>
               <span class="register-btn-loading hidden flex items-center ml-2">
                 <svg class="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -57,12 +57,12 @@
           </div>
         </form>
         
-        <div class="mt-8 text-center">
+        <div class="mt-6 md:mt-8 text-center">
           <p class="text-sm text-gray-600">
             ¿Ya tienes una cuenta? 
             <a href="{{ home_url('/login') }}" class="text-[#AB277A] hover:text-[#D93280] font-medium transition-colors">Inicia sesión</a>
           </p>
-          <a href="{{ home_url('/blog') }}" class="mt-4 inline-block text-sm text-gray-600 hover:text-gray-900 transition-colors">
+          <a href="{{ home_url('/blog') }}" class="mt-3 md:mt-4 inline-block text-sm text-gray-600 hover:text-gray-900 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block mr-1" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
             </svg>

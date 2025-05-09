@@ -1365,3 +1365,101 @@ function ikintsugi_custom_avatar($avatar, $id_or_email, $size, $default, $alt) {
     return $avatar;
 }
 add_filter('get_avatar', 'ikintsugi_custom_avatar', 10, 5);
+
+// Modificar los enlaces de logout en todo el sitio
+add_filter('logout_url', function($logout_url, $redirect) {
+    // Crear un endpoint personalizado para logout
+    return home_url('/?custom_logout=true&_wpnonce=' . wp_create_nonce('custom-logout-nonce'));
+}, 10, 2);
+
+// Manejar el logout personalizado
+add_action('init', function() {
+    if (isset($_GET['custom_logout']) && $_GET['custom_logout'] === 'true') {
+        if (check_admin_referer('custom-logout-nonce', '_wpnonce')) {
+            wp_logout();
+            wp_redirect(home_url());
+            exit();
+        }
+    }
+});
+
+// Agregar modal de confirmación de logout al footer
+function add_logout_confirmation_modal() {
+    if (is_user_logged_in()) {
+        ?>
+        <div id="logout-confirm-modal" class="fixed inset-0 bg-black bg-opacity-25 z-50 hidden flex items-center justify-center">
+            <div class="bg-white rounded-xl shadow-lg max-w-md w-full mx-4 overflow-hidden transform transition-all scale-95 opacity-0" id="modal-content">
+                <div class="bg-gradient-to-r from-[#D93280] to-[#5A0989] px-6 py-4">
+                    <h3 class="text-white text-lg font-bold">Cerrar Sesión</h3>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-6">¿Estás seguro que deseas cerrar sesión?</p>
+                    <div class="flex justify-end gap-3">
+                        <button onclick="closeLogoutModal()" class="px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors">
+                            Cancelar
+                        </button>
+                        <button onclick="confirmLogout()" 
+                           class="px-4 py-2 bg-gradient-to-r from-[#D93280] to-[#5A0989] text-white rounded-md hover:from-[#AB277A] hover:to-[#4A0979] transition-all transform hover:scale-105">
+                            Confirmar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function showLogoutModal(e) {
+                if (e) e.preventDefault();
+                const modal = document.getElementById('logout-confirm-modal');
+                const content = document.getElementById('modal-content');
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    content.classList.remove('scale-95', 'opacity-0');
+                    content.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            }
+            
+            function closeLogoutModal() {
+                const modal = document.getElementById('logout-confirm-modal');
+                const content = document.getElementById('modal-content');
+                content.classList.add('scale-95', 'opacity-0');
+                content.classList.remove('scale-100', 'opacity-100');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 200);
+            }
+
+            function confirmLogout() {
+                window.location.href = '<?php echo wp_logout_url(home_url()); ?>';
+            }
+            
+            document.addEventListener('DOMContentLoaded', function() {
+                // Capturar todos los enlaces de logout posibles
+                const logoutLinks = document.querySelectorAll('a[href*="logout"], a[href*="salir"], .logout-link');
+                logoutLinks.forEach(link => {
+                    link.addEventListener('click', showLogoutModal);
+                });
+
+                document.getElementById('logout-confirm-modal').addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeLogoutModal();
+                    }
+                });
+            });
+        </script>
+        <?php
+    }
+}
+add_action('wp_footer', 'add_logout_confirmation_modal');
+
+// Template personalizado para recuperación de contraseña
+add_action('init', function() {
+    if (isset($_GET['action']) && $_GET['action'] === 'lostpassword') {
+        add_filter('template_include', function($template) {
+            $new_template = locate_template(['views/auth/lost-password.blade.php']);
+            if ($new_template) {
+                return $new_template;
+            }
+            return $template;
+        });
+    }
+});

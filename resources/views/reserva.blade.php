@@ -52,12 +52,11 @@
     </div>
   </section>
 
-  <section class="reserva-section bg-white py-10 lg:py-16 overflow-x-hidden">
+  <section class="reserva-section bg-white overflow-x-hidden mb-20">
     <div class="container mx-auto px-4 max-w-6xl">
       <h2 class="text-2xl md:text-4xl lg:text-5xl font-bold text-[#030D55] mb-8 text-center transition-all duration-500 hover:text-[#AB277A] font-paytone">Reserva tu cita con nosotros</h2>
-      <p class="text-base md:text-lg text-center mb-8 text-[#181818]">Selecciona el profesional y el horario que más te acomode.</p>
       <div class="bg-white/90 rounded-lg p-6 shadow-lg">
-        {!! do_shortcode('[bookly-staff-form my-form]') !!}
+        {!! do_shortcode('[bookly-services-form my-form-398]') !!}
       </div>
     </div>
   </section>

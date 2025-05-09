@@ -478,7 +478,10 @@ div[class*="shipping-fields"],
   padding: 1.5rem;
   background-color: #f9fafb;
   border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 4px solid transparent;
+  background-image: linear-gradient(white, white), linear-gradient(to right, #D93280, #5A0989);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
 }
 
 /* Sección de información adicional a ancho completo */
@@ -737,7 +740,10 @@ form.checkout textarea:focus,
   background-color: #f9fafb;
   border-radius: 0.5rem;
   padding: 1.5rem !important;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  border: 4px solid transparent;
+  background-image: linear-gradient(white, white), linear-gradient(to right, #D93280, #5A0989);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
 }
 
 /* Estilos para el resumen de pedido generado por JS */
@@ -820,13 +826,13 @@ form.checkout textarea:focus,
 .woocommerce-checkout #payment {
   background-color: white;
   border-radius: 0.5rem;
-  border: 1px solid #e5e7eb;
+  padding: 1.5rem;
   margin-top: 1.5rem;
 }
 
 .woocommerce-checkout #payment ul.payment_methods {
   padding: 1rem;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid rgba(217, 50, 128, 0.2);
 }
 
 .woocommerce-checkout #payment div.payment_box {
@@ -1022,6 +1028,72 @@ form.checkout textarea:focus,
   background: linear-gradient(to right, #AB277A, #4A0979) !important;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
   transform: translateY(-2px) !important;
+}
+
+/* Estilos para el mensaje de login */
+.woocommerce-form-login-toggle .woocommerce-info,
+.woocommerce-form-coupon-toggle .woocommerce-info {
+  background: linear-gradient(to right, #D93280, #5A0989) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 0.5rem !important;
+  padding: 1.25rem 1.25rem 1.25rem 3rem !important;
+  margin-bottom: 1.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  position: relative !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.woocommerce-form-login-toggle .woocommerce-info::before,
+.woocommerce-form-coupon-toggle .woocommerce-info::before {
+  color: white !important;
+  opacity: 0.9 !important;
+  position: absolute !important;
+  left: 1.25rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+.woocommerce-form-login-toggle .woocommerce-info a,
+.woocommerce-form-coupon-toggle .woocommerce-info a {
+  color: white !important;
+  text-decoration: underline !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+  margin-left: 0.5rem !important;
+}
+
+.woocommerce-form-login-toggle .woocommerce-info a:hover,
+.woocommerce-form-coupon-toggle .woocommerce-info a:hover {
+  opacity: 0.9 !important;
+  text-decoration: none !important;
+}
+
+/* Formulario de login en checkout */
+.woocommerce-form-login {
+  background-color: white !important;
+  border: 4px solid transparent !important;
+  border-radius: 0.5rem !important;
+  background-image: linear-gradient(white, white), linear-gradient(to right, #D93280, #5A0989) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  padding: 1.5rem !important;
+  margin-bottom: 2rem !important;
+}
+
+/* Ajuste de espaciado para iconos y texto */
+.woocommerce-info {
+  line-height: 1.5 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+/* Asegurar que el texto no se superponga con el icono */
+.woocommerce-info > * {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 </style>
 @endsection

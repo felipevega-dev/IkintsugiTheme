@@ -22,11 +22,11 @@ Template Name: Cart Template
 @section('content')
 <section class="py-6 bg-white md:py-8 lg:py-12">
   <div class="container mx-auto px-4">
-    <div class="text-center mb-12 pt-16 md:pt-20 lg:pt-24 mt-10">
+    <div class="text-center mb-6 mt-10">
       <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#030D55] mb-8 font-playfair">Carrito de Compra</h1>
     </div>
     
-    <div class="woocommerce bg-white p-6 rounded-lg shadow-sm max-w-5xl mx-auto">
+    <div class="woocommerce bg-white p-6 rounded-lg shadow-sm max-w-5xl mx-auto" style="border: 4px solid transparent; border-radius: 0.5rem; background-image: linear-gradient(white, white), linear-gradient(to right, #D93280, #5A0989); background-origin: border-box; background-clip: padding-box, border-box;">
       {!! do_shortcode('[woocommerce_cart]') !!}
     </div>
   </div>
@@ -186,7 +186,11 @@ document.addEventListener('DOMContentLoaded', function() {
 .wc-block-components-button:not(.is-link) {
   background-color: #D93280 !important;
   color: white !important;
-  display: inline-block !important;
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin: 1rem auto !important;
+  max-width: 300px !important;
 }
 
 /* Eliminar contenido before del botón */
@@ -424,6 +428,58 @@ document.addEventListener('DOMContentLoaded', function() {
   text-decoration: none !important;
 }
 
+/* Ajustes para botones en mobile */
+@media (max-width: 768px) {
+  .woocommerce-cart table.cart td.actions {
+    padding: 1rem !important;
+  }
 
+  .woocommerce-cart table.cart td.actions .coupon {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .woocommerce-cart table.cart td.actions .coupon .input-text {
+    width: 100% !important;
+    margin-right: 0 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .woocommerce-cart table.cart td.actions .coupon .button,
+  .woocommerce-cart table.cart td.actions .button {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .woocommerce-cart .wc-proceed-to-checkout {
+    padding: 0 !important;
+  }
+
+  .woocommerce-cart .wc-proceed-to-checkout .checkout-button {
+    margin: 1rem 0 !important;
+    padding: 1rem !important;
+  }
+
+  .woocommerce-cart .return-to-shop {
+    text-align: center !important;
+    padding: 0 1rem !important;
+  }
+}
+
+/* Ajustes generales de espaciado */
+.woocommerce-cart .cart-collaterals {
+  margin-top: 1rem !important;
+  padding: 0 1rem !important;
+}
+
+.woocommerce-cart .cart_totals table {
+  margin-bottom: 1rem !important;
+}
+
+.woocommerce-notices-wrapper {
+  padding: 0 1rem !important;
+}
 </style>
 @endsection

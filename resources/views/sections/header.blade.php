@@ -745,48 +745,58 @@
         
         <!-- Botón "Reservar Cita" (columna derecha) -->
         <div class="flex justify-end pr-4 xl:pr-6 2xl:pr-8 items-center">
-          <!-- User Profile Menu (only shows when logged in) -->
-          @if(is_user_logged_in())
+          <!-- User Profile Menu -->
           <div class="relative group mr-3 xl:mr-4">
-            <button class="flex items-center text-[#030D55] hover:text-[#D93280] transition-all duration-300">
-              <div class="rounded-full border-2 border-[#AB277A] shadow-sm overflow-hidden h-8 w-8">
-                <?php echo get_avatar(get_current_user_id(), 32); ?>
+            @if(is_user_logged_in())
+              <button class="flex items-center text-[#030D55] hover:text-[#D93280] transition-all duration-300">
+                <div class="rounded-full border-2 border-[#AB277A] shadow-sm overflow-hidden h-8 w-8">
+                  <?php echo get_avatar(get_current_user_id(), 32); ?>
+                </div>
+                <span class="font-roboto hidden 2xl:inline ml-2">
+                  <?php echo wp_get_current_user()->display_name; ?>
+                </span>
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              
+              <!-- User dropdown menu -->
+              <div class="top-row submenu-container">
+                <div class="vertical-submenu">
+                  <a href="{{ home_url('/mi-perfil') }}" class="vertical-submenu-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    Mi Perfil
+                  </a>
+                  <a href="{{ home_url('/mis-reservas') }}" class="vertical-submenu-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    Mis Reservas
+                  </a>
+                  <a href="{{ wp_logout_url(home_url()) }}" class="vertical-submenu-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    Cerrar Sesión
+                  </a>
+                </div>
               </div>
-              <!-- Nombre visible solo en pantallas más grandes de 1535px -->
-              <span class="font-roboto hidden 2xl:inline ml-2">
-                <?php echo wp_get_current_user()->display_name; ?>
-              </span>
-              <!-- Flecha siempre visible para indicar que hay menú desplegable -->
-              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            
-            <!-- User dropdown menu -->
-            <div class="top-row submenu-container">
-              <div class="vertical-submenu">
-                <a href="{{ home_url('/mi-perfil') }}" class="vertical-submenu-item">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                  Mi Perfil
+            @else
+              <div class="flex items-center space-x-2">
+                <a href="{{ home_url('/login') }}" 
+                   class="text-[#030D55] hover:text-[#D93280] transition-all duration-300 text-sm font-medium">
+                  Iniciar Sesión
                 </a>
-                <a href="{{ home_url('/mis-reservas') }}" class="vertical-submenu-item">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  Mis Reservas
-                </a>
-                <a href="{{ wp_logout_url(home_url()) }}" class="vertical-submenu-item">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                  </svg>
-                  Cerrar Sesión
+                <span class="text-gray-300">|</span>
+                <a href="{{ home_url('/registro') }}" 
+                   class="text-[#030D55] hover:text-[#D93280] transition-all duration-300 text-sm font-medium">
+                  Registrarse
                 </a>
               </div>
-            </div>
+            @endif
           </div>
-          @endif
           
           <a href="{{ home_url('/reservar-cita') }}" 
              class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 
@@ -853,28 +863,24 @@
                 </a>
               </div>
               
-              <!-- User profile section (only if logged in) -->
-              @if(is_user_logged_in())
-              <div class="mb-6 bg-gray-50 rounded-xl p-4 flex items-center">
-                <div class="mr-3 rounded-full border-2 border-[#AB277A] shadow-sm overflow-hidden h-12 w-12">
-                  <?php echo get_avatar(get_current_user_id(), 48); ?>
-                </div>
-                <div>
-                  <p class="text-gray-900 font-medium">
-                    <?php echo wp_get_current_user()->display_name; ?>
-                  </p>
-                  <div class="flex space-x-3 mt-2">
-                    <a href="{{ home_url('/mi-perfil') }}" class="text-xs text-[#AB277A] hover:text-[#D93280] transition-colors">
-                      Mi Perfil
-                    </a>
-                    <a href="{{ home_url('/mis-reservas') }}" class="text-xs text-[#AB277A] hover:text-[#D93280] transition-colors">
-                      Mis Reservas
-                    </a>
-                    <a href="{{ wp_logout_url(home_url()) }}" class="text-xs text-[#AB277A] hover:text-[#D93280] transition-colors">
-                      Cerrar Sesión
-                    </a>
-                  </div>
-                </div>
+              @if(!is_user_logged_in())
+              <!-- Botones de Login/Register para móvil -->
+              <div class="flex justify-center gap-4 mb-6 border-t border-gray-100 pt-4">
+                <a href="{{ home_url('/login') }}" 
+                   class="text-[#030D55] hover:text-[#D93280] transition-all duration-300 text-sm font-medium flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                  </svg>
+                  Iniciar Sesión
+                </a>
+                <span class="text-gray-300">|</span>
+                <a href="{{ home_url('/registro') }}" 
+                   class="text-[#030D55] hover:text-[#D93280] transition-all duration-300 text-sm font-medium flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                  </svg>
+                  Registrarse
+                </a>
               </div>
               @endif
               
@@ -883,7 +889,7 @@
                   <!-- Enlaces del menú móvil -->
         <a href="{{ home_url('/') }}" 
                     class="block py-3 border-b border-gray-100 text-gray-900 font-roboto
-                  {{ ($current_url == home_url('/')) 
+                 {{ ($current_url == home_url('/')) 
                             ? 'menu-active-highlight' 
                      : 'hover:text-[#D93280]' }} 
                   transition-colors duration-300">
