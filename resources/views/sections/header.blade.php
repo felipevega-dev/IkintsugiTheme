@@ -882,6 +882,47 @@
                   Registrarse
                 </a>
               </div>
+              @else
+              <!-- Perfil de usuario para móvil -->
+              <div class="flex flex-col mb-4">
+                <div class="flex items-center justify-between border-t border-gray-100 pt-4 pb-2">
+                  <div class="flex items-center">
+                    <div class="mr-2 rounded-full border-2 border-[#AB277A] shadow-sm overflow-hidden h-10 w-10">
+                      <?php echo get_avatar(get_current_user_id(), 40); ?>
+                    </div>
+                    <div>
+                      <p class="font-medium text-[#030D55]"><?php echo wp_get_current_user()->display_name; ?></p>
+                    </div>
+                  </div>
+                  <!-- Botón toggle para expandir/contraer opciones de perfil -->
+                  <button class="text-[#D93280] bg-[#FBD5E8] bg-opacity-50 p-1 rounded-full transition-transform duration-300" id="profile-mobile-toggle">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </button>
+                </div>
+                <!-- Menú de opciones de perfil (inicialmente oculto) -->
+                <div class="mobile-submenu bg-gray-50 rounded-lg mb-2" id="profile-mobile-submenu">
+                  <a href="{{ home_url('/mi-perfil') }}" class="text-[#030D55] hover:text-[#D93280] transition-all duration-300 flex items-center py-2 px-4 hover:bg-[#FBD5E8] rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    Mi Perfil
+                  </a>
+                  <a href="{{ home_url('/mis-reservas') }}" class="text-[#030D55] hover:text-[#D93280] transition-all duration-300 flex items-center py-2 px-4 hover:bg-[#FBD5E8] rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    Mis Reservas
+                  </a>
+                  <a href="{{ wp_logout_url(home_url()) }}" class="text-red-600 hover:text-red-700 transition-all duration-300 flex items-center py-2 px-4 hover:bg-red-50 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    Cerrar Sesión
+                  </a>
+                </div>
+              </div>
               @endif
               
               <nav class="mt-2 max-h-[70vh] overflow-y-auto">
@@ -1148,29 +1189,101 @@
     const expertToggle = document.getElementById('expert-toggle');
     const accordionExperts = document.getElementById('accordion-experts');
     
-    if (expertToggle && accordionExperts) {
-      expertToggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        // Toggle active class on button and accordion
-        this.classList.toggle('active');
-        accordionExperts.classList.toggle('active');
-      });
-      
-      // Close accordion when clicking outside
-      document.addEventListener('click', function(e) {
-        if (!expertToggle.contains(e.target) && !accordionExperts.contains(e.target)) {
-          expertToggle.classList.remove('active');
-          accordionExperts.classList.remove('active');
-        }
-      });
-      
-      // Stop propagation of clicks inside the accordion
-      accordionExperts.addEventListener('click', function(e) {
-        e.stopPropagation();
+    // Perfil móvil toggle
+    const profileMobileToggle = document.getElementById('profile-mobile-toggle');
+    const profileMobileSubmenu = document.getElementById('profile-mobile-submenu');
+    
+    // Función para bloquear el scroll de la página cuando el menú está abierto
+    function disableScroll() {
+      document.body.style.overflow = 'hidden';
+    }
+    
+    // Función para habilitar el scroll de la página
+    function enableScroll() {
+      document.body.style.overflow = '';
+    }
+    
+    // Toggle para las opciones de perfil en móvil
+    if (profileMobileToggle && profileMobileSubmenu) {
+      profileMobileToggle.addEventListener('click', function() {
+        this.classList.toggle('rotate-180');
+        profileMobileSubmenu.classList.toggle('active');
       });
     }
+    
+    // ... existing code ...
+    
+    // Función para abrir el menú móvil
+    function openMobileMenu(e) {
+      e.preventDefault();
+      
+      // Asegurar que la transición sea inmediata
+      mobileMenu.style.transition = 'transform 0.3s ease-in-out, opacity 0.25s ease-in-out, visibility 0s';
+      
+      // Cambiar visibilidad de botones (menú a X)
+      menuButton.style.opacity = '0';
+      menuButton.style.visibility = 'hidden';
+      menuClose.style.opacity = '1';
+      menuClose.style.visibility = 'visible';
+      
+      // Activar el menú
+      mobileMenu.classList.add('active');
+      
+      // Bloquear el scroll de la página
+      disableScroll();
+      
+      // Cerrar cualquier submenú abierto al abrir el menú principal
+      document.querySelectorAll('.mobile-submenu.active').forEach(submenu => {
+        submenu.classList.remove('active');
+      });
+      
+      // Restaurar todos los íconos a su posición original
+      document.querySelectorAll('[id$="-icon"]').forEach(icon => {
+        icon.classList.remove('rotate-180');
+      });
+      
+      if (profileMobileToggle) {
+        profileMobileToggle.classList.remove('rotate-180');
+      }
+    }
+    
+    // Función para cerrar el menú móvil
+    function closeMobileMenu(e) {
+      if (e) e.preventDefault();
+      
+      // Asegurar que la transición sea inmediata
+      mobileMenu.style.transition = 'transform 0.3s ease-in-out, opacity 0.25s ease-in-out, visibility 0s 0.3s';
+      
+      // Animar el cierre
+      mobileMenu.classList.remove('active');
+      
+      // Habilitar el scroll de la página
+      enableScroll();
+      
+      // Cambiar visibilidad de botones (X a menú)
+      menuButton.style.opacity = '1';
+      menuButton.style.visibility = 'visible';
+      menuClose.style.opacity = '0';
+      menuClose.style.visibility = 'hidden';
+      
+      // Cerrar los submenús al cerrar el menú principal
+      setTimeout(() => {
+        document.querySelectorAll('.mobile-submenu.active').forEach(submenu => {
+          submenu.classList.remove('active');
+        });
+        
+        // Restaurar todos los íconos a su posición original
+        document.querySelectorAll('[id$="-icon"]').forEach(icon => {
+          icon.classList.remove('rotate-180');
+        });
+        
+        if (profileMobileToggle) {
+          profileMobileToggle.classList.remove('rotate-180');
+        }
+      }, 300);
+    }
+    
+    // ... existing code ...
     
     // Detectar si estamos en pantalla pequeña o grande
     const isMobile = window.innerWidth < 1024;
@@ -1278,62 +1391,6 @@
     
     // Verificar la posición inicial del scroll
     handleScroll();
-    
-    // Función para abrir el menú móvil
-    function openMobileMenu(e) {
-      e.preventDefault();
-      
-      // Asegurar que la transición sea inmediata
-      mobileMenu.style.transition = 'transform 0.3s ease-in-out, opacity 0.25s ease-in-out, visibility 0s';
-      
-      // Cambiar visibilidad de botones (menú a X)
-      menuButton.style.opacity = '0';
-      menuButton.style.visibility = 'hidden';
-      menuClose.style.opacity = '1';
-      menuClose.style.visibility = 'visible';
-      
-      // Activar el menú
-      mobileMenu.classList.add('active');
-      
-      // Cerrar cualquier submenú abierto al abrir el menú principal
-      document.querySelectorAll('.mobile-submenu.active').forEach(submenu => {
-        submenu.classList.remove('active');
-      });
-      
-      // Restaurar todos los íconos a su posición original
-      document.querySelectorAll('[id$="-icon"]').forEach(icon => {
-        icon.classList.remove('rotate-180');
-      });
-    }
-    
-    // Función para cerrar el menú móvil
-    function closeMobileMenu(e) {
-      if (e) e.preventDefault();
-      
-      // Asegurar que la transición sea inmediata
-      mobileMenu.style.transition = 'transform 0.3s ease-in-out, opacity 0.25s ease-in-out, visibility 0s 0.3s';
-      
-      // Animar el cierre
-      mobileMenu.classList.remove('active');
-      
-      // Cambiar visibilidad de botones (X a menú)
-      menuButton.style.opacity = '1';
-      menuButton.style.visibility = 'visible';
-      menuClose.style.opacity = '0';
-      menuClose.style.visibility = 'hidden';
-      
-      // Cerrar los submenús al cerrar el menú principal
-      setTimeout(() => {
-        document.querySelectorAll('.mobile-submenu.active').forEach(submenu => {
-          submenu.classList.remove('active');
-        });
-        
-        // Restaurar todos los íconos a su posición original
-        document.querySelectorAll('[id$="-icon"]').forEach(icon => {
-          icon.classList.remove('rotate-180');
-        });
-      }, 300);
-    }
     
     // Función para alternar los submenús
     function toggleSubmenu(toggle, icon, submenu) {
