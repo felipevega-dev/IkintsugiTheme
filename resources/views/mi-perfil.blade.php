@@ -174,22 +174,89 @@
             </div>
             
             <div class="p-4 md:p-6">
-              <!-- Integración con Bookly si está activado -->
-              @if(function_exists('bookly_print_customer_cabinet'))
-                <?php 
-                  echo do_shortcode('[bookly-appointments-list]'); 
-                ?>
+              @php
+                // Obtener las reservas recientes de WooCommerce
+                $customer_orders = array();
+                if (function_exists('wc_get_orders')) {
+                  $customer_orders = wc_get_orders(array(
+                    'customer' => get_current_user_id(),
+                    'limit' => 2, // Mostrar solo las 2 más recientes
+                    'orderby' => 'date',
+                    'order' => 'DESC',
+                    'status' => array('wc-completed', 'wc-processing', 'wc-on-hold')
+                  ));
+                }
+              @endphp
+              
+              @if(!empty($customer_orders))
+                <div class="w-full overflow-x-auto">
+                  <table class="w-full divide-y divide-gray-200">
+                    <thead>
+                      <tr class="bg-gray-50">
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-1/6">Nº RESERVA</th>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-1/6">FECHA</th>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-2/6">PRODUCTOS</th>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-1/6">TOTAL</th>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-1/12">ESTADO</th>
+                        <th class="py-3 px-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider w-1/12">ACCIONES</th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                      @foreach($customer_orders as $order)
+                        @php
+                          $order_id = $order->get_id();
+                          $status = $order->get_status();
+                          $status_name = wc_get_order_status_name($status);
+                          $order_date = $order->get_date_created()->date_i18n(get_option('date_format') . ' ' . get_option('time_format'));
+                          $order_total = $order->get_total();
+                          $order_items = $order->get_items();
+                        @endphp
+                        <tr class="hover:bg-gray-50">
+                          <td class="py-3 px-4 text-sm font-medium text-gray-900">#{{ $order_id }}</td>
+                          <td class="py-3 px-4 text-sm text-gray-500">{{ $order_date }}</td>
+                          <td class="py-3 px-4 text-sm text-gray-500">
+                            <ul class="list-disc list-inside">
+                              @foreach($order_items as $item)
+                                <li>{{ $item->get_name() }} x {{ $item->get_quantity() }}</li>
+                              @endforeach
+                            </ul>
+                          </td>
+                          <td class="py-3 px-4 text-sm text-gray-500">{{ number_format($order_total, 0, ',', '.') }}</td>
+                          <td class="py-3 px-4 text-sm">
+                            <span class="px-2 py-1 text-xs font-medium rounded-full 
+                              @if($status == 'completed') bg-green-100 text-green-800
+                              @elseif($status == 'processing') bg-blue-100 text-blue-800
+                              @elseif($status == 'on-hold') bg-yellow-100 text-yellow-800
+                              @else bg-gray-100 text-gray-800 @endif">
+                              {{ $status_name }}
+                            </span>
+                          </td>
+                          <td class="py-3 px-4 text-sm">
+                            <a href="{{ wc_get_endpoint_url('view-order', $order_id, wc_get_page_permalink('myaccount')) }}" class="text-[#AB277A] hover:text-[#D93280] font-medium">
+                              Ver detalles
+                            </a>
+                          </td>
+                        </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+                </div>
               @else
-                <p class="text-center py-8 text-gray-500">No se encontraron reservas o el plugin de reservas no está activado.</p>
-                <div class="flex justify-center">
-                  <a href="{{ home_url('/reservar-cita') }}" class="inline-flex items-center px-6 py-3 bg-[#FBD5E8] text-[#D93280] rounded-xl font-medium hover:bg-[#D93280] hover:text-white transition-all duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    Reservar una cita
-                  </a>
+                <!-- No hay reservas -->
+                <div class="bg-gray-50 rounded-xl p-4 text-center">
+                  <p class="text-gray-600">No tienes reservas recientes</p>
                 </div>
               @endif
+              
+              <!-- Botón para ver todas las reservas -->
+              <div class="flex justify-center mt-6">
+                <a href="{{ home_url('/mis-reservas') }}" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-[#D93280] to-[#5A0989] hover:from-[#AB277A] hover:to-[#4A0979] text-white rounded-xl font-medium shadow-sm hover:shadow transition-all duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  Ver todas mis reservas
+                </a>
+              </div>
             </div>
           </div>
           
@@ -562,6 +629,30 @@ document.addEventListener('DOMContentLoaded', function() {
   /* Eliminar transiciones para el texto del botón */
   .profile-submit-text, .password-submit-text {
     transition: none;
+  }
+  
+  /* Mejoras para responsividad en móviles */
+  @media (max-width: 768px) {
+    table {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+    }
+    
+    table th, 
+    table td {
+      white-space: nowrap;
+      padding: 0.5rem 0.75rem;
+    }
+    
+    table.w-full {
+      table-layout: auto !important;
+      width: 100% !important;
+    }
+    
+    .overflow-x-auto {
+      -webkit-overflow-scrolling: touch;
+    }
   }
 </style>
 @endsection 
