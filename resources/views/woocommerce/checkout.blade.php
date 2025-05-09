@@ -23,7 +23,7 @@ Template Name: Checkout Template
 @section('content')
 <section class="py-6 bg-white md:py-8 lg:py-12">
   <div class="container mx-auto px-4">
-    <div class="text-center mb-12 pt-16 md:pt-20 lg:pt-24 mt-10">
+    <div class="text-center pt-16 md:pt-20 lg:pt-24 mt-10">
       <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#030D55] mb-8 font-playfair">Finalizar Compra</h1>
     </div>
 
@@ -818,7 +818,6 @@ form.checkout textarea:focus,
 .woocommerce-checkout-review-order-table tfoot tr:last-child td {
   font-weight: 700;
   color: #D93280;
-  font-size: 1.1rem;
 }
 
 /* --- ÁREA DE PAGO --- */
@@ -1094,6 +1093,491 @@ form.checkout textarea:focus,
 .woocommerce-info > * {
   margin: 0 !important;
   padding: 0 !important;
+}
+
+/* --- ESTILOS PARA LA PÁGINA DE CONFIRMACIÓN DE PEDIDO (ORDER RECEIVED) --- */
+
+/* Estilizar la confirmación del pedido recibido */
+.woocommerce-order-received main,
+.woocommerce-checkout.woocommerce-order-received section {
+  background-color: white;
+}
+
+/* Contenedor principal de la orden recibida */
+.woocommerce-thankyou-order-received {
+  background-color: #E6F7EC !important;
+  color: #0A6937 !important;
+  padding: 1.25rem !important;
+  border-radius: 0.5rem !important;
+  margin-bottom: 2rem !important;
+  font-weight: 500 !important;
+  text-align: center !important;
+  border-left: 4px solid #0A6937 !important;
+}
+
+/* Tabla de detalles del pedido */
+.shop_table.order_details,
+table.woocommerce-table--order-details {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin-bottom: 2rem !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.5rem !important;
+  overflow: hidden !important;
+}
+
+.shop_table.order_details th,
+.shop_table.order_details td,
+.woocommerce-table--order-details th,
+.woocommerce-table--order-details td {
+  padding: 1rem !important;
+  text-align: left !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+.shop_table.order_details thead th,
+.woocommerce-table--order-details thead th {
+  background-color: #f3f4f6 !important;
+  font-weight: 600 !important;
+  color: #030D55 !important;
+}
+
+.shop_table.order_details tfoot,
+.woocommerce-table--order-details tfoot {
+  background-color: #f9fafb !important;
+}
+
+.shop_table.order_details tfoot th,
+.woocommerce-table--order-details tfoot th {
+  font-weight: 500 !important;
+  text-align: right !important;
+}
+
+.shop_table.order_details tfoot tr:last-child,
+.woocommerce-table--order-details tfoot tr:last-child {
+  border-top: 2px solid #D93280 !important;
+}
+
+.shop_table.order_details tfoot tr:last-child th,
+.shop_table.order_details tfoot tr:last-child td,
+.woocommerce-table--order-details tfoot tr:last-child th,
+.woocommerce-table--order-details tfoot tr:last-child td {
+  font-weight: 700 !important;
+  color: #D93280 !important;
+}
+
+/* Número de orden y detalles */
+.woocommerce-order-overview,
+.woocommerce-thankyou-order-details {
+  list-style: none !important;
+  margin: 0 0 2rem 0 !important;
+  padding: 1.5rem !important;
+  background-color: #f9fafb !important;
+  border-radius: 0.5rem !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 1rem !important;
+  border: 4px solid transparent !important;
+  background-image: linear-gradient(white, white), linear-gradient(to right, #D93280, #5A0989) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+}
+
+.woocommerce-order-overview li,
+.woocommerce-thankyou-order-details li {
+  flex: 1 1 calc(50% - 1rem) !important;
+  padding: 0.75rem !important;
+  background-color: white !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+}
+
+@media (min-width: 768px) {
+  .woocommerce-order-overview li,
+  .woocommerce-thankyou-order-details li {
+    flex: 1 1 calc(25% - 1rem) !important;
+  }
+}
+
+.woocommerce-order-overview li strong,
+.woocommerce-thankyou-order-details li strong {
+  display: block !important;
+  font-size: 1.1rem !important;
+  color: #030D55 !important;
+  margin-top: 0.25rem !important;
+}
+
+/* Título de secciones en la página de orden recibida */
+.woocommerce-order-received h2 {
+  color: #030D55 !important;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  margin: 2rem 0 1rem 0 !important;
+  padding-bottom: 0.75rem !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+/* Detalles del pago y dirección */
+.woocommerce-customer-details address,
+.woocommerce-column--billing-address address,
+.woocommerce-column--shipping-address address {
+  padding: 1.5rem !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.5rem !important;
+  background-color: white !important;
+  line-height: 1.6 !important;
+}
+
+.woocommerce-customer-details {
+  margin-top: 2rem !important;
+}
+
+/* Detalles adicionales */
+.woocommerce-order-details {
+  margin-bottom: 2rem !important;
+}
+
+/* Mensaje del estado de la orden */
+.woocommerce-message {
+  padding: 1rem 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+  background-color: #E6F7EC !important;
+  color: #0A6937 !important;
+  border-radius: 0.5rem !important;
+  border-left: 4px solid #0A6937 !important;
+}
+
+/* Paginado y botones */
+nav.woocommerce-pagination ul {
+  display: flex !important;
+  justify-content: center !important;
+  list-style: none !important;
+  margin: 2rem 0 !important;
+  padding: 0 !important;
+}
+
+nav.woocommerce-pagination ul li {
+  margin: 0 0.25rem !important;
+}
+
+nav.woocommerce-pagination ul li a,
+nav.woocommerce-pagination ul li span {
+  display: block !important;
+  padding: 0.5rem 1rem !important;
+  background-color: #f3f4f6 !important;
+  color: #030D55 !important;
+  border-radius: 0.25rem !important;
+  text-decoration: none !important;
+}
+
+nav.woocommerce-pagination ul li span.current {
+  background-color: #D93280 !important;
+  color: white !important;
+}
+
+/* Mensajes de alerta */
+.woocommerce-message,
+.woocommerce-error,
+.woocommerce-notice--success {
+  margin: 1.5rem 0 !important;
+}
+
+/* Estilos para alertas y notificaciones */
+.woocommerce-notice--success {
+  background-color: #E6F7EC !important;
+  color: #0A6937 !important;
+  padding: 1.25rem !important;
+  border-radius: 0.5rem !important;
+  border-left: 4px solid #0A6937 !important;
+}
+
+.woocommerce-error {
+  background-color: #FEE2E2 !important;
+  color: #B91C1C !important;
+  padding: 1.25rem !important;
+  border-radius: 0.5rem !important;
+  margin-bottom: 1.5rem !important;
+  border-left: 4px solid #B91C1C !important;
+  list-style-position: inside !important;
+}
+
+/* Estilo para los detalles de pago */
+#payment_details {
+  margin-top: 2rem !important;
+  margin-bottom: 1.5rem !important;
+  font-weight: 600 !important;
+  color: #030D55 !important;
+  font-size: 1.25rem !important;
+}
+
+/* Clase RT para el número de orden */
+.RT {
+  font-family: monospace !important;
+  color: #5A0989 !important;
+  font-weight: 600 !important;
+}
+
+/* Tabla responsive para la confirmación */
+@media (max-width: 767px) {
+  .shop_table.order_details,
+  .woocommerce-table--order-details {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+  }
+  
+  .woocommerce-order-overview,
+  .woocommerce-thankyou-order-details {
+    flex-direction: column !important;
+  }
+  
+  .woocommerce-order-overview li,
+  .woocommerce-thankyou-order-details li {
+    flex: 1 1 100% !important;
+  }
+}
+
+/* Clases para los mensajes específicos */
+.woocommerce-notice {
+  margin-bottom: 1.5rem !important;
+}
+
+/* Estilos para el botón de volver a comprar */
+.woocommerce-order-received .button {
+  display: inline-block !important;
+  background: linear-gradient(to right, #D93280, #5A0989) !important;
+  color: white !important;
+  font-weight: 500 !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 0.5rem !important;
+  text-decoration: none !important;
+  margin-top: 1rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.woocommerce-order-received .button:hover {
+  background: linear-gradient(to right, #AB277A, #4A0979) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Estilos adicionales específicos para la página de confirmación de pedido */
+.woocommerce-order {
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+  padding: 2rem 1rem !important;
+}
+
+/* Ajuste específico para texto en el mensaje de confirmación */
+.woocommerce-notice--success.woocommerce-thankyou-order-received {
+  font-size: 1.1rem !important;
+  text-align: center !important;
+  padding: 1.5rem !important;
+}
+
+/* Estilos para la tabla de detalles en la confirmación */
+.woocommerce-table.woocommerce-table--order-details.shop_table.order_details {
+  margin-top: 1rem !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Mejorar visualmente el número de pedido */
+.woocommerce-order-overview__order.order {
+  font-weight: 500 !important;
+}
+
+.woocommerce-order-overview__order.order strong {
+  color: #5A0989 !important;
+  font-weight: 700 !important;
+}
+
+/* Estilos específicos para la tabla de datos de transacción */
+.woocommerce-order-details td,
+.woocommerce-order-details th,
+.woocommerce-table--order-details td,
+.woocommerce-table--order-details th {
+  padding: 0.75rem 1rem !important;
+  vertical-align: middle !important;
+}
+
+/* Estilos para títulos dentro de la tabla de confirmación */
+h2.woocommerce-order-details__title,
+h2.woocommerce-column__title {
+  color: #030D55 !important;
+  font-size: 1.25rem !important;
+  margin-bottom: 1.25rem !important;
+}
+
+/* Destacar información importante */
+.woocommerce-order p {
+  margin-bottom: 1rem !important;
+  line-height: 1.6 !important;
+  color: #4B5563 !important;
+}
+
+/* Mensajes de transacciones */
+.woocommerce-message--info {
+  background-color: #EFF6FF !important;
+  color: #1E40AF !important;
+  border-left: 4px solid #1E40AF !important;
+}
+
+/* Estilos específicos para tipos de alertas */
+.woocommerce-message[role="alert"],
+.woocommerce-message[tabindex="-1"] {
+  display: flex !important;
+  align-items: center !important;
+  padding: 1rem 3.5rem !important;
+  border-radius: 0.5rem !important;
+  margin: 1rem 0 !important;
+}
+
+/* Detalles del pago */
+#payment_details {
+  background-color: #F9FAFB !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 0.5rem !important;
+  margin-bottom: 1.5rem !important;
+  border-left: 4px solid #D93280 !important;
+}
+
+/* Estilos para la tabla de detalles de transacción */
+table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Estilo para la tabla de detalles del pago */
+table:has(th[scope="row"]) {
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.5rem !important;
+  overflow: hidden !important;
+  background-color: white !important;
+}
+
+/* Estilar filas impares para mejor legibilidad */
+table tr:nth-child(odd) {
+  background-color: #f9fafb !important;
+}
+
+/* Estilos específicos para la transacción aprobada */
+.transaccion-aprobada {
+  display: flex !important;
+  align-items: center !important;
+  background-color: #E6F7EC !important;
+  color: #0A6937 !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 0.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.transaccion-aprobada:before {
+  content: "✓" !important;
+  display: inline-block !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin-right: 0.5rem !important;
+  background-color: #0A6937 !important;
+  color: white !important;
+  border-radius: 50% !important;
+  text-align: center !important;
+  line-height: 20px !important;
+  font-size: 12px !important;
+}
+
+@media (max-width: 767px) {
+  .woocommerce-order-overview li,
+  .woocommerce-thankyou-order-details li {
+    flex: 1 1 100% !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .woocommerce-order {
+    padding: 1rem !important;
+  }
+  
+  /* Mejorar visualización de tablas en móvil */
+  .woocommerce-table--order-details,
+  .shop_table.order_details {
+    font-size: 0.9rem !important;
+  }
+  
+  /* Datos de la transacción más legibles en móvil */
+  table.woocommerce-table--order-details td,
+  table.shop_table td {
+    padding: 0.5rem 0.75rem !important;
+  }
+}
+
+/* Estilos para la tabla de detalles de transacción */
+table.woocommerce-table--order-details th[scope="row"],
+table.shop_table th[scope="row"] {
+  text-align: left !important;
+  font-weight: 600 !important;
+  color: #030D55 !important;
+  background-color: #F9FAFB !important;
+  width: 45% !important;
+}
+
+/* Contenedor del checkout y finalización */
+.container.mx-auto.px-4 {
+  max-width: 1200px !important;
+  padding: 0 1rem !important;
+}
+
+/* Mejorar el espacio del título principal */
+.text-center.mb-12.pt-16.md\\:pt-20.lg\\:pt-24.mt-10 {
+  margin-bottom: 2rem !important;
+}
+
+/* Texto específico para la confirmación */
+.text-center.mb-12 h1 {
+  margin-bottom: 1rem !important;
+}
+
+/* Formato para código de autorización y otros valores específicos */
+.woocommerce-table--order-details tr:nth-child(2) td,
+.woocommerce-table--order-details .authorization-code {
+  font-family: monospace !important;
+  font-weight: 500 !important;
+}
+
+/* Estilo para tipo de pago */
+.woocommerce-table--order-details tr:nth-child(5) td,
+.payment-type {
+  font-weight: 500 !important;
+  color: #030D55 !important;
+}
+
+/* Estilo para precio total */
+.woocommerce-table--order-details tfoot tr:last-child td,
+.woocommerce-Price-amount.amount {
+  font-weight: 700 !important;
+  color: #D93280 !important;
+}
+
+/* Estilos específicos para la tabla de detalles de transacción */
+table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Estilo para la tabla de detalles del pago */
+.shop_table, 
+.woocommerce-table--order-details,
+table.woocommerce-table,
+#payment_details + table {
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.5rem !important;
+  overflow: hidden !important;
+  background-color: white !important;
+}
+
+/* Estilar filas impares para mejor legibilidad */
+table tr:nth-child(odd) {
+  background-color: #f9fafb !important;
 }
 </style>
 @endsection

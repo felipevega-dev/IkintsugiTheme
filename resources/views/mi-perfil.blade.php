@@ -7,8 +7,17 @@
 @section('content')
 
 <style>
-  .page-template-mi-perfil {
+  .page-template-my-account {
     padding-top: 0 !important;
+  }
+  
+  /* Fix logo size in WooCommerce pages */
+  .woocommerce img.h-14, 
+  .woocommerce-page img.h-14,
+  img.h-14 {
+    max-width: 217px !important;
+    width: auto !important;
+    height: 72px !important;
   }
 </style>
 <div class="py-8 md:py-16 lg:py-28 bg-gray-50">
