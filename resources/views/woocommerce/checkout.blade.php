@@ -6,9 +6,10 @@ Template Name: Checkout Template
 
 @section('styles')
 <style>
-  /* Fix oversized logo in header */
-  #main-header .header-logo {
-    max-width: 160px !important;
+  /* Fix oversized logo in header - centralizado en un solo lugar */
+  #main-header .header-logo,
+  #main-header a.flex img {
+    max-width: 200px !important;
     height: auto !important;
   }
   
@@ -34,22 +35,18 @@ Template Name: Checkout Template
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Arreglar el logo del header
-  const fixHeaderLogo = function() {
-    const headerLogo = document.querySelector('#main-header a.flex img');
-    if (headerLogo) {
-      headerLogo.style.maxWidth = '200px';
-      headerLogo.style.height = 'auto';
-    }
+  // Función central que ejecuta todas las mejoras
+  const applyAllFixes = function() {
+    fixReturnButton();
+    fixOrderSummaryDisplay();
+    organizeCheckoutFields();
   };
   
-  // Modificar botón "Volver a la tienda"
+  // Modificar botón "Volver a la tienda" (eliminados selectores inválidos con :contains)
   const fixReturnButton = function() {
     // Buscar todos los posibles botones/enlaces de "volver"
     const selectors = [
       'a.button.wc-backward', 
-      'a:contains("Volver a la tienda")', 
-      '.wc-block-components-link-button:contains("Volver")',
       'a[href*="/shop"]'
     ];
     
@@ -58,11 +55,11 @@ document.addEventListener('DOMContentLoaded', function() {
       if (elements.length > 0) {
         elements.forEach(el => {
           // Solo modificar los que son botones de "volver a la tienda"
-          if (el.textContent.includes('tienda') || 
-              el.textContent.toLowerCase().includes('volver') || 
+          if (el.textContent.toLowerCase().includes('volver') || 
+              el.textContent.includes('tienda') || 
               (el.href && el.href.includes('/shop'))) {
-            el.setAttribute('href', '{{ home_url("/reservar-cita") }}');
-            el.textContent = 'Volver a reservar cita';
+            el.setAttribute('href', '{{ home_url("/carrito") }}');
+            el.textContent = 'Volver al carrito';
           }
         });
       }
@@ -210,28 +207,35 @@ document.addEventListener('DOMContentLoaded', function() {
           } else if (field.id.includes('billing_postcode')) {
             field.style.order = '10';
           }
+          
+          // Asegurarse de que los select tienen la altura y alineación correctas
+          if (field.id.includes('billing_country') || field.id.includes('billing_state')) {
+            const select = field.querySelector('select');
+            if (select) {
+              select.style.height = '45px';
+              select.style.lineHeight = '1.5';
+              select.style.paddingTop = '0';
+              select.style.paddingBottom = '0';
+            }
+            
+            // También para los campos Select2 (usados a menudo para regiones)
+            const select2 = field.querySelector('.select2-container');
+            if (select2) {
+              select2.style.height = '45px';
+              
+              // Buscar el elemento de span que muestra el valor seleccionado
+              const renderedSpan = select2.querySelector('.select2-selection__rendered');
+              if (renderedSpan) {
+                renderedSpan.style.lineHeight = '43px';
+                renderedSpan.style.paddingTop = '0';
+                renderedSpan.style.paddingBottom = '0';
+                renderedSpan.style.display = 'flex';
+                renderedSpan.style.alignItems = 'center';
+              }
+            }
+          }
         });
       }
-    }
-    
-    // Ocultar completamente la sección de envío
-    const shippingFields = document.querySelector('.woocommerce-shipping-fields');
-    if (shippingFields) {
-      shippingFields.style.display = 'none';
-      
-      // También buscar y ocultar el div.woocommerce-shipping-fields incluso si tiene clase diferente
-      const allDivs = document.querySelectorAll('div');
-      allDivs.forEach(div => {
-        if (div.className && div.className.includes('shipping-fields')) {
-          div.style.display = 'none';
-        }
-      });
-    }
-    
-    // Ocultar el div.col-2 vacío que contiene woocommerce-shipping-fields
-    const col2 = document.querySelector('#customer_details .col-2');
-    if (col2) {
-      col2.style.display = 'none';
     }
     
     // Mover sección de información adicional al final y con ancho completo
@@ -257,25 +261,72 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Añadir estilo específico
         additionalFields.classList.add('full-width-additional');
+        
+        // Asegurarse de que el título de la sección sea visible
+        const additionalTitle = additionalFields.querySelector('h3');
+        if (additionalTitle) {
+          additionalTitle.style.display = 'block';
+        }
+        
+        // También procesar los campos de información adicional
+        const additionalFieldsInputs = additionalFields.querySelectorAll('.woocommerce-additional-fields__field-wrapper .form-row');
+        if (additionalFieldsInputs.length > 0) {
+          const additionalWrapper = additionalFields.querySelector('.woocommerce-additional-fields__field-wrapper');
+          if (additionalWrapper) {
+            additionalWrapper.classList.add('checkout-form-grid', 'full-width-fields');
+            
+            // Hacer que todos los campos adicionales tengan ancho completo
+            additionalFieldsInputs.forEach(field => {
+              field.classList.add('form-row-full');
+            });
+          }
+        }
+        
+        // Si no hay campos de notas, intenta añadirlo
+        if (additionalFieldsInputs.length === 0) {
+          const wrapper = additionalFields.querySelector('.woocommerce-additional-fields__field-wrapper');
+          if (wrapper) {
+            wrapper.classList.add('checkout-form-grid', 'full-width-fields');
+            
+            // Verificar si necesitamos crear el campo de notas
+            if (!wrapper.querySelector('#order_comments_field')) {
+              // Comprobar si existe un textarea para order_comments en otro lugar
+              const existingTextarea = document.querySelector('#order_comments');
+              if (!existingTextarea) {
+                console.log('Intentando crear el campo de notas del pedido');
+                // Crear el campo de notas
+                const notesField = document.createElement('p');
+                notesField.className = 'form-row notes';
+                notesField.id = 'order_comments_field';
+                
+                const label = document.createElement('label');
+                label.htmlFor = 'order_comments';
+                label.textContent = 'Notas del pedido (opcional)';
+                
+                const span = document.createElement('span');
+                span.className = 'woocommerce-input-wrapper';
+                
+                const textarea = document.createElement('textarea');
+                textarea.name = 'order_comments';
+                textarea.id = 'order_comments';
+                textarea.placeholder = 'Notas sobre tu pedido, por ejemplo, notas especiales para la entrega.';
+                textarea.rows = 5;
+                textarea.cols = 5;
+                textarea.className = 'input-text';
+                
+                span.appendChild(textarea);
+                notesField.appendChild(label);
+                notesField.appendChild(span);
+                
+                wrapper.appendChild(notesField);
+              }
+            }
+          }
+        }
       }
     };
     
-    // Intentar mover la sección de información adicional
     moveAdditionalFields();
-    
-    // También añadir clases a los campos adicionales si existen
-    const additionalFields = document.querySelectorAll('.woocommerce-additional-fields__field-wrapper .form-row');
-    if (additionalFields.length > 0) {
-      const additionalWrapper = document.querySelector('.woocommerce-additional-fields__field-wrapper');
-      if (additionalWrapper) {
-        additionalWrapper.classList.add('checkout-form-grid');
-        
-        // Hacer que todos los campos adicionales tengan ancho completo
-        additionalFields.forEach(field => {
-          field.classList.add('form-row-full');
-        });
-      }
-    }
     
     // Añadir botón para volver al carrito
     const addBackToCartButton = function() {
@@ -305,38 +356,30 @@ document.addEventListener('DOMContentLoaded', function() {
     addBackToCartButton();
   };
   
-  // Ejecutar las funciones
-  fixHeaderLogo();
-  fixReturnButton();
-  fixOrderSummaryDisplay();
-  organizeCheckoutFields();
+  // Ejecutar todas las mejoras inicialmente
+  applyAllFixes();
   
-  // Esperar un poco más para el resumen del pedido (puede cargarse después)
+  // Intentar el fix de Order Review una vez después de un segundo
   setTimeout(function() {
     fixOrderReview();
-    fixOrderSummaryDisplay();
-    organizeCheckoutFields();
+    applyAllFixes();
   }, 1000);
   
   // Ejecutar nuevamente después de que se cargue completamente la página
   window.addEventListener('load', function() {
-    fixHeaderLogo();
-    fixReturnButton();
+    applyAllFixes();
     fixOrderReview();
-    fixOrderSummaryDisplay();
-    organizeCheckoutFields();
   });
   
-  // En caso de que haya componentes dinámicos, intentar cada 1 segundo durante 5 segundos
+  // En caso de que haya componentes dinámicos, intentar cada segundo durante 3 segundos
   let attempts = 0;
   const interval = setInterval(function() {
-    fixHeaderLogo();
-    fixReturnButton();
-    fixOrderSummaryDisplay();
-    organizeCheckoutFields();
-    if (attempts === 2) fixOrderReview(); // Intentar arreglar el resumen en el segundo intento
+    applyAllFixes();
+    if (attempts === 1) {
+      fixOrderReview();
+    }
     attempts++;
-    if (attempts >= 5) {
+    if (attempts >= 3) {
       clearInterval(interval);
     }
   }, 1000);
@@ -344,7 +387,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <style>
+/* --- CONFIGURACIÓN GLOBAL --- */
 /* Estilos para arreglar el tema del header */
+#main-header .header-logo,
 #main-header a.flex img {
   max-width: 200px !important;
   height: auto !important;
@@ -355,16 +400,13 @@ document.addEventListener('DOMContentLoaded', function() {
   padding-bottom: 0.5rem !important;
 }
 
-/* Estilos para botones de volver */
-.wc-block-components-link-button,
-.wc-block-components-button:not(.is-link) {
-  color: #D93280 !important;
-}
-
-/* Botones principales */
-.wc-block-components-button:not(.is-link) {
-  background-color: #D93280 !important;
-  color: white !important;
+/* --- ESTRUCTURA DEL CHECKOUT --- */
+/* Ocultar explícitamente la sección de envío */
+.woocommerce-shipping-fields,
+div[class*="shipping-fields"],
+#customer_details .col-2:empty,
+#customer_details .col-2 {
+  display: none !important;
 }
 
 /* Fix margin issues with block checkout */
@@ -376,28 +418,103 @@ document.addEventListener('DOMContentLoaded', function() {
   margin-top: 0 !important;
 }
 
-/* Estilos para el botón de volver al carrito */
-.back-to-cart-button-container {
+/* Estructura básica de dos columnas para el checkout */
+@media (min-width: 1024px) {
+  body.woocommerce-checkout .header-container {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+  }
+  
+  .woocommerce-checkout form.checkout {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 2rem;
+  }
+  
+  .woocommerce-checkout #customer_details {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .woocommerce-checkout #customer_details .col-1 {
+    width: 100%;
+  }
+  
+  .woocommerce-checkout #order_review,
+  .woocommerce-checkout #order_review_heading {
+    grid-column: 2;
+    align-self: start;
+    position: sticky;
+    top: 120px;
+  }
+}
+
+/* Mejora para dispositivos móviles */
+@media (max-width: 768px) {
+  .woocommerce-checkout form.checkout {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .woocommerce-checkout #customer_details {
+    order: 1;
+  }
+  
+  .woocommerce-checkout #order_review {
+    order: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .woocommerce-billing-fields, 
+  .woocommerce-additional-fields {
+    padding: 1rem;
+  }
+}
+
+/* --- SECCIONES DEL CHECKOUT --- */
+/* Mejorar el espaciado entre secciones del checkout */
+.woocommerce-billing-fields {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #f9fafb;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Sección de información adicional a ancho completo */
+.checkout-full-width-section {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.full-width-additional {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #f9fafb;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.full-width-fields {
+  width: 100% !important;
+}
+
+/* Mejorar la apariencia de títulos de secciones */
+.woocommerce-billing-fields h3,
+.woocommerce-additional-fields h3 {
+  color: #030D55;
+  font-size: 1.25rem;
+  font-weight: 600;
   margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.back-to-cart-button {
-  display: inline-block;
-  background-color: transparent !important;
-  color: #D93280 !important;
-  border: 1px solid #D93280 !important;
-  padding: 0.75rem 1rem !important;
-  border-radius: 0.5rem !important;
-  text-decoration: none !important;
-  font-weight: 500 !important;
-  transition: all 0.3s ease !important;
-}
-
-.back-to-cart-button:hover {
-  background-color: rgba(217, 50, 128, 0.1) !important;
-  text-decoration: none !important;
-}
-
+/* --- DISTRIBUCIÓN DE CAMPOS --- */
 /* Estilos para la distribución de campos en el checkout */
 .checkout-form-grid {
   display: grid;
@@ -418,138 +535,75 @@ document.addEventListener('DOMContentLoaded', function() {
   .form-row-half {
     grid-column: span 1 / span 1;
   }
+  
+  /* Asegurar ancho completo para campos de notas adicionales */
+  .full-width-fields {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+    width: 100% !important;
+  }
 }
 
-/* Ocultar explícitamente la sección de envío */
-.woocommerce-shipping-fields,
-div[class*="shipping-fields"],
-#customer_details .col-2:empty {
-  display: none !important;
-}
-
-/* Sección de información adicional a ancho completo */
-.checkout-full-width-section {
-  grid-column: 1 / -1;
-  width: 100%;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
-.full-width-additional {
-  width: 100%;
-  max-width: none;
-}
-
-/* Mejorar el espaciado entre secciones del checkout */
-.woocommerce-billing-fields {
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  background-color: #f9fafb;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.woocommerce-additional-fields {
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  background-color: #f9fafb;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+/* Compatibilidad con temas que usan Flexbox */
+.woocommerce-billing-fields__field-wrapper,
+.woocommerce-additional-fields__field-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -0.5rem;
   width: 100%;
 }
 
-/* Mejorar la apariencia de títulos de secciones */
-.woocommerce-billing-fields h3,
-.woocommerce-additional-fields h3 {
-  color: #030D55;
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid #e5e7eb;
+.woocommerce-billing-fields__field-wrapper > p,
+.woocommerce-additional-fields__field-wrapper > p {
+  padding: 0.5rem;
+  margin: 0 !important;
+  box-sizing: border-box;
 }
 
-/* Ajustes para pantallas desktop */
-@media (min-width: 1024px) {
-  body.woocommerce-checkout .header-container {
-    background-color: rgba(255, 255, 255, 0.95) !important;
+@media (min-width: 768px) {
+  .woocommerce-billing-fields__field-wrapper > p {
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-bottom: 1rem !important;
   }
   
-  /* Estructura básica de dos columnas para el checkout con información adicional abajo */
-  .woocommerce-checkout form.checkout {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    gap: 2rem;
+  /* Campos que deberían ocupar todo el ancho */
+  #billing_address_1_field,
+  #billing_address_2_field,
+  #billing_company_field {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
   
-  .woocommerce-checkout #customer_details {
-    grid-column: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .woocommerce-checkout #customer_details .col-1 {
+  /* Hacer que todos los campos de información adicional usen ancho completo */
+  .woocommerce-additional-fields__field-wrapper > p,
+  #order_comments_field {
+    flex: 0 0 100%;
+    max-width: 100%;
     width: 100%;
   }
   
-  .woocommerce-checkout .woocommerce-additional-fields {
-    grid-column: 1 / -1;
-    order: 3;
-  }
-  
-  .woocommerce-checkout #order_review,
-  .woocommerce-checkout #order_review_heading {
-    grid-column: 2;
-    align-self: start;
-    position: sticky;
-    top: 120px;
-  }
+  /* Orden específico para los campos */
+  #billing_first_name_field { order: 1; }
+  #billing_last_name_field { order: 2; }
+  #billing_email_field { order: 3; }
+  #billing_phone_field { order: 4; }
+  #billing_address_1_field { order: 5; }
+  #billing_address_2_field { order: 6; }
+  #billing_city_field { order: 7; }
+  #billing_state_field { order: 8; }
+  #billing_country_field { order: 9; }
+  #billing_postcode_field { order: 10; }
 }
 
-/* Estilos para el resumen de pedido generado por JS */
-.order-review-wrapper {
-  background-color: #f9f9f9;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  padding: 1.5rem !important;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+/* Ajustar el formulario para que las notas estén abajo */
+.woocommerce-checkout .woocommerce-additional-fields {
+  order: 999;
+  margin-top: 2rem;
+  width: 100% !important;
 }
 
-.order-review-wrapper h3 {
-  color: #030D55;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.order-review-wrapper table {
-  border-collapse: collapse;
-}
-
-.order-review-wrapper th, 
-.order-review-wrapper td {
-  padding: 0.75rem 0;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.order-review-wrapper tfoot tr:last-child {
-  border-top: 2px solid #e5e7eb;
-}
-
-/* Ocultar título de resumen y eliminar espacios */
-#order_review_heading {
-  display: none !important;
-}
-
-#order_review {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-  background-color: #f9fafb;
-  border-radius: 0.5rem;
-  padding: 1.5rem !important;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-/* Estilos para formularios de checkout */
+/* --- ESTILOS DE CAMPOS --- */
+/* Estilos unificados para formularios de checkout */
 form.checkout input[type="text"],
 form.checkout input[type="tel"],
 form.checkout input[type="email"],
@@ -570,6 +624,23 @@ form.checkout textarea,
   transition: all 0.3s ease;
   height: 45px !important;
   line-height: 1.5;
+  display: flex;
+  align-items: center;
+}
+
+/* Corrección específica para los selects (país y región) */
+form.checkout select, 
+.woocommerce-input-wrapper select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 01.753 1.659l-4.796 5.48a1 1 0 01-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 12px) center;
+  padding-right: 35px !important;
+  text-align-last: left;
+  display: flex;
+  align-items: center;
 }
 
 /* Ajuste específico para textarea */
@@ -577,27 +648,35 @@ form.checkout textarea,
 .woocommerce-input-wrapper textarea {
   height: auto !important;
   min-height: 120px;
+  padding: 0.75rem 1rem;
 }
 
 /* Ajuste para Select2 (selector de regiones) */
 .select2-container--default .select2-selection--single {
   height: 45px !important;
-  line-height: 45px !important;
-  padding: 0 0.75rem;
   border: 1px solid #e5e7eb !important;
   border-radius: 0.5rem !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
-  line-height: 45px !important;
+  line-height: normal !important;
+  padding-left: 1rem !important;
   color: #030D55;
+  display: flex !important;
+  align-items: center !important;
+  height: 100% !important;
 }
 
 .select2-container--default .select2-selection--single .select2-selection__arrow {
-  height: 43px !important;
-  right: 10px;
+  height: 100% !important;
+  right: 8px !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
+/* Estados de campos */
 form.checkout input[type="text"]:focus,
 form.checkout input[type="tel"]:focus,
 form.checkout input[type="email"]:focus,
@@ -646,29 +725,48 @@ form.checkout textarea:focus,
   color: #EF4444;
 }
 
-/* Estilo para el botón de finalizar compra */
-#place_order,
-.checkout-button,
-.woocommerce button.button.alt {
-  background: linear-gradient(to right, #D93280, #5A0989) !important;
-  color: white !important;
-  font-weight: 600 !important;
-  padding: 0.75rem 1.5rem !important;
-  border-radius: 0.5rem !important;
-  border: none !important;
-  transition: all 0.3s ease !important;
-  display: block !important;
-  width: 100% !important;
-  text-align: center !important;
-  margin-top: 1rem !important;
+/* --- RESUMEN DE PEDIDO --- */
+/* Ocultar título de resumen y eliminar espacios */
+#order_review_heading {
+  display: none !important;
 }
 
-#place_order:hover,
-.checkout-button:hover,
-.woocommerce button.button.alt:hover {
-  background: linear-gradient(to right, #AB277A, #4A0979) !important;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
-  transform: translateY(-2px) !important;
+#order_review {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  background-color: #f9fafb;
+  border-radius: 0.5rem;
+  padding: 1.5rem !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilos para el resumen de pedido generado por JS */
+.order-review-wrapper {
+  background-color: #f9f9f9;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1.5rem !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.order-review-wrapper h3 {
+  color: #030D55;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.order-review-wrapper table {
+  border-collapse: collapse;
+}
+
+.order-review-wrapper th, 
+.order-review-wrapper td {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.order-review-wrapper tfoot tr:last-child {
+  border-top: 2px solid #e5e7eb;
 }
 
 /* Mejorar tabla de resumen del pedido */
@@ -717,6 +815,7 @@ form.checkout textarea:focus,
   font-size: 1.1rem;
 }
 
+/* --- ÁREA DE PAGO --- */
 /* Mejorar áreas de pago */
 .woocommerce-checkout #payment {
   background-color: white;
@@ -742,34 +841,12 @@ form.checkout textarea:focus,
   padding: 1rem;
 }
 
-/* Mejora para dispositivos móviles */
-@media (max-width: 768px) {
-  .woocommerce-checkout form.checkout {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .woocommerce-checkout #customer_details {
-    order: 1;
-  }
-  
-  .woocommerce-checkout #order_review {
-    order: 0;
-    margin-bottom: 2rem;
-  }
-  
-  .woocommerce-billing-fields, 
-  .woocommerce-additional-fields {
-    padding: 1rem;
-  }
-}
-
 /* Espaciado para la casilla de verificación de términos y condiciones */
 .woocommerce-terms-and-conditions-wrapper {
   margin: 1.5rem 0;
   padding: 1rem;
   border-radius: 0.5rem;
-  background-color: #f9fafb;
+  background-color: #f8f9fa;
   border: 1px solid #e5e7eb;
 }
 
@@ -786,73 +863,165 @@ form.checkout textarea:focus,
   margin-right: 0.5rem;
 }
 
+/* --- COMPONENTES WEB PAY --- */
 /* Estilo para WebPay y métodos de pago */
+.payment_method_webpay_plus,
+.payment_method_webpay {
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .payment_method_webpay_plus img,
 .payment_method_webpay img {
-  max-height: 32px;
+  max-height: 36px;
   vertical-align: middle;
-  margin: 0 0.5rem;
+  margin: 0.5rem;
 }
 
-/* Compatibilidad con temas que usan Flexbox */
-.woocommerce-billing-fields__field-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  margin: -0.5rem;
+.payment_method_webpay_plus label,
+.payment_method_webpay label {
+  display: flex !important;
+  align-items: center !important;
+  font-weight: 600 !important;
+  color: #030D55 !important;
 }
 
-.woocommerce-additional-fields__field-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  margin: -0.5rem;
+/* Mejora para el contenedor de WebPay */
+.woocommerce-checkout #payment ul.payment_methods li.wc_payment_method.payment_method_webpay_plus > label,
+.woocommerce-checkout #payment ul.payment_methods li.wc_payment_method.payment_method_webpay > label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem;
 }
 
-.woocommerce-billing-fields__field-wrapper > p,
-.woocommerce-additional-fields__field-wrapper > p {
+/* Estilo para la descripción de método de pago */
+.payment_box.payment_method_webpay_plus p,
+.payment_box.payment_method_webpay p {
+  color: #030D55;
+  font-size: 0.875rem;
   padding: 0.5rem;
-  margin: 0 !important;
-  box-sizing: border-box;
+  background-color: rgba(217, 50, 128, 0.05);
+  border-left: 3px solid #D93280;
+  border-radius: 0.25rem;
+  margin: 0.5rem 0 !important;
 }
 
-@media (min-width: 768px) {
-  .woocommerce-billing-fields__field-wrapper > p {
-    flex: 0 0 50%;
-    max-width: 50%;
-    margin-bottom: 1rem !important;
-  }
-  
-  /* Campos que deberían ocupar todo el ancho */
-  #billing_address_1_field,
-  #billing_address_2_field,
-  #billing_company_field {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-  
-  /* Orden específico para los campos */
-  #billing_first_name_field { order: 1; }
-  #billing_last_name_field { order: 2; }
-  #billing_email_field { order: 3; }
-  #billing_phone_field { order: 4; }
-  #billing_address_1_field { order: 5; }
-  #billing_address_2_field { order: 6; }
-  #billing_city_field { order: 7; }
-  #billing_state_field { order: 8; }
-  #billing_country_field { order: 9; }
-  #billing_postcode_field { order: 10; }
-  
-  /* Hacer que todos los campos de información adicional usen ancho completo */
-  .woocommerce-additional-fields__field-wrapper > p,
-  #order_comments_field {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
+/* Sección de términos y condiciones */
+.woocommerce-terms-and-conditions-wrapper {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #f8f9fa;
+  border: 1px solid #e5e7eb;
 }
 
-/* Ajustar el formulario para que las notas estén abajo */
-.woocommerce-checkout .woocommerce-additional-fields {
-  order: 999;
-  margin-top: 2rem;
+.woocommerce-privacy-policy-text p {
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin-bottom: 1rem;
+}
+
+.woocommerce-terms-and-conditions-checkbox-text {
+  font-weight: 500;
+  color: #030D55;
+}
+
+/* Campo de notas del pedido */
+#order_comments_field {
+  margin-top: 0 !important;
+  width: 100% !important;
+}
+
+#order_comments_field label {
+  font-weight: 500;
+  color: #030D55;
+  margin-bottom: 0.5rem;
+}
+
+#order_comments {
+  min-height: 120px;
+  width: 100% !important;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background-color: white;
+  transition: all 0.3s ease;
+  color: #030D55;
+}
+
+.woocommerce-additional-fields h3 {
+  display: block !important;
+  margin-bottom: 1rem !important;
+  font-size: 1.125rem !important;
+}
+
+/* Asegurarse de que el contenedor de campos adicionales tenga ancho completo */
+.woocommerce-additional-fields__field-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: block !important;
+}
+
+/* --- BOTONES --- */
+/* Estilos para botones de volver */
+.wc-block-components-link-button,
+.wc-block-components-button:not(.is-link) {
+  color: #D93280 !important;
+}
+
+/* Botones principales */
+.wc-block-components-button:not(.is-link) {
+  background-color: #D93280 !important;
+  color: white !important;
+}
+
+/* Estilo para el botón de volver al carrito */
+.back-to-cart-button-container {
+  margin-bottom: 1.5rem;
+}
+
+.back-to-cart-button {
+  display: inline-block;
+  background-color: transparent !important;
+  color: #D93280 !important;
+  border: 1px solid #D93280 !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 0.5rem !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+}
+
+.back-to-cart-button:hover {
+  background-color: rgba(217, 50, 128, 0.1) !important;
+  text-decoration: none !important;
+}
+
+/* Estilo para el botón de finalizar compra */
+#place_order,
+.checkout-button,
+.woocommerce button.button.alt {
+  background: linear-gradient(to right, #D93280, #5A0989) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  padding: 0.75rem 1.5rem !important;
+  border-radius: 0.5rem !important;
+  border: none !important;
+  transition: all 0.3s ease !important;
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin-top: 1rem !important;
+}
+
+#place_order:hover,
+.checkout-button:hover,
+.woocommerce button.button.alt:hover {
+  background: linear-gradient(to right, #AB277A, #4A0979) !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  transform: translateY(-2px) !important;
 }
 </style>
 @endsection
