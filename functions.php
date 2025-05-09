@@ -1528,3 +1528,30 @@ add_action('init', function() {
         });
     }
 });
+
+/**
+ * Detect view-order endpoint and display order details
+ */
+function add_custom_rewrite_rules() {
+    add_rewrite_endpoint('view-order', EP_PAGES);
+}
+add_action('init', 'add_custom_rewrite_rules');
+
+/**
+ * Check if on view-order endpoint
+ */
+function is_view_order_endpoint() {
+    global $wp;
+    return isset($wp->query_vars['view-order']);
+}
+
+/**
+ * Get order ID from URL
+ */
+function get_order_id_from_endpoint() {
+    global $wp;
+    if (isset($wp->query_vars['view-order'])) {
+        return absint($wp->query_vars['view-order']);
+    }
+    return 0;
+}
