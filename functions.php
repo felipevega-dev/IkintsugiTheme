@@ -1520,7 +1520,7 @@ add_action('wp_footer', 'add_logout_confirmation_modal');
 add_action('init', function() {
     if (isset($_GET['action']) && $_GET['action'] === 'lostpassword') {
         add_filter('template_include', function($template) {
-            $new_template = locate_template(['views/auth/lost-password.blade.php']);
+            $new_template = locate_template(['resources/views/auth/lost-password.blade.php']);
             if ($new_template) {
                 return $new_template;
             }

@@ -41,7 +41,7 @@
               
               <!-- Imagen actual -->
               <img 
-                src="{{ get_theme_file_uri('resources/images/nosotros.png') }}" 
+                src="{{ get_theme_file_uri('resources/images/nosotros2.png') }}" 
                 alt="Persona en sesión de terapia" 
                 class="relative z-10 w-full h-auto rounded-lg transition-transform duration-500 hover:scale-105"
               >

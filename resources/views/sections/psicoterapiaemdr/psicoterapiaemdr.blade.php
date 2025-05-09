@@ -41,7 +41,7 @@
               
               <!-- Imagen actual -->
               <img 
-                src="{{ get_theme_file_uri('resources/images/psicoterapiaemdr1.png') }}" 
+                src="{{ get_theme_file_uri('resources/images/psicoterapiaemdr1-2.png') }}" 
                 alt="Psicoterapia EMDR" 
                 class="relative z-10 w-full h-auto rounded-lg transition-transform duration-500 hover:scale-105"
               >
