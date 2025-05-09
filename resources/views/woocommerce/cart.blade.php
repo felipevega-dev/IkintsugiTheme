@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
   background-color: #f3f4f6 !important;
   color: #030D55 !important;
   border: 1px solid #e5e7eb !important;
-  padding: 0.75rem 1rem !important;
+  padding: 1rem 1rem !important;
   border-radius: 0.5rem !important;
   font-weight: 500 !important;
   transition: all 0.3s ease !important;
@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Input de cupón */
 .woocommerce-cart table.cart td.actions .coupon .input-text {
-  width: 150px;
+  width: 155px;
   padding: 0.75rem 1rem;
   border: 1px solid #e5e7eb;
   border-radius: 0.5rem;
@@ -401,6 +401,7 @@ document.addEventListener('DOMContentLoaded', function() {
   background-color: #F0FDF4;
   border-color: #10B981;
   color: #065F46;
+  padding-left: 3rem;
 }
 
 .woocommerce-cart .woocommerce-info {
@@ -422,5 +423,7 @@ document.addEventListener('DOMContentLoaded', function() {
   cursor: default !important;
   text-decoration: none !important;
 }
+
+
 </style>
 @endsection
