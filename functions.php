@@ -1555,3 +1555,19 @@ function get_order_id_from_endpoint() {
     }
     return 0;
 }
+
+// Prevenir redirección después de enviar el formulario de recuperación de contraseña
+add_filter('woocommerce_get_return_url', function($return_url, $redirect_url = null) {
+    if (isset($_POST['wc_reset_password']) && $_POST['wc_reset_password'] === 'true') {
+        return add_query_arg('reset-link-sent', 'true', wp_get_referer());
+    }
+    return $return_url;
+}, 10, 2);
+
+// Asegurar que la página de lost-password sea accesible sin estar logueado
+add_action('template_redirect', function() {
+    if (isset($_GET['action']) && $_GET['action'] === 'lostpassword') {
+        // Permitir acceso a la página de recuperación de contraseña
+        return;
+    }
+});

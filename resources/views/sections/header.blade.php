@@ -1189,6 +1189,19 @@
     const expertToggle = document.getElementById('expert-toggle');
     const accordionExperts = document.getElementById('accordion-experts');
     
+    // Añadir event listener para el botón de expertos
+    if (expertToggle && accordionExperts) {
+      expertToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Toggle la clase active para mostrar/ocultar el acordeón
+        accordionExperts.classList.toggle('active');
+        
+        // Toggle la clase active en el botón para rotarlo
+        this.classList.toggle('active');
+      });
+    }
+    
     // Perfil móvil toggle
     const profileMobileToggle = document.getElementById('profile-mobile-toggle');
     const profileMobileSubmenu = document.getElementById('profile-mobile-submenu');

@@ -8,6 +8,24 @@
 <div class="py-16 md:py-24 lg:py-28 bg-gray-50">
   <div class="container mx-auto px-4 mt-12 md:mt-20 lg:mt-28">
     <div class="max-w-md mx-auto">
+      <!-- Mensaje de éxito -->
+      <div id="success-message" class="mb-6 <?php echo isset($_GET['reset-link-sent']) ? '' : 'hidden'; ?>">
+        <div class="p-4 rounded-xl bg-green-50 border border-green-200">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <svg class="h-5 w-5 text-green-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div class="ml-3">
+              <p class="text-sm font-medium text-green-800">
+                Hemos enviado un enlace de recuperación a tu correo electrónico. Por favor, revisa tu bandeja de entrada y sigue las instrucciones.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="bg-white rounded-xl shadow-lg overflow-hidden" style="border: 4px solid transparent; border-radius: 0.75rem; background-image: linear-gradient(white, white), linear-gradient(to right, #D93280, #5A0989); background-origin: border-box; background-clip: padding-box, border-box;">
         
         <?php
@@ -97,7 +115,7 @@
           <?php else: ?>
             
             <!-- Formulario para solicitar recuperación -->
-            <form method="post" action="<?php echo esc_url(wp_lostpassword_url()); ?>" class="woocommerce-ResetPassword lost_reset_password space-y-4 md:space-y-5">
+            <form method="post" id="lostpassword-form" class="woocommerce-ResetPassword lost_reset_password space-y-4 md:space-y-5">
               <?php wp_nonce_field('lost_password', 'woocommerce-lost-password-nonce'); ?>
               
               <div>
@@ -114,7 +132,13 @@
 
               <button type="submit" 
                       class="w-full flex justify-center py-2.5 md:py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-medium text-white bg-gradient-to-r from-[#D93280] to-[#5A0989] hover:from-[#AB277A] hover:to-[#4A0979] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#AB277A] transition-all transform hover:scale-[1.02] duration-200">
-                Restablecer contraseña
+                <span class="submit-btn-text">Restablecer contraseña</span>
+                <span class="submit-btn-loading hidden">
+                  <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                </span>
               </button>
 
               <input type="hidden" name="wc_reset_password" value="true">
@@ -200,6 +224,57 @@ document.addEventListener('DOMContentLoaded', function() {
         btnText.classList.add('opacity-0');
         btnLoading.classList.remove('hidden');
       }
+    });
+  }
+
+  // Manejar el envío del formulario
+  const lostpasswordForm = document.getElementById('lostpassword-form');
+  if (lostpasswordForm) {
+    lostpasswordForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Mostrar estado de carga
+      const btnText = this.querySelector('.submit-btn-text');
+      const btnLoading = this.querySelector('.submit-btn-loading');
+      
+      if (btnText && btnLoading) {
+        btnText.classList.add('opacity-0');
+        btnLoading.classList.remove('hidden');
+      }
+
+      // Enviar formulario vía AJAX
+      const formData = new FormData(this);
+      
+      fetch(this.action, {
+        method: 'POST',
+        body: formData,
+        credentials: 'same-origin'
+      })
+      .then(response => response.text())
+      .then(() => {
+        // Mostrar mensaje de éxito
+        document.getElementById('success-message').classList.remove('hidden');
+        
+        // Limpiar formulario
+        this.reset();
+        
+        // Restaurar botón
+        if (btnText && btnLoading) {
+          btnText.classList.remove('opacity-0');
+          btnLoading.classList.add('hidden');
+        }
+        
+        // Scroll al mensaje
+        document.getElementById('success-message').scrollIntoView({ behavior: 'smooth' });
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        // Restaurar botón
+        if (btnText && btnLoading) {
+          btnText.classList.remove('opacity-0');
+          btnLoading.classList.add('hidden');
+        }
+      });
     });
   }
 });
