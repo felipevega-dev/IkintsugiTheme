@@ -128,8 +128,11 @@
             <div class="space-y-2">
               <a href="{{ home_url('/') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">Inicio</a>
               <div class="relative group">
-                <a href="{{ home_url('/quienes-somos') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">
+                <a href="{{ home_url('/quienes-somos') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300 flex items-center">
                   Nosotros
+                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
                 </a>
                 <div class="submenu-container -left-4">
                   <div class="horizontal-submenu">
@@ -141,8 +144,11 @@
                 </div>
               </div>
               <div class="relative group">
-                <a href="{{ home_url('/psicoterapia-emdr') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">
+                <a href="{{ home_url('/psicoterapia-emdr') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300 flex items-center">
                   Psicoterapia EMDR
+                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
                 </a>
                 <div class="submenu-container -left-4">
                   <div class="horizontal-submenu">
@@ -159,8 +165,11 @@
             <!-- Segunda columna -->
             <div class="space-y-2">
               <div class="relative group">
-                <a href="{{ home_url('/a-quienes-atendemos') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">
+                <a href="{{ home_url('/a-quienes-atendemos') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300 flex items-center">
                   ¿A quiénes atendemos?
+                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
                 </a>
                 <div class="submenu-container -left-4">
                   <div class="horizontal-submenu">
@@ -175,8 +184,11 @@
             <!-- Tercera columna -->
             <div class="space-y-2">
               <div class="relative group">
-                <a href="{{ home_url('/prensa') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">
+                <a href="{{ home_url('/prensa') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300 flex items-center">
                   Prensa y medios
+                  <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
                 </a>
                 <div class="submenu-container -left-4">
                   <div class="horizontal-submenu">
