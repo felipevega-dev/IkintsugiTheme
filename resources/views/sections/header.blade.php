@@ -492,7 +492,11 @@
     @endphp
 
     <!-- Iconos de redes sociales (arriba del contenedor) -->
-    <div class="hidden md:flex justify-end items-center mb-4 pt-4">
+    <div class="hidden md:flex justify-end items-center mb-4 pt-4 relative">
+      <div id="social-dropdown-container" class="absolute right-full mr-4 top-0 bg-white rounded-lg shadow-lg opacity-0 invisible transition-all duration-300 transform translate-x-10 h-10 overflow-hidden border-2 border-transparent z-50" style="min-width: 360px; background-clip: padding-box; background-image: linear-gradient(white, white), linear-gradient(to right, #D93280, #AB277A); background-origin: border-box; background-clip: content-box, border-box;">
+        <!-- Contenido dinámico de los dropdowns -->
+      </div>
+      
       <div class="flex items-center space-x-4">
         @if($has_white_hero)
         <a href="mailto:hola@ikintsugi.cl" class="text-[#030D55] mr-4 border-b border-[#030D55] hover:text-[#D93280] hover:border-[#D93280] transition-all duration-300">
@@ -500,71 +504,46 @@
         </a>
         @endif
         
-        <!-- Instagram with dropdown -->
-        <div class="relative group">
-          <a href="https://www.instagram.com/instituto_kintsugi/" target="_blank" class="{{ $social_icon_color }} {{ $social_icon_hover }} transition-all duration-300 transform hover:scale-110 flex items-center">
-            <!-- Instagram -->
+        <!-- Instagram -->
+        <div class="relative">
+          <button type="button" class="social-btn {{ $social_icon_color }} {{ $social_icon_hover }} transition-all duration-300 transform hover:scale-110 flex items-center" data-network="instagram">
             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
             </svg>
-          </a>
-          <div class="absolute left-0 top-full mt-2 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 whitespace-nowrap">
-            <div class="flex p-2 gap-2">
-              <a href="https://www.instagram.com/instituto_kintsugi/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">@instituto_kintsugi</a>
-              <a href="https://www.instagram.com/psicologa_shenhui/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">@psicologa_shenhui</a>
-              <a href="https://www.instagram.com/psicologo_juliocesar/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">@psicologo_juliocesar</a>
-            </div>
-          </div>
+          </button>
         </div>
         
-        <!-- TikTok with dropdown -->
-        <div class="relative group">
-          <a href="https://www.tiktok.com/@instituto_kintsugi" target="_blank" class="{{ $social_icon_color }} {{ $social_icon_hover }} transition-all duration-300 transform hover:scale-110 flex items-center">
-            <!-- TikTok -->
+        <!-- TikTok -->
+        <div class="relative">
+          <button type="button" class="social-btn {{ $social_icon_color }} {{ $social_icon_hover }} transition-all duration-300 transform hover:scale-110 flex items-center" data-network="tiktok">
             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
             </svg>
-          </a>
-          <div class="absolute left-0 top-full mt-2 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 whitespace-nowrap">
-            <div class="flex p-2 gap-2">
-              <a href="https://www.tiktok.com/@psicologa_shenhui" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">@psicologa_shenhui</a>
-              <a href="https://www.tiktok.com/@psicologo_juliocesar" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">@psicologo_juliocesar</a>
-            </div>
-          </div>
+          </button>
         </div>
         
-        <!-- LinkedIn with dropdown -->
-        <div class="relative group">
-          <a href="https://www.linkedin.com/company/ikintsugi" target="_blank" class="{{ $social_icon_color }} {{ $social_icon_hover }} transition-all duration-300 transform hover:scale-110 flex items-center">
-            <!-- LinkedIn -->
+        <!-- LinkedIn -->
+        <div class="relative">
+          <button type="button" class="social-btn {{ $social_icon_color }} {{ $social_icon_hover }} transition-all duration-300 transform hover:scale-110 flex items-center" data-network="linkedin">
             <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
             </svg>
-          </a>
-          <div class="absolute left-0 top-full mt-2 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 whitespace-nowrap">
-            <div class="flex p-2 gap-2">
-              <a href="https://www.linkedin.com/newsletters/7085405873988083712/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">Newsletter Shénhui</a>
-              <a href="https://www.linkedin.com/newsletters/emisor-kintsugi-7039605681020108800/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">Newsletter Julio César</a>
-            </div>
-          </div>
+          </button>
         </div>
         
         <a href="https://www.facebook.com/Ikintsugi/" target="_blank" class="{{ $social_icon_color }} {{ $social_icon_hover }} transition-all duration-300 transform hover:scale-110">
-          <!-- Facebook -->
           <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
           </svg>
         </a>
         
         <a href="https://www.youtube.com/@emisorkintsugi" target="_blank" class="{{ $social_icon_color }} {{ $social_icon_hover }} transition-all duration-300 transform hover:scale-110">
-          <!-- YouTube -->
           <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd" />
           </svg>
         </a>
         
         <a href="https://open.spotify.com/show/08J06mjqK1UxNgXPTVlMkJ?si=3bd91370c015422e" target="_blank" class="{{ $social_icon_color }} {{ $social_icon_hover }} transition-all duration-300 transform hover:scale-110">
-          <!-- Spotify -->
           <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
           </svg>
@@ -1203,51 +1182,42 @@
       </nav>
       
       <!-- Redes sociales en el menú móvil -->
-        <div class="mt-6 flex justify-center space-x-6 border-t border-gray-100 pt-4">
-          <!-- Instagram with dropdown -->
-          <div class="relative group">
-            <a href="https://www.instagram.com/instituto_kintsugi/" target="_blank" aria-label="Instagram" class="text-[#362766] hover:text-[#D93280] transition-all duration-300 flex items-center">
+        <div class="mt-6 relative border-t border-gray-100 pt-4">
+          <!-- Contenedor para el dropdown móvil (expandible) -->
+          <div id="mobile-social-dropdown" class="w-full max-h-0 overflow-hidden transition-all duration-300 mb-0 opacity-0 border-b-0 border-gray-100 bg-gray-50 rounded-lg">
+            <!-- Contenido dinámico para móvil -->
+          </div>
+          
+          <div class="flex justify-center space-x-6 mt-2">
+            <!-- Instagram -->
+            <div class="relative">
+              <button type="button" class="mobile-social-btn text-[#362766] hover:text-[#D93280] transition-all duration-300 flex items-center" data-network="instagram" aria-label="Instagram">
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <!-- Instagram -->
+          <div class="relative">
+            <button type="button" class="mobile-social-btn text-[#362766] hover:text-[#D93280] transition-all duration-300 flex items-center" data-network="instagram" aria-label="Instagram">
               <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465.668.25 1.272.644 1.772 1.153.509.5.902 1.104 1.153 1.772.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.903 4.903 0 01-1.153 1.772c-.5.509-1.104.902-1.772 1.153-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.903 4.903 0 01-1.772-1.153 4.903 4.903 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427.25-.668.644-1.272 1.153-1.772A4.903 4.903 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
               </svg>
-            </a>
-            <div class="absolute left-0 bottom-full mb-2 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-              <div class="flex flex-col p-2">
-                <a href="https://www.instagram.com/instituto_kintsugi/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] whitespace-nowrap">@instituto_kintsugi</a>
-                <a href="https://www.instagram.com/psicologa_shenhui/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] whitespace-nowrap">@psicologa_shenhui</a>
-                <a href="https://www.instagram.com/psicologo_juliocesar/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] whitespace-nowrap">@psicologo_juliocesar</a>
-              </div>
-            </div>
+            </button>
           </div>
           
-          <!-- TikTok with dropdown -->
-          <div class="relative group">
-            <a href="https://www.tiktok.com/@instituto_kintsugi" target="_blank" aria-label="TikTok" class="text-[#362766] hover:text-[#D93280] transition-all duration-300 flex items-center">
+          <!-- TikTok -->
+          <div class="relative">
+            <button type="button" class="mobile-social-btn text-[#362766] hover:text-[#D93280] transition-all duration-300 flex items-center" data-network="tiktok" aria-label="TikTok">
               <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
               </svg>
-            </a>
-            <div class="absolute left-0 bottom-full mb-2 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-              <div class="flex flex-col p-2">
-                <a href="https://www.tiktok.com/@psicologa_shenhui" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] whitespace-nowrap">@psicologa_shenhui</a>
-                <a href="https://www.tiktok.com/@psicologo_juliocesar" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] whitespace-nowrap">@psicologo_juliocesar</a>
-              </div>
-            </div>
+            </button>
           </div>
           
-          <!-- LinkedIn with dropdown -->
-          <div class="relative group">
-            <a href="https://www.linkedin.com/company/ikintsugi" target="_blank" aria-label="LinkedIn" class="text-[#362766] hover:text-[#D93280] transition-all duration-300 flex items-center">
+          <!-- LinkedIn -->
+          <div class="relative">
+            <button type="button" class="mobile-social-btn text-[#362766] hover:text-[#D93280] transition-all duration-300 flex items-center" data-network="linkedin" aria-label="LinkedIn">
               <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
               </svg>
-            </a>
-            <div class="absolute left-0 bottom-full mb-2 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-              <div class="flex flex-col p-2">
-                <a href="https://www.linkedin.com/newsletters/7085405873988083712/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] whitespace-nowrap">Newsletter Shénhui</a>
-                <a href="https://www.linkedin.com/newsletters/emisor-kintsugi-7039605681020108800/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] whitespace-nowrap">Newsletter Julio César</a>
-              </div>
-            </div>
+            </button>
           </div>
           
           <a href="https://www.facebook.com/Ikintsugi/" target="_blank" aria-label="Facebook" class="text-[#362766] hover:text-[#D93280] transition-all duration-300">
@@ -1281,6 +1251,187 @@
     const menuButton = document.getElementById('mobile-menu-button');
     const menuClose = document.getElementById('mobile-menu-close');
     const mobileMenu = document.getElementById('mobile-menu');
+    
+    // Código para los dropdowns de redes sociales
+    const socialButtons = document.querySelectorAll('.social-btn');
+    const dropdownContainer = document.getElementById('social-dropdown-container');
+    
+    // Definir contenido para cada red social
+    const socialContent = {
+      instagram: `
+        <div class="flex p-2 gap-2 h-full items-center">
+          <a href="https://www.instagram.com/instituto_kintsugi/" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap">@instituto_kintsugi</a>
+          <a href="https://www.instagram.com/psicologa_shenhui/" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap">@psicologa_shenhui</a>
+          <a href="https://www.instagram.com/psicologo_juliocesar/" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap">@psicologo_juliocesar</a>
+        </div>
+      `,
+      tiktok: `
+        <div class="flex p-2 gap-2 h-full items-center">
+          <a href="https://www.tiktok.com/@psicologa_shenhui" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap">@psicologa_shenhui</a>
+          <a href="https://www.tiktok.com/@psicologo_juliocesar" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap">@psicologo_juliocesar</a>
+        </div>
+      `,
+      linkedin: `
+        <div class="flex p-2 gap-2 h-full items-center">
+          <a href="https://www.linkedin.com/newsletters/7085405873988083712/" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap">Newsletter Shénhui</a>
+          <a href="https://www.linkedin.com/newsletters/emisor-kintsugi-7039605681020108800/" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap">Newsletter Julio César</a>
+        </div>
+      `
+    };
+    
+    // Definir contenido móvil para cada red social
+    const mobileSocialContent = {
+      instagram: `
+        <div class="py-3 border-b border-gray-100 flex flex-col gap-2">
+          <div class="font-medium text-[#030D55] px-4">Instagram</div>
+          <div class="flex flex-col px-2">
+            <a href="https://www.instagram.com/instituto_kintsugi/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">@instituto_kintsugi</a>
+            <a href="https://www.instagram.com/psicologa_shenhui/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">@psicologa_shenhui</a>
+            <a href="https://www.instagram.com/psicologo_juliocesar/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">@psicologo_juliocesar</a>
+          </div>
+        </div>
+      `,
+      tiktok: `
+        <div class="py-3 border-b border-gray-100 flex flex-col gap-2">
+          <div class="font-medium text-[#030D55] px-4">TikTok</div>
+          <div class="flex flex-col px-2">
+            <a href="https://www.tiktok.com/@psicologa_shenhui" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">@psicologa_shenhui</a>
+            <a href="https://www.tiktok.com/@psicologo_juliocesar" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">@psicologo_juliocesar</a>
+          </div>
+        </div>
+      `,
+      linkedin: `
+        <div class="py-3 border-b border-gray-100 flex flex-col gap-2">
+          <div class="font-medium text-[#030D55] px-4">LinkedIn</div>
+          <div class="flex flex-col px-2">
+            <a href="https://www.linkedin.com/newsletters/7085405873988083712/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">Newsletter Shénhui</a>
+            <a href="https://www.linkedin.com/newsletters/emisor-kintsugi-7039605681020108800/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">Newsletter Julio César</a>
+          </div>
+        </div>
+      `
+    };
+    
+    // Variable para el botón activo
+    let activeButton = null;
+    let activeMobileButton = null;
+    
+    // Función para mostrar el dropdown
+    function showDropdown(network) {
+      // Establecer el contenido según la red social
+      dropdownContainer.innerHTML = socialContent[network];
+      
+      // Mostrar con animación
+      dropdownContainer.style.opacity = '1';
+      dropdownContainer.style.visibility = 'visible';
+      dropdownContainer.style.transform = 'translate(0, 0)';
+    }
+    
+    // Función para ocultar el dropdown
+    function hideDropdown() {
+      dropdownContainer.style.opacity = '0';
+      dropdownContainer.style.visibility = 'hidden';
+      dropdownContainer.style.transform = 'translate(10px, 0)';
+      
+      if (activeButton) {
+        activeButton.classList.remove('text-[#D93280]');
+        activeButton = null;
+      }
+    }
+    
+    // Mobile dropdown
+    const mobileSocialButtons = document.querySelectorAll('.mobile-social-btn');
+    const mobileSocialDropdown = document.getElementById('mobile-social-dropdown');
+    
+    // Función para mostrar el dropdown móvil
+    function showMobileDropdown(network) {
+      // Establecer el contenido según la red social
+      mobileSocialDropdown.innerHTML = mobileSocialContent[network];
+      
+      // Mostrar con animación
+      mobileSocialDropdown.style.maxHeight = '300px';
+      mobileSocialDropdown.style.opacity = '1';
+      mobileSocialDropdown.style.marginBottom = '16px';
+      mobileSocialDropdown.style.borderBottomWidth = '1px';
+    }
+    
+    // Función para ocultar el dropdown móvil
+    function hideMobileDropdown() {
+      mobileSocialDropdown.style.maxHeight = '0';
+      mobileSocialDropdown.style.opacity = '0';
+      mobileSocialDropdown.style.marginBottom = '0';
+      mobileSocialDropdown.style.borderBottomWidth = '0';
+      
+      if (activeMobileButton) {
+        activeMobileButton.classList.remove('text-[#D93280]');
+        activeMobileButton = null;
+      }
+    }
+    
+    // Agregar eventos a los botones
+    socialButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const network = this.getAttribute('data-network');
+        
+        // Si ya hay un botón activo, desactivarlo
+        if (activeButton) {
+          activeButton.classList.remove('text-[#D93280]');
+        }
+        
+        // Si el botón clickeado ya estaba activo, cerrar el dropdown
+        if (activeButton === this) {
+          hideDropdown();
+          activeButton = null;
+          return;
+        }
+        
+        // Activar el botón clickeado
+        this.classList.add('text-[#D93280]');
+        activeButton = this;
+        
+        // Mostrar el dropdown
+        showDropdown(network);
+      });
+    });
+    
+    // Agregar eventos a los botones móviles
+    mobileSocialButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const network = this.getAttribute('data-network');
+        
+        // Si ya hay un botón activo, desactivarlo
+        if (activeMobileButton) {
+          activeMobileButton.classList.remove('text-[#D93280]');
+        }
+        
+        // Si el botón clickeado ya estaba activo, cerrar el dropdown
+        if (activeMobileButton === this) {
+          hideMobileDropdown();
+          activeMobileButton = null;
+          return;
+        }
+        
+        // Activar el botón clickeado
+        this.classList.add('text-[#D93280]');
+        activeMobileButton = this;
+        
+        // Mostrar el dropdown
+        showMobileDropdown(network);
+      });
+    });
+    
+    // Cerrar dropdown al hacer clic fuera
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.social-btn') && !e.target.closest('#social-dropdown-container')) {
+        hideDropdown();
+      }
+      
+      // Cerrar dropdown móvil al hacer clic fuera
+      if (!e.target.closest('.mobile-social-btn') && !e.target.closest('#mobile-social-dropdown')) {
+        hideMobileDropdown();
+      }
+    });
     
     // Handle experts accordion toggle
     const expertToggle = document.getElementById('expert-toggle');
