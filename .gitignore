@@ -52,3 +52,7 @@ style.css
 # Archivos específicos de Laragon
 /.docker
 /laragon 
+
+.cursorrules
+.cursor
+/.cursor
