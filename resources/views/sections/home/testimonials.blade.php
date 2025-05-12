@@ -24,6 +24,19 @@
         <p class="text-[#181818] text-center text-[14px] md:text-[15px] font-normal font-roboto leading-normal px-2 pb-4">
           "Después de años en terapias largas y sin resultados, la terapia con Julio César fue un antes y un después para mí. En pocas sesiones vi cambios concretos, sin revivir traumas. Sentí que limpié mucho de mi interior y que, por fin, tenía una alternativa real al sufrimiento. La recomiendo totalmente."
         </p>
+        
+        <!-- Video Button -->
+        <div class="text-center mt-2">
+          <a href="https://www.youtube.com/watch?v=Ft3oIUaRA5g" target="_blank" class="inline-block bg-gradient-to-r from-[#AB277A] to-[#030D55] text-white py-2 px-6 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-sm">
+            <span class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Ver testimonio en video
+            </span>
+          </a>
+        </div>
       </div>
       
       <!-- Testimonio 2 -->
@@ -42,6 +55,19 @@
         <p class="text-[#181818] text-center text-[14px] md:text-[15px] font-normal font-roboto leading-normal px-2 pb-4">
           "Mi proceso de terapia con Shénhui fue transformador. Desde el primer momento, ella me acompañó con mucha calidez, guiándome con firmeza pero siempre con amabilidad, tanto en los días buenos como en los más difíciles. Gracias a su enfoque y al EMDR, pude sanar heridas profundas sin necesidad de revivirlas."
         </p>
+        
+        <!-- Video Button -->
+        <div class="text-center mt-2">
+          <a href="https://www.youtube.com/watch?v=S9de95EBTXI" target="_blank" class="inline-block bg-gradient-to-r from-[#AB277A] to-[#030D55] text-white py-2 px-6 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-sm">
+            <span class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Ver testimonio en video
+            </span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
