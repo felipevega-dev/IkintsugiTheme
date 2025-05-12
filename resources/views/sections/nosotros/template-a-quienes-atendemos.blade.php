@@ -12,7 +12,7 @@
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
         <div class="lg:w-1/2 mb-8 lg:mb-12" data-aos="fade-right" data-aos-duration="600">
-          <span class="text-[#AB277A] text-sm md:text-base uppercase tracking-wider font-medium mb-2 block">A quiénes atendemos</span>
+          <span class="text-[#AB277A] text-sm md:text-base uppercase tracking-wider font-medium mb-2 block">¿A qué personas atendemos?          </span>
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-4 md:mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
           Alivio y plenitud para ti
           </h1>

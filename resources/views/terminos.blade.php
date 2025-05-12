@@ -40,7 +40,7 @@
 
             <div class="border-l-4 border-purple-600 pl-4 mb-8">
                 <h3 class="text-xl font-semibold mb-2">3. Comentarios de Usuario</h3>
-                <p>Ciertas partes de este sitio web ofrecen la oportunidad a los usuarios de publicar e intercambiar opiniones e información en determinadas áreas. No filtramos, editamos, publicamos o revisamos los comentarios antes de su presencia en el sitio web. Los comentarios no reflejan los puntos de vista y opiniones de nuestra empresa, sus agentes y/o afiliados. Los comentarios reflejan los puntos de vista y opiniones de la persona que publica sus puntos de vista y opiniones.</p>
+                <p>Ciertas partes de este sitio web ofrecen la oportunidad a los usuarios de publicar e intercambiar opiniones e información en determinadas áreas. Filtramos, editamos y revisamos todos los comentarios antes de su publicación en el sitio web a través de nuestro sistema de gestión de contenido WordPress. Esto nos permite garantizar que no se publiquen contenidos inapropiados o spam. Los comentarios no reflejan los puntos de vista y opiniones de nuestra empresa, sus agentes y/o afiliados. Los comentarios reflejan los puntos de vista y opiniones de la persona que publica sus puntos de vista y opiniones.</p>
                 
                 <h4 class="text-lg font-medium mt-4">Usted es responsable de:</h4>
                 <ul class="list-disc pl-6 mt-2">
@@ -128,7 +128,7 @@
 
             <div class="border-l-4 border-purple-600 pl-4 mb-8">
                 <h3 class="text-xl font-semibold mb-2">3. User Comments</h3>
-                <p>Certain parts of this website offer the opportunity for users to post and exchange opinions and information in certain areas. We do not filter, edit, publish or review comments prior to their presence on the website. Comments do not reflect the views and opinions of our company, its agents and/or affiliates. Comments reflect the views and opinions of the person who post their views and opinions.</p>
+                <p>Certain parts of this website offer the opportunity for users to post and exchange opinions and information in certain areas. We filter, edit and review all comments before they are published on the website through our WordPress content management system. This allows us to ensure that inappropriate content or spam is not published. Comments do not reflect the views and opinions of our company, its agents and/or affiliates. Comments reflect the views and opinions of the person who post their views and opinions.</p>
                 
                 <h4 class="text-lg font-medium mt-4">You are responsible for:</h4>
                 <ul class="list-disc pl-6 mt-2">
