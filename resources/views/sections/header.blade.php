@@ -493,7 +493,7 @@
 
     <!-- Iconos de redes sociales (arriba del contenedor) -->
     <div class="hidden md:flex justify-end items-center mb-4 pt-4 relative">
-      <div id="social-dropdown-container" class="absolute right-full mr-4 top-0 bg-white rounded-lg shadow-lg opacity-0 invisible transition-all duration-300 transform translate-x-10 h-10 overflow-hidden border-2 border-transparent z-50" style="min-width: 360px; right: -150px; background-clip: padding-box; background-image: linear-gradient(white, white), linear-gradient(to right, #D93280, #AB277A); background-origin: border-box; background-clip: content-box, border-box;">
+      <div id="social-dropdown-container" class="absolute right-full mr-4 top-0 bg-white rounded-lg shadow-lg opacity-0 invisible transition-all duration-300 transform translate-x-10 h-10 overflow-hidden border-2 border-transparent z-50" style="min-width: 460px; right: 0px; background-clip: padding-box; background-image: linear-gradient(white, white), linear-gradient(to right, #D93280, #AB277A); background-origin: border-box; background-clip: content-box, border-box;">
         <!-- Contenido dinámico de los dropdowns -->
       </div>
       
@@ -1184,7 +1184,7 @@
       <!-- Redes sociales en el menú móvil -->
         <div class="mt-6 relative border-t border-gray-100 pt-4">
           <!-- Contenedor para el dropdown móvil (expandible) -->
-          <div id="mobile-social-dropdown" class="w-full max-h-0 overflow-hidden transition-all duration-300 mb-0 opacity-0 border-b-0 border-gray-100 bg-gray-50 rounded-lg">
+          <div id="mobile-social-dropdown" class="w-full max-h-0 overflow-hidden transition-all duration-300 mb-0 opacity-0 border-b-0 border-gray-100 bg-gray-50 rounded-lg mx-auto" style="max-width: 95%;">
             <!-- Contenido dinámico para móvil -->
           </div>
           
@@ -1256,22 +1256,43 @@
     // Definir contenido para cada red social
     const socialContent = {
       instagram: `
-        <div class="flex p-2 gap-2 h-full items-center">
-          <a href="https://www.instagram.com/instituto_kintsugi/" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap">@instituto_kintsugi</a>
-          <a href="https://www.instagram.com/psicologa_shenhui/" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap">@psicologa_shenhui</a>
-          <a href="https://www.instagram.com/psicologo_juliocesar/" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap">@psicologo_juliocesar</a>
+        <div class="flex p-3 gap-2 h-full items-center">
+          <a href="https://www.instagram.com/instituto_kintsugi/" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap flex items-center">
+            <span class="w-2 h-2 rounded-full bg-[#D93280] opacity-60 mr-2"></span>
+            @instituto_kintsugi
+          </a>
+          <a href="https://www.instagram.com/psicologa_shenhui/" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap flex items-center">
+            <span class="w-2 h-2 rounded-full bg-[#D93280] opacity-60 mr-2"></span>
+            @psicologa_shenhui
+          </a>
+          <a href="https://www.instagram.com/psicologo_juliocesar/" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap flex items-center">
+            <span class="w-2 h-2 rounded-full bg-[#D93280] opacity-60 mr-2"></span>
+            @psicologo_juliocesar
+          </a>
         </div>
       `,
       tiktok: `
-        <div class="flex p-2 gap-2 h-full items-center">
-          <a href="https://www.tiktok.com/@psicologa_shenhui" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap">@psicologa_shenhui</a>
-          <a href="https://www.tiktok.com/@psicologo_juliocesar" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap">@psicologo_juliocesar</a>
+        <div class="flex p-3 gap-2 h-full items-center">
+          <a href="https://www.tiktok.com/@psicologa_shenhui" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap flex items-center">
+            <span class="w-2 h-2 rounded-full bg-[#D93280] opacity-60 mr-2"></span>
+            @psicologa_shenhui
+          </a>
+          <a href="https://www.tiktok.com/@psicologo_juliocesar" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap flex items-center">
+            <span class="w-2 h-2 rounded-full bg-[#D93280] opacity-60 mr-2"></span>
+            @psicologo_juliocesar
+          </a>
         </div>
       `,
       linkedin: `
-        <div class="flex p-2 gap-2 h-full items-center">
-          <a href="https://www.linkedin.com/newsletters/7085405873988083712/" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap">Newsletter Shénhui</a>
-          <a href="https://www.linkedin.com/newsletters/emisor-kintsugi-7039605681020108800/" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap">Newsletter Julio César</a>
+        <div class="flex p-3 gap-2 h-full items-center">
+          <a href="https://www.linkedin.com/newsletters/7085405873988083712/" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap flex items-center">
+            <span class="w-2 h-2 rounded-full bg-[#D93280] opacity-60 mr-2"></span>
+            Newsletter Shénhui
+          </a>
+          <a href="https://www.linkedin.com/newsletters/emisor-kintsugi-7039605681020108800/" target="_blank" class="px-3 py-1 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md whitespace-nowrap flex items-center">
+            <span class="w-2 h-2 rounded-full bg-[#D93280] opacity-60 mr-2"></span>
+            Newsletter Julio César
+          </a>
         </div>
       `
     };
@@ -1280,29 +1301,50 @@
     const mobileSocialContent = {
       instagram: `
         <div class="py-3 border-b border-gray-100 flex flex-col gap-2">
-          <div class="font-medium text-[#030D55] px-4">Instagram</div>
-          <div class="flex flex-col px-2">
-            <a href="https://www.instagram.com/instituto_kintsugi/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">@instituto_kintsugi</a>
-            <a href="https://www.instagram.com/psicologa_shenhui/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">@psicologa_shenhui</a>
-            <a href="https://www.instagram.com/psicologo_juliocesar/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">@psicologo_juliocesar</a>
+          <div class="font-medium text-[#030D55] px-4 mb-1">Instagram</div>
+          <div class="flex flex-col px-2 gap-1">
+            <a href="https://www.instagram.com/instituto_kintsugi/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md flex items-center">
+              <span class="w-3 h-3 rounded-full bg-[#D93280] opacity-60 mr-2"></span>
+              @instituto_kintsugi
+            </a>
+            <a href="https://www.instagram.com/psicologa_shenhui/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md flex items-center">
+              <span class="w-3 h-3 rounded-full bg-[#D93280] opacity-60 mr-2"></span>
+              @psicologa_shenhui
+            </a>
+            <a href="https://www.instagram.com/psicologo_juliocesar/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md flex items-center">
+              <span class="w-3 h-3 rounded-full bg-[#D93280] opacity-60 mr-2"></span>
+              @psicologo_juliocesar
+            </a>
           </div>
         </div>
       `,
       tiktok: `
         <div class="py-3 border-b border-gray-100 flex flex-col gap-2">
-          <div class="font-medium text-[#030D55] px-4">TikTok</div>
-          <div class="flex flex-col px-2">
-            <a href="https://www.tiktok.com/@psicologa_shenhui" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">@psicologa_shenhui</a>
-            <a href="https://www.tiktok.com/@psicologo_juliocesar" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">@psicologo_juliocesar</a>
+          <div class="font-medium text-[#030D55] px-4 mb-1">TikTok</div>
+          <div class="flex flex-col px-2 gap-1">
+            <a href="https://www.tiktok.com/@psicologa_shenhui" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md flex items-center">
+              <span class="w-3 h-3 rounded-full bg-[#D93280] opacity-60 mr-2"></span>
+              @psicologa_shenhui
+            </a>
+            <a href="https://www.tiktok.com/@psicologo_juliocesar" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md flex items-center">
+              <span class="w-3 h-3 rounded-full bg-[#D93280] opacity-60 mr-2"></span>
+              @psicologo_juliocesar
+            </a>
           </div>
         </div>
       `,
       linkedin: `
         <div class="py-3 border-b border-gray-100 flex flex-col gap-2">
-          <div class="font-medium text-[#030D55] px-4">LinkedIn</div>
-          <div class="flex flex-col px-2">
-            <a href="https://www.linkedin.com/newsletters/7085405873988083712/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">Newsletter Shénhui</a>
-            <a href="https://www.linkedin.com/newsletters/emisor-kintsugi-7039605681020108800/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md">Newsletter Julio César</a>
+          <div class="font-medium text-[#030D55] px-4 mb-1">LinkedIn</div>
+          <div class="flex flex-col px-2 gap-1">
+            <a href="https://www.linkedin.com/newsletters/7085405873988083712/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md flex items-center">
+              <span class="w-3 h-3 rounded-full bg-[#D93280] opacity-60 mr-2"></span>
+              Newsletter Shénhui
+            </a>
+            <a href="https://www.linkedin.com/newsletters/emisor-kintsugi-7039605681020108800/" target="_blank" class="px-3 py-2 text-sm text-gray-700 hover:bg-[#FBD5E8] hover:text-[#D93280] rounded-md flex items-center">
+              <span class="w-3 h-3 rounded-full bg-[#D93280] opacity-60 mr-2"></span>
+              Newsletter Julio César
+            </a>
           </div>
         </div>
       `
@@ -1348,7 +1390,20 @@
       mobileSocialDropdown.style.maxHeight = '300px';
       mobileSocialDropdown.style.opacity = '1';
       mobileSocialDropdown.style.marginBottom = '16px';
+      mobileSocialDropdown.style.marginTop = '-8px'; // Add negative margin to expand upward
       mobileSocialDropdown.style.borderBottomWidth = '1px';
+      
+      // Ajustar el scroll del menú móvil si es necesario
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenu) {
+        setTimeout(() => {
+          const dropdownPosition = mobileSocialDropdown.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          if (dropdownPosition > windowHeight * 0.7) {
+            mobileMenu.scrollTop = mobileMenu.scrollTop + 100;
+          }
+        }, 100);
+      }
     }
     
     // Función para ocultar el dropdown móvil
@@ -1356,6 +1411,7 @@
       mobileSocialDropdown.style.maxHeight = '0';
       mobileSocialDropdown.style.opacity = '0';
       mobileSocialDropdown.style.marginBottom = '0';
+      mobileSocialDropdown.style.marginTop = '0'; // Reset margin
       mobileSocialDropdown.style.borderBottomWidth = '0';
       
       if (activeMobileButton) {
