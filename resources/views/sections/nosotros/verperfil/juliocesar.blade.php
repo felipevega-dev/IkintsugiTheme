@@ -227,6 +227,17 @@
             @endforeach
           </ul>
           
+          <!-- Credencial profesional -->
+          <div class="mt-4 mb-4 py-3 px-4 border border-gray-200 rounded-lg bg-gradient-to-b from-white to-[#F8F0F8] shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 inline-flex items-center gap-3">
+            <div>
+              <div class="font-bold text-[#030D55] mb-1">Núm. de Registro: 572705</div>
+              <div class="text-[#AB277A] text-sm">Superintendencia de Salud</div>
+            </div>
+            <div>
+              <img src="{{ get_theme_file_uri('resources/images/superintendencia.png') }}" alt="Superintendencia de Salud" class="h-10 w-auto transition-all duration-300 hover:scale-105">
+            </div>
+          </div>
+          
           <!-- Redes sociales -->
           <div class="mt-2 flex gap-4 justify-center md:justify-start social-icons-container">
             <a href="https://www.instagram.com/psicologo_juliocesar" target="_blank" class="text-[#FF3382] social-icon">
