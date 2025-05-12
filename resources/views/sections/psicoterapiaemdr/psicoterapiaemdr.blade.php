@@ -49,6 +49,17 @@
           </div>
         </div>
       </div>
+      
+      <!-- Botón Reservar Cita solo en mobile -->
+      <div class="md:hidden flex justify-center mt-6 mb-2">
+        <a href="{{ home_url('/reservar-cita') }}" 
+           class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 
+                  text-white px-6 py-2 rounded-full font-medium transition-all 
+                  duration-300 transform hover:scale-105 shadow-md hover:shadow-lg 
+                  text-base font-roboto">
+          Reservar Cita
+        </a>
+      </div>
     </div>
   </section>
 

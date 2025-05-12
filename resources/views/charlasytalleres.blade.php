@@ -22,6 +22,7 @@
       muted 
       loop 
       playsinline
+      poster="{{ get_theme_file_uri('resources/videos/kintsugi-thumbnail.png') }}"
     >
       <source src="{{ get_theme_file_uri('resources/videos/Kintsugi.mp4') }}" type="video/mp4">
       <!-- Fallback para navegadores que no soportan video -->
@@ -34,6 +35,17 @@
     <div class="max-w-3xl mx-auto text-center text-white py-16 md:py-16">
       <h2 class="text-xl md:text-2xl font-500 mb-2" data-aos="fade-up" data-aos-duration="500">Psicología Clínica EMDR</h2>
       <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 font-paytone" data-aos="fade-up" data-aos-duration="600" data-aos-delay="50">Nuestras Charlas y talleres</h1>
+      
+      <!-- Botón Reservar Cita (visible en todas las pantallas) -->
+      <div class="flex justify-center mt-4" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100">
+        <a href="{{ home_url('/reservar-cita') }}" 
+           class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 
+                  text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full transition-all 
+                  duration-300 transform hover:scale-105 shadow-md hover:shadow-lg 
+                  font-roboto text-base md:text-lg tracking-wide font-medium">
+          Reservar Cita
+        </a>
+      </div>
     </div>
   </div>
 
