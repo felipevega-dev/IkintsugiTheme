@@ -128,8 +128,13 @@
   </section> 
 
   <!-- Video de presentación -->
-  <section class="bg-white relative overflow-hidden py-4 md:py-12">
+  <section class="bg-white relative overflow-hidden py-4 md:py-14">
     <div class="container mx-auto px-4">
+      <div class="text-center mb-10" data-aos="fade-up" data-aos-duration="600">
+        <h3 class="text-2xl md:text-3xl font-bold text-[#030D55] mb-4 font-paytone">Conoce nuestra historia</h3>
+        <p class="text-base md:text-lg text-[#181818] max-w-2xl mx-auto">Descubre cómo nació Instituto Kintsugi y nuestra misión de transformar el dolor en fortaleza a través de la psicoterapia EMDR.</p>
+      </div>
+      
       <div class="mx-auto aspect-video md:max-w-[850px]" style="max-width: 90%; border-radius: 16px; overflow: hidden; box-shadow: 0px 4px 16px 0px rgba(171, 39, 122, 0.5);" data-aos="fade-up" data-aos-duration="800">
         <div class="relative w-full h-0 pb-[56.25%]">
           <!-- Borde con gradiente -->
@@ -230,16 +235,18 @@
                 <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
                 <span>Miembro Asociación de EMDR España</span>
               </li>
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start mt-4">
-                <div class="flex flex-col items-start">
-                  <span class="font-bold text-sm mb-1">Núm. de Registro: 572705</span>
-                  <span class="flex items-center">
-                    <span class="mr-2">Superintendencia de Salud</span>
-                    <img src="{{ get_theme_file_uri('resources/images/superintendencia.png') }}" alt="Superintendencia de Salud" class="h-5 w-auto">
-                  </span>
-                </div>
-              </li>
             </ul>
+            
+            <!-- Credencial profesional -->
+            <div class="mt-6 py-3 px-4 border border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+              <div class="flex flex-col">
+                <span class="font-bold text-[#030D55] text-center mb-2">Núm. de Registro: 572705</span>
+                <span class="text-[#AB277A] text-sm text-center mb-2">Superintendencia de Salud</span>
+                <div class="flex justify-center">
+                  <img src="{{ get_theme_file_uri('resources/images/superintendencia.png') }}" alt="Superintendencia de Salud" class="h-7 w-auto transition-all duration-300 hover:scale-105">
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         
@@ -322,16 +329,18 @@
                 <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
                 <span>Miembro Asociación de EMDR España</span>
               </li>
-              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start mt-4">
-                <div class="flex flex-col items-start">
-                  <span class="font-bold text-sm mb-1">Núm. de Registro: 529758</span>
-                  <span class="flex items-center">
-                    <span class="mr-2">Superintendencia de Salud</span>
-                    <img src="{{ get_theme_file_uri('resources/images/superintendencia.png') }}" alt="Superintendencia de Salud" class="h-5 w-auto">
-                  </span>
-                </div>
-              </li>
             </ul>
+            
+            <!-- Credencial profesional -->
+            <div class="mt-6 py-3 px-4 border border-gray-200 rounded-lg bg-white shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+              <div class="flex flex-col">
+                <span class="font-bold text-[#030D55] text-center mb-2">Núm. de Registro: 529758</span>
+                <span class="text-[#AB277A] text-sm text-center mb-2">Superintendencia de Salud</span>
+                <div class="flex justify-center">
+                  <img src="{{ get_theme_file_uri('resources/images/superintendencia.png') }}" alt="Superintendencia de Salud" class="h-7 w-auto transition-all duration-300 hover:scale-105">
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
