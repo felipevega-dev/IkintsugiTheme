@@ -12,7 +12,7 @@
       <div class="flex flex-col lg:flex-row items-center">
         <!-- Columna de texto -->
         <div class="lg:w-1/2 mb-8 lg:mb-12" data-aos="fade-right" data-aos-duration="600">
-          <span class="text-[#AB277A] text-sm md:text-base uppercase tracking-wider font-medium mb-2 block">Quienes somos</span>
+          <span class="text-[#AB277A] text-sm md:text-base uppercase tracking-wider font-medium mb-2 block">Quiénes somos</span>
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[#030D55] mb-4 md:mb-8 leading-none transition-all duration-500 hover:text-[#AB277A] font-paytone">
             Donde tus<br>cicatrices se<br>vuelven fortaleza
           </h1>
@@ -230,6 +230,15 @@
                 <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
                 <span>Miembro Asociación de EMDR España</span>
               </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start mt-4">
+                <div class="flex flex-col items-start">
+                  <span class="font-bold text-sm mb-1">Núm. de Registro: 572705</span>
+                  <span class="flex items-center">
+                    <span class="mr-2">Superintendencia de Salud</span>
+                    <img src="{{ get_theme_file_uri('resources/images/superintendencia.png') }}" alt="Superintendencia de Salud" class="h-5 w-auto">
+                  </span>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
@@ -312,6 +321,15 @@
               <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start">
                 <span class="inline-block w-2 h-2 rounded-full bg-[#030D55] mr-2 mt-[0.45em] flex-shrink-0 transition-colors duration-200"></span>
                 <span>Miembro Asociación de EMDR España</span>
+              </li>
+              <li class="transition-all duration-200 hover:text-[#AB277A] hover:font-medium hover:translate-x-1 flex items-start mt-4">
+                <div class="flex flex-col items-start">
+                  <span class="font-bold text-sm mb-1">Núm. de Registro: 529758</span>
+                  <span class="flex items-center">
+                    <span class="mr-2">Superintendencia de Salud</span>
+                    <img src="{{ get_theme_file_uri('resources/images/superintendencia.png') }}" alt="Superintendencia de Salud" class="h-5 w-auto">
+                  </span>
+                </div>
               </li>
             </ul>
           </div>
