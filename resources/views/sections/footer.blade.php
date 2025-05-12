@@ -226,7 +226,7 @@
             <ul class="space-y-2">
               <li>
                 <a href="{{ home_url('/terminos-y-condiciones') }}" class="text-[#181818] hover:text-[#AB277A] hover:underline transition-all duration-300 text-base" style="font-family: 'Roboto', sans-serif; font-weight: 400;">
-                  Términos Y condiciones
+                  Términos y condiciones
                 </a>
               </li>
               <li>
