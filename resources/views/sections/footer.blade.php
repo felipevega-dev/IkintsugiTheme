@@ -127,38 +127,50 @@
             <!-- Primera columna -->
             <div class="space-y-2">
               <a href="{{ home_url('/') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">Inicio</a>
-              <a href="{{ home_url('/a-quienes-atendemos') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">¿A quiénes atendemos?</a>
-              <a href="{{ home_url('/charlas-y-talleres') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">Charlas y talleres</a>
-            </div>
-            <!-- Segunda columna -->
-            <div class="space-y-2">
+              <div class="relative group">
+                <a href="{{ home_url('/quienes-somos') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">
+                  Nosotros
+                </a>
+                <div class="submenu-container -left-4">
+                  <div class="horizontal-submenu">
+                    <a href="{{ home_url('/quienes-somos') }}" class="horizontal-submenu-item">¿Quiénes somos?</a>
+                    <a href="{{ home_url('/que-significa-kintsugi') }}" class="horizontal-submenu-item">¿Qué significa Kintsugi?</a>
+                    <a href="{{ home_url('/que-nos-inspira') }}" class="horizontal-submenu-item">¿Qué nos inspira?</a>
+                    <a href="{{ home_url('/divulgacion-cientifica') }}" class="horizontal-submenu-item">Divulgación Científica</a>
+                  </div>
+                </div>
+              </div>
               <div class="relative group">
                 <a href="{{ home_url('/psicoterapia-emdr') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">
                   Psicoterapia EMDR
                 </a>
                 <div class="submenu-container -left-4">
                   <div class="horizontal-submenu">
+                    <a href="{{ home_url('/psicoterapia-emdr') }}" class="horizontal-submenu-item">¿Qué es Psicoterapia EMDR?</a>
                     <a href="{{ home_url('/testimonios') }}" class="horizontal-submenu-item">Testimonios</a>
-                    <a href="{{ home_url('/beneficios-emdr') }}" class="horizontal-submenu-item">Beneficios del EMDR</a>
-                    <a href="{{ home_url('/tratamiento-emdr') }}" class="horizontal-submenu-item">¿Qué ocurre durante el tratamiento?</a>
-                    <a href="{{ home_url('/que-esperar') }}" class="horizontal-submenu-item">¿Qué esperar?</a>
-                    <a href="{{ home_url('/transtornos-y-malestares') }}" class="horizontal-submenu-item">Transtornos y malestares</a>
+                    <a href="{{ home_url('/beneficios-emdr') }}" class="horizontal-submenu-item">¿Cómo me puede ayudar el EMDR?</a>
+                    <a href="{{ home_url('/tratamiento-emdr') }}" class="horizontal-submenu-item">¿Qué ocurre durante el tratamiento EMDR?</a>
+                    <a href="{{ home_url('/que-esperar') }}" class="horizontal-submenu-item">¿Qué esperar del tratamiento con EMDR?</a>
+                    <a href="{{ home_url('/evidencia-cientifica') }}" class="horizontal-submenu-item">Evidencia científica</a>
                   </div>
                 </div>
               </div>
+            </div>
+            <!-- Segunda columna -->
+            <div class="space-y-2">
               <div class="relative group">
-                <a href="{{ home_url('/quienes-somos') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">
-                  ¿Quiénes somos?
+                <a href="{{ home_url('/a-quienes-atendemos') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">
+                  ¿A quiénes atendemos?
                 </a>
                 <div class="submenu-container -left-4">
                   <div class="horizontal-submenu">
-                    <a href="{{ home_url('/que-significa-kintsugi') }}" class="horizontal-submenu-item">Qué significa Kintsugi</a>
-                    <a href="{{ home_url('/que-nos-inspira') }}" class="horizontal-submenu-item">Qué nos inspira</a>
-                    <a href="{{ home_url('/divulgacion-cientifica') }}" class="horizontal-submenu-item">Divulgación Científica</a>
-                    <a href="{{ home_url('/evidencia-cientifica') }}" class="horizontal-submenu-item">Evidencia Científica</a>
+                    <a href="{{ home_url('/a-quienes-atendemos') }}" class="horizontal-submenu-item">¿A qué personas atendemos?</a>
+                    <a href="{{ home_url('/transtornos-y-malestares') }}" class="horizontal-submenu-item">Transtornos y malestares que atendemos</a>
                   </div>
                 </div>
               </div>
+              <a href="{{ home_url('/charlas-y-talleres') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">Charlas y talleres</a>
+              <a href="{{ home_url('/preguntas-frecuentes') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">FAQ'S</a>
             </div>
             <!-- Tercera columna -->
             <div class="space-y-2">
@@ -174,7 +186,6 @@
                 </div>
               </div>
               <a href="{{ home_url('/contacto') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">Contacto</a>
-              <a href="{{ home_url('/preguntas-frecuentes') }}" class="block text-[#181818] hover:text-[#AB277A] transition-all duration-300">FAQ'S</a>
             </div>
           </nav>
         </div>
