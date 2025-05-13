@@ -22,27 +22,17 @@
         </div>
         
         <!-- Imagen a la derecha con fondo morado -->
-        <div class="lg:w-1/2 flex justify-center lg:justify-end relative" data-aos="fade-left" data-aos-duration="600">
-          <!-- Fondo morado orgánico que rodea la imagen -->
-          <div class="absolute inset-0 z-0 transition-transform duration-700 hover:scale-105">
-            <svg width="586.48px" height="565.73px" viewBox="0 0 586.48 565.73" fill="none" xmlns="http://www.w3.org/2000/svg" style="position: absolute; top: 0; left: 0;">
-              <path d="M140,60 C100,110 20,180 40,280 C60,380 120,420 180,460 C240,500 300,540 400,500 C500,460 580,380 560,280 C540,200 500,160 440,100 C380,40 300,20 220,20 C180,20 180,10 140,60 Z" fill="#8961C4"/>
-            </svg>
+        <div class="lg:w-1/2 flex justify-center lg:justify-end relative lg:mt-10" data-aos="fade-left" data-aos-duration="600">
+          <div class="relative w-full max-w-[800px] mx-auto">
+            <div class="relative">
+              <!-- Imagen actual -->
+              <img 
+                src="{{ get_theme_file_uri('resources/images/heros/contacto.png') }}" 
+                alt="Contacto" 
+                class="relative z-10 w-full h-auto transition-transform duration-500 hover:scale-105"
+              >
+            </div>
           </div>
-          
-          <!-- Elementos gráficos de fondo -->
-          <div class="absolute w-16 h-16 rounded-full bg-[#9978d1] opacity-40 top-10 left-5 z-0 animate-pulse"></div>
-          <div class="absolute w-12 h-12 rounded-full bg-[#9978d1] opacity-30 bottom-10 right-10 z-0 animate-pulse" style="animation-delay: 1s;"></div>
-          <div class="absolute h-[40%] w-px bg-white opacity-20 top-10 left-1/3 z-0"></div>
-          <div class="absolute h-px w-[20%] bg-white opacity-20 top-1/3 right-20 z-0"></div>
-          
-          <!-- Imagen actual -->
-          <img 
-            src="{{ get_theme_file_uri('resources/images/contacto.png') }}" 
-            alt="Contacto" 
-            class="max-w-full h-auto rounded-lg relative z-10 transition-transform duration-500 hover:scale-105"
-            style="max-width: 580px; position: relative;"
-          >
         </div>
       </div>
     </div>

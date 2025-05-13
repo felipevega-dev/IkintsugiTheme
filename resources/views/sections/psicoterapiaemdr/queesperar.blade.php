@@ -28,7 +28,7 @@
             <div class="relative">       
               <!-- Imagen actual -->
               <img 
-                src="{{ get_theme_file_uri('resources/images/heros/quesperar2.png') }}" 
+                src="{{ get_theme_file_uri('resources/images/heros/quesperar.png') }}" 
                 alt="Psicoterapia EMDR" 
                 class="relative z-10 w-full h-auto transition-transform duration-500 hover:scale-105"
               >
