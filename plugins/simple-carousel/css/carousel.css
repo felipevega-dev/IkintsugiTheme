@@ -24,7 +24,7 @@
     border: none; width: 40px; height: 40px;
     border-radius: 50%; cursor: pointer; font-size: 24px;
     display: flex; align-items: center; justify-content: center;
-    transition: all .3s;
+    transition: all .2s;
     z-index: 2;
 }
 .simple-carousel-prev:hover, .simple-carousel-next:hover {
@@ -50,7 +50,6 @@
 .simple-carousel-indicator {
     width: 10px; height: 10px; border-radius: 50%;
     background: #fff; opacity: 0.6; cursor: pointer;
-    transition: all .2s;
 }
 .simple-carousel-indicator.active {
     opacity: 1; background: #362766; transform: scale(1.3);

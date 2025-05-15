@@ -1,9 +1,5 @@
 <!-- Features Section -->
 <section class="pt-8 pb-10 md:pb-16 bg-white -mt-1 relative overflow-x-hidden w-full">
-  <!-- Planta decorativa que continúa hacia services - ajustada con dimensiones específicas -->
-  <div id="plant-decoration" class="absolute hidden md:block" style="width: 332px; height: 392px; transform: rotate(-94.18deg); top: 50%; right: -150px; z-index: 0; pointer-events: none;" data-aos="fade-up" data-aos-duration="800">
-    <img src="{{ get_theme_file_uri('resources/images/planta.png') }}" alt="Decorative Plants" class="w-full h-full object-contain">
-  </div>
 
   <div class="container mx-auto px-4 relative z-10">
     <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">

@@ -57,7 +57,7 @@
         <!-- Imagen a la izquierda -->  
         <div class="w-full lg:w-1/2 flex justify-center lg:justify-start relative order-2 lg:order-1" data-aos="fade-right" data-aos-duration="600">
           <img 
-            src="{{ get_theme_file_uri('resources/images/psicoterapiaemdrnew2.png') }}" 
+            src="{{ get_theme_file_uri('resources/images/psicoterapiaemdrnew3.png') }}" 
             alt="Qué nos inspira" 
             class="w-full max-w-[543px] h-auto rounded-lg relative z-10 transition-transform duration-500 hover:scale-105"
           >
