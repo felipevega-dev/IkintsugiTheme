@@ -1,7 +1,7 @@
 <!-- Services Section -->
 <section class="py-10 md:py-16 pb-16 md:pb-24 mb-10 md:mb-20 relative overflow-x-hidden bg-gradient-to-b from-[#030D550D] to-[#030D5510]">
   <!-- Elementos decorativos -->
-  <div class="absolute top-[3%] left-[17%] w-[15%] max-w-[250px] h-auto z-10 hidden md:block">
+  <div class="absolute top-[7%] left-[15%] w-[15%] max-w-[250px] h-auto z-10 hidden md:block">
     <img src="{{ get_theme_file_uri('resources/images/planta.png') }}" alt="Decorative Plants" class="w-full h-full object-contain">
   </div>
   
