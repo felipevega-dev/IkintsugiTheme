@@ -1021,11 +1021,6 @@
                               {{ (strpos($current_url, 'que-nos-inspira') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
                         ¿Qué nos inspira?
                       </a>
-                      <a href="{{ home_url('/mision-valores') }}" 
-                        class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
-                              {{ (strpos($current_url, 'mision-valores') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
-                        Nuestra Misión y Valores
-                      </a>
                       <a href="{{ home_url('/divulgacion-cientifica') }}" 
                         class="block py-2 px-4 text-[#030D55] hover:bg-[#FBD5E8] hover:text-[#D93280] transition-all duration-200
                               {{ (strpos($current_url, 'divulgacion-cientifica') !== false) ? 'bg-[#FBD5E8] text-[#D93280] font-semibold' : '' }}">
